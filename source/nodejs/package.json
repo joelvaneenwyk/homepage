@@ -1,0 +1,10 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "description": "server",
+  "main": "server.js",
+  "author": {
+    "name": "joel.van.eenwyk",
+    "email": ""
+  }
+}

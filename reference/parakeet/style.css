@@ -1,0 +1,113 @@
+body {
+	margin: 0;
+	font-family: CoreSansE-35Light;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 17px;
+	color: #222222;
+	line-height: 32px;
+	background-color: white;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+a, a:visited, a:hover, a:active {
+	color: #222222;
+	text-decoration: none;
+}
+
+#color {
+	width: 100%;
+	height: 50%;
+	background-color: #acb2bf;
+}
+
+#box {
+	width: 528px;
+	height: 240px;
+	display: block;
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	padding-left: 64px;
+}
+
+#tagline {
+	margin: 17px 0 31px 64px;
+}
+
+#tagline a, #tagline a:visited, #tagline:hover, #tagline a:active {
+	text-decoration: none;
+	color: #d5dde0;
+}
+
+#chevron {
+	padding: 8px 0 0 8px;
+	position: absolute;
+	fill: #d5dde0;
+}
+
+.linkbox {
+	width: 264px;
+	height: 32px;
+	display: inline-block;
+	float: left;
+	padding-top: 16px;
+}
+
+a.Red:hover			{color: #e53956;}
+a.Portland:hover	{color: #ff5b4c;}
+a.Orange:hover		{color: #ff8f40;}
+a.Yellow:hover		{color: #ffcf40;}
+a.Green:hover		{color: #6cd957;}
+a.Turquoise:hover	{color: #00cc99;}
+a.Teal:hover		{color: #22d5e5;}
+a.Blue:hover		{color: #556ff2;}
+a.Indigo:hover		{color: #8040ff;}
+a.Violet:hover		{color: #a345e5;}
+a.Pink:hover		{color: #f25589;}
+
+.icon {
+	padding: 0px 24px 0 8px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.label {
+	position: relative;
+	top: 2px;
+}
+
+#footer {
+	font-size: 11px;
+	color: #e0e0e0;
+	display: inline-block;
+	position: relative;
+	top: 32px;
+	margin-left: 64px;
+	width: 264px;
+	height: 32px;
+}
+
+
+@media (max-device-width: 414px) {
+	
+	body {
+		font-family: CoreSansE-45Regular;
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	#box {
+		width: 328px;
+		padding-left: 0;
+	}
+
+	.linkbox {
+		padding-bottom: 8px;
+	}
+}
