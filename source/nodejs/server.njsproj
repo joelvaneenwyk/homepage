@@ -6,7 +6,8 @@
     <Name>server</Name>
     <RootNamespace>server</RootNamespace>
     <NodeExePath>C:\Local\Projects\homepage\thirdparty\nodejs\node.exe</NodeExePath>
-    <Environment>PATH=%PATH%;C:\Local\Projects\homepage\thirdparty\node</Environment>
+    <Environment>
+    </Environment>
     <ScriptArguments>--use_strict</ScriptArguments>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />

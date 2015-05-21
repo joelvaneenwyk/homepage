@@ -1,5 +1,8 @@
-$(document).ready(function() {
-    var fontSize = parseInt($(".bottom-align").height())+"px";
-    alert(fontSize);
-    $(".bottom-align").css('font-size', fontSize);
+$(document).ready(function() {    
+	var clientHeight = ($(HTMLDocument).innerHeight() / 2) + 'px';
+	$(".top-half").css('height', clientHeight);
+});
+
+$(document).resize(function() {
+    alert('hi');
 });
