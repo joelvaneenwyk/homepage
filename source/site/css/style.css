@@ -1,3 +1,11 @@
+@media (min-width: @screen-lg-min) 
+{
+    #name
+    {
+        font-size: 3.5em;
+    }
+}
+
 body
 {
 	 padding: 0px 0px;
@@ -12,16 +20,17 @@ span.label
 
 img.icon
 {
-    position: relative;
+    margin: 0 auto;
+    display: block;
 }
 
-div.name
+#name
 {
 	text-align: center;
 	font-family: "Dosis";
     font-style: normal;
 	font-weight: 500;
-	font-size: 3.5em;
+	font-size: 150%;
 }
 
 div.description
@@ -33,16 +42,19 @@ div.description
 	font-size: 1.5em;
 }
 
-.top-half-bottom
+.top-body
 {
-	bottom: 0;
-	position: absolute;
+    margin: 0 auto;
 }
 
 /* Align with the bottom */
-.top-half
+.top
 {
-	position:relative;
-	height: 500px;
-	margin: 0px;
+    background-color: darkgrey;
+}
+
+#external
+{
+    margin: 0 auto;
+    display: block;
 }
