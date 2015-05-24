@@ -1,11 +1,34 @@
-$(document).ready(function() {    
-});
+//
+// Event handlers
+//
 
-$(window).on('resize', function(){
-	var clientHeight = ($(HTMLDocument).innerHeight() / 2) + 'px';
-	var clientWidth = $(HTMLDocument).innerWidth() + 'px';
-    $('body.div.div').height(clientHeight);
-	$("div#top.row").css('height', clientHeight);
-	$(".top").css('width', clientWidth);
-	$(".top-body").css('width', $(".top-body").width());
-});
+function onResize()
+{
+    console.info("[JVE] Resize event called...");
+    updateHeader();
+}
+
+function onReady()
+{
+    console.info("[JVE] On-ready event called...");
+    updateHeader();
+}
+
+//
+// Global utilities
+//
+
+function updateHeader()
+{
+	var clientHeight = $(window).height() / 2;
+	var clientWidth = $(window).width();
+	$("div#parent").css('width', clientWidth + 'px');
+	$("div#top").css('height', clientHeight + 'px');
+}
+
+//
+// Initialization
+//
+
+jQuery(document).ready(onReady);
+jQuery(window).on('resize', onResize);

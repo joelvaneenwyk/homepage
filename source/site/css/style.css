@@ -47,14 +47,18 @@ div.description
     margin: 0 auto;
 }
 
-/* Align with the bottom */
-.top
+#header
 {
-    background-color: darkgrey;
+    position: absolute;
+    bottom: 0;    
+    width: 400px;
+    margin-left: -200px;
+    left: 50%;
 }
 
-#external
+/* Align with the bottom */
+#top
 {
-    margin: 0 auto;
-    display: block;
+    background-color: darkgrey;
+    position: relative;
 }
