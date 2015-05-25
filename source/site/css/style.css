@@ -13,11 +13,6 @@ body
 	 margin: 0;
 }
 
-span.label
-{
-    color: black;
-}
-
 img.icon
 {
     margin: 0 auto;
@@ -26,25 +21,22 @@ img.icon
 
 #name
 {
-	text-align: center;
+	text-align: left;
 	font-family: "Dosis";
     font-style: normal;
-	font-weight: 500;
-	font-size: 150%;
+	font-weight: 800;
+	font-size: 180%;
+    margin-top: 10px;
+    margin-bottom: -10px;
 }
 
-div.description
+#description
 {
-	text-align: center;
+	text-align: left;
 	font-family: "Dosis";
     font-style: normal;
-	font-weight: 500;
-	font-size: 1.5em;
-}
-
-.top-body
-{
-    margin: 0 auto;
+	font-weight: 400;
+	font-size: 110%;
 }
 
 #header
@@ -56,9 +48,71 @@ div.description
     left: 50%;
 }
 
-/* Align with the bottom */
+#links
+{
+    width: 400px;
+    margin: 0 auto;
+}
+
 #top
 {
-    background-color: darkgrey;
+    background-color: #76C1BF;
     position: relative;
+}
+
+
+.linkbox
+{
+    margin: 0 auto;
+    display: block;
+}
+
+span.label
+{
+    color: black;
+}
+
+a
+{
+	font-family: "Dosis";
+    font-style: normal;
+	font-weight: 200;
+	font-size: 120%;
+}
+
+a:link 
+{
+    text-decoration: none;
+}
+
+a:visited 
+{
+    text-decoration: none;
+}
+
+a:hover 
+{
+	font-weight: 800; 
+    text-decoration: none
+}
+
+a:active
+{    
+    text-decoration: none;
+	font-weight: 800; 
+}
+
+.linkbox
+{
+    display: block;
+    margin: 0px 0px 3px 0px;
+}
+
+.linkbox:hover
+{
+    display: block;
+    color: black;
+    margin: 0px 0px 2px 0px;
+    border-style: solid;
+    border-width: 0px 10px 1px 0px;
 }
