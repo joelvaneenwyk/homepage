@@ -1,7 +1,8 @@
+var onlineMode = false;
+
 (function()
 {
-    var useGoogleFont = false;
-    if (useGoogleFont)
+    if (onlineMode)
     {
         var link_element = document.createElement("link"),
             s = document.getElementsByTagName("script")[0];

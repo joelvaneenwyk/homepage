@@ -19,9 +19,9 @@ function onReady()
 //
 
 function updateHeader()
-{
-	var clientHeight = $(window).height() / 2;
-	var clientWidth = $(window).width();
+{    
+	var clientHeight = this.innerHeight / 2;
+	var clientWidth = this.innerWidth;
 	$("div#parent").css('width', clientWidth + 'px');
 	$("div#top").css('height', clientHeight + 'px');
 }

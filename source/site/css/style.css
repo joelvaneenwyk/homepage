@@ -6,31 +6,38 @@
     }
 }
 
+@media screen and (orientation:portrait)
+{
+    /* ... */
+}
+
+@media screen and (orientation:landscape)
+{
+    /* ... */
+}
+
 body
 {
-	 padding: 0px 0px;
-	 padding-top: 0px;
+	 padding: 0;
 	 margin: 0;
 }
 
-img.icon
+.logo
 {
     margin: 0 auto;
     display: block;
 }
 
-#name
+.name
 {
 	text-align: left;
 	font-family: "Dosis";
     font-style: normal;
 	font-weight: 800;
 	font-size: 180%;
-    margin-top: 10px;
-    margin-bottom: -10px;
 }
 
-#description
+.description
 {
 	text-align: left;
 	font-family: "Dosis";
@@ -39,24 +46,27 @@ img.icon
 	font-size: 110%;
 }
 
-#header
-{
-    position: absolute;
-    bottom: 0;    
+.row.header
+{  
     width: 400px;
-    margin-left: -200px;
-    left: 50%;
 }
 
-#links
+.row.header.top
 {
-    width: 400px;
+    position: absolute;
+    bottom: 0;   
+    margin-left: -200px;
+    left: 50%; 
+}
+
+.row.header.bottom
+{
     margin: 0 auto;
 }
 
 #top
 {
-    background-color: #76C1BF;
+    background-color: #e2ecb8;
     position: relative;
 }
 
@@ -78,28 +88,12 @@ a
     font-style: normal;
 	font-weight: 200;
 	font-size: 120%;
+    text-decoration: none;
 }
 
 a:link 
 {
     text-decoration: none;
-}
-
-a:visited 
-{
-    text-decoration: none;
-}
-
-a:hover 
-{
-	font-weight: 800; 
-    text-decoration: none
-}
-
-a:active
-{    
-    text-decoration: none;
-	font-weight: 800; 
 }
 
 .linkbox
@@ -112,7 +106,7 @@ a:active
 {
     display: block;
     color: black;
-    margin: 0px 0px 2px 0px;
+    background-color: antiquewhite;
     border-style: solid;
-    border-width: 0px 10px 1px 0px;
+    border-width: 0px 0px 0px 0px;
 }
