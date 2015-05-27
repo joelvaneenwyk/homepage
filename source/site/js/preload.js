@@ -1,4 +1,4 @@
-var onlineMode = false;
+var onlineMode = true;
 
 (function()
 {
