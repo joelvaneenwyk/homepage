@@ -1,0 +1,134 @@
+@media (min-width: @screen-lg-min) 
+{
+    #name
+    {
+        font-size: 3.5em;
+    }
+}
+
+@media screen and (orientation:portrait)
+{
+    /* ... */
+}
+
+@media screen and (orientation:landscape)
+{
+    /* ... */
+}
+
+/*
+ * Basic settings to remove all padding and margins
+ */
+
+body
+{
+	 padding: 0;
+	 margin: 0;
+}
+
+.container
+{
+    padding: 0;
+    margin: 0;
+}
+
+.row
+{
+    padding: 0;
+    margin: 0;
+}
+/*
+ * Set hyperlink typeface and remove underlines 
+ */
+
+
+a
+{
+	font-family: "Dosis";
+    font-style: normal;
+	font-weight: 200;
+	font-size: 120%;
+    text-decoration: none;
+    color: black;
+}
+
+a:link 
+{
+    text-decoration: none;
+}
+
+/*
+ * Front page setup
+ */
+
+.row.top
+{
+    background-color: #e2ecb8;
+    position: relative;
+}
+
+.stamp
+{
+    margin: 0 auto;
+    display: block;
+}
+
+.name
+{
+	text-align: left;
+	font-family: "Dosis";
+    font-style: normal;
+	font-weight: 800;
+	font-size: 180%;
+    margin-top: 15px;
+}
+
+.description
+{
+	text-align: left;
+	font-family: "Dosis";
+    font-style: normal;
+	font-weight: 600;
+	font-size: 110%;
+    margin-top: -10px;
+}
+
+.row.header.centered
+{
+    position: absolute;
+    bottom: 0;   
+    left: 50%; 
+}
+
+.row.header.bottom
+{
+    margin: 10px auto 0 auto;
+}
+
+img.logo
+{
+    width: 30px;
+    height: 30px;
+    display: inline;
+}
+
+.link
+{
+	text-align: left;
+	font-family: "Dosis";
+    font-style: normal;
+	font-weight: 600;
+	font-size: 80%;
+    margin-left: 2px;
+}
+
+.linkbox
+{
+    display: block;
+    margin: 0px 0px 3px 0px;
+}
+
+.linkbox:hover
+{
+    background-color: antiquewhite;
+}
