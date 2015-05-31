@@ -28,7 +28,7 @@ function updateHeader()
     var height = this.innerHeight / 2;
     var width = this.innerWidth;
     
-    if (height < 400) height = 400;
+    //if (height < 250) height = 250;
     if (width < 100) width = 100;
     
     // Force the width of the main container to be the width of the window
