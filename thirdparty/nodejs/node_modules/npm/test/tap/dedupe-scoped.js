@@ -11,46 +11,11 @@ var modules = join(pkg, 'node_modules')
 
 var EXEC_OPTS = { cwd: pkg }
 
-test('setup', function (t) {
-  setup()
-  t.end()
-})
-
-// we like the cars
-function ltrimm (l) { return l.trim() }
-
-test('dedupe finds the common scoped modules and moves it up one level', function (t) {
-  common.npm(
-    [
-      'find-dupes' // I actually found a use for this command!
-    ],
-    EXEC_OPTS,
-    function (err, code, stdout, stderr) {
-      t.ifError(err, 'successful dry run against fake install')
-      t.notOk(code, 'npm ran without issue')
-      t.notOk(stderr, 'npm printed no errors')
-      t.same(
-        stdout.trim().split('\n').map(ltrimm),
-        [prolog].concat(body).map(ltrimm),
-        'got expected output'
-      )
-
-      t.end()
-    }
-  )
-})
-
-test('cleanup', function (t) {
-  cleanup()
-  t.end()
-})
-
-var prolog = 'dedupe@0.0.0 ' + pkg
 var body = function () {/*
-├─┬ first@1.0.0
-│ └── @scope/shared@2.1.6
-└─┬ second@2.0.0
-  └── @scope/shared@2.1.6
+@scope/shared@2.1.6 node_modules/first/node_modules/@scope/shared -> node_modules/@scope/shared
+firstUnique@0.6.0 node_modules/first/node_modules/firstUnique -> node_modules/firstUnique
+secondUnique@1.2.0 node_modules/second/node_modules/secondUnique -> node_modules/secondUnique
+- @scope/shared@2.1.6 node_modules/second/node_modules/@scope/shared
 */}.toString().split('\n').slice(1, -1)
 
 var deduper = {
@@ -94,6 +59,40 @@ var secondUnique = {
   'name': 'secondUnique',
   'version': '1.2.0'
 }
+
+test('setup', function (t) {
+  setup()
+  t.end()
+})
+
+// we like the cars
+function ltrimm (l) { return l.trim() }
+
+test('dedupe finds the common scoped modules and moves it up one level', function (t) {
+  common.npm(
+    [
+      'find-dupes' // I actually found a use for this command!
+    ],
+    EXEC_OPTS,
+    function (err, code, stdout, stderr) {
+      t.ifError(err, 'successful dry run against fake install')
+      t.notOk(code, 'npm ran without issue')
+      t.notOk(stderr, 'npm printed no errors')
+      t.same(
+        stdout.trim().split('\n').map(ltrimm),
+        body.map(ltrimm),
+        'got expected output'
+      )
+
+      t.end()
+    }
+  )
+})
+
+test('cleanup', function (t) {
+  cleanup()
+  t.end()
+})
 
 function setup (cb) {
   cleanup()

@@ -3,8 +3,9 @@ npm-run-script(1) -- Run arbitrary package scripts
 
 ## SYNOPSIS
 
-    npm run-script [command] [-- <args>]
-    npm run [command] [-- <args>]
+    npm run-script <command> [-- <args>...]
+
+    alias: npm run
 
 ## DESCRIPTION
 
@@ -33,8 +34,11 @@ In addition to the shell's pre-existing `PATH`, `npm run` adds
 `node_modules/.bin` to the `PATH` provided to scripts. Any binaries provided by
 locally-installed dependencies can be used without the `node_modules/.bin`
 prefix. For example, if there is a `devDependency` on `tap` in your package,
-you should write `"scripts": {"test": "tap test/\*.js"}` instead of `"scripts":
-{"test": "node_modules/.bin/tap test/\*.js"}` to run your tests.
+you should write:
+
+    "scripts": {"test": "tap test/\*.js"}
+
+instead of `"scripts": {"test": "node_modules/.bin/tap test/\*.js"}` to run your tests.
 
 ## SEE ALSO
 
