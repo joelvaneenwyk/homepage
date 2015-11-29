@@ -1,3 +1,8 @@
+# Install
+
+* Open 'prompt.bat'
+* Run 'npm update' (will populate node_modules)
+
 # Notes
 
 * Source for the website is in source/site/

@@ -7,7 +7,9 @@ module.exports = function(grunt) {
   //
   // * Create a dist/release and dist/dev and watch should be used for dist/dev
   // * dist/dev should NOT use the min version
-
+  // * Add d3 (e.g. http://mbostock.github.io/d3/talk/20111018/collision.html)
+  //
+  
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
