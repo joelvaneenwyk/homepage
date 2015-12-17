@@ -4,7 +4,7 @@ module.exports = function(grunt) {
   // #todo #jve Look into the following:
   //  http://stackoverflow.com/questions/12401998/have-grunt-generate-index-html-for-different-setups
   //  https://www.npmjs.com/package/grunt-targethtml
-  //
+  //  https://github.com/jsoverson/grunt-preprocess
   // * Create a dist/release and dist/dev and watch should be used for dist/dev
   // * dist/dev should NOT use the min version
   // * Add d3 (e.g. http://mbostock.github.io/d3/talk/20111018/collision.html)

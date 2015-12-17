@@ -9,6 +9,7 @@
     <Environment>
     </Environment>
     <ScriptArguments>--use_strict</ScriptArguments>
+    <NameOfLastUsedPublishProfile>Linode</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -35,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="server.js" />
+    <None Include="Linode.pubxml" />
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
