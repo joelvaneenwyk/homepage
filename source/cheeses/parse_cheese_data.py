@@ -40,11 +40,10 @@ class Cheese():
 
     def getDict(self):
         test = dict(inspect.getmembers(self))
-        test['__init__'] = None
-        test['__module__'] = None
-        test['__doc__'] = None
-        test['getDict'] = None
-        test.update()
+        del test['__init__']
+        del test['__module__']
+        del test['__doc__']
+        del test['getDict']
         output = {}
         output[self.name] = test
         return output
@@ -55,15 +54,17 @@ class CheeseJsonEncoder(json.JSONEncoder):
 
 def strip_whitespace(text):
     output = text.replace('\n', '')
+    output = output.replace('\r', '')
     output = output.strip()
     while output != output.replace('  ', ' '):
         output = output.replace('  ', ' ')
+    output = output.replace(" '", "'")
     return output
     
 
 def main():
-    doParseCheeseWeb = False
-    doParseSR22 = True
+    doParseCheeseWeb = True
+    doParseSR22 = False
 
     if doParseCheeseWeb:
         parseCheeseWeb()
