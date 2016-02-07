@@ -21,11 +21,10 @@ console.log('File server root: ' + siteRoot);
 //    serve(req, res, done)
 //})
 
-//var app = express()
 var express = require('express')
 var app = express()
 app.use(serveStatic(siteRoot + 'playground'))
-//app.use(serveStatic(siteRoot + 'source\test'))
+app.use(serveStatic(siteRoot + 'source\test'))
 app.listen(port)
 
 //server.listen(port);
