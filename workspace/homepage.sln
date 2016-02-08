@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "server", "..\source\nodejs\server.njsproj", "{57FC863C-A858-4509-937C-9CCB4AA17B4B}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "parse-cheese-data", "..\source\cheeses\parse-cheese-data.pyproj", "{6D251901-47F4-4CE7-8F49-D8205E810351}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "cheeses", "..\source\cheeses\cheeses.pyproj", "{6D251901-47F4-4CE7-8F49-D8205E810351}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

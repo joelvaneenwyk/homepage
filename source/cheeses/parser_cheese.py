@@ -1,8 +1,4 @@
-"""
-parse_cheese_data.py
-
-Parses SR22 data and cheeses.com and generates JSON files.
-"""
+import cheese
 
 from bs4 import BeautifulSoup
 import urlparse
@@ -15,130 +11,9 @@ import glob
 from random import randint
 import codecs
 import json
-import inspect
+import inspect    
 
-class Cheese():
-    image = ''
-    image_credits = ''
-    name = ''
-    summary = ''
-    made_from = ''
-    origin = ''
-    type = ''
-    fat = ''
-    texture = ''
-    rind = ''
-    color = ''
-    flavor = ''
-    aroma = ''
-    vegetarian = ''
-    producers = ''
-    synonyms = []
-
-    def __init__(self):
-        name = ''
-
-    def getDict(self):
-        test = dict(inspect.getmembers(self))
-        del test['__init__']
-        del test['__module__']
-        del test['__doc__']
-        del test['getDict']
-        output = {}
-        output[self.name] = test
-        return output
-
-class CheeseJsonEncoder(json.JSONEncoder):
-    def default(self, o):
-        return o.getDict()
-
-def strip_whitespace(text):
-    output = text.replace('\n', '')
-    output = output.replace('\r', '')
-    output = output.strip()
-    while output != output.replace('  ', ' '):
-        output = output.replace('  ', ' ')
-    output = output.replace(" '", "'")
-    return output
-    
-
-def main():
-    doParseCheeseWeb = True
-    doParseSR22 = False
-
-    if doParseCheeseWeb:
-        parseCheeseWeb()
-
-    if doParseSR22:
-        parseSR22()
-
-def parseFdaLine(line):
-    fields = []
-    for field in line.split('^'):
-        fields.append(field.strip('~'))
-    return fields
-
-def parseFdaFileUniqueDict(filename):
-    output = {}
-    lines = open(filename,'r').readlines()
-    for line in lines:
-        fields = parseFdaLine(line)
-        output[fields[0]] = fields[1:]
-    return output
-
-def parseFdaFileArray(filename):
-    output = {}
-    lines = open(filename,'r').readlines()
-
-    # For debugging so that it doesn't parse forever
-    numLineLimit = 1000
-    lineIndex = 0
-
-    for line in lines:
-        fields = parseFdaLine(line)
-        if not output.has_key(fields[0]):
-            output[fields[0]] = []
-        output[fields[0]].append(fields[1:])
-        lineIndex += 1
-        if lineIndex > numLineLimit:
-            break
-    return output
-    
-
-def parseSR22():
-    root = os.path.dirname(os.path.realpath(__file__))
-    sr22 = os.path.join(root, 'sr22')
-    food_descriptions_filename = os.path.join(sr22, 'FOOD_DES.txt')
-    food_descriptions = parseFdaFileUniqueDict(food_descriptions_filename)
-
-    food_groups_filename = os.path.join(sr22, 'FD_GROUP.txt')
-    food_groups = parseFdaFileUniqueDict(food_groups_filename)
-
-    nutritional_data_filename = os.path.join(sr22, 'NUT_DATA.txt')
-    nutritional_data = parseFdaFileArray(nutritional_data_filename)
-
-    nutritional_definitions_filename = os.path.join(sr22, 'NUTR_DEF.txt')
-    nutritional_definitions = parseFdaFileUniqueDict(nutritional_definitions_filename)
-
-    food_descriptions_headers = ['FdGrp_Cd', 'Long_Desc', 'Shrt_Desc', 'ComName']
-    nutritional_data_headers = ['Nutr_No', 'Nutr_Val', 'Num_Data_Pts', 'ComName']
-    nutritional_definition_headers = ['Units', 'Tagname', 'NutrDesc']
-
-    for (ndb_no, food) in food_descriptions.iteritems():
-        if ndb_no in nutritional_data:
-            nutritions = nutritional_data[ndb_no]
-            food_name = food[ food_descriptions_headers.index('Shrt_Desc') ]
-            print(food_name)
-            for nutrition in nutritions:
-                nutritional_definition_index = nutrition[nutritional_data_headers.index('Nutr_No')]
-                nutritional_definition = nutritional_definitions[nutritional_definition_index]
-                value = nutrition[ nutritional_data_headers.index('Nutr_Val') ]
-                units = nutritional_definition[ nutritional_definition_headers.index('Units') ]
-                name = nutritional_definition[ nutritional_definition_headers.index('NutrDesc') ]
-                if float(value) > 0 and not ':' in name:
-                    print('%s %s %s' % (value, name, units))
-    
-def parseCheeseWeb():
+def parseCheese():
     url = 'http://www.cheese.com/alphabetical/?page=%d&per_page=20&i=%s#top'
     root = os.path.dirname(os.path.realpath(__file__))
     out_folder = os.path.join(root, "output")
@@ -264,5 +139,5 @@ def parseCheeseWeb():
     file.write('}')
     file.close()
 
-if __name__ == "__main__":
-    main()
+    # TODO: Download the JPG for the images
+    # TODO: Figure out lat / long from https://developers.google.com/maps/documentation/geocoding/intro

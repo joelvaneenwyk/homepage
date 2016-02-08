@@ -4,13 +4,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>6d251901-47f4-4ce7-8f49-d8205e810351</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>parse_cheese_data.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>cheeses.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>parse-cheese-data</Name>
+    <Name>cheeses</Name>
     <RootNamespace>parse-cheese-data</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -22,7 +23,22 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="parse_cheese_data.py" />
+    <Compile Include="cheese.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="parser_cheese.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="parser_cheese_library.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="parser_usda.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="cheeses.py" />
+    <Compile Include="parser_utils.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
