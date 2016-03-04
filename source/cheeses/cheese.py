@@ -7,16 +7,20 @@ class Cheese():
     summary = ''
     made_from = ''
     origin = ''
+    region = ''
     type = ''
     fat = ''
     texture = ''
     rind = ''
+    age = ''
     color = ''
     flavor = ''
     aroma = ''
     vegetarian = ''
     producers = ''
+    pasteurized = ''
     synonyms = []
+    description = ''
 
     def __init__(self):
         name = ''
@@ -33,4 +37,6 @@ class Cheese():
 
 class CheeseJsonEncoder(json.JSONEncoder):
     def default(self, o):
+        self.indent=4
+        self.sort_keys=True
         return o.getDict()

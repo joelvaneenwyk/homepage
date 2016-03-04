@@ -1,58 +1,31 @@
-import cheese
-import parser_utils
+from cheese import Cheese, CheeseJsonEncoder
+from parser_utils import get_cached_page
+from parser_utils import get_data_folder
+from parser_utils import get_output_folder
+from parser_utils import strip_whitespace
 
 import bs4
 from bs4 import BeautifulSoup
-import urlparse
-from urllib2 import urlopen
-from urllib import urlretrieve
 import os
 import sys
 import time
 import glob
-from random import randint
 import codecs
 import json
 import inspect
-from urlparse import urlparse, urlsplit
 
 def getOutputFolder():
-    out_folder = os.path.join(parser_utils.get_output_folder(), "cheese_library")
+    out_folder = os.path.join(get_output_folder(), "cheese_library")
     if not os.path.exists(out_folder):
         os.makedirs(out_folder)
     return out_folder
-
-def getCachedPage(page):
-    result = None
-    url = urlsplit(page)
-    pagename = url.path.split('/')[-1]
-    outputFile = os.path.join(getOutputFolder(), pagename)
-    if os.path.exists(outputFile):
-        f = codecs.open(outputFile, encoding='utf-8')
-        data = f.read()
-        result = BeautifulSoup(data, 'html.parser')
-    else:
-        print('Parsing %s' % page)         
-        html = urlopen(page)
-
-        # Always sleep for 1 to 5 seconds so that we don't get blocked
-        sleepTime = randint(1, 5)
-        time.sleep(sleepTime)
-
-        soup = BeautifulSoup(html, 'html.parser')
-        data = soup.prettify()
-        file = open(outputFile, "w")
-        file.write(data.encode('utf8'))
-        file.close()
-        result = soup
-    return  result
 
 def parseCheeseLibrary():
     base_url = 'http://www.cheeselibrary.com/'
     url = base_url + 'library_of_cheese.html'
 
     pages = []
-    soup = getCachedPage(url)
+    soup = get_cached_page(url, getOutputFolder())
     table = soup.find("table", class_='table_d2e201 usertable main_table')
     for link in table.findAll("a"):
         page = link["href"]
@@ -60,7 +33,7 @@ def parseCheeseLibrary():
 
     cheese_pages = []
     for page in pages:
-        soup = getCachedPage(page)
+        soup = get_cached_page(page, getOutputFolder())
         table = soup.find("table", class_='usertable')
         if table != None:
             links = table.findAll("a")
@@ -70,13 +43,13 @@ def parseCheeseLibrary():
         else:
             print("Failed to find cheese information for " + page)
     
-    for cheese in cheese_pages:
-        soup = getCachedPage(cheese)
-        name = soup.find("meta").title.text
+    cheese_library = []
+    for cheese_page in cheese_pages:
+        soup = get_cached_page(cheese_page, getOutputFolder())
+        cheese = Cheese()
         master_table = soup.find("body").table.findAll("tr", recursive=False)[2]
         master_data_table = master_table.find("table").findAll("tr", recursive=False)
-        cheese_header = parser_utils.strip_whitespace(master_data_table[0].text)
-        print(cheese_header)
+        cheese.name = strip_whitespace(master_data_table[0].text)
 
         cheese_data_and_summary = master_data_table[1].findAll("td")
         cheese_data_divs = cheese_data_and_summary[0].findAll("div")
@@ -95,11 +68,22 @@ def parseCheeseLibrary():
             if ':' in root_text and \
                 ':' in chunk_data and \
                 not root_text in chunk_data:
-                data = parser_utils.strip_whitespace(chunk_data)
+                data = strip_whitespace(chunk_data)
                 data_split = data.split(':')
-                type = parser_utils.strip_whitespace(data_split[0])
-                value = parser_utils.strip_whitespace(data_split[1])
-                print('%s = %s' % (type, value))
+                type = strip_whitespace(data_split[0]).lower()
+                value = strip_whitespace(data_split[1])
+                if type == 'country':
+                    cheese.origin = value
+                elif type == 'region':
+                    cheese.region = value
+                elif type == 'texture':
+                    cheese.texture = value
+                elif type == 'type of':
+                    cheese.made_from = value
+                elif type == 'aging':
+                    cheese.age = value
+                elif type == 'pasteurized':
+                    cheese.texture = value
                 chunk_data = ''
             if (not root_text in chunk_data) and not ("Aging Time:" in root_text and "Texture:" in root_text):
                 chunk_data += root_text 
@@ -107,5 +91,13 @@ def parseCheeseLibrary():
                 break
             root = root.next_element
 
-        cheese_summary = parser_utils.strip_whitespace(cheese_data_and_summary[1].text)
-        print(cheese_summary.encode(sys.stdout.encoding, errors='replace'))   
+        cheese.description = strip_whitespace(cheese_data_and_summary[1].text)
+        cheese_library.append(cheese)
+        print("Parsed: " + cheese.name)
+    
+    filename = os.path.join(get_data_folder(), "cheese_library.json")
+    if os.path.exists(filename):
+        os.remove(filename)
+    file = codecs.open(filename, "w", encoding='utf-8')
+    jsonData = CheeseJsonEncoder().encode( cheese_library )
+    file.write(jsonData)
