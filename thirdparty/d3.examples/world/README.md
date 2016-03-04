@@ -1,0 +1,1 @@
+This map shows the Natural Earth [Admin 0 - Countries](http://www.naturalearthdata.com/downloads/50m-cultural-vectors/) shapefile at 50m resolution. Converted to [TopoJSON](https://github.com/mbostock/topojson), only 140K gzipped. Each country is identified by its [ISO 3166-1 numeric code](http://en.wikipedia.org/wiki/ISO_3166-1_numeric).

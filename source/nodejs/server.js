@@ -23,6 +23,7 @@ console.log('File server root: ' + siteRoot);
 
 var express = require('express')
 var app = express()
+app.use(serveStatic(siteRoot + 'data'))
 app.use(serveStatic(siteRoot + 'playground'))
 app.use(serveStatic(siteRoot + 'source\test'))
 app.listen(port)

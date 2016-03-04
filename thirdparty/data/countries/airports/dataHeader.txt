@@ -1,0 +1,1 @@
+ICAO,IATA,AirportName,City,Country,LatDeg,LatMin,LatSec,LatDirection,LongDeg,LongMin,LongSec,LongDirection,Altitude
