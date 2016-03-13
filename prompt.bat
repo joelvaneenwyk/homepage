@@ -2,7 +2,7 @@
 
 set HOME=%~dp0
 set JVE_THIRDPARTY=%HOME%\thirdparty
-set PATH=%JVE_THIRDPARTY%\nodejs;%PATH%
+set PATH=%PATH%
 
 echo ==============================================================================
 echo  Joel Van Eenwyk (Homepage)
