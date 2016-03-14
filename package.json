@@ -1,6 +1,15 @@
 {
-  "name": "joelvaneenwyk",
+  "name": "aqueous-headland-70081",
   "version": "0.1.0",
+  "description": "aqueous-headland-70081",
+  "main": "server.js",
+  "author": {
+    "name": "jovaneen",
+    "email": "joel.vaneenwyk@gmail.com"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
+  }
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.10.0",
