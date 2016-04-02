@@ -1,15 +1,26 @@
 {
-  "name": "aqueous-headland-70081",
+  "name": "joelvaneenwyk",
   "version": "0.1.0",
-  "description": "aqueous-headland-70081",
-  "main": "server.js",
+  "description": "Homepage for Joel Van Eenwyk",
+  "main": "source/nodejs/server.js",
   "author": {
-    "name": "jovaneen",
+    "name": "Joel Van Eenwyk",
     "email": "joel.vaneenwyk@gmail.com"
+  },
+  "private": true,
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joelvaneenwyk/homepage.git"
   },
   "dependencies": {
     "express": "^4.13.4",
-    "ejs": "^2.4.1"
+    "ejs": "^2.4.1",
+    "harp": "^0.20.0"
+  },
+  "scripts": {
+    "postinstall": "grunt heroku",
+    "start": "node source/nodejs/server.js"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -19,6 +30,9 @@
     "grunt-contrib-qunit": "~0.5.0",
     "grunt-contrib-watch": "~0.5.0",
     "grunt-contrib-concat": "~0.5.0",
-    "grunt-contrib-copy": "~0.5.0"
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-processhtml": "0.3.12",
+    "grunt-contrib-cssmin": "1.0.0"
   }
 }
