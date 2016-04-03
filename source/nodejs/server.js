@@ -28,7 +28,7 @@ else if (mode == 'release') {
 
 app.use('/data', serveStatic(siteRoot + 'data'))
 app.use('/play', serveStatic(siteRoot + 'source/playground'))
+app.use('/thirdparty', serveStatic(siteRoot + "thirdparty"))
 app.use('/blog', harp.mount(siteRoot + "data/blog"))
-app.use('/thirdparty', harp.mount(siteRoot + "thirdparty"))
 
 app.listen(port)
