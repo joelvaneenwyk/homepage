@@ -17,7 +17,7 @@ var port = 8081;
 
 if (mode == 'heroku')
 {
-	port = 80;
+	port = process.env.PORT || 5000;
 }
 
 console.log('Starting server [http://localhost:' + port + '/');
