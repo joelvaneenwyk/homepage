@@ -6,17 +6,24 @@ var finalhandler = require('finalhandler');
 var harp = require('harp');
 
 var siteRoot = __dirname + '/../../';
-var port = 8081;
 
 siteRoot = path.normalize(siteRoot);
-console.log('Starting server [http://localhost:' + port + '/');
-console.log('File server root: ' + siteRoot);
 
 var express = require('express')
 var app = express()
-var mode = 'debug'
+var mode = 'heroku'
 
-if (mode == 'debug') {
+var port = 8081;
+
+if (mode == 'heroku')
+{
+	port = 80;
+}
+
+console.log('Starting server [http://localhost:' + port + '/');
+console.log('File server root: ' + siteRoot);
+
+if (mode == 'debug' || mode == 'heroku') {
     app.use('/', serveStatic(siteRoot + 'source/site'))
 }
 else if (mode == 'staging') {
