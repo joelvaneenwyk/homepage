@@ -3,20 +3,18 @@ var serveStatic = require('serve-static');
 var vhost = require('vhost');
 var express = require('express')
 
-var siteRoot = __dirname + '/../../';
-
-siteRoot = path.normalize(siteRoot);
-
 var app = express.Router()
 var favicon = require('serve-favicon');
-var mode = 'debug'
+
+var mode = process.env.config || 'debug'
+var siteRoot = path.normalize(__dirname + '/../../');
 
 console.log('Starting CoWrk server');
 console.log('File server root: ' + siteRoot);
 
 site_root = ''
 
-if (mode == 'debug' || mode == 'heroku') {
+if (mode == 'debug' || mode == 'release') {
     site_root = 'source/site'
 }
 else if (mode == 'staging') {

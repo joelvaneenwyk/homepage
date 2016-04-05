@@ -13,17 +13,9 @@ siteRoot = path.normalize(siteRoot);
 var express = require('express')
 var app = express.Router()
 var favicon = require('serve-favicon');
-var mode = 'debug'
 
-var port = 8081;
-
-if (mode == 'heroku')
-{
-	port = process.env.PORT || 5000;
-}
-
-console.log('Starting server [http://localhost:' + port + '/');
-console.log('File server root: ' + siteRoot);
+var mode = process.env.config || 'debug'
+var siteRoot = path.normalize(__dirname + '/../../');
 
 site_root = ''
 
