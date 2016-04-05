@@ -10,7 +10,7 @@
     </Environment>
     <ScriptArguments>--use_strict</ScriptArguments>
     <NameOfLastUsedPublishProfile>Linode</NameOfLastUsedPublishProfile>
-   <AnalysisIgnoredDirectories>bower_components;node_modules</AnalysisIgnoredDirectories>
+    <AnalysisIgnoredDirectories>bower_components;node_modules</AnalysisIgnoredDirectories>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -29,6 +29,8 @@
     <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <StartWebBrowser>False</StartWebBrowser>
+    <AnalysisIgnoredDirectories>bower_components;node_modules</AnalysisIgnoredDirectories>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>

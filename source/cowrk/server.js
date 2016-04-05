@@ -12,17 +12,17 @@ var siteRoot = path.normalize(__dirname + '/../../');
 console.log('Starting CoWrk server');
 console.log('File server root: ' + siteRoot);
 
-site_root = ''
+site_root = 'source/site'
 
-if (mode == 'debug' || mode == 'release') {
-    site_root = 'source/site'
-}
-else if (mode == 'staging') {
-    site_root = 'dist/staging'
-}
-else if (mode == 'release') {
-    site_root = 'dist/release'
-}
+// if (mode == 'debug' || mode == 'release') {
+//     site_root = 'source/site'
+// }
+// else if (mode == 'staging') {
+//     site_root = 'dist/staging'
+// }
+// else if (mode == 'release') {
+//     site_root = 'dist/release'
+// }
 
 if (mode == 'debug') {
     chost = 'www.cowrktest.com'
