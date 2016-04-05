@@ -9,4 +9,6 @@ app
 
 port = process.env.PORT || 5000;
 
+console.log('Listing on port: ' + port);
+
 app.listen(port)
