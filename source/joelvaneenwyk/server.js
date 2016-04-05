@@ -11,42 +11,26 @@ var favicon = require('serve-favicon');
 
 var mode = process.env.config || 'debug'
 var siteRoot = path.normalize(__dirname + '/../../');
+var siteData = 'source/joelvaneenwyk/data'
 
-site_root = 'source/joelvaneenwyk/data'
+var hosts = ['localhost', 'www.joelvaneenwyk.com', 'www.joeltest.com', 'www.jvaneenwyk.com', '*.herokuapp.com']
+var dictionary = [
+    ["/", serveStatic(siteRoot + siteData)],
+    ["/", favicon(siteRoot + siteData + '/favicon.ico')],
+    ["/", serveStatic(siteRoot + 'data')],
+    ["/blog", harp.mount(siteRoot + "data/blog")],
+    ["/play", serveStatic(siteRoot + 'data')],
+    ["/thirdparty", serveStatic(siteRoot + "thirdparty")]
+]
 
-if (mode == 'debug') {
-    host = 'www.joeltest.com'
-}
-else {
-    host = 'www.joelvaneenwyk.com'
-}
-
-console.log('Starting Joel Van Eenwyk Host: ' + host);
+console.log('Starting up Joel Van Eenwyk app');
 
 app.route('/')
 
-app.use( '/', vhost('localhost', serveStatic(siteRoot + site_root)))
-app.use( '/', vhost(host, serveStatic(siteRoot + site_root)))
-app.use( '/', vhost('*.herokuapp.com', serveStatic(siteRoot + site_root)))
-
-app.use( vhost('localhost', favicon(siteRoot + site_root + '/favicon.ico')) )
-app.use( vhost(host, favicon(siteRoot + site_root + '/favicon.ico')) )
-app.use( vhost('*.herokuapp.com', favicon(siteRoot + site_root + '/favicon.ico')) )
-
-app.use( '/data', vhost('localhost', serveStatic(siteRoot + 'data')))
-app.use( '/data', vhost(host, serveStatic(siteRoot + 'data')))
-app.use( '/data', vhost('*.herokuapp.com', serveStatic(siteRoot + 'data')))
-
-app.use( '/blog', vhost('localhost', harp.mount(siteRoot + "data/blog")))
-app.use( '/blog', vhost(host, harp.mount(siteRoot + "data/blog")))
-app.use( '/blog', vhost('*.herokuapp.com', harp.mount(siteRoot + "data/blog")))
-
-app.use( '/play', vhost('localhost', serveStatic(siteRoot + 'source/playground')))
-app.use( '/play', vhost(host, serveStatic(siteRoot + 'source/playground')))
-app.use( '/play', vhost('*.herokuapp.com', serveStatic(siteRoot + 'source/playground')))
-
-app.use( '/thirdparty', vhost('localhost', serveStatic(siteRoot + "thirdparty")))
-app.use( '/thirdparty', vhost(host, serveStatic(siteRoot + "thirdparty")))
-app.use( '/thirdparty', vhost('*.herokuapp.com', serveStatic(siteRoot + "thirdparty")))
+for (var i = 0; i < dictionary.length; i++) {
+    for (var j = 0; j < hosts.length; j++) {
+        app.use( dictionary[i][0], vhost(hosts[j], dictionary[i][1]) );
+    }
+}
 
 module.exports = app;
