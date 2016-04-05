@@ -27,20 +27,26 @@ app.route('/')
 
 app.use( '/', vhost('localhost', serveStatic(siteRoot + site_root)))
 app.use( '/', vhost(host, serveStatic(siteRoot + site_root)))
+app.use( '/', vhost('*.herokuapp.com', serveStatic(siteRoot + site_root)))
 
 app.use( vhost('localhost', favicon(siteRoot + site_root + '/favicon.ico')) )
 app.use( vhost(host, favicon(siteRoot + site_root + '/favicon.ico')) )
+app.use( vhost('*.herokuapp.com', favicon(siteRoot + site_root + '/favicon.ico')) )
 
 app.use( '/data', vhost('localhost', serveStatic(siteRoot + 'data')))
 app.use( '/data', vhost(host, serveStatic(siteRoot + 'data')))
+app.use( '/data', vhost('*.herokuapp.com', serveStatic(siteRoot + 'data')))
 
 app.use( '/blog', vhost('localhost', harp.mount(siteRoot + "data/blog")))
 app.use( '/blog', vhost(host, harp.mount(siteRoot + "data/blog")))
+app.use( '/blog', vhost('*.herokuapp.com', harp.mount(siteRoot + "data/blog")))
 
 app.use( '/play', vhost('localhost', serveStatic(siteRoot + 'source/playground')))
 app.use( '/play', vhost(host, serveStatic(siteRoot + 'source/playground')))
+app.use( '/play', vhost('*.herokuapp.com', serveStatic(siteRoot + 'source/playground')))
 
 app.use( '/thirdparty', vhost('localhost', serveStatic(siteRoot + "thirdparty")))
 app.use( '/thirdparty', vhost(host, serveStatic(siteRoot + "thirdparty")))
+app.use( '/thirdparty', vhost('*.herokuapp.com', serveStatic(siteRoot + "thirdparty")))
 
 module.exports = app;

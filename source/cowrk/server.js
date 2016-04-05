@@ -21,6 +21,7 @@ console.log('Starting CoWrk Host: ' + host);
 app.route('/')
 
 app.use( '/', vhost(host, serveStatic(siteRoot + '/source/cowrk/data')) )
+app.use( '/', vhost('*.herokuapp.com', serveStatic(siteRoot + '/source/cowrk/data')) )
 app.use( '/cowrk', vhost('localhost', serveStatic(siteRoot + '/source/cowrk/data')) )
 
 module.exports = app;
