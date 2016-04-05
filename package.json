@@ -2,13 +2,10 @@
   "name": "joelvaneenwyk",
   "version": "0.1.0",
   "description": "Homepage for Joel Van Eenwyk",
-  "main": "source/nodejs/server.js",
+  "main": "server.js",
   "author": {
     "name": "Joel Van Eenwyk",
     "email": "joel.vaneenwyk@gmail.com"
-  },
-  "engines": {
-    "node": "5.4.1"
   },
   "private": true,
   "license": "UNLICENSED",
@@ -35,6 +32,6 @@
   },
   "scripts": {
     "postinstall": "grunt heroku",
-    "start": "node source/nodejs/server.js"
+    "start": "node server.js"
   }
 }

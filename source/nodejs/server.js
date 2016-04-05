@@ -4,14 +4,16 @@ var serveStatic = require('serve-static');
 var http = require('http');
 var finalhandler = require('finalhandler');
 var harp = require('harp');
+var vhost = require('vhost');
 
 var siteRoot = __dirname + '/../../';
 
 siteRoot = path.normalize(siteRoot);
 
 var express = require('express')
-var app = express()
-var mode = 'heroku'
+var app = express.Router()
+var favicon = require('serve-favicon');
+var mode = 'debug'
 
 var port = 8081;
 
@@ -23,19 +25,35 @@ if (mode == 'heroku')
 console.log('Starting server [http://localhost:' + port + '/');
 console.log('File server root: ' + siteRoot);
 
+site_root = ''
+
 if (mode == 'debug' || mode == 'heroku') {
-    app.use('/', serveStatic(siteRoot + 'source/site'))
+    site_root = 'source/site'
 }
 else if (mode == 'staging') {
-    app.use('/', serveStatic(siteRoot + 'dist/staging'))
+    site_root = 'dist/staging'
 }
 else if (mode == 'release') {
-    app.use('/', serveStatic(siteRoot + 'dist/release'))
+    site_root = 'dist/release'
 }
 
-app.use('/data', serveStatic(siteRoot + 'data'))
-app.use('/play', serveStatic(siteRoot + 'source/playground'))
-app.use('/thirdparty', serveStatic(siteRoot + "thirdparty"))
-app.use('/blog', harp.mount(siteRoot + "data/blog"))
+if (mode == 'debug') {
+    jhost = 'www.joeltest.com'
+}
+else {
+    jhost = 'www.joelvaneenwyk.com'
+}
 
-app.listen(port)
+console.log('Server root: ' + site_root);
+console.log('vhost: ' + jhost);
+
+app.route('/')
+app.use( '/', vhost('localhost', serveStatic(siteRoot + site_root)))
+app.use( '/', vhost(jhost, serveStatic(siteRoot + site_root)))
+app.use( vhost(jhost, favicon(siteRoot + site_root + '/favicon.ico')) )
+app.use( '/data', vhost(jhost, serveStatic(siteRoot + 'data')))
+app.use( '/play', vhost(jhost, serveStatic(siteRoot + 'source/playground')))
+app.use( '/thirdparty', vhost(jhost, serveStatic(siteRoot + "thirdparty")))
+app.use( '/blog', vhost(jhost, harp.mount(siteRoot + "data/blog")))
+
+module.exports = app;

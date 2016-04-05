@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "joelvaneenwyk",
   "version": "0.1.0",
   "description": "Server setup for Joel Van Eenwyk",
   "main": "server.js",
@@ -26,6 +26,7 @@
     "connect": "^3.4.0",
     "express": "^4.13.3",
     "finalhandler": "^0.4.1",
-    "serve-static": "^1.10.1"
+    "serve-static": "^1.10.1",
+    "serve-favicon": "^2.3.0"
   }
 }

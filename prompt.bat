@@ -8,7 +8,8 @@ echo ===========================================================================
 echo  Joel Van Eenwyk (Homepage)
 echo ==============================================================================
 echo.
-echo Run 'grunt' to compile program
+echo Run 'grunt' to compile program and distribute scripts
+echo Run 'heroku local' to start the server
 echo.
 echo ==============================================================================
 echo.
