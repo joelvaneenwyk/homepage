@@ -19,7 +19,7 @@ var siteRoot = path.normalize(__dirname + '/../../');
 
 site_root = ''
 
-if (mode == 'debug' || mode == 'heroku') {
+if (mode == 'debug' || mode == 'release') {
     site_root = 'source/site'
 }
 else if (mode == 'staging') {
