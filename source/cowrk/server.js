@@ -36,7 +36,7 @@ else {
 console.log('vhost: ' + chost);
 
 app.route('/')
-app.use( '/', vhost('localhost', serveStatic(siteRoot + '/source/cowrk/data')))
+app.use( '/cowrk', vhost('localhost', serveStatic(siteRoot + '/source/cowrk/data')))
 app.use('/', vhost(chost, serveStatic(siteRoot + '/source/cowrk/data')) )
 
 module.exports = app;

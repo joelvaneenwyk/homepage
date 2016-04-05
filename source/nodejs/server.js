@@ -48,12 +48,20 @@ console.log('Server root: ' + site_root);
 console.log('vhost: ' + jhost);
 
 app.route('/')
+
 app.use( '/', vhost('localhost', serveStatic(siteRoot + site_root)))
 app.use( '/', vhost(jhost, serveStatic(siteRoot + site_root)))
+
+app.use( vhost('localhost', serveStatic(siteRoot + site_root)))
 app.use( vhost(jhost, favicon(siteRoot + site_root + '/favicon.ico')) )
+
+app.use( '/data', vhost('localhost', serveStatic(siteRoot + 'data')))
 app.use( '/data', vhost(jhost, serveStatic(siteRoot + 'data')))
+
+app.use( '/blog', vhost('localhost', harp.mount(siteRoot + "data/blog")))
+app.use( '/blog', vhost(jhost, harp.mount(siteRoot + "data/blog")))
+
 app.use( '/play', vhost(jhost, serveStatic(siteRoot + 'source/playground')))
 app.use( '/thirdparty', vhost(jhost, serveStatic(siteRoot + "thirdparty")))
-app.use( '/blog', vhost(jhost, harp.mount(siteRoot + "data/blog")))
 
 module.exports = app;
