@@ -23,7 +23,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/staging/index.html': ['source/site/index.html']
+                    'dist/staging/index.html': ['source/joelvaneenwyk/data/index.html']
                 }
             },
         },
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: ['source/site/js/*.js', 'thirdparty/bootstrap-3.3.4/dist/js/bootstrap.js'],
+                src: ['source/joelvaneenwyk/data/js/*.js', 'thirdparty/bootstrap-3.3.4/dist/js/bootstrap.js'],
                 dest: 'dist/staging/js/<%= pkg.name %>.js'
             }
         },
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            files: ['Gruntfile.js', 'source/site/js/main.js'],
+            files: ['Gruntfile.js', 'source/joelvaneenwyk/data/js/main.js'],
             options: {
                 // options here to override JSHint defaults
                 globals: {
@@ -72,17 +72,17 @@ module.exports = function(grunt) {
             main: {
                 files: [{
                     expand: true,
-                    cwd: 'source/site/',
+                    cwd: 'source/joelvaneenwyk/data/',
                     src: '*.html',
                     dest: 'dist/staging/'
                 }, {
                     expand: true,
-                    cwd: 'source/site/',
+                    cwd: 'source/joelvaneenwyk/data/',
                     src: '*.png',
                     dest: 'dist/staging/images'
                 }, {
                     expand: true,
-                    cwd: 'source/site',
+                    cwd: 'source/joelvaneenwyk/data',
                     src: '*.ico',
                     dest: 'dist/staging'
                 }]
@@ -98,6 +98,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'cssmin', 'copy']);
+    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'copy']);
     grunt.registerTask('heroku', ['jshint', 'concat', 'uglify']);
 };

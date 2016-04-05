@@ -9,29 +9,18 @@ var favicon = require('serve-favicon');
 var mode = process.env.config || 'debug'
 var siteRoot = path.normalize(__dirname + '/../../');
 
-site_root = 'source/site'
-
-// if (mode == 'debug' || mode == 'release') {
-//     site_root = 'source/site'
-// }
-// else if (mode == 'staging') {
-//     site_root = 'dist/staging'
-// }
-// else if (mode == 'release') {
-//     site_root = 'dist/release'
-// }
-
 if (mode == 'debug') {
-    chost = 'www.cowrktest.com'
+    host = 'www.cowrktest.com'
 }
 else {
-    chost = 'www.cowrkapp.com'
+    host = 'www.cowrkapp.com'
 }
 
-console.log('Starting CoWrk Host: ' + chost);
+console.log('Starting CoWrk Host: ' + host);
 
 app.route('/')
-app.use( '/cowrk', serveStatic(siteRoot + '/source/cowrk/data'))
-app.use('/', vhost(chost, serveStatic(siteRoot + '/source/cowrk/data')) )
+
+app.use( '/', vhost(host, serveStatic(siteRoot + '/source/cowrk/data')) )
+app.use( '/cowrk', vhost('localhost', serveStatic(siteRoot + '/source/cowrk/data')) )
 
 module.exports = app;
