@@ -13,7 +13,13 @@ var mode = process.env.config || 'debug'
 var siteRoot = path.normalize(__dirname + '/../../');
 var siteData = 'source/joelvaneenwyk/data'
 
-var hosts = ['localhost', 'www.joelvaneenwyk.com', 'www.joeltest.com', 'www.jvaneenwyk.com', '*.herokuapp.com']
+var hosts = ['localhost',
+			 'joelvaneenwyk.com',
+			 'www.joelvaneenwyk.com',
+			 'www.joeltest.com',
+			 'jvaneenwyk.com',
+			 'www.jvaneenwyk.com',
+			 '*.herokuapp.com']
 var dictionary = [
     ["/", serveStatic(siteRoot + siteData)],
     ["/", favicon(siteRoot + siteData + '/favicon.ico')],
