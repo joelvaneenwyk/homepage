@@ -25,6 +25,7 @@
     "harp": "^0.20.0",
     "connect": "^3.4.0",
     "express": "^4.13.3",
+    "html": "^0.0.10",
     "finalhandler": "^0.4.1",
     "serve-static": "^1.10.1",
     "serve-favicon": "^2.3.0"

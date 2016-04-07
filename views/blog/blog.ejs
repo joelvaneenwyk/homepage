@@ -3,18 +3,25 @@
 <head>
     <% include ../partials/head %>
 </head>
-<body class="container">
+<body class="container-fluid">
 
     <div class='header'>
         <% include ../partials/header %>
     </div>
 
-	<div class='blog'>
-    <%- partial(data) %>
+	<div class='row'>
+		<div class='col-md-2'>
+	    </div>
+		<div class='blog col-md-8'>
+	    <%- partial(data) %>
+	    </div>
+		<div class='col-md-2'>
+	    </div>
     </div>
 
     <div class='footer'>
         <% include ../partials/footer %>
     </div>
+
 </body>
 </html>

@@ -125,8 +125,6 @@ img.logo {
     font-weight: 100;
     font-size: 180%;
     margin-top: 15px;
-    margin-left: 100px;
-    margin-right: 100px;
 }
 
 .blog h1
@@ -137,13 +135,11 @@ img.logo {
 
 .blog p
 {
-    margin-left: 0px;
     font-size: 90%;
 }
 
 .blog a
 {
-    margin-left: 0px;
     font-size: 90%;
 }
 
