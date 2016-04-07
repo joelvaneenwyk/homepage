@@ -150,3 +150,12 @@ img.logo {
     width:100%;
     display:block;
 }
+
+.error
+{
+    margin: 50px;
+    padding: 10px;
+    background-color: rgb(200, 150, 150);
+    font-weight: 100;
+    font-size: 140%;
+}
