@@ -116,3 +116,41 @@ img.logo {
 .linkbox:hover {
     background-color: antiquewhite;
 }
+
+.blog
+{
+    text-align: left;
+    font-family: "Dosis";
+    font-style: normal;
+    font-weight: 100;
+    font-size: 180%;
+    margin-top: 15px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.blog h1
+{
+    font-weight: 500;
+    background-color: rgb(200, 200, 200)
+}
+
+.blog p
+{
+    margin-left: 0px;
+    font-size: 90%;
+}
+
+.blog a
+{
+    margin-left: 0px;
+    font-size: 90%;
+}
+
+.footer 
+{
+    position:fixed;bottom:0;
+
+    width:100%;
+    display:block;
+}

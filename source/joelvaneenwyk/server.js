@@ -14,17 +14,20 @@ var siteRoot = path.normalize(__dirname + '/../../');
 var siteData = 'source/joelvaneenwyk/data'
 
 var hosts = ['localhost',
-			 'joelvaneenwyk.com',
-			 'www.joelvaneenwyk.com',
-			 'www.joeltest.com',
-			 'jvaneenwyk.com',
-			 'www.jvaneenwyk.com',
-			 '*.herokuapp.com']
+    'joelvaneenwyk.com',
+    'www.joelvaneenwyk.com',
+    'www.joeltest.com',
+    'jvaneenwyk.com',
+    'www.jvaneenwyk.com',
+    '*.herokuapp.com'
+]
+
+views = harp.mount(siteRoot + "views")
 var dictionary = [
     ["/", serveStatic(siteRoot + siteData)],
     ["/", favicon(siteRoot + siteData + '/favicon.ico')],
     ["/", serveStatic(siteRoot + 'data')],
-    ["/blog", harp.mount(siteRoot + "data/blog")],
+    ["/", harp.mount(siteRoot + "views")],
     ["/play", serveStatic(siteRoot + 'data')],
     ["/thirdparty", serveStatic(siteRoot + "thirdparty")]
 ]
@@ -35,7 +38,10 @@ app.route('/')
 
 for (var i = 0; i < dictionary.length; i++) {
     for (var j = 0; j < hosts.length; j++) {
-        app.use( dictionary[i][0], vhost(hosts[j], dictionary[i][1]) );
+        var path = dictionary[i][0];
+        var func = dictionary[i][1];
+        var host = hosts[j];
+        app.use(path, vhost(host, func));
     }
 }
 

@@ -3,9 +3,17 @@ var app = express()
 
 console.log('Root Server Started');
 
+app.use(
+    function(req, res, next) {
+    	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+        console.log('Request Type: ', fullUrl);
+        next();
+    });
+
 app
 .use('/', require('./source/joelvaneenwyk/server'))
 .use('/', require('./source/cowrk/server'))
+
 
 port = process.env.PORT || 5000;
 
