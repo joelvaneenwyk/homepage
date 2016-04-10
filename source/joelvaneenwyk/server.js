@@ -15,6 +15,7 @@ var siteData = 'source/joelvaneenwyk/data';
 
 var html = require('html')
 var helpers = require('../../node_modules/harp/lib/helpers')
+var pkg = require('../../node_modules/harp/package.json')
 var terraform = require('terraform')
 var mime = require('mime')
 var beautify_html = require('js-beautify').html;
@@ -99,7 +100,7 @@ custom_process = function(req, rsp, next) {
         })
     }
 }
-harp.middleware.process = custom_process;
+//harp.middleware.process = custom_process;
 
 var hosts = ['localhost',
     'joelvaneenwyk.com',

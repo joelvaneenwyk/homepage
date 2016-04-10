@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container-fluid">
+
+    <div class='header'>
+        <% include ../partials/header %>
+    </div>
+
+	<div class='row'>
+		<div class='col-md-2'>
+	    </div>
+		<div class='blog col-md-8'>
+<% for(var slug in public.blog._data){ %>
+  <h2><a href="/blog/<%= slug %>"><%= public.blog._data[slug].title %></a></h2>
+  <%- partial("blog/" + slug) %>
+<% }; %>
+	    </div>
+		<div class='col-md-2'>
+	    </div>
+    </div>
+
+    <div class='footer'>
+        <% include ../partials/footer %>
+    </div>
+
+	<script id="dsq-count-scr" src="//joelvaneenwyk.disqus.com/count.js" async></script>
+
+</body>
+</html>
