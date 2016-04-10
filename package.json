@@ -30,7 +30,8 @@
     "grunt-processhtml": "0.3.12",
     "harp": "^0.20.0",
     "express-beautify": "^0.1.2",
-    "html": "^0.0.10"
+    "html": "^0.0.10",
+    "googleapis": "^4.0.0"
   },
   "scripts": {
     "postinstall": "grunt heroku",

@@ -12,6 +12,12 @@
     /* ... */
 }
 
+.google-login {
+  bottom: 15px;
+  left: 15px;
+  position: relative;
+  top: 15px;
+}
 
 /*
  * Basic settings to remove all padding and margins

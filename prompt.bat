@@ -8,8 +8,8 @@ echo ===========================================================================
 echo  Joel Van Eenwyk (Homepage)
 echo ==============================================================================
 echo.
-echo Run 'grunt' to compile program and distribute scripts
-echo Run 'heroku local' to start the server
+echo 1) Run 'npm install' which will install dependencies and run 'grunt'
+echo 2) Run 'heroku local' to start the server
 echo.
 echo ==============================================================================
 echo.
