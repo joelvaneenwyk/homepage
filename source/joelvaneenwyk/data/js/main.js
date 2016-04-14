@@ -7,12 +7,10 @@ function log(info) {
 }
 
 function onResize() {
-    log("Resize event called...");
     updateHeader();
 }
 
 function onReady() {
-    log("On ready called...");
     updateHeader();
 }
 

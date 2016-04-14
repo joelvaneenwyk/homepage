@@ -100,13 +100,16 @@ custom_process = function(req, rsp, next) {
         })
     }
 }
-//harp.middleware.process = custom_process;
+
+// Override the process call and format the HTML after processing it
+harp.middleware.process = custom_process;
 
 var hosts = ['localhost',
     'joelvaneenwyk.com',
     'www.joelvaneenwyk.com',
-    'joeltest.com',
-    'www.joeltest.com',
+    'joel.com',
+    'www.joel.com',
+    'joel',
     'jvaneenwyk.com',
     'www.jvaneenwyk.com',
     '*.herokuapp.com'
@@ -117,9 +120,7 @@ var dictionary = [
     ["/", serveStatic(siteRoot + siteData)],
     ["/", favicon(siteRoot + siteData + '/favicon.ico')],
     ["/", serveStatic(siteRoot + 'data')],
-    ["/", harp.mount(siteRoot + "views")],
-    ["/play", serveStatic(siteRoot + 'data')],
-    ["/thirdparty", serveStatic(siteRoot + "thirdparty")]
+    ["/", harp.mount(siteRoot + "views")]
 ]
 
 console.log('Starting up Joel Van Eenwyk app');

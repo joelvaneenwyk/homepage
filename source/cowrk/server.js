@@ -9,9 +9,7 @@ var mode = process.env.config || 'debug'
 var siteRoot = path.normalize(__dirname + '/../../');
 
 var hosts = ['www.cowrkapp.com',
-			 'cowrkapp.com',
-			 'cowrktest.com',
-			 'www.cowrktest.com']
+			 'cowrkapp.com']
 var dictionary = [
     ["/", serveStatic(siteRoot + '/source/cowrk/data')],
     ["/", favicon(siteRoot + '/source/cowrk/data/favicon.ico')],

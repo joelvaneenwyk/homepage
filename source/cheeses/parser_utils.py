@@ -18,7 +18,7 @@ def get_output_folder():
 
 def get_data_folder():
     root = os.path.dirname(os.path.realpath(__file__))
-    out_folder = os.path.join(root, os.path.pardir, os.path.pardir, "data")
+    out_folder = os.path.join(root, os.path.pardir, os.path.pardir, "data", "cheeses")
     return out_folder
 
 def strip_whitespace(text):

@@ -1,4 +1,5 @@
 import json
+import inspect    
 
 class Cheese():
     image = ''
