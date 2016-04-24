@@ -10,6 +10,8 @@ class CheeseLibrary():
     def __init__(self):
         self.cheeses = dict()
         self.filename = os.path.abspath(os.path.join(parser_utils.get_data_folder(), "cheeses.json"))
+        self.locations_filename = os.path.abspath(os.path.join(parser_utils.get_data_folder(), "locations.json"))
+        self.locations = dict()
         self.load()
 
     def load(self):
@@ -34,22 +36,37 @@ class CheeseLibrary():
         except:
             print("Failed to generate display name")
 
+        if cheese.origin != "":
+            o = cheese.origin.split(u' and')
+            cheese.origin = []
+            for origin in o:
+                cheese.origin.extend(origin.split(u','))
+            
+            cheese.origin = map(unicode.strip, cheese.origin)
+            for location in cheese.origin:
+                location = location.replace("countries throughout the world", "")
+                location = location.replace("Swtizerland", "Switzerland")
+                location = location.replace("Originally in", "")   
+                location = location.strip()
+                if location != "":
+                    if not location in self.locations:
+                        self.locations[location] = 0
+                    self.locations[location] += 1
+
         if not cheese.name in self.cheeses:
             self.cheeses[cheese.name] = cheese
-        else:
-            print(display_name + " already in database!")
 
         print("Adding " + display_name)
         
     
 
     def save(self):
-        if os.path.exists(self.filename):
-            os.remove(self.filename)
-
         jsonData = json.dumps( self.cheeses, indent=4, sort_keys=True, cls=CheeseJsonEncoder )
-
         file = codecs.open(self.filename, "w", encoding='utf-8')
+        file.write(jsonData)
+
+        jsonData = json.dumps( self.locations, indent=4, sort_keys=True )
+        file = codecs.open(self.locations_filename, "w", encoding='utf-8')
         file.write(jsonData)
 
 class Cheese():

@@ -9,6 +9,7 @@ import cheese
 import parser_cheese_library
 import parser_usda
 import parser_cheese
+import sys
 
 COMMAND_LINE_OPTIONS = (
     (('-v', '--verbose'), {'action': 'store', 'dest': 'verbose', 'default': False,
@@ -17,7 +18,7 @@ COMMAND_LINE_OPTIONS = (
                      'help': "Preview changes only and don't do any work"})
     )
 
-def main():
+def main(options):
     library = cheese.CheeseLibrary()
 
     parser_cheese.parseCheese(library)
@@ -27,4 +28,9 @@ def main():
     library.save()
 
 if __name__ == "__main__":
-    main()
+    from optparse import OptionParser
+    PARSER = OptionParser('')
+    for options in COMMAND_LINE_OPTIONS:
+        PARSER.add_option(*options[0], **options[1])
+    (OPTIONS, ARGV) = PARSER.parse_args()
+    sys.exit(main(OPTIONS))
