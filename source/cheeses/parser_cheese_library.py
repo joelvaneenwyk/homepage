@@ -1,3 +1,7 @@
+"""
+Parse http://www.cheeselibrary.com/
+"""
+
 from cheese import Cheese, CheeseJsonEncoder
 from parser_utils import get_cached_page
 from parser_utils import get_data_folder
@@ -20,16 +24,16 @@ def getOutputFolder():
         os.makedirs(out_folder)
     return out_folder
 
-def parseCheeseLibrary():
-    base_url = 'http://www.cheeselibrary.com/'
-    url = base_url + 'library_of_cheese.html'
+def parseCheeseLibrary(library):
+    source = 'http://www.cheeselibrary.com/'
+    url = source + 'library_of_cheese.html'
 
     pages = []
     soup = get_cached_page(url, getOutputFolder())
     table = soup.find("table", class_='table_d2e201 usertable main_table')
     for link in table.findAll("a"):
         page = link["href"]
-        pages.append(base_url + page)
+        pages.append(source + page)
 
     cheese_pages = []
     for page in pages:
@@ -39,11 +43,10 @@ def parseCheeseLibrary():
             links = table.findAll("a")
             for link in links:
                 page = link["href"]
-                cheese_pages.append(base_url + page)
+                cheese_pages.append(source + page)
         else:
             print("Failed to find cheese information for " + page)
     
-    cheese_library = []
     for cheese_page in cheese_pages:
         soup = get_cached_page(cheese_page, getOutputFolder())
         cheese = Cheese()
@@ -92,12 +95,5 @@ def parseCheeseLibrary():
             root = root.next_element
 
         cheese.description = strip_whitespace(cheese_data_and_summary[1].text)
-        cheese_library.append(cheese)
-        print("Parsed: " + cheese.name)
+        library.add(cheese, source)
     
-    filename = os.path.join(get_data_folder(), "cheese_library.json")
-    if os.path.exists(filename):
-        os.remove(filename)
-    file = codecs.open(filename, "w", encoding='utf-8')
-    jsonData = CheeseJsonEncoder().encode( cheese_library )
-    file.write(jsonData)

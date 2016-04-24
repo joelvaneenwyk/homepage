@@ -49,7 +49,7 @@ def parseFdaFileArray(filename):
             break
     return output
 
-def parseUSDA():
+def parseUSDA(library):
     root = os.path.dirname(os.path.realpath(__file__))
     sr22 = os.path.join(root, 'sr22')
     food_descriptions_filename = os.path.join(sr22, 'FOOD_DES.txt')

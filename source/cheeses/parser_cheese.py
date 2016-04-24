@@ -1,4 +1,12 @@
-import cheese
+"""
+Parse http://www.cheese.com
+"""
+
+from cheese import CheeseLibrary, Cheese
+from parser_utils import get_cached_page
+from parser_utils import get_data_folder
+from parser_utils import get_output_folder
+from parser_utils import strip_whitespace
 
 from bs4 import BeautifulSoup
 import urlparse
@@ -13,12 +21,10 @@ import codecs
 import json
 import inspect    
 
-def parseCheese():
+def parseCheese(library):
+    source = 'http://www.cheese.com'
     url = 'http://www.cheese.com/alphabetical/?page=%d&per_page=20&i=%s#top'
-    root = os.path.dirname(os.path.realpath(__file__))
-    out_folder = os.path.join(root, "output")
-    if not os.path.exists(out_folder):
-        os.makedirs(out_folder)
+    out_folder = os.path.join(get_output_folder(), "cheese")
     letters = map(chr, range(97, 123))
 
     findCheeseTypes = False
@@ -80,16 +86,9 @@ def parseCheese():
                         sleepTime = randint(0,5)
                         time.sleep(sleepTime)
 
-    cheeseTypesFiles = glob.glob(out_folder + "\\type_*.html")
-    data_folder = os.path.join(root, os.path.pardir, os.path.pardir, "data")
-    filename = os.path.join(data_folder, "cheeses.json")
-    if os.path.exists(filename):
-        os.remove(filename)
-    file = codecs.open(filename, "a", encoding='utf-8')
-    file.write("{\n")
-    cheeseIndex = 0
+    cheeseTypesFiles = glob.glob( os.path.join(out_folder, "type_*.html") )
+
     for cheeseTypeFile in cheeseTypesFiles:
-        print(cheeseTypeFile)
         data = codecs.open(cheeseTypeFile).read()
         soup = BeautifulSoup(data, 'html.parser')
         unit = soup.find("div", class_='unit')
@@ -129,15 +128,7 @@ def parseCheese():
                 cheese.producers = strip_whitespace(body.replace('Producers:', ''))
             elif "Synonyms" in body:
                 cheese.synonyms = [s.strip() for s in strip_whitespace(body.replace('Synonyms:', '')).split(',')]
-        cheeseIndex += 1
-        cheeseJson = ""
-        cheeseJson = json.JSONEncoder(indent=4, sort_keys=True).encode( cheese.getDict() )
-        cheeseJson = cheeseJson.strip()[1:-1].strip()
-        if cheeseIndex < cheeseTypesFiles.count:
-            cheeseJson += ",\n"
-        file.write(cheeseJson)
-    file.write('}')
-    file.close()
+        library.add(cheese, source)
 
     # TODO: Download the JPG for the images
     # TODO: Figure out lat / long from https://developers.google.com/maps/documentation/geocoding/intro
