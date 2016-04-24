@@ -29,8 +29,37 @@ d3.json("/map/countries/country-geo-cordinations.json", function(error, countrie
 
 		    if (key in countriesMap)
 		    {
-				long = (parseFloat(countriesMap[key]["west"]) + parseFloat(countriesMap[key]["east"])) / 2.0;
-				lat = (parseFloat(countriesMap[key]["north"]) + parseFloat(countriesMap[key]["south"])) / 2.0;
+				var lats = new Array()
+				lats.push(parseFloat(countriesMap[key]["north"]))
+				lats.push(parseFloat(countriesMap[key]["south"]))
+
+				var lons = new Array()
+				lons.push(parseFloat(countriesMap[key]["west"]))
+				lons.push(parseFloat(countriesMap[key]["east"]))
+
+				var diffLat = 0
+				if (Math.abs(lats[0] - lats[1]) > 180)
+				{
+					var diff = ((Math.min(lats[0], lats[1]) + 360.0) - Math.max(lats[0], lats[1])) / 2.0;
+					if (Math.abs(diff + Math.max(lats[0], lats[1])) > 180)
+						diffLat = Math.min(lats[0], lats[1]) + diff;
+					else
+						diffLat = Math.max(lats[0], lats[1]) + diff;
+				}
+				else
+					diffLat = (lats[0] + lats[1]) / 2.0
+
+				var diffLon = 0
+				if (Math.abs(lons[0] - lons[1]) > 180)
+				{
+					var diff = ((Math.min(lons[0], lons[1]) + 360.0) - Math.max(lons[0], lons[1])) / 2.0;
+					if (Math.abs(diff + Math.max(lons[0], lons[1])) > 180)
+						diffLon = Math.min(lons[0], lons[1]) + diff;
+					else
+						diffLon = Math.max(lons[0], lons[1]) + diff;
+				}
+				else
+					diffLon = (lons[0] + lons[1]) / 2.0
 
 		        bubbles.push({
 		            name: key,
@@ -39,8 +68,8 @@ d3.json("/map/countries/country-geo-cordinations.json", function(error, countrie
 		            country: key,
 		            cheeses: locations[key],
 		            fillKey: 'RUS',
-				    latitude: lat,
-				    longitude: long
+				    latitude: diffLat,
+				    longitude: diffLon
 		        });
 		    }
 		}
