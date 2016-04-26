@@ -1,77 +1,377 @@
 {
-    "Afghanistan": 2, 
-    "Albania": 1, 
-    "Andorra": 1, 
-    "Argentina": 3, 
-    "Armenia": 1, 
-    "Australia": 104, 
-    "Austria": 42, 
-    "Azerbaijan": 1, 
-    "Bangladesh": 1, 
-    "Belarus": 1, 
-    "Belgium": 12, 
-    "Brazil": 5, 
-    "Bulgaria": 3, 
-    "Canada": 105, 
-    "Caribbean": 6, 
-    "Chile": 2, 
-    "China": 4, 
-    "Croatia": 14, 
-    "Cyprus": 5, 
-    "Czech Republic": 3, 
-    "Denmark": 16, 
-    "Eastern Mediterranean": 1, 
-    "Egypt": 3, 
-    "England": 148, 
-    "Finland": 6, 
-    "France": 261, 
-    "France Region": 3, 
-    "Georgia": 2, 
-    "Germany": 40, 
-    "Great Britain": 82, 
-    "Greece": 12, 
-    "Holland": 26, 
-    "Hungary": 4, 
-    "Iceland": 3, 
-    "India": 8, 
-    "Iran": 1, 
-    "Iraq": 1, 
-    "Ireland": 48, 
-    "Isle of Man": 4, 
-    "Israel": 4, 
-    "Italy": 248, 
-    "Italy Region": 1, 
-    "Japan": 1, 
-    "Jordan": 2, 
-    "Lebanon": 5, 
-    "Lithuania": 2, 
-    "Macedonia": 3, 
-    "Mauritania": 1, 
-    "Mexico": 16, 
-    "Middle East": 6, 
-    "Mongolia": 2, 
-    "Nepal": 3, 
-    "Netherlands": 28, 
-    "New Zealand": 16, 
-    "Norway": 7, 
-    "Pakistan": 1, 
-    "Palestine": 2, 
-    "Poland": 4, 
-    "Portugal": 11, 
-    "Romania": 5, 
-    "Russia": 4, 
-    "Scotland": 22, 
-    "Serbia": 5, 
-    "Slovakia": 2, 
-    "Spain": 47, 
-    "Swaziland": 1, 
-    "Sweden": 24, 
-    "Switzerland": 35, 
-    "Syria": 5, 
-    "Tibet": 4, 
-    "Turkey": 6, 
-    "Ukraine": 1, 
-    "United Kingdom": 147, 
-    "United States": 528, 
-    "Wales": 12
+    "Afghanistan": {
+        "count": 2, 
+        "lat": 34.140248174522576, 
+        "long": 68.06672830330058
+    }, 
+    "Albania": {
+        "count": 1, 
+        "lat": 41.160388362453354, 
+        "long": 20.20164902641316
+    }, 
+    "Andorra": {
+        "count": 1, 
+        "lat": 42.542424652561664, 
+        "long": 1.5972103999213632
+    }, 
+    "Argentina": {
+        "count": 3, 
+        "lat": -38.82428737233544, 
+        "long": -65.97994824374928
+    }, 
+    "Armenia": {
+        "count": 1, 
+        "lat": 40.07804383646974, 
+        "long": 45.14125495116245
+    }, 
+    "Australia": {
+        "count": 104, 
+        "lat": -28.333273145847375, 
+        "long": 130.02958722278726
+    }, 
+    "Austria": {
+        "count": 42, 
+        "lat": 47.760148716591964, 
+        "long": 13.443577490048794
+    }, 
+    "Azerbaijan": {
+        "count": 1, 
+        "lat": 40.1810607734979, 
+        "long": 47.644602480450075
+    }, 
+    "Bangladesh": {
+        "count": 1, 
+        "lat": 23.70496046260016, 
+        "long": 90.40344009816411
+    }, 
+    "Belarus": {
+        "count": 1, 
+        "lat": 53.806642369055936, 
+        "long": 28.25455908785043
+    }, 
+    "Belgium": {
+        "count": 12, 
+        "lat": 50.515450821081, 
+        "long": 4.516493492340608
+    }, 
+    "Brazil": {
+        "count": 5, 
+        "lat": -15.18260745324442, 
+        "long": -55.145347328219245
+    }, 
+    "Bulgaria": {
+        "count": 3, 
+        "lat": 42.77221562910631, 
+        "long": 25.56660691024243
+    }, 
+    "Canada": {
+        "count": 105, 
+        "lat": 65.374026354619, 
+        "long": -61.71532897576191
+    }, 
+    "Caribbean": {
+        "count": 6, 
+        "lat": 14.525556, 
+        "long": -75.818333
+    }, 
+    "Chile": {
+        "count": 2, 
+        "lat": -36.91849492241469, 
+        "long": -75.47772586723381
+    }, 
+    "China": {
+        "count": 4, 
+        "lat": 38.51306551471812, 
+        "long": 112.13682201974454
+    }, 
+    "Croatia": {
+        "count": 14, 
+        "lat": 44.52569673009711, 
+        "long": 16.564793146238575
+    }, 
+    "Cyprus": {
+        "count": 5, 
+        "lat": 35.17295807478289, 
+        "long": 33.443135672309744
+    }, 
+    "Czech Republic": {
+        "count": 3, 
+        "lat": 49.8500961106811, 
+        "long": 15.566139631554384
+    }, 
+    "Denmark": {
+        "count": 16, 
+        "lat": 56.20596170706171, 
+        "long": 11.764290679344665
+    }, 
+    "Eastern Mediterranean": {
+        "count": 1, 
+        "lat": 31.5557143, 
+        "long": -110.2459135
+    }, 
+    "Egypt": {
+        "count": 3, 
+        "lat": 26.82691452404141, 
+        "long": 31.066041550562243
+    }, 
+    "England": {
+        "count": 148, 
+        "lat": 52.3555177, 
+        "long": -1.1743197
+    }, 
+    "Finland": {
+        "count": 6, 
+        "lat": 65.05033019159418, 
+        "long": 27.13383466123951
+    }, 
+    "France": {
+        "count": 261, 
+        "lat": 46.466541793033926, 
+        "long": 2.8659179701884927
+    }, 
+    "France Region": {
+        "count": 3, 
+        "lat": 48.8499198, 
+        "long": 2.6370411
+    }, 
+    "Georgia": {
+        "count": 2, 
+        "lat": 42.36884300701905, 
+        "long": 43.43573845760558
+    }, 
+    "Germany": {
+        "count": 40, 
+        "lat": 51.25482293772336, 
+        "long": 10.841049330370948
+    }, 
+    "Great Britain": {
+        "count": 82, 
+        "lat": 55.378051, 
+        "long": -3.435973
+    }, 
+    "Greece": {
+        "count": 12, 
+        "lat": 38.358738398508336, 
+        "long": 24.023244830668766
+    }, 
+    "Holland": {
+        "count": 26, 
+        "lat": 52.132633, 
+        "long": 5.291265999999999
+    }, 
+    "Hungary": {
+        "count": 4, 
+        "lat": 47.21483757757193, 
+        "long": 19.59994157268391
+    }, 
+    "Iceland": {
+        "count": 3, 
+        "lat": 65.06574672618294, 
+        "long": -18.695786257593976
+    }, 
+    "India": {
+        "count": 8, 
+        "lat": 21.759806992831837, 
+        "long": 84.27384377489322
+    }, 
+    "Iran": {
+        "count": 1, 
+        "lat": 32.78761301002594, 
+        "long": 54.47992287145991
+    }, 
+    "Iraq": {
+        "count": 1, 
+        "lat": 33.31935009782284, 
+        "long": 43.9190991309894
+    }, 
+    "Ireland": {
+        "count": 48, 
+        "lat": 53.44062739777999, 
+        "long": -8.136785008385209
+    }, 
+    "Isle of Man": {
+        "count": 4, 
+        "lat": 54.2380655962517, 
+        "long": -4.55403712053683
+    }, 
+    "Israel": {
+        "count": 4, 
+        "lat": 31.420891930284565, 
+        "long": 35.09000603386174
+    }, 
+    "Italy": {
+        "count": 248, 
+        "lat": 42.02678706738835, 
+        "long": 13.053255542912403
+    }, 
+    "Italy Region": {
+        "count": 1, 
+        "lat": 37.5999938, 
+        "long": 14.0153557
+    }, 
+    "Japan": {
+        "count": 1, 
+        "lat": 35.418186710231986, 
+        "long": 135.89783354435897
+    }, 
+    "Jordan": {
+        "count": 2, 
+        "lat": 31.295019999947517, 
+        "long": 37.1787444451675
+    }, 
+    "Lebanon": {
+        "count": 5, 
+        "lat": 33.87498652759017, 
+        "long": 35.88405057258921
+    }, 
+    "Lithuania": {
+        "count": 2, 
+        "lat": 55.21005321242769, 
+        "long": 24.001520866737117
+    }, 
+    "Macedonia": {
+        "count": 3, 
+        "lat": 41.618173398459646, 
+        "long": 21.766396265459743
+    }, 
+    "Mauritania": {
+        "count": 1, 
+        "lat": 21.11641424209761, 
+        "long": -10.687045315942685
+    }, 
+    "Mexico": {
+        "count": 16, 
+        "lat": 24.44936538623692, 
+        "long": -101.43824705030563
+    }, 
+    "Middle East": {
+        "count": 6, 
+        "lat": 29.2985278, 
+        "long": 42.5509603
+    }, 
+    "Mongolia": {
+        "count": 2, 
+        "lat": 47.9895656244972, 
+        "long": 105.4702910806502
+    }, 
+    "Nepal": {
+        "count": 3, 
+        "lat": 28.45564467274266, 
+        "long": 84.20627109920797
+    }, 
+    "Netherlands": {
+        "count": 28, 
+        "lat": 52.148839468615165, 
+        "long": 5.355114207144513
+    }, 
+    "New Zealand": {
+        "count": 16, 
+        "lat": -41.02701058294727, 
+        "long": 172.70599957884855
+    }, 
+    "Norway": {
+        "count": 7, 
+        "lat": 65.13825736656015, 
+        "long": 21.138780094490958
+    }, 
+    "Pakistan": {
+        "count": 1, 
+        "lat": 30.716479533705645, 
+        "long": 69.94558309770524
+    }, 
+    "Palestine": {
+        "count": 2, 
+        "lat": 31.8832647712758, 
+        "long": 34.89987433795386
+    }, 
+    "Poland": {
+        "count": 4, 
+        "lat": 52.02888758782935, 
+        "long": 19.46373378952036
+    }, 
+    "Portugal": {
+        "count": 11, 
+        "lat": 39.569512115453804, 
+        "long": -7.7828042152648615
+    }, 
+    "Romania": {
+        "count": 5, 
+        "lat": 46.04382344549916, 
+        "long": 25.1782009434484
+    }, 
+    "Russia": {
+        "count": 4, 
+        "lat": 69.61000522558285, 
+        "long": -170.96227080402215
+    }, 
+    "Scotland": {
+        "count": 22, 
+        "lat": 56.49067119999999, 
+        "long": -4.2026458
+    }, 
+    "Serbia": {
+        "count": 5, 
+        "lat": 44.22591018679818, 
+        "long": 20.98126214414027
+    }, 
+    "Slovakia": {
+        "count": 2, 
+        "lat": 48.70107094398928, 
+        "long": 19.7623758273632
+    }, 
+    "Spain": {
+        "count": 47, 
+        "lat": 40.09509580622652, 
+        "long": -2.0970814368858646
+    }, 
+    "Swaziland": {
+        "count": 1, 
+        "lat": -26.51994690578828, 
+        "long": 31.461011488210957
+    }, 
+    "Sweden": {
+        "count": 24, 
+        "lat": 62.344838133761, 
+        "long": 19.131637477237906
+    }, 
+    "Switzerland": {
+        "count": 35, 
+        "lat": 46.8378905565363, 
+        "long": 8.266225746340577
+    }, 
+    "Syria": {
+        "count": 5, 
+        "lat": 34.86022706940197, 
+        "long": 39.157483097079286
+    }, 
+    "Tibet": {
+        "count": 4, 
+        "lat": 29.647535, 
+        "long": 91.117525
+    }, 
+    "Turkey": {
+        "count": 6, 
+        "lat": 39.35498490951858, 
+        "long": 35.68172198752739
+    }, 
+    "Ukraine": {
+        "count": 1, 
+        "lat": 48.732922125349354, 
+        "long": 31.883602505643324
+    }, 
+    "United Kingdom": {
+        "count": 147, 
+        "lat": 54.74278804536333, 
+        "long": -2.8258611948574734
+    }, 
+    "United States": {
+        "count": 528, 
+        "lat": 40.56469450619171, 
+        "long": -90.61735741751636
+    }, 
+    "Wales": {
+        "count": 12, 
+        "lat": 52.1306607, 
+        "long": -3.7837117
+    }
 }

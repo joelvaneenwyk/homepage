@@ -128,7 +128,11 @@ def parseCheese(library):
                 cheese.producers = strip_whitespace(body.replace('Producers:', ''))
             elif "Synonyms" in body:
                 cheese.synonyms = [s.strip() for s in strip_whitespace(body.replace('Synonyms:', '')).split(',')]
-        library.add(cheese, source)
 
-    # TODO: Download the JPG for the images
-    # TODO: Figure out lat / long from https://developers.google.com/maps/documentation/geocoding/intro
+        # TODO: Download the JPG for the images
+
+        if not library.add(cheese, source):
+            break
+
+    # We are done and have parsed all the cheeses!
+    return

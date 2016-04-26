@@ -95,5 +95,9 @@ def parseCheeseLibrary(library):
             root = root.next_element
 
         cheese.description = strip_whitespace(cheese_data_and_summary[1].text)
-        library.add(cheese, source)
+
+        if not library.add(cheese, source):
+            break
+
+    return
     

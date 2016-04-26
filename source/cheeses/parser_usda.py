@@ -16,6 +16,8 @@ from random import randint
 import codecs
 import json
 import inspect    
+from cheese import Cheese, CheeseLibrary
+import parser_utils
 
 def parseFdaLine(line):
     fields = []
@@ -50,8 +52,10 @@ def parseFdaFileArray(filename):
     return output
 
 def parseUSDA(library):
+    source = 'USDA'
     root = os.path.dirname(os.path.realpath(__file__))
     sr22 = os.path.join(root, 'sr22')
+
     food_descriptions_filename = os.path.join(sr22, 'FOOD_DES.txt')
     food_descriptions = parseFdaFileUniqueDict(food_descriptions_filename)
 
@@ -71,14 +75,23 @@ def parseUSDA(library):
     for (ndb_no, food) in food_descriptions.iteritems():
         if ndb_no in nutritional_data:
             nutritions = nutritional_data[ndb_no]
-            food_name = food[ food_descriptions_headers.index('Shrt_Desc') ]
-            print(food_name)
-            for nutrition in nutritions:
-                nutritional_definition_index = nutrition[nutritional_data_headers.index('Nutr_No')]
-                nutritional_definition = nutritional_definitions[nutritional_definition_index]
-                value = nutrition[ nutritional_data_headers.index('Nutr_Val') ]
-                units = nutritional_definition[ nutritional_definition_headers.index('Units') ]
-                name = nutritional_definition[ nutritional_definition_headers.index('NutrDesc') ]
-                if float(value) > 0 and not ':' in name:
-                    print('%s %s %s' % (value, name, units))
+            short_food_names = food[ food_descriptions_headers.index('Shrt_Desc') ].split(',')
+            long_food_names = food[ food_descriptions_headers.index('Long_Desc') ].split(',')
+            common_food_names = food[ food_descriptions_headers.index('ComName') ].split(',')
+
+            if short_food_names[0].lower() == 'cheese':
+                for nutrition in nutritions:
+                    nutritional_definition_index = nutrition[nutritional_data_headers.index('Nutr_No')]
+                    nutritional_definition = nutritional_definitions[nutritional_definition_index]
+                    value = nutrition[ nutritional_data_headers.index('Nutr_Val') ]
+                    units = nutritional_definition[ nutritional_definition_headers.index('Units') ]
+                    name = nutritional_definition[ nutritional_definition_headers.index('NutrDesc') ]
+
+                cheese = Cheese()
+                cheese.name = ' '.join(long_food_names[1:]).strip()
+
+                if not library.add(cheese, source):
+                    break
+
+    return
     

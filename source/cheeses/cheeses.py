@@ -9,6 +9,7 @@ import cheese
 import parser_cheese_library
 import parser_usda
 import parser_cheese
+import parser_utils
 import sys
 
 COMMAND_LINE_OPTIONS = (

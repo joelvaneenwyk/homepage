@@ -9,6 +9,7 @@ import copy
 class CheeseLibrary():
     def __init__(self):
         self.cheeses = dict()
+        self.max = -1
         self.filename = os.path.abspath(os.path.join(parser_utils.get_data_folder(), "cheeses.json"))
         self.locations_filename = os.path.abspath(os.path.join(parser_utils.get_data_folder(), "locations.json"))
         self.locations = dict()
@@ -23,6 +24,9 @@ class CheeseLibrary():
                     self.cheeses = dict()
 
     def add(self, cheese, source):
+        if self.max != -1 and len(self.cheeses) >= self.max:
+            return False
+
         try:
             # Make sure the name is UTF8
             cheese.name = cheese.name.decode('utf-8', errors='replace')
@@ -50,13 +54,19 @@ class CheeseLibrary():
                 location = location.strip()
                 if location != "":
                     if not location in self.locations:
-                        self.locations[location] = 0
-                    self.locations[location] += 1
+                        self.locations[location] = dict()
+                        self.locations[location]["count"] = 0
+                        coordinates = parser_utils.get_country_coordinates(location)
+                        self.locations[location]["lat"] = coordinates[0]
+                        self.locations[location]["long"] = coordinates[1]
+                    self.locations[location]["count"] += 1
 
         if not cheese.name in self.cheeses:
             self.cheeses[cheese.name] = cheese
 
         print("Adding " + display_name)
+
+        return True
         
     
 
@@ -70,30 +80,28 @@ class CheeseLibrary():
         file.write(jsonData)
 
 class Cheese():
-    image = ''
-    sources = []
-    image_credits = ''
-    name = ''
-    summary = ''
-    made_from = ''
-    origin = ''
-    region = ''
-    type = ''
-    fat = ''
-    texture = ''
-    rind = ''
-    age = ''
-    color = ''
-    flavor = ''
-    aroma = ''
-    vegetarian = ''
-    producers = ''
-    pasteurized = ''
-    synonyms = []
-    description = ''
-
     def __init__(self):
-        name = ''
+        self.image = ''
+        self.sources = []
+        self.image_credits = ''
+        self.name = ''
+        self.summary = ''
+        self.made_from = ''
+        self.origin = ''
+        self.region = ''
+        self.type = ''
+        self.fat = ''
+        self.texture = ''
+        self.rind = ''
+        self.age = ''
+        self.color = ''
+        self.flavor = ''
+        self.aroma = ''
+        self.vegetarian = ''
+        self.producers = ''
+        self.pasteurized = ''
+        self.synonyms = []
+        self.description = ''
 
     def getDict(self):
         test = dict(inspect.getmembers(self))
