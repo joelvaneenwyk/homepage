@@ -83,6 +83,16 @@ def get_country_coordinates(country):
 
     return coord
 
+
+def extract_elements_from_sentence(sentence):
+    o = sentence.split(u' and')
+    out = []
+    for origin in o:
+        out.extend(origin.split(u','))
+    out = map(unicode.strip, out)
+    return out
+
+
 def strip_whitespace(text):
     output = text.replace('\n', '')
     output = output.replace('\r', '')

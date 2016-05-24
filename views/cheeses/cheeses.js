@@ -10,14 +10,13 @@ var map = new Datamap({
         defaultFill: '#ABDDA4',
         USA: 'blue',
         RUS: 'red'
-    },
+    }
 });
 
 d3.json("/cheeses/locations.json", function(error, locations) {
-    bubbles = []
+    bubbles = [];
 
 	for (var key in locations) {
-	    num = parseFloat(locations[key]['count']) / 10.0;
 	    num = parseFloat(locations[key]['count']) / 10.0;
 
         bubbles.push({

@@ -1,4 +1,4 @@
-@media (min-width: @screen-lg-min) {
+@media (min-width: 450px) {
     #name {
         font-size: 3.5em;
     }
@@ -123,7 +123,7 @@ img.logo {
 
 .linkbox {
     display: block;
-    margin: 0px 0px 3px 0px;
+    margin: 0 0 3px 0;
 }
 
 .linkbox:hover {

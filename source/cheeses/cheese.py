@@ -41,12 +41,8 @@ class CheeseLibrary():
             print("Failed to generate display name")
 
         if cheese.origin != "":
-            o = cheese.origin.split(u' and')
-            cheese.origin = []
-            for origin in o:
-                cheese.origin.extend(origin.split(u','))
-            
-            cheese.origin = map(unicode.strip, cheese.origin)
+            cheese.origin = extract_elements_from_sentence(cheese.origin)
+
             for location in cheese.origin:
                 location = location.replace("countries throughout the world", "")
                 location = location.replace("Swtizerland", "Switzerland")
