@@ -11,10 +11,10 @@ The stack:
 
 Steps:
 
-# Install Anaconda x64
+* Install Anaconda x64
     * Alternative could use http://conda.pydata.org/miniconda.html but haven't tried it
-# git clone https://github.com/BVLC/caffe/tree/windows
-# pip install 
+* git clone https://github.com/BVLC/caffe/tree/windows
+* pip install
 
 # Issues
 

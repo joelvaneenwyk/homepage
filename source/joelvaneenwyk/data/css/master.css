@@ -47,7 +47,7 @@ body {
 
 
 /*
- * Set hyperlink typeface and remove underlines 
+ * Set hyperlink typeface and remove underlines
  */
 
 a {
@@ -143,6 +143,7 @@ img.logo {
 .blog h1
 {
     font-weight: 500;
+    padding: 5px;
     background-color: rgb(200, 200, 200)
 }
 
@@ -156,7 +157,7 @@ img.logo {
     font-size: 90%;
 }
 
-.footer 
+.footer
 {
     position:fixed;bottom:0;
 

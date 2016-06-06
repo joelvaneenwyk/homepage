@@ -3,7 +3,13 @@
     "title": "Web Programming",
     "tags": "web, nodejs, console"
   },
-  "cheeses": {
-    "title": "Cheeses"
+  "deep_learning": {
+    "title": "Deep Learning"
+  },
+  "gpu": {
+    "title": "Unlocking the GPU"
+  },
+  "tools": {
+    "title": "Tools of my Trade"
   }
 }

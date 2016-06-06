@@ -5,51 +5,60 @@ var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 
 // Define API credentials callback URL
-var callbackURL = "http://" + process.env.OPENSHIFT_APP_DNS + "/oauth2callback"
-  , CLIENT_ID = process.env.GOOGLE_CLIENT_ID
-  , CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+var callbackURL = "http://" + process.env.OPENSHIFT_APP_DNS + "/oauth2callback",
+    CLIENT_ID = process.env.GOOGLE_CLIENT_ID,
+    CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
 var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, callbackURL);
 
 // generate a url that asks permissions for Google+ and Google Calendar scopes
 var scopes = [
-  'https://www.googleapis.com/auth/plus.me'
+    'https://www.googleapis.com/auth/plus.me'
 ];
 
 var url = oauth2Client.generateAuthUrl({
-  access_type: 'offline', // 'online' (default) or 'offline' (gets refresh_token)
-  scope: scopes // If you only need one scope you can pass it as string
+    // 'online' (default) or 'offline' (gets refresh_token)
+    access_type: 'offline',
+    // If you only need one scope you can pass it as string
+    scope: scopes
 });
 
 // Initialize our oauth variables used to store access_token and related data
-var state = ''
-  , access_token = ''
-  , token_type = ''
-  , expires = '';
+var state = '',
+    access_token = '',
+    token_type = '',
+    expires = '';
 
-function setup(app)
-{
-    // #todo Pull in postgres database and cache the user
+function setupDatabase(client) {
+    console.log('Connected to postgres! Getting schemas...');
+
+    client
+        .query('SELECT table_schema,table_name FROM information_schema.tables;')
+        .on('row', function(row) {
+            console.log(JSON.stringify(row));
+        });
+}
+
+function setup(app) {
     var pg = require('pg');
-    pg.defaults.ssl = false;
-    var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432';
-    var client = new pg.Client(connectionString)
-    pg.connect(process.env.DATABASE_URL, function(err, client) {
-      if (err)
-      {
-        console.log('Failed to connect to postgres');
-      }
-      else
-      {
-          console.log('Connected to postgres! Getting schemas...');
-
-          client
-            .query('SELECT table_schema,table_name FROM information_schema.tables;')
-            .on('row', function(row) {
-              console.log(JSON.stringify(row));
+    pg.defaults.ssl = true;
+    var client = new pg.Client()
+    pg.connect(process.env.PG_REMOTE_URL, function(err, client) {
+        if (err) {
+            console.log('Failed to connect to remote postgres. Connecting to local postgres');
+            console.log(err);
+            pg.connect(process.env.PG_LOCAL_URL, function(err, client) {
+                if (err) {
+                    console.log('Failed to connect to local postgres');
+                    console.log(err);
+                } else {
+                    setupDatabase(client);
+                }
             });
-      }
-    }); 
+        } else {
+            setupDatabase(client);
+        }
+    });
 
     // Start the OAuth flow by generating a URL that the client (index.html) opens
     // as a popup. The URL takes the user to Google's site for authentication
@@ -68,7 +77,7 @@ function setup(app)
         };
 
         params = qs.stringify(params);
-        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(url);
     });
 
@@ -77,9 +86,9 @@ function setup(app)
     app.get("/oauth2callback", function(req, res) {
 
         // Collect the data contained in the querystring
-        var code = req.query.code
-          , cb_state = req.query.state
-          , error = req.query.error;
+        var code = req.query.code,
+            cb_state = req.query.state,
+            error = req.query.error;
 
         // Verify the 'state' variable generated during '/login' equals what was passed back
         if (state == cb_state) {
@@ -96,7 +105,7 @@ function setup(app)
                 var url = "https://accounts.google.com/o/oauth2/token";
 
                 // Send the API request
-                request.post(url, {form: params}, function(err, resp, body) {
+                request.post(url, { form: params }, function(err, resp, body) {
 
                     // Handle any errors that may occur
                     if (err) return console.error("Error occured: ", err);
@@ -113,7 +122,7 @@ function setup(app)
                     // Close the popup. This will trigger the client (index.html) to redirect
                     // to '/user' which will test out the access_token.
                     var output = '<html><head></head><body onload="window.close();">Close this window</body></html>';
-                    res.writeHead(200, {'Content-Type': 'text/html'});
+                    res.writeHead(200, { 'Content-Type': 'text/html' });
                     res.end(output);
                 });
             } else {
@@ -139,13 +148,13 @@ function setup(app)
             };
 
             // Send the request
-            request.get({url: url, qs: params}, function(err, resp, user) {
+            request.get({ url: url, qs: params }, function(err, resp, user) {
                 // Check for errors
                 if (err) return console.error("Error occured: ", err);
 
                 // Send output as response
                 var output = "<h1>Your User Details</h1><pre>" + user + "</pre>";
-                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.end(output);
             });
         } else {
@@ -155,7 +164,6 @@ function setup(app)
     });
 }
 
-module.exports =
-{
+module.exports = {
     setup: setup
 };
