@@ -10,7 +10,8 @@
 # Tools to Explore
 
 * http://rmarkdown.rstudio.com/index.html
-* http://www.abelhadigital.com/hostsman a tool for editing your Hosts file
+* [HostsMan](http://www.abelhadigital.com/hostsman) a tool for editing your Hosts file
+    - Comparison of tools for this: https://winbeginner.com/hosts-file-editor-windows/
 
 # Writing Documentation
 

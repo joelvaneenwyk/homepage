@@ -3,25 +3,17 @@ var qs = require("qs")
 
 var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
+var pg = require('pg');
 
-// Define API credentials callback URL
-var callbackURL = "http://" + process.env.OPENSHIFT_APP_DNS + "/oauth2callback",
-    CLIENT_ID = process.env.GOOGLE_CLIENT_ID,
-    CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-
-var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, callbackURL);
+// These are set in the /login call
+var callbackURL;
+var oauth2Client;
+var url;
 
 // generate a url that asks permissions for Google+ and Google Calendar scopes
 var scopes = [
     'https://www.googleapis.com/auth/plus.me'
 ];
-
-var url = oauth2Client.generateAuthUrl({
-    // 'online' (default) or 'offline' (gets refresh_token)
-    access_type: 'offline',
-    // If you only need one scope you can pass it as string
-    scope: scopes
-});
 
 // Initialize our oauth variables used to store access_token and related data
 var state = '',
@@ -29,20 +21,27 @@ var state = '',
     token_type = '',
     expires = '';
 
+// Variables for postgres
+var client = new pg.Client();
+var databaseConnected = false;
+var currentUser = null;
+
 function setupDatabase(client) {
-    console.log('Connected to postgres! Getting schemas...');
+    console.log('Connected to postgres!');
+
+    databaseConnected = true;
 
     client
-        .query('SELECT table_schema,table_name FROM information_schema.tables;')
-        .on('row', function(row) {
-            console.log(JSON.stringify(row));
-        });
+        .query('CREATE TABLE IF NOT EXISTS users(id SERIAL PRIMARY KEY, email VARCHAR(256) not null, auth VARCHAR(256) not null);')
+        .on('end', function() { client.end(); });
+}
+
+function getUser(app) {
+    return currentUser;
 }
 
 function setup(app) {
-    var pg = require('pg');
     pg.defaults.ssl = true;
-    var client = new pg.Client()
     pg.connect(process.env.PG_REMOTE_URL, function(err, client) {
         if (err) {
             console.log('Failed to connect to remote postgres. Connecting to local postgres');
@@ -60,9 +59,28 @@ function setup(app) {
         }
     });
 
+    app.get("/db/status", function(req, res) {
+        res.send(databaseConnected);
+    });
+
     // Start the OAuth flow by generating a URL that the client (index.html) opens
     // as a popup. The URL takes the user to Google's site for authentication
     app.get("/login", function(req, res) {
+        var fullUrl = req.protocol + '://' + req.get('host');
+
+        // Define API credentials callback URL
+        callbackURL = fullUrl + "/oauth2callback";
+        console.log('Callback URL:' + callbackURL);
+
+        oauth2Client = new OAuth2(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET, callbackURL);
+
+        url = oauth2Client.generateAuthUrl({
+            // 'online' (default) or 'offline' (gets refresh_token)
+            access_type: 'offline',
+            // If you only need one scope you can pass it as string
+            scope: scopes
+        });
+
         // Generate a unique number that will be used to check if any hijacking
         // was performed during the OAuth flow
         state = Math.floor(Math.random() * 1e18);

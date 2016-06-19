@@ -6,36 +6,11 @@ function log(info) {
     console.log("[JVE] " + info);
 }
 
-function onResize() {
-    updateHeader();
-}
+var loginUrl = '';
+var loginWindow = '';
 
-function onReady() {
-    updateHeader();
-}
-
-var url = '';
-var w = '';
-
-$(document).ready(function() {
-    $.get('/login', function(data) {
-        url = data;
-    });
-
-    var interval = window.setInterval((function() {
-        if (w.closed) {
-            window.clearInterval(interval);
-            window.location = '/user';
-        }
-     }),1000);
-});
-
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail());
+function startLogin() {
+    loginWindow = window.open(loginUrl, "Google Login", 'width=800, height=600'); 
 }
 
 //
@@ -49,19 +24,32 @@ function updateHeader() {
     //if (height < 250) height = 250;
     if (width < 100) width = 100;
 
+    // Center the top header row by setting the width and the margin-left offset
+    var middleWidth = this.innerWidth;
+    if (middleWidth > 550) middleWidth = 550;
+
     // Force the width of the main container to be the width of the window
     $(".container.parent").css('width', width + 'px');
     // Set the top row to be half the page height
     $("div.row.top").css('height', height + 'px');
 
-    // Center the top header row by setting the width and the margin-left offset
-    var middleWidth = this.innerWidth;
-    if (middleWidth > 550) middleWidth = 550;
     $(".row.header").css('width', middleWidth + 'px');
     $(".row.header.centered").css('margin-left', '-' + (middleWidth / 2) + 'px');
 }
 
 $(document).ready(function() {
-    onReady();
-    jQuery(window).on('resize', onResize);
+    $.get('/login', function(data) {
+        loginUrl = data;
+    });
+
+    // This forces you to the user page if it logs in
+    var interval = window.setInterval((function() {
+        if (loginWindow.closed) {
+            window.clearInterval(interval);
+            window.location = '/';
+        }
+     }), 500);
+
+    updateHeader();
+    jQuery(window).on('resize', updateHeader);
 });

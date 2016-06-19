@@ -1,21 +1,20 @@
-var onlineMode = true;
+//
+// Fonts and Google Analytics
+//
 
 (function() {
-    if (onlineMode) {
-        var link_element = document.createElement("link"),
-            s = document.getElementsByTagName("script")[0];
-        if (window.location.protocol !== "http:" && window.location.protocol !== "https:") {
-            link_element.href = "http:";
-        }
-        link_element.href += "//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800";
-        link_element.rel = "stylesheet";
-        link_element.type = "text/css";
-        s.parentNode.insertBefore(link_element, s);
+    // Get the fonts we need
+    var link_element = document.createElement("link"),
+        s = document.getElementsByTagName("script")[0];
+    if (window.location.protocol !== "http:" && window.location.protocol !== "https:") {
+        link_element.href = "http:";
     }
-})();
+    link_element.href += "//fonts.googleapis.com/css?family=Dosis:200,400,800";
+    link_element.rel = "stylesheet";
+    link_element.type = "text/css";
+    s.parentNode.insertBefore(link_element, s);
 
-if (onlineMode) {
-
+    // Load up Google analytics
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function() {
@@ -33,7 +32,7 @@ if (onlineMode) {
     ga('require', 'autotrack', {
         attributePrefix: 'data-ga-'
     });
-}
+})();
 
 window.NREUM || (NREUM = {}), __nr_require = function(t, e, n) {
     function r(n) {

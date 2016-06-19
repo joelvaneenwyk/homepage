@@ -8,12 +8,13 @@ var vhost = require('vhost');
 var express = require('express');
 var app = express.Router();
 var favicon = require('serve-favicon');
+var authenticate = require('./authenticate');
+var prettify = require('./prettify');
 
-var mode = process.env.config || 'debug';
 var siteRoot = path.normalize(__dirname + '/../../');
 var siteData = 'source/joelvaneenwyk/data';
 
-var hosts = [
+var allowedHosts = [
     'localhost',
     'joelvaneenwyk.com',
     'www.joelvaneenwyk.com',
@@ -25,34 +26,35 @@ var hosts = [
     '*.herokuapp.com'
 ];
 
-views = harp.mount(siteRoot + "views");
 var dictionary = [
     ["/", serveStatic(siteRoot + siteData)],
     ["/", favicon(siteRoot + siteData + '/favicon.ico')],
     ["/", serveStatic(siteRoot + 'data')],
-    ["/", harp.mount(siteRoot + "views")],
+    ["/", harp.mount(siteRoot + 'views')],
     ["/thirdparty", serveStatic(siteRoot + "thirdparty")]
 ];
 
-console.log('Starting up Joel Van Eenwyk app');
+console.log('Starting up Joel Van Eenwyk server application');
 
+authenticate.setup(app);
 app.route('/');
+app.use(
+        function(req, res, next) {
+            // #todo Limit what people have access to
+            next();
+        })
 
 for (var i = 0; i < dictionary.length; i++) {
-    for (var j = 0; j < hosts.length; j++) {
+    for (var j = 0; j < allowedHosts.length; j++) {
         var path = dictionary[i][0];
         var func = dictionary[i][1];
-        var host = hosts[j];
+        var host = allowedHosts[j];
         app.use(path, vhost(host, func));
     }
 }
 
 // Modify harp to prettify every HTML page that it outputs so that
 // the source code looks pretty when viewing source on a page
-var prettify = require('./prettify');
 prettify.prettify(harp);
-
-var authenticate = require('./authenticate');
-authenticate.setup(app);
 
 module.exports = app;
