@@ -12,27 +12,10 @@
     /* ... */
 }
 
-.google-login {
-  bottom: 15px;
-  left: 15px;
-  position: relative;
-  top: 15px;
-}
-
-.resume {
-    position: absolute;
-    left: 10px;
-    top: 10px;
+.custom-button {
     width: 50px;
     height: 50px;
-}
-
-.login {
-    position: absolute;
-    left: 10px;
-    top: 80px;
-    width: 50px;
-    height: 50px;
+    margin: 5px;
 }
 
 /*
@@ -79,12 +62,6 @@ a:link {
 
 .row.top {
     background-color: #e2ecb8;
-    position: relative;
-}
-
-.stamp {
-    margin: 0 auto;
-    display: block;
 }
 
 .name {
@@ -105,20 +82,9 @@ a:link {
     margin-top: -10px;
 }
 
-.row.header.centered {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-}
-
-.row.header.bottom {
-    margin: 10px auto 0 auto;
-}
-
 img.logo {
     width: 30px;
     height: 30px;
-    display: inline;
 }
 
 .link {
@@ -128,6 +94,10 @@ img.logo {
     font-weight: 600;
     font-size: 80%;
     margin-left: 2px;
+}
+
+.bottom-first {
+    padding-top: 10px;
 }
 
 .linkbox {
@@ -168,8 +138,8 @@ img.logo {
 
 .footer
 {
-    position:fixed;bottom:0;
-
+    position:fixed;
+    bottom:0;
     width:100%;
     display:block;
 }

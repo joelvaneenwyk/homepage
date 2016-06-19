@@ -6,21 +6,34 @@
 </head>
 
 <body>
-    <div class="container parent">
-        <div class="row top">
-            <% include partials/header %>
-            <div class="row header centered">
-                <div class="col-lg-12"><img class="stamp" src="/images/stamp.png" width="87" height="150" alt="Stamp" /></div>
-                <div class="col-lg-12 name">
+    <div class="container-fluid parent">
+        <% include partials/header %>
+        <div class="row top" id="top-header">
+            <div class="col-xs-2">
+                <div>
+                    <a href="/portfolio/2016_joelvaneenwyk_resume.pdf"><img src="/images/resume.png" class="custom-button" alt="Résumé" /></a>
+                </div>
+                <div>
+                    <a onclick="startLogin()" href="#"> <img src="/images/login.png" class="custom-button" alt="Login" /></a>
+                </div>
+            </div>
+
+            <div class="col-xs-8" id="bottom-align">
+                <div class="row name">
+                    <img class="center-block stamp" src="/images/stamp.png" width="87" height="150" alt="Stamp" />
+                </div>
+
+                <div class="row name">
                     <p>Joel Van Eenwyk</p>
                 </div>
-                <div class="col-lg-12 description">
+
+                <div class="row description">
                     <p>Adventurer, coder, graphics nerd, life enthusiast</p>
                 </div>
             </div>
         </div>
-        <div class="row header bottom">
-            <div class="col-lg-12">
+        <div class="row header bottom-first">
+            <div class="col-xs-8 col-xs-offset-2">
                 <a target="_blank" href="https://twitter.com/joelvaneenwyk">
                     <span class="linkbox">
                         <img src="/images/twitter.png" class="logo" alt="Twitter" />
@@ -28,7 +41,9 @@
                     </span>
                 </a>
             </div>
-            <div class="col-lg-12">
+        </div>
+        <div class="row header bottom">
+            <div class="col-xs-8 col-xs-offset-2">
                 <a target="_blank" href="https://www.linkedin.com/in/joelvaneenwyk">
                     <span class="linkbox">
                         <img src="/images/linkedin.png" class="logo" alt="LinkedIn" />
@@ -36,7 +51,9 @@
                     </span>
                 </a>
             </div>
-            <div class="col-lg-12">
+        </div>
+        <div class="row header bottom">
+            <div class="col-xs-8 col-xs-offset-2">
                 <a target="_blank" href="https://www.facebook.com/jvaneenwyk">
                     <span class="linkbox">
                         <img src="/images/facebook.png" class="logo" alt="Facebook" />
@@ -44,7 +61,9 @@
                     </span>
                 </a>
             </div>
-            <div class="col-lg-12">
+        </div>
+        <div class="row header bottom">
+            <div class="col-xs-8 col-xs-offset-2">
                 <a target="_blank" href="https://about.me/joel.vaneenwyk">
                     <span class="linkbox">
                         <img src="/images/me.png" class="logo" alt="About.Me" />
@@ -52,7 +71,9 @@
                     </span>
                 </a>
             </div>
-            <div class="col-lg-12">
+        </div>
+        <div class="row header bottom">
+            <div class="col-xs-8 col-xs-offset-2">
                 <a target="_blank" href="https://github.com/joelvaneenwyk">
                     <span class="linkbox">
                         <img src="/images/github.png" class="logo" alt="GitHub" />
@@ -60,7 +81,9 @@
                     </span>
                 </a>
             </div>
-            <div class="col-lg-12">
+        </div>
+        <div class="row header bottom">
+            <div class="col-xs-8 col-xs-offset-2">
                 <a target="_blank" href="http://www.mobygames.com/developer/sheet/view/developerId,231132/">
                     <span class="linkbox">
                         <img src="/images/mobygames.png" class="logo" alt="GitHub" />
@@ -69,12 +92,6 @@
                 </a>
             </div>
         </div>
-    </div>
-    <div>
-    <a href="/portfolio/2016_joelvaneenwyk_resume.pdf"><img src="/images/resume.png" class="resume" alt="Résumé" /></a>
-    </div>
-    <div>
-    <a onclick="startLogin()" href="#"> <img src="/images/login.png" class="login" alt="Login" />
     </div>
     <% include partials/footer %>
 </body>
