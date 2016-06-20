@@ -23,7 +23,7 @@
  */
 
 body {
-    padding: 0;
+    padding: 0px;
     margin: 0;
 }
 
@@ -37,6 +37,12 @@ body {
     margin: 0;
 }
 
+.panel-footer.panel-custom {
+    background: red;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
 
 /*
  * Set hyperlink typeface and remove underlines

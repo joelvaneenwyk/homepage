@@ -1,15 +1,5 @@
 module.exports = function(grunt) {
 
-    //
-    // #todo #jve Look into the following:
-    //  http://stackoverflow.com/questions/12401998/have-grunt-generate-index-html-for-different-setups
-    //  https://www.npmjs.com/package/grunt-targethtml
-    //  https://github.com/jsoverson/grunt-preprocess
-    // * Create a dist/release and dist/dev and watch should be used for dist/dev
-    // * dist/dev should NOT use the min version
-    // * Add d3 (e.g. http://mbostock.github.io/d3/talk/20111018/collision.html)
-    //
-
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         processhtml: {
@@ -47,9 +37,8 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            files: ['Gruntfile.js', 'source/joelvaneenwyk/data/js/main.js'],
+            all: ['Gruntfile.js', 'source/joelvaneenwyk/data/js/main.js'],
             options: {
-                // options here to override JSHint defaults
                 globals: {
                     jQuery: true,
                     console: true,
@@ -61,6 +50,12 @@ module.exports = function(grunt) {
         watch: {
             files: ['<%= jshint.files %>'],
             tasks: ['jshint']
+        },
+        harp: {
+            dist: {
+                source: 'views/',
+                dest: 'dist/staging/'
+            }
         },
         clean: {
             options: {
@@ -97,7 +92,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-harp');
 
-    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'copy']);
+    grunt.registerTask('default', ['harp', 'jshint', 'concat', 'uglify', 'copy']);
     grunt.registerTask('heroku', ['jshint', 'concat', 'uglify']);
 };
