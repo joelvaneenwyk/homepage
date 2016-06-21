@@ -1,6 +1,5 @@
 ﻿var express = require('express')
 var app = express()
-
 console.log('Root Server Started');
 
 app
@@ -10,8 +9,8 @@ app
             console.log('Request URL: ', fullUrl);
             next();
         })
-    .use('/', require('./source/joelvaneenwyk/server'))
-    .use('/', require('./source/cowrk/server'));
+    .use('/', require('joelvaneenwyk'))
+    .use('/', require('cowrk'));
 
 port = process.env.PORT || 5000;
 

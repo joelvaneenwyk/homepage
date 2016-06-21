@@ -14,14 +14,11 @@
     "url": "https://github.com/joelvaneenwyk/homepage.git"
   },
   "dependencies": {
-    "pg": "^4.5.5",
+    "joelvaneenwyk": "file:./source/joelvaneenwyk",
+    "cowrk": "file:./source/cowrk",
     "express": "^4.13.4",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
-    "node-sass": "~3.8.0",
-    "harp": "0.20.3",
-    "connect": "3.4.1",
-    "terraform": "~1.1.0",
     "grunt-jsbeautifier": "~0.2.12",
     "grunt-contrib-clean": "~1.0.0",
     "grunt-contrib-concat": "~0.5.0",
@@ -31,11 +28,7 @@
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "~0.5.0",
     "grunt-processhtml": "0.3.12",
-    "grunt-harp": "https://github.com/shovon/grunt-harp.git",
-    "express-beautify": "^0.1.2",
-    "html": "^0.0.10",
-    "googleapis": "^4.0.0",
-    "send": "~0.14.1"
+    "grunt-harp": "https://github.com/shovon/grunt-harp.git"
   },
   "scripts": {
     "postinstall": "grunt default",
