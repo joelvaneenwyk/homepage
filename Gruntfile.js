@@ -64,7 +64,7 @@ module.exports = function(grunt) {
             build: ['dist/release', 'dist/staging']
         },
         jsbeautifier: {
-            files: ["dist/staging/*.html"],
+            files: ["dist/staging/*.html", "dist/staging/**/*.html"],
             options: {
                 //config: "path/to/configFile",
                 html: {
