@@ -12,7 +12,8 @@ var authenticate = require('./authenticate');
 var prettify = require('./prettify');
 
 var siteRoot = path.normalize(__dirname + '/../../');
-var siteData = 'source/joelvaneenwyk/data';
+var siteLocalRoot = siteRoot + 'source/joelvaneenwyk';
+var siteData = siteLocalRoot + '/data';
 
 var allowedHosts = [
     'localhost',
@@ -27,10 +28,11 @@ var allowedHosts = [
 ];
 
 var dictionary = [
-    ["/", serveStatic(siteRoot + siteData)],
-    ["/", favicon(siteRoot + siteData + '/favicon.ico')],
+    ["/", serveStatic(siteData)],
+    ["/", serveStatic(siteRoot + '/dist/staging')],
+    ["/", favicon(siteData + '/favicon.ico')],
     ["/", serveStatic(siteRoot + 'data')],
-    ["/", harp.mount(siteRoot + 'views')],
+    //["/", harp.mount(siteLocalRoot + '/views')],
     ["/thirdparty", serveStatic(siteRoot + "thirdparty")]
 ];
 
@@ -50,7 +52,7 @@ for (var i = 0; i < dictionary.length; i++) {
 
 // Modify harp to prettify every HTML page that it outputs so that
 // the source code looks pretty when viewing source on a page
-prettify.prettify(harp);
+//prettify.prettify(harp);
 
 app
     .use(function(req, res) {
@@ -58,7 +60,7 @@ app
 
         // respond with html page
         if (req.accepts('html')) {
-            res.render('404.ejs', { url: req.url });
+            res.redirect('/404.html');
             return;
         }
 
@@ -76,7 +78,7 @@ app
 
         // respond with html page
         if (req.accepts('html')) {
-            res.render('500.ejs', { url: req.url });
+            res.redirect('/500.html');
             return;
         }
 

@@ -21,6 +21,7 @@
     "node-sass": "~3.8.0",
     "harp": "0.20.3",
     "connect": "3.4.1",
+    "terraform": "~1.1.0",
     "grunt-contrib-clean": "~1.0.0",
     "grunt-contrib-concat": "~0.5.0",
     "grunt-contrib-copy": "~0.5.0",
