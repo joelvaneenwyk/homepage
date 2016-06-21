@@ -14,6 +14,7 @@ var prettify = require('./prettify');
 var siteRoot = path.normalize(__dirname + '/../../');
 var siteLocalRoot = siteRoot + 'source/joelvaneenwyk';
 var siteData = siteLocalRoot + '/data';
+var siteStaging = siteRoot + '/dist/staging';
 
 var allowedHosts = [
     'localhost',
@@ -29,7 +30,7 @@ var allowedHosts = [
 
 var dictionary = [
     ["/", serveStatic(siteData)],
-    ["/", serveStatic(siteRoot + '/dist/staging')],
+    ["/", serveStatic(siteStaging)],
     ["/", favicon(siteData + '/favicon.ico')],
     ["/", serveStatic(siteRoot + 'data')],
     //["/", harp.mount(siteLocalRoot + '/views')],
@@ -60,7 +61,7 @@ app
 
         // respond with html page
         if (req.accepts('html')) {
-            res.redirect('/404.html');
+            res.sendFile(siteStaging + '/404.html');
             return;
         }
 
@@ -78,7 +79,7 @@ app
 
         // respond with html page
         if (req.accepts('html')) {
-            res.redirect('/500.html');
+            res.sendFile(siteStaging + '/500.html');
             return;
         }
 
