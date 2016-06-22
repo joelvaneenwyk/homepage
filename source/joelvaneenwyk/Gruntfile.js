@@ -52,7 +52,7 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            all: ['Gruntfile.js', 'www/js/main.js'],
+            all: ['**.js', currentDir + 'server/*.js'],
             options: {
                 globals: {
                     jQuery: true,
@@ -150,6 +150,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-harp');
 
-    grunt.registerTask('default', ['harp', 'jsbeautifier', 'jshint', 'concat', 'uglify', 'copy']);
-    grunt.registerTask('joelvaneenwyk', ['harp', 'jsbeautifier', 'jshint', 'concat', 'uglify', 'copy']);
+    var requiredTasks = ['harp', 'jsbeautifier', 'jshint', 'concat', 'uglify', 'copy'];
+
+    grunt.registerTask('default', requiredTasks);
+    grunt.registerTask('joelvaneenwyk', requiredTasks);
 };

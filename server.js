@@ -1,5 +1,8 @@
-﻿var express = require('express')
-var app = express()
+﻿/*jslint node: true */
+"use strict";
+
+var express = require('express');
+var app = express();
 console.log('Root Server Started');
 
 app
@@ -12,7 +15,7 @@ app
     .use('/', require('./source/joelvaneenwyk'))
     .use('/', require('./source/cowrk'));
 
-port = process.env.PORT || 5000;
+var port = process.env.PORT || 5000;
 
 console.log('Listing on port: ' + port);
 app.listen(port);

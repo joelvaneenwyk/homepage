@@ -22,35 +22,11 @@ module.exports = function(grunt) {
         watch: {
             files: ['<%= jshint.files %>'],
             tasks: ['jshint', 'run_grunt']
-        },
-        run_grunt: {
-            options: {
-                minimumFiles: 1
-            },
-            default: {
-                options: {
-                    log: true,
-                    process: function(res){
-                        if (res.fail){
-                            res.output = 'new content';
-                            grunt.log.writeln('bork bork');
-                        }
-                    }
-                },
-                src: ['source/joelvaneenwyk/Gruntfile.js']
-            },
-        },
-        clean: {
-            options: {
-                'force': false
-            },
-            build: ['dist/']
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-run-grunt');
     grunt.loadTasks('./source/joelvaneenwyk');
 
     grunt.registerTask('default', ['jshint', 'joelvaneenwyk']);

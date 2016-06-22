@@ -1,15 +1,14 @@
-﻿"use strict";
+﻿/*jslint node: true */
+"use strict";
 
 var path = require('path');
 var serveStatic = require('serve-static');
-var harp = require('harp');
 var vhost = require('vhost');
 var express = require('express');
 var app = express.Router();
 var favicon = require('serve-favicon');
 
 var authenticate = require('./authenticate');
-var prettify = require('./prettify');
 
 var siteRoot = path.normalize(__dirname + '/../');
 var siteData = siteRoot + '/www';
@@ -63,6 +62,8 @@ function initialize() {
 
     // Modify harp to prettify every HTML page that it outputs so that
     // the source code looks pretty when viewing source on a page
+    //var harp = require('harp');
+    //var prettify = require('./prettify');
     //prettify.prettify(harp);
 
     app

@@ -1,5 +1,8 @@
-var request = require("request")
-var qs = require("qs")
+/*jslint node: true */
+"use strict";
+
+var request = require("request");
+var qs = require("qs");
 
 var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
@@ -26,36 +29,37 @@ var client = new pg.Client();
 var databaseConnected = false;
 var currentUser = null;
 
-function setupDatabase(client) {
+function setupDatabase(newClient) {
     console.log('Connected to postgres!');
 
     databaseConnected = true;
 
+    client = newClient;
     client
         .query('CREATE TABLE IF NOT EXISTS users(id SERIAL PRIMARY KEY, email VARCHAR(256) not null, auth VARCHAR(256) not null);')
         .on('end', function() { client.end(); });
 }
 
-function getUser(app) {
+function getUser() {
     return currentUser;
 }
 
 function setup(app) {
     pg.defaults.ssl = true;
-    pg.connect(process.env.PG_REMOTE_URL, function(err, client) {
+    pg.connect(process.env.PG_REMOTE_URL, function(err, remoteClient) {
         if (err) {
             console.log('Failed to connect to remote postgres. Connecting to local postgres');
             console.log(err);
-            pg.connect(process.env.PG_LOCAL_URL, function(err, client) {
+            pg.connect(process.env.PG_LOCAL_URL, function(err, localClient) {
                 if (err) {
                     console.log('Failed to connect to local postgres');
                     console.log(err);
                 } else {
-                    setupDatabase(client);
+                    setupDatabase(localClient);
                 }
             });
         } else {
-            setupDatabase(client);
+            setupDatabase(remoteClient);
         }
     });
 
@@ -87,7 +91,7 @@ function setup(app) {
 
         var params = {
             response_type: "code",
-            client_id: CLIENT_ID,
+            client_id: process.env.CLIENT_ID,
             redirect_uri: callbackURL,
             state: state,
             display: "popup",
@@ -115,8 +119,8 @@ function setup(app) {
                 // Setup params and URL used to call API to obtain an access_token
                 var params = {
                     code: code,
-                    client_id: CLIENT_ID,
-                    client_secret: CLIENT_SECRET,
+                    client_id: process.env.CLIENT_ID,
+                    client_secret: process.env.CLIENT_SECRET,
                     redirect_uri: callbackURL,
                     grant_type: "authorization_code"
                 };
@@ -183,5 +187,6 @@ function setup(app) {
 }
 
 module.exports = {
-    setup: setup
+    setup: setup,
+    user: getUser
 };
