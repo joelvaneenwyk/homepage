@@ -15,7 +15,7 @@ var url;
 
 // generate a url that asks permissions for Google+ and Google Calendar scopes
 var scopes = [
-    'https://www.googleapis.com/auth/plus.me'
+    "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"
 ];
 
 // Initialize our oauth variables used to store access_token and related data
@@ -46,14 +46,14 @@ function getUser() {
 
 function setup(app) {
     pg.defaults.ssl = true;
-    pg.connect(process.env.PG_REMOTE_URL, function(err, remoteClient) {
-        if (err) {
+    pg.connect(process.env.PG_REMOTE_URL, function(remoteErr, remoteClient) {
+        if (remoteErr) {
             console.log('Failed to connect to remote postgres. Connecting to local postgres');
-            console.log(err);
-            pg.connect(process.env.PG_LOCAL_URL, function(err, localClient) {
-                if (err) {
+            console.log(remoteErr);
+            pg.connect(process.env.PG_LOCAL_URL, function(localErr, localClient) {
+                if (localErr) {
                     console.log('Failed to connect to local postgres');
-                    console.log(err);
+                    console.log(localErr);
                 } else {
                     setupDatabase(localClient);
                 }
@@ -77,28 +77,21 @@ function setup(app) {
         console.log('Callback URL:' + callbackURL);
 
         oauth2Client = new OAuth2(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET, callbackURL);
+        
+        // Generate a unique number that will be used to check if any hijacking
+        // was performed during the OAuth flow
+        state = Math.floor(Math.random() * 1e18);
 
         url = oauth2Client.generateAuthUrl({
             // 'online' (default) or 'offline' (gets refresh_token)
             access_type: 'offline',
             // If you only need one scope you can pass it as string
-            scope: scopes
-        });
-
-        // Generate a unique number that will be used to check if any hijacking
-        // was performed during the OAuth flow
-        state = Math.floor(Math.random() * 1e18);
-
-        var params = {
-            response_type: "code",
-            client_id: process.env.CLIENT_ID,
-            redirect_uri: callbackURL,
+            scope: scopes,
             state: state,
             display: "popup",
-            scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
-        };
-
-        params = qs.stringify(params);
+            response_type: "code"
+        });
+        
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(url);
     });
@@ -119,15 +112,15 @@ function setup(app) {
                 // Setup params and URL used to call API to obtain an access_token
                 var params = {
                     code: code,
-                    client_id: process.env.CLIENT_ID,
-                    client_secret: process.env.CLIENT_SECRET,
+                    client_id: process.env.GOOGLE_CLIENT_ID,
+                    client_secret: process.env.GOOGLE_CLIENT_SECRET,
                     redirect_uri: callbackURL,
                     grant_type: "authorization_code"
                 };
-                var url = "https://accounts.google.com/o/oauth2/token";
+                var token_url = "https://accounts.google.com/o/oauth2/token";
 
                 // Send the API request
-                request.post(url, { form: params }, function(err, resp, body) {
+                request.post(token_url, { form: params }, function(err, resp, body) {
 
                     // Handle any errors that may occur
                     if (err) return console.error("Error occured: ", err);
@@ -164,13 +157,13 @@ function setup(app) {
         if (access_token) {
 
             // URL endpoint and params needed to make the API call
-            var url = "https://www.googleapis.com/oauth2/v1/userinfo";
+            var info_url = "https://www.googleapis.com/oauth2/v1/userinfo";
             var params = {
                 access_token: access_token
             };
 
             // Send the request
-            request.get({ url: url, qs: params }, function(err, resp, user) {
+            request.get({ url: info_url, qs: params }, function(err, resp, user) {
                 // Check for errors
                 if (err) return console.error("Error occured: ", err);
 

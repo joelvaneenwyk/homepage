@@ -1,6 +1,14 @@
 ﻿/*jslint node: true */
 "use strict";
 
+// This is done automatically by Heroku but needs to be done
+// manually if we are debugging through Visual Studio.
+if (process.env.PG_REMOTE_URL === undefined) {
+    delete process.env['PORT'];
+	console.log('Manually loading environment');
+	require('dotenv').config();
+}
+
 var express = require('express');
 var app = express();
 console.log('Root Server Started');
