@@ -11,8 +11,9 @@ var favicon = require('serve-favicon');
 var authenticate = require('./authenticate');
 var prettify = require('./prettify');
 
-var siteRoot = path.normalize(__dirname + '/../../');
-var siteData = 'source/joelvaneenwyk/data';
+var siteRoot = path.normalize(__dirname);
+var siteData = siteRoot + '/www';
+var siteStaging = siteRoot + '/dist/staging';
 
 var allowedHosts = [
     'localhost',
@@ -27,22 +28,17 @@ var allowedHosts = [
 ];
 
 var dictionary = [
-    ["/", serveStatic(siteRoot + siteData)],
-    ["/", favicon(siteRoot + siteData + '/favicon.ico')],
-    ["/", serveStatic(siteRoot + 'data')],
-    ["/", harp.mount(siteRoot + 'views')],
-    ["/thirdparty", serveStatic(siteRoot + "thirdparty")]
+    ["/", serveStatic(siteData)],
+    ["/", serveStatic(siteStaging)],
+    ["/", favicon(siteData + '/favicon.ico')],
+    ["/", serveStatic(siteData + '/data')],
+    //["/", harp.mount(siteRoot + '/views')],
 ];
 
 console.log('Starting up Joel Van Eenwyk server application');
 
 authenticate.setup(app);
 app.route('/');
-app.use(
-        function(req, res, next) {
-            // #todo Limit what people have access to
-            next();
-        })
 
 for (var i = 0; i < dictionary.length; i++) {
     for (var j = 0; j < allowedHosts.length; j++) {
@@ -55,6 +51,44 @@ for (var i = 0; i < dictionary.length; i++) {
 
 // Modify harp to prettify every HTML page that it outputs so that
 // the source code looks pretty when viewing source on a page
-prettify.prettify(harp);
+//prettify.prettify(harp);
+
+app
+    .use(function(req, res) {
+        res.status(404);
+
+        // respond with html page
+        if (req.accepts('html')) {
+            res.sendFile(siteStaging + '/404.html');
+            return;
+        }
+
+        // respond with json
+        if (req.accepts('json')) {
+            res.send({ error: '404: File Not Found' });
+            return;
+        }
+
+        // default to plain-text. send()
+        res.type('txt').send('404: File Not Found');
+    })
+    .use(function(error, req, res, next) {
+        res.status(500);
+
+        // respond with html page
+        if (req.accepts('html')) {
+            res.sendFile(siteStaging + '/500.html');
+            return;
+        }
+
+        // respond with json
+        if (req.accepts('json')) {
+            res.send({ error: '500: Internal Server Error' });
+            return;
+        }
+
+        // default to plain-text. send()
+        res.type('txt').send('500: Internal Server Error');
+    });
 
 module.exports = app;

@@ -1,6 +1,6 @@
 {
   "name": "cowrk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Server setup for Joel Van Eenwyk",
   "main": "server.js",
   "author": {
@@ -11,6 +11,7 @@
     "express": "^4.13.4",
     "connect": "^3.4.0",
     "express": "^4.13.3",
+    "vhost": "^3.0.2",
     "serve-static": "^1.10.1",
     "serve-favicon": "^2.3.0"
   }

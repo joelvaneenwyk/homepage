@@ -1,0 +1,165 @@
+@media (min-width: 450px) {
+    #name {
+        font-size: 3.5em;
+    }
+}
+
+@media screen and (orientation:portrait) {
+    /* ... */
+}
+
+@media screen and (orientation:landscape) {
+    /* ... */
+}
+
+.custom-button {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+/*
+ * Basic settings to remove all padding and margins
+ */
+
+body {
+    padding: 0px;
+    margin: 0;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+}
+
+.row {
+    padding: 0;
+    margin: 0;
+}
+
+.panel-footer.panel-custom {
+    background: red;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+/*
+ * Set hyperlink typeface and remove underlines
+ */
+
+a {
+    font-family: "Dosis";
+    font-style: normal;
+    font-weight: 200;
+    font-size: 120%;
+    text-decoration: none;
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+
+/*
+ * Front page setup
+ */
+
+.row.top {
+    background-color: #e2ecb8;
+}
+
+.name {
+    text-align: left;
+    font-family: "Dosis";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 180%;
+    margin-top: 15px;
+}
+
+.description {
+    text-align: left;
+    font-family: "Dosis";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 110%;
+    margin-top: -10px;
+}
+
+img.logo {
+    width: 30px;
+    height: 30px;
+}
+
+.link {
+    text-align: left;
+    font-family: "Dosis";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 80%;
+    margin-left: 2px;
+}
+
+.bottom-first {
+    padding-top: 10px;
+}
+
+.linkbox {
+    display: block;
+    margin: 0 0 3px 0;
+}
+
+.linkbox:hover {
+    background-color: antiquewhite;
+}
+
+.blog
+{
+    text-align: left;
+    font-family: "Dosis";
+    font-style: normal;
+    font-weight: 100;
+    font-size: 180%;
+    margin-top: 15px;
+}
+
+.blog h1
+{
+    font-weight: 500;
+    padding: 5px;
+    background-color: rgb(200, 200, 200)
+}
+
+.blog p
+{
+    font-size: 90%;
+}
+
+.blog a
+{
+    font-size: 90%;
+}
+
+.footer
+{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    display:block;
+}
+
+.error
+{
+    margin: 50px;
+    padding: 10px;
+    background-color: rgb(200, 150, 150);
+    font-weight: 100;
+    font-size: 140%;
+}
+
+.spacer
+{
+    height: 50px;
+}
