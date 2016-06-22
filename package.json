@@ -13,6 +13,10 @@
     "type": "git",
     "url": "https://github.com/joelvaneenwyk/homepage.git"
   },
+  "engines": {
+    "node": "4.4.5",
+    "npm": "3.9.6"
+  },
   "dependencies": {
     "joelvaneenwyk": "file:./source/joelvaneenwyk",
     "cowrk": "file:./source/cowrk",
