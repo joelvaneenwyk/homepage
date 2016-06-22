@@ -40,11 +40,20 @@ module.exports = function(grunt) {
                 src: ['source/joelvaneenwyk/Gruntfile.js']
             },
         },
+        clean: {
+            options: {
+                'force': false
+            },
+            build: ['dist/']
+        }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-run-grunt');
+    grunt.loadTasks('./source/joelvaneenwyk');
 
-    grunt.registerTask('default', ['jshint', 'run_grunt']);
+    grunt.registerTask('default', ['jshint', 'joelvaneenwyk']);
+    grunt.registerTask('clean', ['clean']);
     grunt.registerTask('watch', ['watch']);
 };

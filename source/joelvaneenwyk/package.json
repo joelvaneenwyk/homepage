@@ -2,7 +2,7 @@
   "name": "joelvaneenwyk",
   "version": "0.1.8",
   "description": "Server setup for Joel Van Eenwyk",
-  "main": "server.js",
+  "main": "server/server.js",
   "author": {
     "name": "joel.van.eenwyk",
     "email": "joel.vaneenwyk@gmail.com"
@@ -25,7 +25,7 @@
     "terraform": "~1.1.0",
     "googleapis": "^4.0.0",
     "grunt-jsbeautifier": "~0.2.12",
-    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-clean": ">=1.0.0",
     "grunt-contrib-concat": "~0.5.0",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-cssmin": "1.0.0",

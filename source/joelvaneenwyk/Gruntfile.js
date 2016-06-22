@@ -8,6 +8,13 @@ module.exports = function(grunt) {
     var root = path.join(process.cwd());
     var thirdparty = path.join(root, 'thirdparty');
 
+    // This is a bit of a hack due to the Harp plugin not handling paths like
+    // everyone else. We need to ensure that the path points at the right place
+    // regardless of where you run the Gruntfile from
+    var currentDir = process.cwd() + '/';
+    if (!grunt.file.isDir(currentDir + '/views'))
+        currentDir = 'source/joelvaneenwyk/';
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         processhtml: {
@@ -61,7 +68,7 @@ module.exports = function(grunt) {
         },
         harp: {
             dist: {
-                source: path.join(root, 'views'),
+                source: currentDir + 'views/',
                 dest: 'dist/staging/'
             }
         },
@@ -69,7 +76,7 @@ module.exports = function(grunt) {
             options: {
                 'force': true
             },
-            build: ['dist/release', 'dist/staging']
+            build: ['dist']
         },
         jsbeautifier: {
             files: ["dist/staging/*.html", "dist/staging/**/*.html"],
@@ -144,4 +151,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-harp');
 
     grunt.registerTask('default', ['harp', 'jsbeautifier', 'jshint', 'concat', 'uglify', 'copy']);
+    grunt.registerTask('joelvaneenwyk', ['harp', 'jsbeautifier', 'jshint', 'concat', 'uglify', 'copy']);
 };
