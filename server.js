@@ -4,7 +4,7 @@
 // This is done automatically by Heroku but needs to be done
 // manually if we are debugging through Visual Studio.
 if (process.env.PG_REMOTE_URL === undefined) {
-    delete process.env['PORT'];
+    delete process.env.PORT;
 	console.log('Manually loading environment');
 	require('dotenv').config();
 }
