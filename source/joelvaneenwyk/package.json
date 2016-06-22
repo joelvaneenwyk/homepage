@@ -23,6 +23,16 @@
     "serve-static": "^1.10.1",
     "serve-favicon": "^2.3.0",
     "terraform": "~1.1.0",
-    "googleapis": "^4.0.0"
+    "googleapis": "^4.0.0",
+    "grunt-jsbeautifier": "~0.2.12",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-cssmin": "1.0.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.0",
+    "grunt-processhtml": "0.3.12",
+    "grunt-harp": "https://github.com/shovon/grunt-harp.git"
   }
 }

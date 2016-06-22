@@ -11,9 +11,8 @@ var favicon = require('serve-favicon');
 var authenticate = require('./authenticate');
 var prettify = require('./prettify');
 
-var siteRoot = path.normalize(__dirname + '/../../');
-var siteLocalRoot = siteRoot + 'source/joelvaneenwyk';
-var siteData = siteLocalRoot + '/data';
+var siteRoot = path.normalize(__dirname);
+var siteData = siteRoot + '/www';
 var siteStaging = siteRoot + '/dist/staging';
 
 var allowedHosts = [
@@ -32,9 +31,8 @@ var dictionary = [
     ["/", serveStatic(siteData)],
     ["/", serveStatic(siteStaging)],
     ["/", favicon(siteData + '/favicon.ico')],
-    ["/", serveStatic(siteRoot + 'data')],
-    //["/", harp.mount(siteLocalRoot + '/views')],
-    ["/thirdparty", serveStatic(siteRoot + "thirdparty")]
+    ["/", serveStatic(siteData + '/data')],
+    //["/", harp.mount(siteRoot + '/views')],
 ];
 
 console.log('Starting up Joel Van Eenwyk server application');

@@ -1,43 +1,15 @@
+/* jshint node: true */
+
+"use strict";
+
 module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        processhtml: {
-            options: {
-                process: true,
-                recursive: true,
-                data: {
-                    title: 'Joel Van Eenwyk',
-                    message: 'This is production distribution'
-                }
-            },
-            dist: {
-                files: {
-                    'dist/staging/index.html': ['source/joelvaneenwyk/data/index.html']
-                }
-            },
-        },
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: ['source/joelvaneenwyk/data/js/*.js', 'thirdparty/bootstrap-3.3.4/dist/js/bootstrap.js'],
-                dest: 'dist/staging/js/<%= pkg.name %>.js'
-            }
-        },
-        uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-            },
-            dist: {
-                files: {
-                    'dist/release/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
-                }
-            }
+        joelvaneenwyk: {
         },
         jshint: {
-            all: ['Gruntfile.js', 'source/joelvaneenwyk/data/js/main.js'],
+            all: ['Gruntfile.js'],
             options: {
                 globals: {
                     jQuery: true,
@@ -49,91 +21,30 @@ module.exports = function(grunt) {
         },
         watch: {
             files: ['<%= jshint.files %>'],
-            tasks: ['jshint']
+            tasks: ['jshint', 'run_grunt']
         },
-        harp: {
-            dist: {
-                source: 'source/joelvaneenwyk/views/',
-                dest: 'dist/staging/'
-            }
-        },
-        clean: {
+        run_grunt: {
             options: {
-                'force': true
+                minimumFiles: 1
             },
-            build: ['dist/release', 'dist/staging']
-        },
-        jsbeautifier: {
-            files: ["dist/staging/*.html", "dist/staging/**/*.html"],
-            options: {
-                //config: "path/to/configFile",
-                html: {
-                    braceStyle: "collapse",
-                    indentChar: " ",
-                    indentScripts: "keep",
-                    indentSize: 4,
-                    maxPreserveNewlines: 0,
-                    preserveNewlines: true,
-                    unformatted: ["a", "sub", "sup", "b", "i", "u"],
-                    wrapLineLength: 0
+            default: {
+                options: {
+                    log: true,
+                    process: function(res){
+                        if (res.fail){
+                            res.output = 'new content';
+                            grunt.log.writeln('bork bork');
+                        }
+                    }
                 },
-                css: {
-                    indentChar: " ",
-                    indentSize: 4
-                },
-                js: {
-                    braceStyle: "collapse",
-                    breakChainedMethods: false,
-                    e4x: false,
-                    evalCode: false,
-                    indentChar: " ",
-                    indentLevel: 0,
-                    indentSize: 4,
-                    indentWithTabs: false,
-                    jslintHappy: false,
-                    keepArrayIndentation: false,
-                    keepFunctionIndentation: false,
-                    maxPreserveNewlines: 10,
-                    preserveNewlines: true,
-                    spaceBeforeConditional: true,
-                    spaceInParen: false,
-                    unescapeStrings: false,
-                    wrapLineLength: 0,
-                    endWithNewline: true
-                }
-            }
-        },
-        copy: {
-            main: {
-                files: [{
-                    expand: true,
-                    cwd: 'source/joelvaneenwyk/data/',
-                    src: '*.html',
-                    dest: 'dist/staging/'
-                }, {
-                    expand: true,
-                    cwd: 'source/joelvaneenwyk/data/',
-                    src: '*.png',
-                    dest: 'dist/staging/images'
-                }, {
-                    expand: true,
-                    cwd: 'source/joelvaneenwyk/data',
-                    src: '*.ico',
-                    dest: 'dist/staging'
-                }]
+                src: ['source/joelvaneenwyk/Gruntfile.js']
             },
         },
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-jsbeautifier');
-    grunt.loadNpmTasks('grunt-harp');
+    grunt.loadNpmTasks('grunt-run-grunt');
 
-    grunt.registerTask('default', ['harp', 'jsbeautifier', 'jshint', 'concat', 'uglify', 'copy']);
+    grunt.registerTask('default', ['jshint', 'run_grunt']);
+    grunt.registerTask('watch', ['watch']);
 };

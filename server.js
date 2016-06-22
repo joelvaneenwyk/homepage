@@ -9,8 +9,8 @@ app
             console.log('Request URL: ', fullUrl);
             next();
         })
-    .use('/', require('joelvaneenwyk'))
-    .use('/', require('cowrk'));
+    .use('/', require('./source/joelvaneenwyk'))
+    .use('/', require('./source/cowrk'));
 
 port = process.env.PORT || 5000;
 
