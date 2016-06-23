@@ -13,36 +13,36 @@ function startLogin() {
     loginWindow = window.open(loginUrl, "Google Login", 'width=800, height=600');
 }
 
+function onLogin(user) {
+    console.log('Authentication called');
+    console.log(user);
+}
+
 //
 // Global utilities
 //
 
 function updateHeader() {
-    var height = Math.max( $(window).height() / 2, $("#bottom-align").height() );
+    var height = Math.max($(window).height() / 2, $("#bottom-align").height());
     var timeToDestination = 250;
     $("#top-header").clearQueue();
     $("#top-header").animate({ "height": height + 'px' }, {
         duration: timeToDestination,
-        easing: "swing" });
+        easing: "swing"
+    });
 
     $("#bottom-align").clearQueue();
     $("#bottom-align").animate({ "margin-top": height - $("#bottom-align").height() + 'px' }, {
         duration: timeToDestination,
-        easing: "swing" });
+        easing: "swing"
+    });
 }
 
 $(document).ready(function() {
     $.get('/login', function(data) {
         loginUrl = data;
+        log('Retrieved Google login URL');
     });
-
-    // This forces you to the user page if it logs in
-    var interval = window.setInterval((function() {
-        if (loginWindow.closed) {
-            window.clearInterval(interval);
-            window.location = '/';
-        }
-    }), 500);
 
     updateHeader();
     jQuery(window).on('resize', updateHeader);

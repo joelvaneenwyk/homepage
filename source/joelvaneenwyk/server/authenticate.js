@@ -77,7 +77,7 @@ function setup(app) {
         console.log('Callback URL:' + callbackURL);
 
         oauth2Client = new OAuth2(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET, callbackURL);
-        
+
         // Generate a unique number that will be used to check if any hijacking
         // was performed during the OAuth flow
         state = Math.floor(Math.random() * 1e18);
@@ -91,7 +91,7 @@ function setup(app) {
             display: "popup",
             response_type: "code"
         });
-        
+
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(url);
     });
@@ -132,11 +132,28 @@ function setup(app) {
                     token_type = results.token_type;
                     expires = results.expires_in;
 
+                    var user = {
+                        'access_token': results.access_token,
+                        'token_type': results.token_type,
+                        'expires': results.expires_in
+                    };
+
                     console.log("Connected to Google");
 
-                    // Close the popup. This will trigger the client (index.html) to redirect
-                    // to '/user' which will test out the access_token.
-                    var output = '<html><head></head><body onload="window.close();">Close this window</body></html>';
+                    // Close the popup and call the parent onLogin function
+                    var output =
+                        '<html>\n' +
+                        '<head>\n' +
+                        '<script type="text/javascript" src="/js/login.js"></script>\n' +
+                        '<script>\n' +
+                        'function onLoad() {\n' +
+                        'var user=' + JSON.stringify(user) + ';\n' +
+                        'onLoginSuccess(user);\n' +
+                        '}\n' +
+                        '</script>\n' +
+                        '</head>\n' +
+                        '<body onload="onLoad();"></body>\n' +
+                        '</html>';
                     res.writeHead(200, { 'Content-Type': 'text/html' });
                     res.end(output);
                 });

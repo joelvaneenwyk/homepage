@@ -17,9 +17,9 @@ var siteStaging = siteRoot + '/dist/staging/';
 var fs = require('fs');
 
 fs.access(siteStaging, fs.F_OK, function(err) {
-    var path = require('path');
+    var pathTemp = require('path');
     if (err) {
-        siteStaging = path.join(__dirname, '..', '..', '..', 'dist', 'staging');
+        siteStaging = pathTemp.join(__dirname, '..', '..', '..', 'dist', 'staging');
     }
     console.log(siteStaging);
     initialize();
@@ -53,10 +53,10 @@ function initialize() {
 
     for (var i = 0; i < dictionary.length; i++) {
         for (var j = 0; j < allowedHosts.length; j++) {
-            var path = dictionary[i][0];
+            var remoteUrl = dictionary[i][0];
             var func = dictionary[i][1];
             var host = allowedHosts[j];
-            app.use(path, vhost(host, func));
+            app.use(remoteUrl, vhost(host, func));
         }
     }
 
