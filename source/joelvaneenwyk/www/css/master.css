@@ -115,6 +115,11 @@ img.logo {
     background-color: antiquewhite;
 }
 
+.container-fluid
+{
+    padding: 0px;
+}
+
 .blog
 {
     text-align: left;
@@ -122,19 +127,23 @@ img.logo {
     font-style: normal;
     font-weight: 100;
     font-size: 180%;
-    margin-top: 15px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .blog h1
 {
     font-weight: 500;
-    padding: 5px;
-    background-color: rgb(200, 200, 200)
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: rgb(200, 200, 200);
+    padding-left: 10px;
 }
 
 .blog p
 {
     font-size: 90%;
+    padding-left: 20px;
 }
 
 .blog a

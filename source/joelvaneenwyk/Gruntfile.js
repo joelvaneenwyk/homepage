@@ -162,8 +162,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html');
     grunt.loadNpmTasks('grunt-bootlint');
 
-    var requiredTasks = ['harp', 'jsbeautifier', 'jshint', 'htmllint', 'bootlint', 'concat', 'uglify', 'copy'];
+    var devTasks = ['jshint', 'htmllint', 'bootlint'];
+    var requiredTasks = ['harp', 'jsbeautifier', 'concat', 'uglify', 'copy'];
 
-    grunt.registerTask('default', requiredTasks);
+    grunt.registerTask('default', requiredTasks.concat(devTasks));
     grunt.registerTask('joelvaneenwyk', requiredTasks);
+    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks));
 };
