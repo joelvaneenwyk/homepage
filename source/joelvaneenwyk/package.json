@@ -23,7 +23,9 @@
     "serve-static": "^1.10.1",
     "serve-favicon": "^2.3.0",
     "terraform": "~1.1.0",
-    "googleapis": "^4.0.0",
+    "googleapis": "^4.0.0"
+  },
+  "devDependencies": {
     "grunt-jsbeautifier": "~0.2.12",
     "grunt-contrib-clean": ">=1.0.0",
     "grunt-contrib-concat": "~0.5.0",
