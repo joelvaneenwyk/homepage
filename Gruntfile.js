@@ -22,7 +22,13 @@ module.exports = function(grunt) {
         watch: {
             files: ['<%= jshint.files %>'],
             tasks: ['jshint', 'run_grunt']
-        }
+        },
+        clean: {
+            options: {
+                'force': true
+            },
+            build: ['dist']
+        },
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');

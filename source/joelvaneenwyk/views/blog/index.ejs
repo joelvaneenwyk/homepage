@@ -10,15 +10,11 @@
     </div>
 
 	<div class='row'>
-		<div class='col-md-2'>
-	    </div>
-		<div class='blog col-md-8'>
+		<div class='blog col-md-offset-2 col-md-8'>
 <% for(var slug in public.blog._data){ %>
   <h2><a href="/blog/<%= slug %>"><%= public.blog._data[slug].title %></a></h2>
   <%- partial("blog/" + slug) %>
 <% }; %>
-	    </div>
-		<div class='col-md-2'>
 	    </div>
     </div>
 

@@ -32,6 +32,16 @@ module.exports = function(grunt) {
                 }
             },
         },
+        htmllint: {
+            all: ["dist/staging/*.html", "dist/staging/**/*.html"]
+        },
+        bootlint: {
+            options: {
+                stoponerror: false,
+                relaxerror: []
+            },
+            files: ["dist/staging/*.html", "dist/staging/**/*.html"]
+        },
         concat: {
             options: {
                 separator: ';'
@@ -149,8 +159,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-harp');
+    grunt.loadNpmTasks('grunt-html');
+    grunt.loadNpmTasks('grunt-bootlint');
 
-    var requiredTasks = ['harp', 'jsbeautifier', 'jshint', 'concat', 'uglify', 'copy'];
+    var requiredTasks = ['harp', 'jsbeautifier', 'jshint', 'htmllint', 'bootlint', 'concat', 'uglify', 'copy'];
 
     grunt.registerTask('default', requiredTasks);
     grunt.registerTask('joelvaneenwyk', requiredTasks);

@@ -1,6 +1,6 @@
 {
-  "name": "joelvaneenwyk",
-  "version": "0.1.1",
+  "name": "joelvaneenwyk-homepage",
+  "version": "0.3.0",
   "description": "Homepage for Joel Van Eenwyk",
   "main": "server.js",
   "author": {
