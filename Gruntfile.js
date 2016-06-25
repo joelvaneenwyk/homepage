@@ -6,8 +6,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        joelvaneenwyk: {
-        },
+        joelvaneenwyk: {},
         jshint: {
             all: ['Gruntfile.js'],
             options: {
@@ -19,20 +18,24 @@ module.exports = function(grunt) {
                 }
             }
         },
+        jsonlint: {
+            files: ['*']
+        },
         watch: {
             files: ['<%= jshint.files %>'],
-            tasks: ['jshint', 'run_grunt']
+            tasks: ['jshint']
         },
         clean: {
             options: {
                 'force': true
             },
             build: ['dist']
-        },
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-jsonlint');
     grunt.loadTasks('./source/joelvaneenwyk');
 
     grunt.registerTask('default', ['jshint', 'joelvaneenwyk-dev']);
