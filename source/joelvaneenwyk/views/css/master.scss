@@ -1,6 +1,9 @@
-@media (min-width: 450px) {
+$font_size: 3.5em;
+$min_width: 450px;
+
+@media (min-width: $min_width) {
     #name {
-        font-size: 3.5em;
+        font-size: $font_size;
     }
 }
 

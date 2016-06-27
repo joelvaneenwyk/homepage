@@ -32,6 +32,16 @@ module.exports = function(grunt) {
                 }
             },
         },
+        imagemin: { // Task
+            dynamic: { // Another target
+                files: [{
+                    expand: true, // Enable dynamic expansion
+                    cwd: currentDir + 'www/', // Src matches are relative to this path
+                    src: ['**/*.{png,jpg,gif}'], // Actual patterns to match
+                    dest: 'dist/staging/' // Destination path prefix
+                }]
+            }
+        },
         htmllint: {
             all: ["dist/staging/*.html", "dist/staging/**/*.html"]
         },
@@ -132,17 +142,17 @@ module.exports = function(grunt) {
             main: {
                 files: [{
                     expand: true,
-                    cwd: 'www',
+                    cwd: currentDir + 'www',
                     src: '*.html',
                     dest: 'dist/staging/'
                 }, {
                     expand: true,
-                    cwd: 'www',
-                    src: '*.png',
-                    dest: 'dist/staging/images'
+                    cwd: currentDir + 'www/js',
+                    src: '*.js',
+                    dest: 'dist/staging/js/'
                 }, {
                     expand: true,
-                    cwd: 'www',
+                    cwd: currentDir + 'www',
                     src: '*.ico',
                     dest: 'dist/staging'
                 }]
@@ -157,15 +167,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-harp');
     grunt.loadNpmTasks('grunt-html');
     grunt.loadNpmTasks('grunt-bootlint');
 
     var devTasks = ['jshint', 'htmllint', 'bootlint'];
-    var requiredTasks = ['harp', 'jsbeautifier', 'concat', 'uglify', 'copy'];
+    var requiredTasks = ['harp', 'jsbeautifier', 'concat', 'uglify', 'imagemin'];
 
     grunt.registerTask('default', requiredTasks.concat(devTasks));
-    grunt.registerTask('joelvaneenwyk', requiredTasks);
-    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks));
+    grunt.registerTask('joelvaneenwyk', requiredTasks.concat('copy'));
+    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks).concat('copy'));
 };

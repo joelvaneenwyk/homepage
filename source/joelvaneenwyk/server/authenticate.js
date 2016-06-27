@@ -44,12 +44,27 @@ function getUser() {
     return currentUser;
 }
 
+function getUserData(token, successCallback, errorCallback) {
+    var info_url = "https://www.googleapis.com/oauth2/v1/userinfo";
+    var params = {
+        access_token: access_token
+    };
+
+    request.get({ url: info_url, qs: params }, function(err, resp, user) {
+        if (err) {
+            errorCallback(err);
+        } else {
+            successCallback(user);
+        }
+    });
+}
+
 function setup(app) {
     pg.defaults.ssl = true;
     pg.connect(process.env.PG_REMOTE_URL, function(remoteErr, remoteClient) {
         if (remoteErr) {
-            console.log('Failed to connect to remote postgres. Connecting to local postgres');
-            console.log(remoteErr);
+            console.log('Failed to connect to remote postgres. Connecting to local postgres...');
+            pg.defaults.ssl = false;
             pg.connect(process.env.PG_LOCAL_URL, function(localErr, localClient) {
                 if (localErr) {
                     console.log('Failed to connect to local postgres');
@@ -169,6 +184,7 @@ function setup(app) {
 
     // Test out the access_token by making an API call
     app.get("/user", function(req, res) {
+
 
         // Check to see if user as an access_token first
         if (access_token) {

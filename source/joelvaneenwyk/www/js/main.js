@@ -8,14 +8,15 @@ function log(info) {
 
 var loginUrl = '';
 var loginWindow = '';
+var currentUser = undefined;
 
 function startLogin() {
     loginWindow = window.open(loginUrl, "Google Login", 'width=800, height=600');
 }
 
 function onLogin(user) {
-    console.log('Authentication called');
-    console.log(user);
+    log('Authentication called. User data: ' + JSON.stringify(user));
+    currentUser = user;
 }
 
 //

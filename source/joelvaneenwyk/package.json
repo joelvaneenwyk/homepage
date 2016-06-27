@@ -1,6 +1,6 @@
 {
   "name": "joelvaneenwyk",
-  "version": "0.2.1",
+  "version": "0.2.4",
   "description": "Server setup for Joel Van Eenwyk",
   "main": "server/server.js",
   "author": {
@@ -23,17 +23,16 @@
     "serve-static": "^1.10.1",
     "serve-favicon": "^2.3.0",
     "terraform": "~1.1.0",
-    "googleapis": "^4.0.0"
-  },
-  "devDependencies": {
+    "googleapis": "^4.0.0",
     "grunt-jsbeautifier": "~0.2.12",
     "grunt-contrib-clean": ">=1.0.0",
-    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-cssmin": "1.0.0",
     "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "~0.5.0",
+    "grunt-contrib-imagemin": "^1.0.1",
     "grunt-processhtml": "0.3.12",
     "grunt-bootlint": "~0.10.1",
     "grunt-html": "~8.0.0",

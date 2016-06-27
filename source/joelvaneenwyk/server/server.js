@@ -11,11 +11,13 @@ var favicon = require('serve-favicon');
 var authenticate = require('./authenticate');
 
 var siteRoot = path.normalize(__dirname + '/../');
-var siteData = siteRoot + '/www';
+var siteData = siteRoot + '/thirdparty';
 var siteStaging = siteRoot + '/dist/staging/';
 
 var fs = require('fs');
 
+// Determine where the staging area is by testing if there is a joelvaneenwyk/dist/staging folder
+// and if there isn't try the parent folder
 fs.access(siteStaging, fs.F_OK, function(err) {
     var pathTemp = require('path');
     if (err) {
@@ -39,10 +41,10 @@ function initialize() {
     ];
 
     var dictionary = [
-        ["/", serveStatic(siteData)],
+        ["/thirdparty", serveStatic(siteRoot + '/thirdparty')],
         ["/", serveStatic(siteStaging)],
-        ["/", favicon(siteData + '/favicon.ico')],
-        ["/", serveStatic(siteData + '/data')],
+        ["/", favicon(siteStaging + '/favicon.ico')],
+        ["/data", serveStatic(siteRoot + '/data')],
         //["/", harp.mount(siteRoot + '/views')],
     ];
 
