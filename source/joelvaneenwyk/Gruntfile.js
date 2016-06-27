@@ -32,13 +32,13 @@ module.exports = function(grunt) {
                 }
             },
         },
-        imagemin: { // Task
-            dynamic: { // Another target
+        imagemin: {
+            dynamic: {
                 files: [{
-                    expand: true, // Enable dynamic expansion
-                    cwd: currentDir + 'www/', // Src matches are relative to this path
-                    src: ['**/*.{png,jpg,gif}'], // Actual patterns to match
-                    dest: 'dist/staging/' // Destination path prefix
+                    expand: true,
+                    cwd: currentDir + 'www/',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'dist/staging/'
                 }]
             }
         },
@@ -57,17 +57,17 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: ['www/js/*.js', path.join(thirdparty, '/bootstrap-3.3.4/dist/js/bootstrap.js')],
-                dest: 'dist/staging/js/<%= pkg.name %>.js'
+                src: [currentDir + 'www/js/main.js', currentDir + 'www/js/preload.js'],
+                dest: 'dist/staging/js/joelvaneenwyk.js'
             }
         },
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                banner: '/*! joelvaneenwyk <%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },
             dist: {
                 files: {
-                    'dist/release/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'dist/release/js/joelvaneenwyk.min.js': ['<%= concat.dist.dest %>']
                 }
             }
         },

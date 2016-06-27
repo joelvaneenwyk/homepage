@@ -23,6 +23,7 @@
     "serve-static": "^1.10.1",
     "serve-favicon": "^2.3.0",
     "terraform": "~1.1.0",
+    "compression": "^1.6.2",
     "googleapis": "^4.0.0",
     "grunt-jsbeautifier": "~0.2.12",
     "grunt-contrib-clean": ">=1.0.0",
