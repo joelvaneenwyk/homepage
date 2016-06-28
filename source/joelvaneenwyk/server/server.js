@@ -7,7 +7,6 @@ var vhost = require('vhost');
 var express = require('express');
 var app = express.Router();
 var favicon = require('serve-favicon');
-var compression = require('compression');
 
 var authenticate = require('./authenticate');
 
@@ -70,7 +69,6 @@ function initialize() {
     //prettify.prettify(harp);
 
     app
-        .use(compression())
         .use(function(req, res) {
             res.status(404);
 

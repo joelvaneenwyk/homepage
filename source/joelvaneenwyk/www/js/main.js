@@ -1,22 +1,46 @@
+/*globals $:false */
+/*global window: false */
+/*global Cookies: false */
+/*jslint browser: true */
+"use strict";
+
 //
 // Event handlers
 //
 
-function log(info) {
+
+var loginUrl;
+var loginWindow;
+
+// Append custom data so that we know it comes from us
+function customLog(info) {
     console.log("[JVE] " + info);
 }
 
-var loginUrl = '';
-var loginWindow = '';
-var currentUser = undefined;
-
+// This is called explicitly by the user on button press
 function startLogin() {
     loginWindow = window.open(loginUrl, "Google Login", 'width=800, height=600');
 }
 
+function setUser(user) {
+    // Store this in the local storage as well as in cookies
+    localStorage.setItem('user', user);
+    Cookies.set('user', JSON.stringify(user), { expires: user.expires, path: '' });
+}
+
+function getUser() {
+    var user = localStorage.getItem('user');
+    if (user === undefined)
+    {
+        user = Cookies.get('user');
+    }
+    return user;
+}
+
+// Called by login script externally
 function onLogin(user) {
-    log('Authentication called. User data: ' + JSON.stringify(user));
-    currentUser = user;
+    customLog('Authentication called. User data: ' + JSON.stringify(user));
+    setUser(user);
 }
 
 //
@@ -42,9 +66,9 @@ function updateHeader() {
 $(document).ready(function() {
     $.get('/login', function(data) {
         loginUrl = data;
-        log('Retrieved Google login URL');
+        customLog('Retrieved Google login URL');
     });
 
     updateHeader();
-    jQuery(window).on('resize', updateHeader);
+    $(window).on('resize', updateHeader);
 });

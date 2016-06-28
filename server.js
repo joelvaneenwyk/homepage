@@ -5,15 +5,20 @@
 // manually if we are debugging through Visual Studio.
 if (process.env.PG_REMOTE_URL === undefined) {
     delete process.env.PORT;
-	console.log('Manually loading environment');
-	require('dotenv').config();
+    console.log('Manually loading environment');
+    require('dotenv').config();
 }
 
+var compression = require('compression');
 var express = require('express');
 var app = express();
+var cookieParser = require('cookie-parser');
+
 console.log('Root Server Started');
 
 app
+    .use(compression())
+    .use(cookieParser())
     .use(
         function(req, res, next) {
             var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
