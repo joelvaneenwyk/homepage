@@ -151,8 +151,7 @@ function setup(app) {
                 console.log("Error: " + error);
             }
         } else {
-            console.log('Mismatch with variable "state". Redirecting to /');
-            res.redirect("/");
+            console.log('Mismatch with variable state');
         }
     });
 
@@ -168,7 +167,7 @@ function setup(app) {
         }
 
         // Check to see if user as an access_token first
-        if (user.access_token ) {
+        if (user.access_token) {
 
             // URL endpoint and params needed to make the API call
             var info_url = "https://www.googleapis.com/oauth2/v1/userinfo";

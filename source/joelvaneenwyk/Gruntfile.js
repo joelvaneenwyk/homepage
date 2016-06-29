@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         harp: {
             dist: {
                 source: currentDir + 'views/',
-                dest: 'dist/staging/'
+                dest: 'dist/temp/'
             }
         },
         clean: {

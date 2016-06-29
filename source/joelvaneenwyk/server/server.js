@@ -7,14 +7,16 @@ var vhost = require('vhost');
 var express = require('express');
 var app = express.Router();
 var favicon = require('serve-favicon');
+var pjson = require('../package.json');
 
 var authenticate = require('./authenticate');
 
 var siteRoot = path.normalize(__dirname + '/../');
-var siteData = siteRoot + '/thirdparty';
 var siteStaging = siteRoot + '/dist/staging/';
 
 var fs = require('fs');
+var harp = require('harp');
+var middleware = harp.middleware;
 
 // Determine where the staging area is by testing if there is a joelvaneenwyk/dist/staging folder
 // and if there isn't try the parent folder
@@ -45,7 +47,9 @@ function initialize() {
         ["/", serveStatic(siteStaging)],
         ["/", favicon(siteStaging + '/favicon.ico')],
         ["/data", serveStatic(siteRoot + '/data')],
-        //["/", harp.mount(siteRoot + '/views')],
+        ["/", function(req, rsp, next) {
+            harp.mount(siteRoot + '/views')(req, rsp, next);
+        }],
     ];
 
     console.log('Starting up Joel Van Eenwyk server application');
@@ -64,47 +68,31 @@ function initialize() {
 
     // Modify harp to prettify every HTML page that it outputs so that
     // the source code looks pretty when viewing source on a page
-    //var harp = require('harp');
-    //var prettify = require('./prettify');
-    //prettify.prettify(harp);
+    var prettify = require('./prettify');
+    prettify.prettify(harp);
 
-    app
-        .use(function(req, res) {
-            res.status(404);
+    var original_poly = middleware.poly;
+    middleware.poly = function(req, rsp, next) {
+        req.setup.config.globals.version = process.env.HEROKU_RELEASE_VERSION;
+        req.setup.config.globals.created = process.env.HEROKU_RELEASE_CREATED_AT;
+        req.setup.config.globals.owner = pjson.author.name;
+        original_poly(req, rsp, next);
+    };
 
-            // respond with html page
-            if (req.accepts('html')) {
-                res.sendFile(siteStaging + '/404.html');
-                return;
-            }
-
-            // respond with json
-            if (req.accepts('json')) {
-                res.send({ error: '404: File Not Found' });
-                return;
-            }
-
-            // default to plain-text. send()
-            res.type('txt').send('404: File Not Found');
-        })
-        .use(function(error, req, res, next) {
-            res.status(500);
-
-            // respond with html page
-            if (req.accepts('html')) {
-                res.sendFile(siteStaging + '/500.html');
-                return;
-            }
-
-            // respond with json
-            if (req.accepts('json')) {
-                res.send({ error: '500: Internal Server Error' });
-                return;
-            }
-
-            // default to plain-text. send()
-            res.type('txt').send('500: Internal Server Error');
-        });
+    var helpers = require('harp/lib/helpers');
+    var mime = require('mime');
+    app.use(function(req, rsp) {
+        var sourceFile = '404.ejs';
+        req.poly.render(sourceFile,
+            function(error, body) {
+                var type = helpers.mimeType("html");
+                var charset = mime.charsets.lookup(type);
+                rsp.setHeader('Content-Type', type + (charset ? '; charset=' + charset : ''));
+                rsp.setHeader('Content-Length', Buffer.byteLength(body, charset));
+                rsp.statusCode = 404;
+                rsp.end(body);
+            });
+    });
 }
 
 module.exports = app;

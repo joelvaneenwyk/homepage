@@ -4,7 +4,7 @@
   "description": "Server setup for Joel Van Eenwyk",
   "main": "server/server.js",
   "author": {
-    "name": "joel.van.eenwyk",
+    "name": "Joel Van Eenwyk",
     "email": "joel.vaneenwyk@gmail.com"
   },
   "dependencies": {

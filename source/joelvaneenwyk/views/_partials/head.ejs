@@ -34,11 +34,23 @@
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
-  <script src="/thirdparty/html5shiv.min.js"></script>
-  <script src="/thirdparty/respond.min.js"></script>
+<script src="/thirdparty/html5shiv.min.js"></script>
+<script src="/thirdparty/respond.min.js"></script>
 <![endif]-->
-<script src="/js/preload.js" type="text/javascript"></script>
+
+<% if(environment == "production") { %>
+<script type="text/javascript" src="/js/preload.min.js"></script>
+<% } else { %>
+<script type="text/javascript" src="/js/preload.js"></script>
+<% } %>
+
 <script type="text/javascript" src="/thirdparty/jquery.min.js"></script>
+
+<% if(environment == "production") { %>
+<script type="text/javascript" src="/js/joelvaneenwyk.min.js"></script>
+<% } else { %>
 <script type="text/javascript" src="/js/main.js"></script>
+<% } %>
+
 <script type="text/javascript" src="/thirdparty/bootstrap.min.js"></script>
 <script type="text/javascript" src="/thirdparty/js.cookie-2.1.2.min.js"></script>
