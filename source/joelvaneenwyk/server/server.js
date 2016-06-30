@@ -8,6 +8,7 @@ var express = require('express');
 var app = express.Router();
 var favicon = require('serve-favicon');
 var pjson = require('../package.json');
+var jsonminify = require("jsonminify");
 
 var authenticate = require('./authenticate');
 
@@ -74,8 +75,22 @@ function initialize() {
     var original_poly = middleware.poly;
     middleware.poly = function(req, rsp, next) {
         req.setup.config.globals.version = process.env.HEROKU_RELEASE_VERSION;
-        req.setup.config.globals.created = process.env.HEROKU_RELEASE_CREATED_AT;
+
+        var created_date = new Date(process.env.HEROKU_RELEASE_CREATED_AT);
+        var month = created_date.getUTCMonth() + 1;
+        var day = created_date.getUTCDate();
+        var year = created_date.getUTCFullYear();
+        var date = year + "-" + month + "-" + day;
+
+        var globals = {
+            created: date,
+            owner: pjson.author.name,
+        };
+
+        req.setup.config.globals.created = date;
         req.setup.config.globals.owner = pjson.author.name;
+        req.setup.config.globals.globals = jsonminify(JSON.stringify(globals));
+
         original_poly(req, rsp, next);
     };
 

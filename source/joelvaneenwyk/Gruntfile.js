@@ -52,15 +52,6 @@ module.exports = function(grunt) {
             },
             files: ["dist/temp/**/*.html"]
         },
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: [currentDir + 'www/js/main.js', currentDir + 'www/js/preload.js'],
-                dest: 'dist/staging/js/joelvaneenwyk.js'
-            }
-        },
         uglify: {
             options: {
                 banner: '/*! joelvaneenwyk <%= grunt.template.today("dd-mm-yyyy") %> */\n'
@@ -101,7 +92,7 @@ module.exports = function(grunt) {
             build: ['dist']
         },
         jsbeautifier: {
-            files: ["dist/staging/*.html", "dist/staging/**/*.html"],
+            files: ["dist/staging/**/*.html"],
             options: {
                 //config: "path/to/configFile",
                 html: {
@@ -176,7 +167,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bootlint');
 
     var devTasks = ['jshint', 'htmllint', 'bootlint'];
-    var requiredTasks = ['harp', 'jsbeautifier', 'concat', 'uglify', 'imagemin'];
+    var requiredTasks = ['harp', 'jsbeautifier', 'uglify', 'imagemin'];
 
     grunt.registerTask('default', requiredTasks.concat(devTasks));
     grunt.registerTask('joelvaneenwyk', requiredTasks.concat('copy'));

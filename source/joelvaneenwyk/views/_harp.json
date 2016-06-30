@@ -2,6 +2,7 @@
   "globals": {
     "version": "X.X.X",
     "created": "",
-    "owner": "UNDEFINED"
+    "owner": "UNDEFINED",
+    "globals": "{}"
   }
 }

@@ -25,6 +25,7 @@
     "terraform": "~1.1.0",
     "googleapis": "^4.0.0",
     "html-minifier": "^2.1.6",
+    "jsonminify": "0.4.1",
     "grunt-jsbeautifier": "~0.2.12",
     "grunt-contrib-clean": ">=1.0.0",
     "grunt-contrib-concat": "^1.0.1",
