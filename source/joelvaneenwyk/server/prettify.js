@@ -7,6 +7,7 @@ var terraform = require('terraform');
 var mime = require('mime');
 var path = require('path');
 var beautify_html = require('js-beautify').html;
+var minify = require('html-minifier').minify;
 
 var _custom_process = function(req, rsp, next) {
     var normalizedPath = helpers.normalizeUrl(req.url);
@@ -75,8 +76,12 @@ var _custom_process = function(req, rsp, next) {
                 // 404
                 if (!body) return next();
 
-                //var formatted = html.prettyPrint(body)
-                var formatted = beautify_html(body, { indent_size: 2 });
+                var minified = minify(body, {
+                    removeAttributeQuotes: true,
+                    collapseWhitespace: true,
+                    removeComments: true
+                });
+                var formatted = beautify_html(minified, { indent_size: 2 });
                 var outputTypeInternal = terraform.helpers.outputType(sourceFile);
                 var mimeTypeInternal = helpers.mimeType(outputTypeInternal);
                 var charsetInternal = mime.charsets.lookup(mimeTypeInternal);
@@ -89,13 +94,11 @@ var _custom_process = function(req, rsp, next) {
     }
 };
 
-function prettify(harp)
-{
+function prettify(harp) {
     // Override the process call and format the HTML after processing it
     harp.middleware.process = _custom_process;
 }
 
-module.exports =
-{
+module.exports = {
     prettify: prettify
 };

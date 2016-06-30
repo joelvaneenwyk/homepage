@@ -38,6 +38,10 @@
 <script src="/thirdparty/respond.min.js"></script>
 <![endif]-->
 
+<script>
+var globals = <%- JSON.stringify(public) %>;
+</script>
+
 <% if(environment == "production") { %>
 <script type="text/javascript" src="/js/preload.min.js"></script>
 <% } else { %>
@@ -47,7 +51,7 @@
 <script type="text/javascript" src="/thirdparty/jquery.min.js"></script>
 
 <% if(environment == "production") { %>
-<script type="text/javascript" src="/js/joelvaneenwyk.min.js"></script>
+<script type="text/javascript" src="/js/main.min.js"></script>
 <% } else { %>
 <script type="text/javascript" src="/js/main.js"></script>
 <% } %>

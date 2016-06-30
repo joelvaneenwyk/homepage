@@ -43,14 +43,14 @@ module.exports = function(grunt) {
             }
         },
         htmllint: {
-            all: ["dist/staging/*.html", "dist/staging/**/*.html"]
+            all: ["dist/temp/**/*.html"]
         },
         bootlint: {
             options: {
                 stoponerror: false,
                 relaxerror: []
             },
-            files: ["dist/staging/*.html", "dist/staging/**/*.html"]
+            files: ["dist/temp/**/*.html"]
         },
         concat: {
             options: {
@@ -67,7 +67,9 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/release/js/joelvaneenwyk.min.js': ['<%= concat.dist.dest %>']
+                    'dist/staging/js/main.min.js': currentDir + 'www/js/main.js',
+                    'dist/staging/js/preload.min.js': currentDir + 'www/js/preload.js',
+                    'dist/staging/js/login.min.js': currentDir + 'www/js/login.js',
                 }
             }
         },
