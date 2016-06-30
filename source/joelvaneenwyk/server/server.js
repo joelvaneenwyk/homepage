@@ -87,8 +87,8 @@ function initialize() {
             owner: pjson.author.name,
         };
 
-        req.setup.config.globals.created = date;
-        req.setup.config.globals.owner = pjson.author.name;
+        req.setup.config.globals.created = globals.created;
+        req.setup.config.globals.owner = globals.owner;
         req.setup.config.globals.globals = jsonminify(JSON.stringify(globals));
 
         original_poly(req, rsp, next);
