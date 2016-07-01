@@ -1,18 +1,21 @@
-$font_size: 3.5em;
-$min_width: 450px;
+@import "../../thirdparty/bootstrap-sass-3.3.6/assets/stylesheets/bootstrap/variables";
 
-@media (min-width: $min_width) {
-    #name {
-        font-size: $font_size;
-    }
+$footer-height: 40px;
+
+@media (max-width: $screen-xs) {
+    body{font-size: 15px;}
 }
 
-@media screen and (orientation:portrait) {
-    /* ... */
+@media (max-width: $screen-sm) {
+    body{font-size: 20px;}
 }
 
-@media screen and (orientation:landscape) {
-    /* ... */
+@media (max-width: $screen-md) {
+    body{font-size: 10px;}
+}
+
+@media (max-width: $screen-lg) {
+    body{font-size: 15px;}
 }
 
 .custom-button {
@@ -28,6 +31,7 @@ $min_width: 450px;
 body {
     padding: 0px;
     margin: 0;
+    margin-bottom: $footer-height;
 }
 
 .container {
@@ -153,10 +157,16 @@ img.logo {
 
 .footer
 {
-    position:fixed;
-    bottom:0;
-    width:100%;
-    display:block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: $footer-height;
+    background-color: #f5f5f5;
+}
+
+.panel
+{
+    border: 0px;
 }
 
 .error

@@ -13,9 +13,11 @@
                 <div>
                     <a href="/portfolio/2016_joelvaneenwyk_resume.pdf"><img src="/images/resume.png" class="custom-button" alt="Résumé" /></a>
                 </div>
-                <div>
-                    <a onclick="startLogin()" href="#"> <img src="/images/login.png" class="custom-button" alt="Login" /></a>
-                </div>
+                <% if(environment != "production") { %>
+                    <div>
+                        <a onclick="startLogin()" href="#"> <img src="/images/login.png" class="custom-button" alt="Login" /></a>
+                    </div>
+                <% } %>
             </div>
 
             <div class="col-xs-8 col-sm-4" id="bottom-align">

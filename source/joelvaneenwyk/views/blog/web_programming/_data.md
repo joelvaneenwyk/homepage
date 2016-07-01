@@ -8,15 +8,15 @@ But over time I've come to realize that this is in great part due to my fear of 
 
 Heroku also has postgres support directly which can be very handy and easy to use connection using pgAdmin III. Details on connecting [using NodeJS][10]:
 
-* https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
+* [Connecting in NodeJS](https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js)
 
-Also some details on connecting:
-
-* https://devcenter.heroku.com/articles/connecting-to-heroku-postgres-databases-from-outside-of-heroku
+Also some details on [Connecting to Postgres](https://devcenter.heroku.com/articles/connecting-to-heroku-postgres-databases-from-outside-of-heroku)
 
 You can get all the details about the server from the stats page in my case something like this:
 
-* https://postgres.heroku.com/databases/jvaneenwyk-database
+```
+https://postgres.heroku.com/databases/jvaneenwyk-database
+```
 
 I ran into the following:
 
