@@ -2,7 +2,69 @@
 
 As a C++ programmer by profession, every few years I look into the web and scoff at it. The tools are usually nowhere near the robustness I'm used to and the level of control I have is just not the same. As a type-safe programmer, Javascript upsets me and the likes of jQuery scare me.
 
-But over time I've come to realize that this is in great part due to my fear of the unknown. Yes, there are parts of web programming that are truly terrible (TODO: insert reference), but it's really coming around. TypeScript exists for those of us that like some degree of type safety. NodeJS for Visual Studio is great and debugging works beautifully. And we have tools like Grunt for code cleanup and the closest thing I can find to a compile step to help keep me in check for doing tool builds.
+But over time I've come to realize that this is in great part due to my fear of the unknown. Yes, there are parts of web programming that are truly terrible (TODO: insert reference about the npm incident), but it's really coming around at least from my perspective. TypeScript and CoffeeScript exist for those of us that like some degree of type safety. NodeJS for Visual Studio is great and debugging works beautifully. And we have tools like Grunt which provide a 'compile' step for for code cleanup, validation, image optimization and much more.
+
+# Pillars
+
+This is just a side project of mine and as with any side project you need to set some boundaries and goals or you'll never ship anything (something I have ample experience with).
+
+So, I boiled it down to these fundamental goals:
+
+1) Create something that is easy to maintain
+2) As easy to deploy live as possible
+3) Can test it locally while traveling
+
+# The Stack
+
+## Backend
+
+* Heroku
+* NodeJS
+* Grunt
+* Express
+* HARP
+
+## Frontend
+
+* jQuery
+* Bootstrap
+* SASS
+* EJS
+
+## Tools
+
+* Windows 10
+* Visual Studio 2015
+* Sublime
+* Heroku CLI
+
+# Server Setup
+
+Turns out Heroku is pretty great. Up until now I've always had a Linux server somewhere that I manually setup and maintain. Either with a LAMP stack or something similar. It's always a pain to maintain and I need to SFTP or SSH into it to do any work at all. The control was nice, but the issue is that I'm not a web programmer and my day-to-day is actually in Windows or Mac OS which means I'm never really efficient in Linux as much as I'd like to pretend I am.
+
+To satisfy goals 2) and 3) this simply will not work for me. And then I found the servers as a service model like Heroku. The price is relatively competitive with a bit of cost for the convenience.
+
+To deploy, you simply connect it to your GitHub account which allows for private accounts as well. When you submit to GitHub it automatically pulls and builds it. Setup is easy, in the root of your project you define:
+
+* app.json
+
+```
+Basic description of your application.
+```
+
+* Procfile
+
+```
+Command to launch the web server (e.g. node server.js)
+```
+
+* package.json
+
+```
+This is used by npm to store information about the package. Here you define dependencies, basic information like username and email, and so on.
+```
+
+Once you have these defined and a basic NodeJS server
 
 # Postgres
 
