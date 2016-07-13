@@ -20,7 +20,6 @@ module.exports = function(grunt) {
         currentDir = 'source/joelvaneenwyk/';
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
         imagemin: {
             dynamic: {
                 files: [{
@@ -64,10 +63,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        watch: {
-            files: ['<%= jshint.files %>'],
-            tasks: ['jshint']
-        },
         harp: {
             dist: {
                 source: currentDir + 'views/',
@@ -78,7 +73,7 @@ module.exports = function(grunt) {
             options: {
                 'force': true
             },
-            build: ['dist']
+            build: [currentDir + 'dist']
         },
         jsbeautifier: {
             files: ["dist/staging/**/*.html"],

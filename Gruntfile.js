@@ -11,8 +11,15 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        joelvaneenwyk: {},
+        watch: {
+            scripts: {
+                files: ['Gruntfile.js'],
+                tasks: ['jshint:all'],
+                options: {
+                    debounceDelay: 250,
+                }
+            }
+        },
         jshint: {
             all: ['Gruntfile.js'],
             options: {
@@ -24,22 +31,15 @@ module.exports = function(grunt) {
                 }
             }
         },
-        watch: {
-            files: ['<%= jshint.files %>'],
-            tasks: ['jshint']
-        },
         clean: {
-            options: {
-                'force': true
-            },
-            build: ['dist']
+            files: ['dist']
         }
     });
 
     grunt.loadTasks('./source/joelvaneenwyk');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['jshint', 'joelvaneenwyk-dev']);
     grunt.registerTask('dist', ['jshint', 'joelvaneenwyk']);
-    grunt.registerTask('clean', ['clean']);
-    grunt.registerTask('watch', ['watch']);
 };
