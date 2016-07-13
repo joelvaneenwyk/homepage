@@ -21,21 +21,6 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        processhtml: {
-            options: {
-                process: true,
-                recursive: true,
-                data: {
-                    title: 'Joel Van Eenwyk',
-                    message: 'This is production distribution'
-                }
-            },
-            dist: {
-                files: {
-                    'dist/staging/index.html': ['source/joelvaneenwyk/data/index.html']
-                }
-            },
-        },
         imagemin: {
             dynamic: {
                 files: [{
@@ -98,7 +83,6 @@ module.exports = function(grunt) {
         jsbeautifier: {
             files: ["dist/staging/**/*.html"],
             options: {
-                //config: "path/to/configFile",
                 html: {
                     braceStyle: "collapse",
                     indentChar: " ",
@@ -197,6 +181,16 @@ module.exports = function(grunt) {
                 ]
             }
         },
+        csslint: {
+            options: {},
+            lax: {
+                options: {
+                    important: false,
+                    'adjoining-classes': false
+                },
+                src: ['dist/temp/**/*.css']
+            }
+        },
         replace: {
             dist: {
                 files: [{
@@ -210,12 +204,25 @@ module.exports = function(grunt) {
                         replacement: function(match, offset, str, source, target) {
                             var targetRoot = process.cwd() + '/' + path.dirname(target);
                             var to = path.resolve(targetRoot + '/' + offset);
-                            if (grunt.file.exists(to))
-                            {
+                            if (grunt.file.exists(to)) {
                                 var from = process.cwd() + '/dist/staging';
                                 var rel = path.relative(from, to);
                                 rel = rel.replace(/\\/g, '/');
                                 var result = '<script src="/' + rel + '">';
+                                return result;
+                            }
+                            return match;
+                        }
+                    }, {
+                        match: /<link rel="stylesheet" href="(.*?)" /ig,
+                        replacement: function(match, offset, str, source, target) {
+                            var targetRoot = process.cwd() + '/' + path.dirname(target);
+                            var to = path.resolve(targetRoot + '/' + offset);
+                            if (grunt.file.exists(to)) {
+                                var from = process.cwd() + '/dist/staging';
+                                var rel = path.relative(from, to);
+                                rel = rel.replace(/\\/g, '/');
+                                var result = '<link rel="stylesheet" href="/' + rel + '" ';
                                 return result;
                             }
                             return match;
@@ -233,6 +240,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-replace');
@@ -243,8 +251,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bower-main');
     grunt.loadNpmTasks('grunt-wiredep');
 
-    var devTasks = ['jshint', 'htmllint', 'bootlint'];
-    var requiredTasks = ['bower_main', 'copy', 'wiredep:internal', 'wiredep:external', 'harp', 'replace', 'jsbeautifier', 'uglify', 'imagemin'];
+    var devTasks = ['csslint', 'jshint', 'htmllint', 'bootlint'];
+    var requiredTasks = [
+        'bower_main', 'copy',
+        'wiredep:internal', 'wiredep:external',
+        'harp', 'replace',
+        'jsbeautifier', 'uglify', 'imagemin'
+    ];
 
     grunt.registerTask('default', requiredTasks.concat(devTasks));
     grunt.registerTask('joelvaneenwyk', requiredTasks.concat('copy'));

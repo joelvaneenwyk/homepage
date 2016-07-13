@@ -76,12 +76,20 @@ var _custom_process = function(req, rsp, next) {
                 // 404
                 if (!body) return next();
 
-                var minified = minify(body, {
-                    removeAttributeQuotes: true,
-                    collapseWhitespace: true,
-                    removeComments: true
-                });
-                var formatted = beautify_html(minified, { indent_size: 2 });
+                var doMinify = false;
+
+                var formatted = body;
+
+                if (doMinify) {
+                    formatted = minify(formatted, {
+                        removeAttributeQuotes: true,
+                        collapseWhitespace: true,
+                        removeComments: true
+                    });
+                }
+
+                formatted = beautify_html(formatted, { indent_size: 2 });
+
                 var outputTypeInternal = terraform.helpers.outputType(sourceFile);
                 var mimeTypeInternal = helpers.mimeType(outputTypeInternal);
                 var charsetInternal = mime.charsets.lookup(mimeTypeInternal);

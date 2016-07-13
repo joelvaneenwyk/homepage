@@ -17,17 +17,12 @@
     ],
     "dependencies": {
         "jquery": "2.2.4",
-        "bootstrap-sass": "3.3.6",
+        "bootstrap": "3.3.4",
+        "bootstrap-sass": "3.3.4",
         "modernizr": "~2.8.3",
         "d3": "4.1.0",
         "topojson": "1.6.26",
         "html5shiv": "3.7.3",
         "js-cookie": "2.1.2"
-    },
-    "exportsOverride": {
-        "*": {
-            "js": ["**/*.js", "bower.json"],
-            "css": "**/*.css"
-        }
     }
 }
