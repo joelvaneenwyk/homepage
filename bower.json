@@ -1,0 +1,21 @@
+{
+    "name": "joelvaneenwyk-homepage",
+    "version": "1.0",
+    "authors": [
+        "Joel Van Eenwyk <joel.vaneenwyk@gmail.com>"
+    ],
+    "description": "Homepage for Joel Van Eenwyk",
+    "moduleType": [
+        "amd"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "joelvaneenwyk": "./source/joelvaneenwyk"
+    }
+}

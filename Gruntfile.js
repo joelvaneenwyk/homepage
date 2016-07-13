@@ -3,6 +3,13 @@
 "use strict";
 
 module.exports = function(grunt) {
+
+    // Load grunt tasks automatically
+    require('load-grunt-tasks')(grunt);
+
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         joelvaneenwyk: {},
@@ -29,8 +36,6 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadTasks('./source/joelvaneenwyk');
 
     grunt.registerTask('default', ['jshint', 'joelvaneenwyk-dev']);

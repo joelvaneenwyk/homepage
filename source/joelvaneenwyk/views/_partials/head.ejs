@@ -27,34 +27,29 @@
 <meta name="theme-color" content="#ffffff">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="/thirdparty/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/master.css" media="all">
-
-<!-- JavaScript -->
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="/thirdparty/html5shiv.min.js"></script>
-<script src="/thirdparty/respond.min.js"></script>
-<![endif]-->
 
 <script>
 var globals = <%- globals %>;
 </script>
 
+<!-- bower:js -->
+<script src="/thirdparty/jquery/dist/jquery.js"></script>
+<script src="/thirdparty/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+<script src="/thirdparty/d3/d3.js"></script>
+<script src="/thirdparty/topojson/topojson.js"></script>
+<script src="/thirdparty/html5shiv/dist/html5shiv.js"></script>
+<script src="/thirdparty/js-cookie/src/js.cookie.js"></script>
+<!-- endbower -->
+
 <% if(environment == "production") { %>
-<script type="text/javascript" src="/js/preload.min.js"></script>
+<script src="/js/preload.min.js"></script>
 <% } else { %>
-<script type="text/javascript" src="/js/preload.js"></script>
+<script src="/js/preload.js"></script>
 <% } %>
 
-<script type="text/javascript" src="/thirdparty/jquery.min.js"></script>
-
 <% if(environment == "production") { %>
-<script type="text/javascript" src="/js/main.min.js"></script>
+<script src="/js/main.min.js"></script>
 <% } else { %>
-<script type="text/javascript" src="/js/main.js"></script>
+<script src="/js/main.js"></script>
 <% } %>
-
-<script type="text/javascript" src="/thirdparty/bootstrap.min.js"></script>
-<script type="text/javascript" src="/thirdparty/js.cookie-2.1.2.min.js"></script>

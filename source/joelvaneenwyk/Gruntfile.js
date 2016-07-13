@@ -4,9 +4,13 @@
 
 module.exports = function(grunt) {
 
+    // Load grunt tasks automatically
+    require('load-grunt-tasks')(grunt);
+
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
+
     var path = require('path');
-    var root = path.join(process.cwd());
-    var thirdparty = path.join(root, 'thirdparty');
 
     // This is a bit of a hack due to the Harp plugin not handling paths like
     // everyone else. We need to ensure that the path points at the right place
@@ -132,7 +136,7 @@ module.exports = function(grunt) {
             }
         },
         copy: {
-            main: {
+            dist: {
                 files: [{
                     expand: true,
                     cwd: currentDir + 'www',
@@ -150,7 +154,76 @@ module.exports = function(grunt) {
                     dest: 'dist/staging'
                 }]
             },
+            bower: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components',
+                    src: ['**/bower.json', '**/.bower.json'],
+                    dest: 'dist/staging/thirdparty'
+                }]
+            },
         },
+        bower: {
+            install: {
+                options: {
+                    targetDir: 'dist/staging/thirdparty',
+                    cleanTargetDir: true,
+                    install: false,
+                    copy: true,
+                    prune: false,
+                    cleanBowerDir: false
+                }
+            }
+        },
+        bower_main: {
+            copy: {
+                options: {
+                    method: "copy",
+                    dest: 'dist/staging/thirdparty'
+                }
+            }
+        },
+        wiredep: {
+            internal: {
+                src: [
+                    currentDir + 'views/**/*.scss'
+                ]
+            },
+            external: {
+                directory: 'dist/staging/thirdparty',
+                exclude: [/joelvaneenwyk/],
+                src: [
+                    currentDir + 'views/**/*.ejs'
+                ]
+            }
+        },
+        replace: {
+            dist: {
+                files: [{
+                    expand: true,
+                    src: currentDir + 'views/**/*.ejs',
+                    dest: ''
+                }],
+                options: {
+                    patterns: [{
+                        match: /<script src="(.*?)">/ig,
+                        replacement: function(match, offset, str, source, target) {
+                            var targetRoot = process.cwd() + '/' + path.dirname(target);
+                            var to = path.resolve(targetRoot + '/' + offset);
+                            if (grunt.file.exists(to))
+                            {
+                                var from = process.cwd() + '/dist/staging';
+                                var rel = path.relative(from, to);
+                                rel = rel.replace(/\\/g, '/');
+                                var result = '<script src="/' + rel + '">';
+                                return result;
+                            }
+                            return match;
+                        }
+                    }]
+                }
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -162,12 +235,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-jsbeautifier');
+    grunt.loadNpmTasks('grunt-replace');
     grunt.loadNpmTasks('grunt-harp');
     grunt.loadNpmTasks('grunt-html');
     grunt.loadNpmTasks('grunt-bootlint');
+    grunt.loadNpmTasks('grunt-bower-task');
+    grunt.loadNpmTasks('grunt-bower-main');
+    grunt.loadNpmTasks('grunt-wiredep');
 
     var devTasks = ['jshint', 'htmllint', 'bootlint'];
-    var requiredTasks = ['harp', 'jsbeautifier', 'uglify', 'imagemin'];
+    var requiredTasks = ['bower_main', 'copy', 'wiredep:internal', 'wiredep:external', 'harp', 'replace', 'jsbeautifier', 'uglify', 'imagemin'];
 
     grunt.registerTask('default', requiredTasks.concat(devTasks));
     grunt.registerTask('joelvaneenwyk', requiredTasks.concat('copy'));

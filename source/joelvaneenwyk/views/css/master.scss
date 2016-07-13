@@ -1,4 +1,6 @@
-@import "../../thirdparty/bootstrap-sass-3.3.6/assets/stylesheets/bootstrap/variables";
+// bower:scss
+@import "../../../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
 
 $footer-height: 50px;
 
@@ -17,10 +19,10 @@ body {
     margin: 0;
     margin-bottom: $footer-height;
 
-    font-size: 15px;
+    font-size: 16px;
 
     @media (max-width: $screen-xs-max) {
-        font-size: 12px;
+        font-size: 14px;
     }
 }
 
@@ -84,7 +86,7 @@ a:link {
     margin-top: -10px;
 }
 
-img.logo {
+.logo {
     width: 30px;
     height: 30px;
 }
