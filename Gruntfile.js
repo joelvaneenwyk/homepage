@@ -1,55 +1,28 @@
+/* jshint node: true */
+
+"use strict";
+
 module.exports = function(grunt) {
 
-    //
-    // #todo #jve Look into the following:
-    //  http://stackoverflow.com/questions/12401998/have-grunt-generate-index-html-for-different-setups
-    //  https://www.npmjs.com/package/grunt-targethtml
-    //  https://github.com/jsoverson/grunt-preprocess
-    // * Create a dist/release and dist/dev and watch should be used for dist/dev
-    // * dist/dev should NOT use the min version
-    // * Add d3 (e.g. http://mbostock.github.io/d3/talk/20111018/collision.html)
-    //
+    // Load grunt tasks automatically
+    require('load-grunt-tasks')(grunt);
+
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        processhtml: {
-            options: {
-                process: true,
-                recursive: true,
-                data: {
-                    title: 'Joel Van Eenwyk',
-                    message: 'This is production distribution'
-                }
-            },
-            dist: {
-                files: {
-                    'dist/staging/index.html': ['source/joelvaneenwyk/data/index.html']
-                }
-            },
-        },
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: ['source/joelvaneenwyk/data/js/*.js', 'thirdparty/bootstrap-3.3.4/dist/js/bootstrap.js'],
-                dest: 'dist/staging/js/<%= pkg.name %>.js'
-            }
-        },
-        uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-            },
-            dist: {
-                files: {
-                    'dist/release/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+        watch: {
+            scripts: {
+                files: ['Gruntfile.js'],
+                tasks: ['jshint:all'],
+                options: {
+                    debounceDelay: 250,
                 }
             }
         },
         jshint: {
-            files: ['Gruntfile.js', 'source/joelvaneenwyk/data/js/main.js'],
+            all: ['Gruntfile.js'],
             options: {
-                // options here to override JSHint defaults
                 globals: {
                     jQuery: true,
                     console: true,
@@ -58,46 +31,15 @@ module.exports = function(grunt) {
                 }
             }
         },
-        watch: {
-            files: ['<%= jshint.files %>'],
-            tasks: ['jshint']
-        },
         clean: {
-            options: {
-                'force': true
-            },
-            build: ['dist/release', 'dist/staging']
-        },
-        copy: {
-            main: {
-                files: [{
-                    expand: true,
-                    cwd: 'source/joelvaneenwyk/data/',
-                    src: '*.html',
-                    dest: 'dist/staging/'
-                }, {
-                    expand: true,
-                    cwd: 'source/joelvaneenwyk/data/',
-                    src: '*.png',
-                    dest: 'dist/staging/images'
-                }, {
-                    expand: true,
-                    cwd: 'source/joelvaneenwyk/data',
-                    src: '*.ico',
-                    dest: 'dist/staging'
-                }]
-            },
-        },
+            files: ['dist']
+        }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadTasks('./source/joelvaneenwyk');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'copy']);
-    grunt.registerTask('heroku', ['jshint', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'joelvaneenwyk-dev']);
+    grunt.registerTask('dist', ['jshint', 'joelvaneenwyk']);
 };
