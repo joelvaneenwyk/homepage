@@ -76,8 +76,7 @@ var _custom_process = function(req, rsp, next) {
                 // 404
                 if (!body) return next();
 
-                var doMinify = false;
-
+                var doMinify = true;
                 var formatted = body;
 
                 if (doMinify) {
