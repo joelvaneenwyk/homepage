@@ -10,6 +10,13 @@ module.exports = function(grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
+    // This is done automatically by Heroku but needs to be done
+    // manually if we are debugging through Visual Studio.
+    if (process.env.PG_REMOTE_URL === undefined) {
+        console.log('Manually loading environment');
+        require('dotenv').config();
+    }
+
     var path = require('path');
 
     // This is a bit of a hack due to the Harp plugin not handling paths like
@@ -18,6 +25,35 @@ module.exports = function(grunt) {
     var currentDir = process.cwd() + '/';
     if (!grunt.file.isDir(currentDir + '/views'))
         currentDir = 'source/joelvaneenwyk/';
+
+    grunt.registerMultiTask('update_globals', 'Update the globals', function() {
+
+        var options = this.options({
+                force: false
+            });
+        var arrFilesSrc = this.filesSrc;
+        var verbose = grunt.verbose;
+
+        arrFilesSrc.forEach(function(file) {
+            var version = process.env.HEROKU_RELEASE_VERSION;
+
+            var created_date = new Date(process.env.HEROKU_RELEASE_CREATED_AT);
+            var month = created_date.getUTCMonth() + 1;
+            var day = created_date.getUTCDate();
+            var year = created_date.getUTCFullYear();
+            var date = year + "-" + month + "-" + day;
+
+            var p = grunt.file.readJSON('package.json');
+            var f = grunt.file.readJSON(file);
+            grunt.log.writeln("%j", f);
+            f.globals.version = version;
+            f.globals.created = date;
+            f.globals.owner = p.author.name;
+            grunt.log.writeln("%j", f);
+            grunt.log.writeln('This is the success message');
+            grunt.file.write(file, JSON.stringify(f));
+        });
+    });
 
     grunt.initConfig({
         imagemin: {
@@ -66,8 +102,11 @@ module.exports = function(grunt) {
         harp: {
             dist: {
                 source: currentDir + 'views/',
-                dest: 'dist/temp/'
+                dest: 'dist/www/'
             }
+        },
+        update_globals: {
+            all: [currentDir + 'views/_harp.json']
         },
         clean: {
             options: {
@@ -250,11 +289,13 @@ module.exports = function(grunt) {
     var requiredTasks = [
         'bower_main', 'copy',
         'wiredep:internal', 'wiredep:external',
-        'harp', 'replace',
+        'replace', 'update_globals', 'harp',
         'jsbeautifier', 'uglify', 'imagemin'
     ];
 
+    grunt.registerTask('globals', ['update_globals']);
     grunt.registerTask('default', requiredTasks.concat(devTasks));
+    grunt.registerTask('update', ['harp']);
     grunt.registerTask('joelvaneenwyk', requiredTasks.concat('copy'));
     grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks).concat('copy'));
 };

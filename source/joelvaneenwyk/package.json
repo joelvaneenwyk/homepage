@@ -1,6 +1,6 @@
 {
   "name": "joelvaneenwyk",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Server setup for Joel Van Eenwyk",
   "main": "server/server.js",
   "author": {
@@ -23,6 +23,8 @@
     "serve-static": "^1.10.1",
     "serve-favicon": "^2.3.0",
     "terraform": "~1.1.0",
+    "connect-pg-simple": "^3.1.0",
+    "express-sessions": "^1.0.5",
     "googleapis": "^4.0.0",
     "html-minifier": "^2.1.6",
     "jsonminify": "0.4.1",

@@ -64,7 +64,7 @@ function updateHeader() {
 }
 
 $(document).ready(function() {
-    $.get('/login', function(data) {
+    $.get('/api/login', function(data) {
         loginUrl = data;
         customLog('Retrieved Google login URL');
     });

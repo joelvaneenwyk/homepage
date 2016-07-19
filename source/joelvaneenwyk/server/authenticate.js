@@ -5,6 +5,12 @@ var request = require("request");
 var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 var pg = require('pg');
+var fs = require('fs');
+var path = require('path');
+var root = path.normalize(__dirname);
+
+var session = require('express-session');
+var pgSession = require('connect-pg-simple')(session);
 
 // Initialize our oauth variables used to store access_token and related data
 var oauth_states = [];
@@ -13,43 +19,18 @@ var oauth_states = [];
 var client = new pg.Client();
 var databaseConnected = false;
 
-function setupDatabase(newClient) {
-    console.log('Connected to postgres!');
-
-    databaseConnected = true;
-
-    client = newClient;
-    client
-        .query('CREATE TABLE IF NOT EXISTS users(id SERIAL PRIMARY KEY, email VARCHAR(256) not null, auth VARCHAR(256) not null);')
-        .on('end', function() { client.end(); });
-}
-
-function getCallbackUrl(req) {
-    // Define API credentials callback URL
-    var url = req.protocol + '://' + req.get('host');
-    var callbackURL = url + "/oauth2callback";
-    console.log('Callback URL:' + callbackURL);
-    return callbackURL;
-}
-
-function setup(app) {
-    pg.defaults.ssl = true;
-    pg.connect(process.env.PG_REMOTE_URL, function(remoteErr, remoteClient) {
-        if (remoteErr) {
-            console.log('Failed to connect to remote postgres. Connecting to local postgres...');
-            pg.defaults.ssl = false;
-            pg.connect(process.env.PG_LOCAL_URL, function(localErr, localClient) {
-                if (localErr) {
-                    console.log('Failed to connect to local postgres');
-                    console.log(localErr);
-                } else {
-                    setupDatabase(localClient);
-                }
-            });
-        } else {
-            setupDatabase(remoteClient);
-        }
-    });
+function setupApp(app, databaseURL, next) {
+    app.use(session({
+        store: new pgSession({
+            pg: pg,
+            conString: databaseURL,
+            tableName: 'session'
+        }),
+        saveUninitialized: true,
+        secret: process.env.COOKIE_SECRET,
+        resave: false,
+        cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+    }));
 
     app.get("/db/status", function(req, res) {
         res.send(databaseConnected);
@@ -57,11 +38,18 @@ function setup(app) {
 
     // Start the OAuth flow by generating a URL that the client (index.html) opens
     // as a popup. The URL takes the user to Google's site for authentication
-    app.get("/login", function(req, res) {
+    app.get("/api/login", function(req, res) {
         var oauth2Client = new OAuth2(
             process.env.GOOGLE_CLIENT_ID,
             process.env.GOOGLE_CLIENT_SECRET,
             getCallbackUrl(req));
+
+        var sess = req.session;
+        try {
+            sess.views++;
+        } catch (e) {
+            sess.views = 1;
+        }
 
         // Generate a unique number that will be used to check if any hijacking
         // was performed during the OAuth flow
@@ -188,6 +176,67 @@ function setup(app) {
         } else {
             console.log("Couldn't verify user was authenticated. Redirecting to /");
             res.redirect("/");
+        }
+    });
+
+    app.all('/p/*', function(req, res, next) {
+        if (!req.session.loggedIn) {
+            res.redirect("/login");
+        } else if (req.session.loggedIn) {
+            next();
+        }
+    });
+
+    next();
+}
+
+function setupDatabase(app, newClient, databaseURL, next) {
+    console.log('Connected to postgres!');
+
+    databaseConnected = true;
+
+    client = newClient;
+
+    var sqlUsers = fs.readFileSync(root + '/postgres/create_users.sql').toString();
+    client
+        .query(sqlUsers)
+        .on('end', function() { client.end(); });
+
+    var sqlSessions = fs.readFileSync(root + '/postgres/create_session.sql').toString();
+    client.query(sqlSessions, function(err, result) {
+        if (err) {
+            console.log('Session table already exists');
+        } else {
+            console.log('Successfully created session table');
+        }
+        setupApp(app, databaseURL, next);
+    });
+}
+
+function getCallbackUrl(req) {
+    // Define API credentials callback URL
+    var url = req.protocol + '://' + req.get('host');
+    var callbackURL = url + "/oauth2callback";
+    console.log('Callback URL:' + callbackURL);
+    return callbackURL;
+}
+
+function setup(app, next) {
+    pg.defaults.ssl = true;
+    pg.connect(process.env.PG_REMOTE_URL, function(remoteErr, remoteClient) {
+        if (remoteErr) {
+            console.log('Failed to connect to remote postgres. Connecting to local postgres...');
+            pg.defaults.ssl = false;
+            pg.connect(process.env.PG_LOCAL_URL, function(localErr, localClient) {
+                if (localErr) {
+                    console.log('Failed to connect to local postgres');
+                    console.log(localErr);
+                } else {
+                    setupDatabase(app, localClient, process.env.PG_LOCAL_URL, next);
+                }
+            });
+        } else {
+            setupDatabase(app, remoteClient, process.env.PG_REMOTE_URL, next);
         }
     });
 }
