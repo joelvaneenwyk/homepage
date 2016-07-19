@@ -29,8 +29,8 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('update_globals', 'Update the globals', function() {
 
         var options = this.options({
-                force: false
-            });
+            force: false
+        });
         var arrFilesSrc = this.filesSrc;
         var verbose = grunt.verbose;
 
@@ -67,14 +67,14 @@ module.exports = function(grunt) {
             }
         },
         htmllint: {
-            all: ["dist/temp/**/*.html"]
+            all: ["dist/www/**/*.html"]
         },
         bootlint: {
             options: {
                 stoponerror: false,
                 relaxerror: []
             },
-            files: ["dist/temp/**/*.html"]
+            files: ["dist/www/**/*.html"]
         },
         uglify: {
             options: {
@@ -101,12 +101,12 @@ module.exports = function(grunt) {
         },
         harp: {
             dist: {
-                source: currentDir + 'views/',
+                source: 'dist/views/',
                 dest: 'dist/www/'
             }
         },
         update_globals: {
-            all: [currentDir + 'views/_harp.json']
+            all: ['dist/views/_harp.json']
         },
         clean: {
             options: {
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
             build: [currentDir + 'dist']
         },
         jsbeautifier: {
-            files: ["dist/staging/**/*.html"],
+            files: ['dist/staging/**/*.html', 'dist/www/**/*.html'],
             options: {
                 html: {
                     braceStyle: "collapse",
@@ -180,6 +180,12 @@ module.exports = function(grunt) {
                     dest: 'dist/staging/thirdparty'
                 }]
             },
+            views: {
+                cwd: currentDir + 'views',
+                src: '**/*',
+                dest: 'dist/views',
+                expand: true
+            }
         },
         bower: {
             install: {
@@ -204,14 +210,14 @@ module.exports = function(grunt) {
         wiredep: {
             internal: {
                 src: [
-                    currentDir + 'views/**/*.scss'
+                    'dist/views/**/*.scss'
                 ]
             },
             external: {
                 directory: 'dist/staging/thirdparty',
                 exclude: [/joelvaneenwyk/],
                 src: [
-                    currentDir + 'views/**/*.ejs'
+                    'dist/views/**/*.ejs'
                 ]
             }
         },
@@ -222,14 +228,14 @@ module.exports = function(grunt) {
                     important: false,
                     'adjoining-classes': false
                 },
-                src: ['dist/temp/**/*.css']
+                src: ['dist/www/**/*.css']
             }
         },
         replace: {
             dist: {
                 files: [{
                     expand: true,
-                    src: currentDir + 'views/**/*.ejs',
+                    src: 'dist/views/**/*.ejs',
                     dest: ''
                 }],
                 options: {
@@ -296,6 +302,6 @@ module.exports = function(grunt) {
     grunt.registerTask('globals', ['update_globals']);
     grunt.registerTask('default', requiredTasks.concat(devTasks));
     grunt.registerTask('update', ['harp']);
-    grunt.registerTask('joelvaneenwyk', requiredTasks.concat('copy'));
-    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks).concat('copy'));
+    grunt.registerTask('joelvaneenwyk', requiredTasks);
+    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks));
 };
