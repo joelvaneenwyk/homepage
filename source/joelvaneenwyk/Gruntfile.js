@@ -4,16 +4,10 @@
 
 module.exports = function(grunt) {
 
-    // Load grunt tasks automatically
-    require('load-grunt-tasks')(grunt);
-
-    // Time how long tasks take. Can help when optimizing build times
-    require('time-grunt')(grunt);
-
     // This is done automatically by Heroku but needs to be done
     // manually if we are debugging through Visual Studio.
     if (process.env.PG_REMOTE_URL === undefined) {
-        console.log('Manually loading environment');
+        console.log('Manually loading environment...');
         require('dotenv').config();
     }
 
@@ -76,6 +70,25 @@ module.exports = function(grunt) {
             },
             files: ["dist/www/**/*.html"]
         },
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'dist/',
+                    src: 'www/**/*.html',
+                    dest: 'dist/'
+                }, {
+                    expand: true,
+                    cwd: 'dist/',
+                    src: 'staging/**/*.html',
+                    dest: 'dist/'
+                }]
+            },
+        },
         uglify: {
             options: {
                 banner: '/*! joelvaneenwyk <%= grunt.template.today("dd-mm-yyyy") %> */\n'
@@ -124,8 +137,9 @@ module.exports = function(grunt) {
                     indentSize: 4,
                     maxPreserveNewlines: 0,
                     preserveNewlines: true,
-                    unformatted: ["a", "sub", "sup", "b", "i", "u"],
-                    wrapLineLength: 0
+                    unformatted: ["a", "sub", "sup", "b", "i", "u", "pre", "code"],
+                    wrapLineLength: 0,
+                    endWithNewline: true
                 },
                 css: {
                     indentChar: " ",
@@ -187,18 +201,6 @@ module.exports = function(grunt) {
                 expand: true
             }
         },
-        bower: {
-            install: {
-                options: {
-                    targetDir: 'dist/staging/thirdparty',
-                    cleanTargetDir: true,
-                    install: false,
-                    copy: true,
-                    prune: false,
-                    cleanBowerDir: false
-                }
-            }
-        },
         bower_main: {
             copy: {
                 options: {
@@ -222,10 +224,10 @@ module.exports = function(grunt) {
             }
         },
         csslint: {
-            options: {},
             lax: {
                 options: {
                     important: false,
+                    'qualified-headings': false,
                     'adjoining-classes': false
                 },
                 src: ['dist/www/**/*.css']
@@ -273,6 +275,12 @@ module.exports = function(grunt) {
         }
     });
 
+    // Load grunt tasks automatically
+    require('load-grunt-tasks')(grunt);
+
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
+
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -282,12 +290,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-replace');
     grunt.loadNpmTasks('grunt-harp');
     grunt.loadNpmTasks('grunt-html');
     grunt.loadNpmTasks('grunt-bootlint');
-    grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-bower-main');
     grunt.loadNpmTasks('grunt-wiredep');
 
@@ -296,12 +304,17 @@ module.exports = function(grunt) {
         'bower_main', 'copy',
         'wiredep:internal', 'wiredep:external',
         'replace', 'update_globals', 'harp',
-        'jsbeautifier', 'uglify', 'imagemin'
+        'uglify', 'htmlmin', 'jsbeautifier',
+        'imagemin'
     ];
 
     grunt.registerTask('globals', ['update_globals']);
     grunt.registerTask('default', requiredTasks.concat(devTasks));
-    grunt.registerTask('update', ['harp']);
+    grunt.registerTask('update', ['copy:dist', 'copy:views', 'harp',
+        'wiredep:internal', 'wiredep:external',
+        'replace', 'update_globals', 'harp',
+        'uglify', 'htmlmin', 'jsbeautifier'
+    ]);
     grunt.registerTask('joelvaneenwyk', requiredTasks);
     grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks));
 };

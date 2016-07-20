@@ -2,7 +2,7 @@
 @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
 // disable:endbower
 
-$footer-height: 50px;
+$footer-height: 60px;
 
 .custom-button {
     width: 50px;
@@ -10,20 +10,19 @@ $footer-height: 50px;
     margin: 5px;
 }
 
-/*
- * Basic settings to remove all padding and margins
- */
+//
+// We are a Desktop First setup (https://css-tricks.com/logic-in-media-queries/) so
+// we remove margins for desktop and use bootstrap to provide column buffers. As the
+// screen gets smaller we add margin and increase font size.
+//
 
 body {
     padding: 0px;
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
     margin-bottom: $footer-height;
-
-    font-size: 16px;
-
-    @media (max-width: $screen-xs-max) {
-        font-size: 14px;
-    }
+    font-family: "Dosis", Times, serif;
+    font-size: 14px;
 }
 
 .container {
@@ -48,7 +47,6 @@ body {
  */
 
 a {
-    font-family: "Dosis";
     font-style: normal;
     font-weight: 200;
     text-decoration: none;
@@ -70,7 +68,6 @@ a:link {
 
 .name {
     text-align: left;
-    font-family: "Dosis";
     font-style: normal;
     font-weight: 800;
     font-size: 180%;
@@ -79,7 +76,6 @@ a:link {
 
 .description {
     text-align: left;
-    font-family: "Dosis";
     font-style: normal;
     font-weight: 600;
     font-size: 110%;
@@ -93,7 +89,6 @@ a:link {
 
 .link {
     text-align: left;
-    font-family: "Dosis";
     font-style: normal;
     font-weight: 600;
     font-size: 80%;
@@ -120,11 +115,16 @@ a:link {
 
 .blog
 {
-    font-family: "Dosis";
     font-style: normal;
-    font-weight: 100;
+    font-weight: 400;
     padding-left: 0;
     padding-right: 0;
+
+    @media (max-width: $screen-sm-max) {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 16px;
+    }
 
     h1
     {
@@ -133,6 +133,23 @@ a:link {
         padding-top: 5px;
         background-color: rgb(200, 200, 200);
         padding-left: 10px;
+    }
+
+    h2
+    {
+        font-weight: 500;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        background-color: rgb(200, 200, 200);
+        padding-left: 10px;
+    }
+
+    h3
+    {
+        font-weight: 800;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-left: 15px;
     }
 
     p

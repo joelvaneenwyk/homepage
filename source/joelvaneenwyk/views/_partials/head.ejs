@@ -26,26 +26,17 @@
 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
-<!-- css -->
-<link rel="stylesheet" type="text/css" href="/css/master.css" media="all">
-
 <script>
 var globals = <%- globals %>;
 </script>
 
 <!-- bower:css -->
-<link rel="stylesheet" href="/thirdparty/bootstrap/dist/css/bootstrap.css" />
 <!-- endbower -->
 
+<!-- Our custom CSS goes after anything Bower might include -->
+<link rel="stylesheet" type="text/css" href="/css/master.css" media="all">
+
 <!-- bower:js -->
-<script src="/thirdparty/jquery/dist/jquery.js"></script>
-<script src="/thirdparty/bootstrap/dist/js/bootstrap.js"></script>
-<script src="/thirdparty/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-<script src="/thirdparty/d3/d3.js"></script>
-<script src="/thirdparty/topojson/topojson.js"></script>
-<script src="/thirdparty/html5shiv/dist/html5shiv.js"></script>
-<script src="/thirdparty/js-cookie/src/js.cookie.js"></script>
-<script src="/thirdparty/datamaps/dist/datamaps.all.js"></script>
 <!-- endbower -->
 
 <% if(environment == "production") { %>

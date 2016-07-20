@@ -1,10 +1,10 @@
-# Introduction
+# Web Programming for Console Developers
 
 As a C++ programmer by profession, every few years I look into the web and scoff at it. The tools are usually nowhere near the robustness I'm used to and the level of control I have is just not the same. As a type-safe programmer, Javascript upsets me and the likes of jQuery scare me.
 
-But over time I've come to realize that this is in great part due to my fear of the unknown. Yes, there are parts of web programming that are truly terrible (TODO: insert reference about the npm incident), but it's really coming around at least from my perspective. TypeScript and CoffeeScript exist for those of us that like some degree of type safety. NodeJS for Visual Studio is great and debugging works beautifully. And we have tools like Grunt which provide a 'compile' step for for code cleanup, validation, image optimization and much more.
+But over time I've come to realize that this is in great part due to my fear of the unknown. Yes, there are parts of web programming that are truly terrible (See [NPM left-pad Chaos](http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/)), but it's really coming around at least from my perspective. TypeScript and CoffeeScript exist for those of us that like some degree of type safety. NodeJS for Visual Studio is great and debugging works beautifully. And we have tools like Grunt which provide a 'compile' step for for code cleanup, validation, image optimization and much more.
 
-# Pillars
+## Pillars
 
 This is just a side project of mine and as with any side project you need to set some boundaries and goals or you'll never ship anything (something I have ample experience with).
 
@@ -14,9 +14,9 @@ So, I boiled it down to these fundamental goals:
 2) As easy to deploy live as possible
 3) Can test it locally while traveling
 
-# The Stack
+## The Stack
 
-## Backend
+### Backend
 
 * Heroku
 * NodeJS
@@ -24,21 +24,21 @@ So, I boiled it down to these fundamental goals:
 * Express
 * HARP
 
-## Frontend
+### Frontend
 
 * jQuery
 * Bootstrap
 * SASS
 * EJS
 
-## Tools
+### Tools
 
 * Windows 10
 * Visual Studio 2015
 * Sublime
 * Heroku CLI
 
-# Server Setup
+## Server Setup
 
 Turns out Heroku is pretty great. Up until now I've always had a Linux server somewhere that I manually setup and maintain. Either with a LAMP stack or something similar. It's always a pain to maintain and I need to SFTP or SSH into it to do any work at all. The control was nice, but the issue is that I'm not a web programmer and my day-to-day is actually in Windows or Mac OS which means I'm never really efficient in Linux as much as I'd like to pretend I am.
 
@@ -66,7 +66,7 @@ This is used by npm to store information about the package. Here you define depe
 
 Once you have these defined and a basic NodeJS server
 
-# Postgres
+## Postgres
 
 Heroku also has postgres support directly which can be very handy and easy to use connection using pgAdmin III. Details on connecting [using NodeJS][10]:
 
@@ -89,28 +89,28 @@ connect to PostgreSQL server: FATAL: no pg_hba.conf entry for host "4X.XXX.XX.XX
 Turns out this was because I didn't enable SSL.
 
 ```javascript
-    var pg = require('pg');
-    pg.defaults.ssl = true;
-    var client = new pg.Client()
-    pg.connect(process.env.PG_REMOTE_URL, function(err, client) {
-        if (err) {
-            console.log('Failed to connect to remote postgres. Connecting to local postgres');
-            console.log(err);
-            pg.connect(process.env.PG_LOCAL_URL, function(err, client) {
-                if (err) {
-                    console.log('Failed to connect to local postgres');
-                    console.log(err);
-                } else {
-                    setupDatabase(client);
-                }
-            });
-        } else {
-            setupDatabase(client);
-        }
-    });
+var pg = require('pg');
+pg.defaults.ssl = true;
+var client = new pg.Client()
+pg.connect(process.env.PG_REMOTE_URL, function(err, client) {
+    if (err) {
+        console.log('Failed to connect to remote postgres. Connecting to local postgres');
+        console.log(err);
+        pg.connect(process.env.PG_LOCAL_URL, function(err, client) {
+            if (err) {
+                console.log('Failed to connect to local postgres');
+                console.log(err);
+            } else {
+                setupDatabase(client);
+            }
+        });
+    } else {
+        setupDatabase(client);
+    }
+});
 ```
 
-# Other Technology
+## Other Technology
 
 There are innumerable other technologies I looked at while implementing my website that I haven't even started to have time to look at. You can add unfurl tags (http://tinyurl.com/pu59bre) via oEmbed server or HTML meta tags for Facebook OpenGraph.
 
@@ -118,7 +118,7 @@ For live editing you have StackEdit and Prose.io and numerous others which all s
 
 Cloudpipes is another that caught my eye, but spending money to visually program automated interactions with the world seems a bit strange to me.
 
-# Resources
+## Resources
 
 [1]: https://devcenter.heroku.com/articles/custom-domains
 [2]: http://stackoverflow.com/questions/14125175/setup-heroku-and-godaddy
