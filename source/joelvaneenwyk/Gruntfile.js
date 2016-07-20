@@ -96,7 +96,6 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     'dist/staging/js/main.min.js': currentDir + 'www/js/main.js',
-                    'dist/staging/js/preload.min.js': currentDir + 'www/js/preload.js',
                     'dist/staging/js/login.min.js': currentDir + 'www/js/login.js',
                 }
             }

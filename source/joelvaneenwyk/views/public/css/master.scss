@@ -21,8 +21,12 @@ body {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: $footer-height;
-    font-family: "Dosis", Times, serif;
+    font-family: sans-serif;
     font-size: 14px;
+}
+
+.fonts-loaded body {
+    font-family: 'Dosis', sans-serif;
 }
 
 .container {

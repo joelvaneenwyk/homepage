@@ -40,12 +40,6 @@ var globals = <%- globals %>;
 <!-- endbower -->
 
 <% if(environment == "production") { %>
-<script src="/js/preload.min.js"></script>
-<% } else { %>
-<script src="/js/preload.js"></script>
-<% } %>
-
-<% if(environment == "production") { %>
 <script src="/js/main.min.js"></script>
 <% } else { %>
 <script src="/js/main.js"></script>
