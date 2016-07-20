@@ -9,7 +9,6 @@ var app = express.Router();
 var favicon = require('serve-favicon');
 var pjson = require('../package.json');
 var jsonminify = require("jsonminify");
-
 var authenticate = require('./authenticate');
 
 var siteRoot = path.normalize(__dirname + '/../');

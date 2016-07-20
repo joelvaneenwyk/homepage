@@ -16,6 +16,11 @@ var cookieParser = require('cookie-parser');
 
 console.log('Root Server Started');
 
+// Don't expose server info
+app.disable('x-powered-by');
+// Show stack errors
+app.set('showStackError', true);
+
 app
     .use(compression())
     .use(cookieParser())

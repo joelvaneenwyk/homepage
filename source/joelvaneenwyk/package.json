@@ -1,6 +1,6 @@
 {
   "name": "joelvaneenwyk",
-  "version": "0.3.5",
+  "version": "0.4.0",
   "description": "Server setup for Joel Van Eenwyk",
   "main": "server/server.js",
   "author": {
@@ -25,11 +25,14 @@
     "terraform": "~1.1.0",
     "connect-pg-simple": "^3.1.0",
     "express-sessions": "^1.0.5",
-    "googleapis": "^4.0.0",
     "html-minifier": "^2.1.6",
     "jsonminify": "0.4.1",
     "load-grunt-tasks": "~0.2.0",
     "time-grunt": "~0.2.3",
+    "passport": "0.3.2",
+    "passport-google-oauth": "1.0.0",
+    "body-parser-json": "1.9.2",
+    "string-template": "^1.0.0",
     "grunt-jsbeautifier": "~0.2.12",
     "grunt-contrib-clean": ">=1.0.0",
     "grunt-contrib-concat": "^1.0.1",

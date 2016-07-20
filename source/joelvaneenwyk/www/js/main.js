@@ -8,7 +8,6 @@
 // Event handlers
 //
 
-
 var loginUrl;
 var loginWindow;
 
@@ -19,7 +18,7 @@ function customLog(info) {
 
 // This is called explicitly by the user on button press
 function startLogin() {
-    loginWindow = window.open(loginUrl, "Google Login", 'width=800, height=600');
+    loginWindow = window.open('/auth/google', "Google Login", 'width=800, height=600');
 }
 
 function setUser(user) {
@@ -64,11 +63,6 @@ function updateHeader() {
 }
 
 $(document).ready(function() {
-    $.get('/api/login', function(data) {
-        loginUrl = data;
-        customLog('Retrieved Google login URL');
-    });
-
     updateHeader();
     $(window).on('resize', updateHeader);
 });
