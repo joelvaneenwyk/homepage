@@ -115,12 +115,70 @@ function fontsLoaded() {
     console.log('Fonts loaded');
 }
 
+function addPasswordValidation() {
+    $('#private_form').bootstrapValidator({
+            // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            excluded: [':disabled'],
+            fields: {
+                password: {
+                    validators: {
+                        stringLength: {
+                            min: 8,
+                        },
+                        notEmpty: {
+                            message: 'Please supply password longer than 8 characters'
+                        }
+                    }
+                },
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            var data = $form.serializeArray();
+            data.push({ name: "page", value: $(this).attr('action') });
+
+            $.ajax({
+                url: 'validate',
+                type: 'POST',
+                data: $.param(data),
+                success: function(result) {
+                    if (result.status == 'error') {
+                        $('#private_form').bootstrapValidator("resetForm", true);
+                        showFailure('Invalid password please try again.');
+                    } else {
+                        window.location.href = "login?id=" + result.id;
+                    }
+                },
+                error: function(result) {
+                    $('#private_form').bootstrapValidator("resetForm", true);
+                    showFailure('Invalid password please try again.');
+                }
+            });
+
+            return false;
+        });
+}
+
 $(document).ready(function() {
     updateHeader();
     $(window).on('resize', updateHeader);
 
     Promise
         .all(FontObservers.map(function(font) {
-            return font.load() }))
+            return font.load()
+        }))
         .then(fontsLoaded);
 });

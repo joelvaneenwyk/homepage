@@ -61,7 +61,7 @@ function initialize() {
     console.log('Starting up Joel Van Eenwyk server application');
 
     // We setup authentication first since it needs to route the traffic
-    authenticate.setup(mainApp, function() {
+    authenticate.setup(mainApp, siteWWW, function() {
         for (var j = 0; j < allowedHosts.length; j++) {
             var host = allowedHosts[j];
             app.use(vhost(host, mainApp));

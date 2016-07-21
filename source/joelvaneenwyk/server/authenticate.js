@@ -10,17 +10,39 @@ var passport = require('passport');
 var session = require('express-session');
 var pgSession = require('connect-pg-simple')(session);
 var format = require('string-template');
-
-var root = path.normalize(__dirname);
-
-// Initialize our oauth variables used to store access_token and related data
-var oauth_states = [];
+var serveStatic = require('serve-static');
 
 // Variables for postgres
 var client = new pg.Client();
 var databaseConnected = false;
+var serverRoot = path.normalize(__dirname);
 
-function setupApp(app, databaseURL, next) {
+var fs = require('fs');
+var walk = function(dir, done) {
+    var results = [];
+    fs.readdir(dir, function(err, list) {
+        if (err) return done(err);
+        var i = 0;
+        (function next() {
+            var file = list[i++];
+            if (!file) return done(null, results);
+            file = dir + '/' + file;
+            fs.stat(file, function(err, stat) {
+                if (stat && stat.isDirectory()) {
+                    walk(file, function(err, res) {
+                        results = results.concat(res);
+                        next();
+                    });
+                } else {
+                    results.push(file);
+                    next();
+                }
+            });
+        })();
+    });
+};
+
+function setupApp(app, root, databaseURL, next) {
     app.use(session({
         store: new pgSession({
             pg: pg,
@@ -43,11 +65,11 @@ function setupApp(app, databaseURL, next) {
         // This is called to return a user from a passport
         // stategy (e.g., after user logs in with GitHub)
         // This also is what req.user is set to
-        var sql = fs.readFileSync(root + '/postgres/find_user.sql').toString();
+        var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
         var sql_var = format(sql, {
             profile_id: user.id
         });
-        client.query(sql_var, function(err, queryResult) {
+        client.query(sql_var, function(err) {
             done(err, user);
         });
     });
@@ -61,7 +83,7 @@ function setupApp(app, databaseURL, next) {
             // we make sure we are always using strings for our internal ids
             var profileId = profile.id + "";
 
-            var sql = fs.readFileSync(root + '/postgres/find_user.sql').toString();
+            var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
             var sql_var = format(sql, {
                 profile_id: profileId
             });
@@ -69,7 +91,7 @@ function setupApp(app, databaseURL, next) {
                 if (err || result.rows.length === 0) {
                     profile._id = profileId;
                     var user = profile._json;
-                    var create_sql = fs.readFileSync(root + '/postgres/create_user.sql').toString();
+                    var create_sql = fs.readFileSync(serverRoot + '/postgres/create_user.sql').toString();
                     var create_sql_var = format(create_sql, {
                         profile_id: profileId,
                         login: user.url,
@@ -134,7 +156,7 @@ function setupApp(app, databaseURL, next) {
     app.get("/db/status", function(req, res) {
         res.send(databaseConnected);
     });
-    
+
     app.get('/api/me', function(req, res) {
         // res.header("Access-Control-Allow-Origin", "*");
         // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -145,25 +167,64 @@ function setupApp(app, databaseURL, next) {
         res.send({ id: user.id, login: user.login, avatar_url: user.avatar_url });
     });
 
-    app.all('/p/*', function(req, res, next) {
-        if (!req.session.loggedIn) {
-            res.redirect("/login");
-        } else if (req.session.loggedIn) {
-            next();
+    var validateSessionInitialize = function(req, path) {
+        if (req.session.private === undefined) {
+            req.session.private = {};
         }
-    });
 
-    next();
+        if (req.session.private[path] === undefined) {
+            req.session.private[path] = {
+                authenticated: false
+            };
+        }
+    };
+
+    var privatePath = path.join(root, 'private');
+    var privateFiles = fs.readdir(privatePath, function (err, dirs) {
+        dirs.forEach(function (dir) {
+            app.use("/p/" + dir + "/login",
+                function(req, res, next) {
+                    validateSessionInitialize(req, dir);
+                    if (req.session.private[dir].authenticated)
+                        res.redirect("/p/" + dir);
+                    else
+                        next();
+                });
+            app.use("/p/" + dir + "/login", serveStatic(privatePath + "/" + dir + "/login.html"));
+
+            app.use("/p/" + dir + "/validate",
+                function (req, res, next) {
+                    validateSessionInitialize(req, dir);
+                    req.session.private[dir].authenticated = true;
+                    res.writeHead(200, { 'Content-Type': 'text/html' });
+                    res.end("1");
+                });
+
+            app.use("/p/" + dir,
+                function(req, res, next) {
+                    validateSessionInitialize(req, dir);
+
+                    if (!req.session.private[dir].authenticated) {
+                        res.redirect("/p/" + dir + "/login");
+                    }
+
+                    next();
+                });
+
+            app.use("/p/" + dir, serveStatic(privatePath + "/" + dir + "/index.html"));
+        });
+        next();
+    });
 }
 
-function setupDatabase(app, newClient, databaseURL, next) {
+function setupDatabase(app, root, newClient, databaseURL, next) {
     console.log('Connected to postgres!');
 
     databaseConnected = true;
 
     client = newClient;
 
-    var sqlUsers = fs.readFileSync(root + '/postgres/create_users.sql').toString();
+    var sqlUsers = fs.readFileSync(serverRoot + '/postgres/create_users.sql').toString();
     client
         .query(sqlUsers,
             function(err, result) {
@@ -173,7 +234,7 @@ function setupDatabase(app, newClient, databaseURL, next) {
                     console.log('Created user table');
                     console.log(result);
                 }
-                var sqlSessions = fs.readFileSync(root + '/postgres/create_session.sql').toString();
+                var sqlSessions = fs.readFileSync(serverRoot + '/postgres/create_session.sql').toString();
                 client.query(sqlSessions,
                     function(err, result) {
                         if (err) {
@@ -182,12 +243,12 @@ function setupDatabase(app, newClient, databaseURL, next) {
                             console.log('Successfully created session table');
                             console.log(result);
                         }
-                        setupApp(app, databaseURL, next);
+                        setupApp(app, root, databaseURL, next);
                     });
             });
 }
 
-function setup(app, next) {
+function setup(app, root, next) {
     app.use(bodyParser.json({ limit: '50mb' }));
     app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -201,11 +262,11 @@ function setup(app, next) {
                     console.log('Failed to connect to local postgres');
                     console.log(localErr);
                 } else {
-                    setupDatabase(app, localClient, process.env.PG_LOCAL_URL, next);
+                    setupDatabase(app, root, localClient, process.env.PG_LOCAL_URL, next);
                 }
             });
         } else {
-            setupDatabase(app, remoteClient, process.env.PG_REMOTE_URL, next);
+            setupDatabase(app, root, remoteClient, process.env.PG_REMOTE_URL, next);
         }
     });
 }
