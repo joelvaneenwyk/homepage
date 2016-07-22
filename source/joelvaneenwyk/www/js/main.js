@@ -115,8 +115,21 @@ function fontsLoaded() {
     console.log('Fonts loaded');
 }
 
+function showSuccess(msg) {
+    $('#failure_message').hide();
+    $('#success_message').html('Success <i class="glyphicon glyphicon-thumbs-up"></i> ' + msg);
+    $('#success_message').slideDown({ opacity: "show" }, "slow");
+    $('#contact_form').data('bootstrapValidator').resetForm();
+}
+
+function showFailure(msg) {
+    $('#success_message').hide();
+    $('#failure_message').html('Failed <i class="glyphicon glyphicon-thumbs-down"></i> ' + msg);
+    $('#failure_message').slideDown({ opacity: "show" }, "slow");
+}
+
 function addPasswordValidation() {
-    $('#private_form').bootstrapValidator({
+    $('#private_form').validator({
             // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -137,15 +150,12 @@ function addPasswordValidation() {
                 },
             }
         })
-        .on('success.form.bv', function(e) {
+        .on('submit', function(e) {
             // Prevent form submission
             e.preventDefault();
 
             // Get the form instance
             var $form = $(e.target);
-
-            // Get the BootstrapValidator instance
-            var bv = $form.data('bootstrapValidator');
 
             var data = $form.serializeArray();
             data.push({ name: "page", value: $(this).attr('action') });
@@ -155,15 +165,15 @@ function addPasswordValidation() {
                 type: 'POST',
                 data: $.param(data),
                 success: function(result) {
-                    if (result.status == 'error') {
-                        $('#private_form').bootstrapValidator("resetForm", true);
+                    if (result.authenticated == 'true') {
+                        //$('#private_form').validator("resetForm", true);
                         showFailure('Invalid password please try again.');
                     } else {
-                        window.location.href = "login?id=" + result.id;
+                        window.location.href = result.redirect;
                     }
                 },
                 error: function(result) {
-                    $('#private_form').bootstrapValidator("resetForm", true);
+                    //$('#private_form').validator("resetForm", true);
                     showFailure('Invalid password please try again.');
                 }
             });
@@ -174,11 +184,14 @@ function addPasswordValidation() {
 
 $(document).ready(function() {
     updateHeader();
+
+    addPasswordValidation();
+
     $(window).on('resize', updateHeader);
 
     Promise
         .all(FontObservers.map(function(font) {
-            return font.load()
+            return font.load();
         }))
         .then(fontsLoaded);
 });

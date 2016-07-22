@@ -17,31 +17,6 @@ var client = new pg.Client();
 var databaseConnected = false;
 var serverRoot = path.normalize(__dirname);
 
-var fs = require('fs');
-var walk = function(dir, done) {
-    var results = [];
-    fs.readdir(dir, function(err, list) {
-        if (err) return done(err);
-        var i = 0;
-        (function next() {
-            var file = list[i++];
-            if (!file) return done(null, results);
-            file = dir + '/' + file;
-            fs.stat(file, function(err, stat) {
-                if (stat && stat.isDirectory()) {
-                    walk(file, function(err, res) {
-                        results = results.concat(res);
-                        next();
-                    });
-                } else {
-                    results.push(file);
-                    next();
-                }
-            });
-        })();
-    });
-};
-
 function setupApp(app, root, databaseURL, next) {
     app.use(session({
         store: new pgSession({
@@ -49,9 +24,10 @@ function setupApp(app, root, databaseURL, next) {
             conString: databaseURL,
             tableName: 'session'
         }),
+        unset: 'destroy',
         saveUninitialized: true,
         secret: process.env.COOKIE_SECRET,
-        resave: false,
+        resave: true,
         cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
     }));
 
@@ -178,10 +154,22 @@ function setupApp(app, root, databaseURL, next) {
             };
         }
     };
+    
+    // Special API call to flush the session
+    app.use("/api/session/kill",
+        function(req, res) {
+            if (req.session !== undefined) {
+                req.session.private = {};
+                req.session.save();
+                delete req.session;
+            }
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end("done");
+        });
 
     var privatePath = path.join(root, 'private');
-    var privateFiles = fs.readdir(privatePath, function (err, dirs) {
-        dirs.forEach(function (dir) {
+    fs.readdir(privatePath, function(err, dirs) {
+        dirs.forEach(function(dir) {
             app.use("/p/" + dir + "/login",
                 function(req, res, next) {
                     validateSessionInitialize(req, dir);
@@ -189,15 +177,18 @@ function setupApp(app, root, databaseURL, next) {
                         res.redirect("/p/" + dir);
                     else
                         next();
-                });
-            app.use("/p/" + dir + "/login", serveStatic(privatePath + "/" + dir + "/login.html"));
+                }, serveStatic(privatePath + "/" + dir + "/login.html"));
 
             app.use("/p/" + dir + "/validate",
-                function (req, res, next) {
+                function(req, res) {
                     validateSessionInitialize(req, dir);
                     req.session.private[dir].authenticated = true;
-                    res.writeHead(200, { 'Content-Type': 'text/html' });
-                    res.end("1");
+                    var result = {
+                        authenticated: req.session.private[dir].authenticated,
+                        redirect: "/p/" + dir
+                    };
+                    res.setHeader('Content-Type', 'application/json');
+                    res.end(JSON.stringify(result));
                 });
 
             app.use("/p/" + dir,
@@ -206,12 +197,10 @@ function setupApp(app, root, databaseURL, next) {
 
                     if (!req.session.private[dir].authenticated) {
                         res.redirect("/p/" + dir + "/login");
+                    } else {
+                        next();
                     }
-
-                    next();
-                });
-
-            app.use("/p/" + dir, serveStatic(privatePath + "/" + dir + "/index.html"));
+                }, serveStatic(privatePath + "/" + dir + "/index.html"));
         });
         next();
     });

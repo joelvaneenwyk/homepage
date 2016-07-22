@@ -46,7 +46,6 @@ function initialize() {
     ];
 
     var mainApp = express.Router();
-    mainApp.use("/thirdparty", serveStatic(siteRoot + '/thirdparty'));
     mainApp.use("/", serveStatic(siteStaging));
     mainApp.use("/", favicon(siteStaging + '/favicon.ico'));
     mainApp.use("/data", serveStatic(siteRoot + '/data'));
@@ -56,7 +55,6 @@ function initialize() {
             {
                 extensions: ['html']
             }));
-    mainApp.use("/p", serveStatic(path.join(siteWWW, 'private')));
 
     console.log('Starting up Joel Van Eenwyk server application');
 

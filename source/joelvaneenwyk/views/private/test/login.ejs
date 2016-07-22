@@ -10,14 +10,15 @@
         <% include ../../_partials/header %>
         <div class='row'>
             <div class='blog col-sm-12 col-md-offset-2 col-md-8'>
-                <form class="well form-horizontal" action="private_password" method="POST" id="private_form" name="private_form">
+                <form  data-toggle="validator" class="well form-horizontal" action="login" method="POST" id="private_form" name="private_form">
                     <fieldset>
                         <legend>Test</legend>
                         <div class="form-group">
                             <div class="col-md-6 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
-                                    <input type="password" name="password" placeholder="Password" class="form-control">
+                                    <input type="password" data-minlength="5" name="password" placeholder="Password" class="form-control">
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </div>
