@@ -48,18 +48,5 @@
   },
   "devDependencies" :
   {
-    "grunt-jsbeautifier": "~0.2.12",
-    "grunt-contrib-clean": ">=1.0.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-cssmin": "1.0.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-uglify": "^1.0.1",
-    "grunt-contrib-watch": "~0.5.0",
-    "grunt-contrib-imagemin": "^1.0.1",
-    "grunt-bootlint": "~0.10.1",
-    "grunt-html": "~8.0.0",
-    "grunt-wiredep": "^3.0.1",
-    "grunt-harp": "https://github.com/shovon/grunt-harp.git"
   }
 }
