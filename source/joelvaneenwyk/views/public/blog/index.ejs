@@ -10,7 +10,7 @@
     </div>
 
     <div class='row'>
-        <div class='blog col-xs-12'>
+        <div class='blog col-sm-12'>
             <% for(var slug in public.public.blog._data){ %>
               <h2 class="text-center"><a href="/blog/<%= slug %>"><%= public.public.blog._data[slug].title %></a></h2>
               <%- partial("blog/" + slug) %>

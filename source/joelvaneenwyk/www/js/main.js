@@ -112,6 +112,7 @@ function updateHeader() {
 
 function fontsLoaded() {
     document.documentElement.className += " fonts-loaded";
+    setTimeout(updateHeader, 100);
     console.log('Fonts loaded');
 }
 
@@ -184,10 +185,9 @@ function addPasswordValidation() {
 
 $(document).ready(function() {
     updateHeader();
+    $(window).on('resize', updateHeader);
 
     addPasswordValidation();
-
-    $(window).on('resize', updateHeader);
 
     Promise
         .all(FontObservers.map(function(font) {

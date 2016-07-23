@@ -30,14 +30,14 @@
     "bower": "^1.7.9",
     "d3": "^4.1.1",
     "topojson": "^1.6.26",
-    "express-sslify": "^1.1.0"
-  },
-  "devDependencies": {
+    "express-sslify": "^1.1.0",
     "load-grunt-tasks": "~0.2.0",
     "time-grunt": "~0.2.3",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0"
+  },
+  "devDependencies": {
   },
   "scripts": {
     "postinstall": "bower install && grunt dist",
