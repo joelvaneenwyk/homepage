@@ -112,7 +112,7 @@ function updateHeader() {
 
 function fontsLoaded() {
     document.documentElement.className += " fonts-loaded";
-    updateHeader();
+    setTimeout(updateHeader, 100);
     console.log('Fonts loaded');
 }
 
