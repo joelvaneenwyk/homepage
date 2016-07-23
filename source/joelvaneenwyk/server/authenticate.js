@@ -241,6 +241,13 @@ function setupDatabase(app, root, newClient, databaseURL, next) {
 }
 
 function setup(app, root, next) {
+    if (process.env.USE_SECURE !== undefined && process.env.USE_SECURE === true)
+    {
+        var enforce = require('express-sslify');
+        console.log('Forcing HTTPS...');
+        app.use(enforce.HTTPS());
+    }
+
     app.use(bodyParser.json({ limit: '50mb' }));
     app.use(bodyParser.urlencoded({ extended: true }));
 

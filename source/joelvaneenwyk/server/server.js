@@ -10,7 +10,6 @@ var favicon = require('serve-favicon');
 var pjson = require('../package.json');
 var jsonminify = require("jsonminify");
 var authenticate = require('./authenticate');
-var enforce = require('express-sslify');
 
 var siteRoot = path.normalize(__dirname + '/../');
 var siteStaging = siteRoot + '/dist/staging/';
@@ -61,11 +60,6 @@ function initialize() {
 
     // We setup authentication first since it needs to route the traffic
     authenticate.setup(mainApp, siteWWW, function() {
-        if (process.env.USE_SECURE !== undefined && process.env.USE_SECURE)
-        {
-            app.use(enforce.HTTPS());
-        }
-
         for (var j = 0; j < allowedHosts.length; j++) {
             var host = allowedHosts[j];
             app.use(vhost(host, mainApp));
