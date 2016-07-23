@@ -29,7 +29,8 @@
     "grunt-cli": "^0.1.13",
     "bower": "^1.7.9",
     "d3": "^4.1.1",
-    "topojson": "^1.6.26"
+    "topojson": "^1.6.26",
+    "express-sslify": "^1.1.0"
   },
   "devDependencies": {
     "load-grunt-tasks": "~0.2.0",

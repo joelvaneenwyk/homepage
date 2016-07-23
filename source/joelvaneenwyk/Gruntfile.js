@@ -21,10 +21,10 @@ module.exports = function(grunt) {
         currentDir = 'source/joelvaneenwyk/';
 
     grunt.registerMultiTask('update_globals', 'Update the globals', function() {
-
         var options = this.options({
             force: false
         });
+
         var arrFilesSrc = this.filesSrc;
         var verbose = grunt.verbose;
 

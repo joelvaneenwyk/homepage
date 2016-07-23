@@ -166,7 +166,10 @@ function setupApp(app, root, databaseURL, next) {
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end("done");
         });
-
+    
+    // For each folder in the private directory, setup requests to handle
+    // the login and validation procedure.
+    // #todo Read JSON file in root and grab passwords associated with it
     var privatePath = path.join(root, 'private');
     fs.readdir(privatePath, function(err, dirs) {
         dirs.forEach(function(dir) {
