@@ -39,6 +39,7 @@ module.exports = function(grunt) {
     grunt.loadTasks('./source/joelvaneenwyk');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     grunt.registerTask('default', ['jshint', 'joelvaneenwyk-dev']);
     grunt.registerTask('dist', ['jshint', 'joelvaneenwyk']);

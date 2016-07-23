@@ -1,12 +1,20 @@
 "use strict";
 
 function onLoginSuccess(user) {
-    window.opener.customLog("On login success!");
+	var w = window;
+	if (window.opener !== undefined && window.opener.customLog !== undefined)
+	{
+		w = window.opener;
+	}
+
+    w.customLog("On login success!");
     try {
-        window.opener.onLogin(user);
+        w.onLogin(user);
     } catch (err) {
-        window.opener.console.log("Parent doesn't have onLogin function");
+        w.customLog("Parent doesn't have onLogin function");
     }
-    window.opener.customLog("Closing window");
-    window.close();
+    w.customLog("Closing window");
+
+    if (w !== window)
+    	window.close();
 }

@@ -4,11 +4,12 @@
 
 module.exports = function(grunt) {
 
-    // Load grunt tasks automatically
-    require('load-grunt-tasks')(grunt);
-
-    // Time how long tasks take. Can help when optimizing build times
-    require('time-grunt')(grunt);
+    // This is done automatically by Heroku but needs to be done
+    // manually if we are debugging through Visual Studio.
+    if (process.env.PG_REMOTE_URL === undefined) {
+        console.log('Manually loading environment...');
+        require('dotenv').config();
+    }
 
     var path = require('path');
 
@@ -18,6 +19,35 @@ module.exports = function(grunt) {
     var currentDir = process.cwd() + '/';
     if (!grunt.file.isDir(currentDir + '/views'))
         currentDir = 'source/joelvaneenwyk/';
+
+    grunt.registerMultiTask('update_globals', 'Update the globals', function() {
+        var options = this.options({
+            force: false
+        });
+
+        var arrFilesSrc = this.filesSrc;
+        var verbose = grunt.verbose;
+
+        arrFilesSrc.forEach(function(file) {
+            var version = process.env.HEROKU_RELEASE_VERSION;
+
+            var created_date = new Date(process.env.HEROKU_RELEASE_CREATED_AT);
+            var month = created_date.getUTCMonth() + 1;
+            var day = created_date.getUTCDate();
+            var year = created_date.getUTCFullYear();
+            var date = year + "-" + month + "-" + day;
+
+            var p = grunt.file.readJSON('package.json');
+            var f = grunt.file.readJSON(file);
+            grunt.log.writeln("%j", f);
+            f.globals.version = version;
+            f.globals.created = date;
+            f.globals.owner = p.author.name;
+            grunt.log.writeln("%j", f);
+            grunt.log.writeln('This is the success message');
+            grunt.file.write(file, JSON.stringify(f));
+        });
+    });
 
     grunt.initConfig({
         imagemin: {
@@ -31,14 +61,33 @@ module.exports = function(grunt) {
             }
         },
         htmllint: {
-            all: ["dist/temp/**/*.html"]
+            all: ["dist/www/**/*.html"]
         },
         bootlint: {
             options: {
                 stoponerror: false,
                 relaxerror: []
             },
-            files: ["dist/temp/**/*.html"]
+            files: ["dist/www/**/*.html"]
+        },
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'dist/',
+                    src: 'www/**/*.html',
+                    dest: 'dist/'
+                }, {
+                    expand: true,
+                    cwd: 'dist/',
+                    src: 'staging/**/*.html',
+                    dest: 'dist/'
+                }]
+            },
         },
         uglify: {
             options: {
@@ -47,7 +96,6 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     'dist/staging/js/main.min.js': currentDir + 'www/js/main.js',
-                    'dist/staging/js/preload.min.js': currentDir + 'www/js/preload.js',
                     'dist/staging/js/login.min.js': currentDir + 'www/js/login.js',
                 }
             }
@@ -65,9 +113,12 @@ module.exports = function(grunt) {
         },
         harp: {
             dist: {
-                source: currentDir + 'views/',
-                dest: 'dist/temp/'
+                source: 'dist/views/',
+                dest: 'dist/www/'
             }
+        },
+        update_globals: {
+            all: ['dist/views/_harp.json']
         },
         clean: {
             options: {
@@ -76,7 +127,7 @@ module.exports = function(grunt) {
             build: [currentDir + 'dist']
         },
         jsbeautifier: {
-            files: ["dist/staging/**/*.html"],
+            files: ['dist/staging/**/*.html', 'dist/www/**/*.html'],
             options: {
                 html: {
                     braceStyle: "collapse",
@@ -85,8 +136,9 @@ module.exports = function(grunt) {
                     indentSize: 4,
                     maxPreserveNewlines: 0,
                     preserveNewlines: true,
-                    unformatted: ["a", "sub", "sup", "b", "i", "u"],
-                    wrapLineLength: 0
+                    unformatted: ["a", "sub", "sup", "b", "i", "u", "pre", "code"],
+                    wrapLineLength: 0,
+                    endWithNewline: true
                 },
                 css: {
                     indentChar: " ",
@@ -141,17 +193,11 @@ module.exports = function(grunt) {
                     dest: 'dist/staging/thirdparty'
                 }]
             },
-        },
-        bower: {
-            install: {
-                options: {
-                    targetDir: 'dist/staging/thirdparty',
-                    cleanTargetDir: true,
-                    install: false,
-                    copy: true,
-                    prune: false,
-                    cleanBowerDir: false
-                }
+            views: {
+                cwd: currentDir + 'views',
+                src: '**/*',
+                dest: 'dist/views',
+                expand: true
             }
         },
         bower_main: {
@@ -165,32 +211,32 @@ module.exports = function(grunt) {
         wiredep: {
             internal: {
                 src: [
-                    currentDir + 'views/**/*.scss'
+                    'dist/views/**/*.scss'
                 ]
             },
             external: {
                 directory: 'dist/staging/thirdparty',
                 exclude: [/joelvaneenwyk/],
                 src: [
-                    currentDir + 'views/**/*.ejs'
+                    'dist/views/**/*.ejs'
                 ]
             }
         },
         csslint: {
-            options: {},
             lax: {
                 options: {
                     important: false,
+                    'qualified-headings': false,
                     'adjoining-classes': false
                 },
-                src: ['dist/temp/**/*.css']
+                src: ['dist/www/**/*.css']
             }
         },
         replace: {
             dist: {
                 files: [{
                     expand: true,
-                    src: currentDir + 'views/**/*.ejs',
+                    src: 'dist/views/**/*.ejs',
                     dest: ''
                 }],
                 options: {
@@ -228,6 +274,12 @@ module.exports = function(grunt) {
         }
     });
 
+    // Load grunt tasks automatically
+    require('load-grunt-tasks')(grunt);
+
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
+
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -237,12 +289,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-replace');
     grunt.loadNpmTasks('grunt-harp');
     grunt.loadNpmTasks('grunt-html');
     grunt.loadNpmTasks('grunt-bootlint');
-    grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-bower-main');
     grunt.loadNpmTasks('grunt-wiredep');
 
@@ -250,11 +302,18 @@ module.exports = function(grunt) {
     var requiredTasks = [
         'bower_main', 'copy',
         'wiredep:internal', 'wiredep:external',
-        'harp', 'replace',
-        'jsbeautifier', 'uglify', 'imagemin'
+        'replace', 'update_globals', 'harp',
+        'uglify', 'htmlmin', 'jsbeautifier',
+        'imagemin'
     ];
 
+    grunt.registerTask('globals', ['update_globals']);
     grunt.registerTask('default', requiredTasks.concat(devTasks));
-    grunt.registerTask('joelvaneenwyk', requiredTasks.concat('copy'));
-    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks).concat('copy'));
+    grunt.registerTask('update', ['copy:dist', 'copy:views', 'harp',
+        'wiredep:internal', 'wiredep:external',
+        'replace', 'update_globals', 'harp',
+        'uglify', 'htmlmin', 'jsbeautifier'
+    ]);
+    grunt.registerTask('joelvaneenwyk', requiredTasks);
+    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks));
 };

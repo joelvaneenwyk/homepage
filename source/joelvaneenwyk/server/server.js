@@ -9,15 +9,13 @@ var app = express.Router();
 var favicon = require('serve-favicon');
 var pjson = require('../package.json');
 var jsonminify = require("jsonminify");
-
 var authenticate = require('./authenticate');
 
 var siteRoot = path.normalize(__dirname + '/../');
 var siteStaging = siteRoot + '/dist/staging/';
+var siteWWW = siteStaging + '../www/';
 
 var fs = require('fs');
-var harp = require('harp');
-var middleware = harp.middleware;
 
 // Determine where the staging area is by testing if there is a joelvaneenwyk/dist/staging folder
 // and if there isn't try the parent folder
@@ -26,7 +24,10 @@ fs.access(siteStaging, fs.F_OK, function(err) {
     if (err) {
         siteStaging = pathTemp.join(__dirname, '..', '..', '..', 'dist', 'staging');
     }
+    siteStaging = pathTemp.resolve(siteStaging);
+    siteWWW = pathTemp.resolve(siteStaging + '/../www/');
     console.log(siteStaging);
+    console.log(siteWWW);
     initialize();
 });
 
@@ -43,70 +44,75 @@ function initialize() {
         '*.herokuapp.com'
     ];
 
-    var dictionary = [
-        ["/thirdparty", serveStatic(siteRoot + '/thirdparty')],
-        ["/", serveStatic(siteStaging)],
-        ["/", favicon(siteStaging + '/favicon.ico')],
-        ["/data", serveStatic(siteRoot + '/data')],
-        ["/", function(req, rsp, next) {
-            harp.mount(siteRoot + '/views')(req, rsp, next);
-        }],
-    ];
+    var mainApp = express.Router();
+
+    mainApp.use("/", serveStatic(siteStaging));
+    mainApp.use("/", favicon(siteStaging + '/favicon.ico'));
+    mainApp.use("/data", serveStatic(siteRoot + '/data'));
+    mainApp.use("/",
+        serveStatic(
+            path.join(siteWWW, 'public'),
+            {
+                extensions: ['html']
+            }));
 
     console.log('Starting up Joel Van Eenwyk server application');
 
-    authenticate.setup(app);
-    app.route('/');
-
-    for (var i = 0; i < dictionary.length; i++) {
+    // We setup authentication first since it needs to route the traffic
+    authenticate.setup(mainApp, siteWWW, function() {
         for (var j = 0; j < allowedHosts.length; j++) {
-            var remoteUrl = dictionary[i][0];
-            var func = dictionary[i][1];
             var host = allowedHosts[j];
-            app.use(remoteUrl, vhost(host, func));
+            app.use(vhost(host, mainApp));
         }
-    }
 
-    // Modify harp to prettify every HTML page that it outputs so that
-    // the source code looks pretty when viewing source on a page
-    var prettify = require('./prettify');
-    prettify.prettify(harp);
+        // Modify harp to prettify every HTML page that it outputs so that
+        // the source code looks pretty when viewing source on a page
+        var harp = require('harp');
+        var middleware = harp.middleware;
 
-    var original_poly = middleware.poly;
-    middleware.poly = function(req, rsp, next) {
-        req.setup.config.globals.version = process.env.HEROKU_RELEASE_VERSION;
+        var prettify = require('./prettify');
+        prettify.prettify(harp);
 
-        var created_date = new Date(process.env.HEROKU_RELEASE_CREATED_AT);
-        var month = created_date.getUTCMonth() + 1;
-        var day = created_date.getUTCDate();
-        var year = created_date.getUTCFullYear();
-        var date = year + "-" + month + "-" + day;
+        var original_poly = middleware.poly;
+        middleware.poly = function(req, rsp, next) {
+            req.setup.config.globals.version = process.env.HEROKU_RELEASE_VERSION;
 
-        var globals = {
-            created: date,
-            owner: pjson.author.name,
+            var created_date = new Date(process.env.HEROKU_RELEASE_CREATED_AT);
+            var month = created_date.getUTCMonth() + 1;
+            var day = created_date.getUTCDate();
+            var year = created_date.getUTCFullYear();
+            var date = year + "-" + month + "-" + day;
+
+            var globals = {
+                created: date,
+                owner: pjson.author.name,
+            };
+
+            req.setup.config.globals.created = globals.created;
+            req.setup.config.globals.owner = globals.owner;
+            req.setup.config.globals.globals = jsonminify(JSON.stringify(globals));
+
+            original_poly(req, rsp, next);
         };
 
-        req.setup.config.globals.created = globals.created;
-        req.setup.config.globals.owner = globals.owner;
-        req.setup.config.globals.globals = jsonminify(JSON.stringify(globals));
+        app.use(function(req, res, next) {
+            res.status(404);
 
-        original_poly(req, rsp, next);
-    };
+            // respond with html page
+            if (req.accepts('html')) {
+                res.status(404).sendFile(siteWWW + '/public/404.html');
+                return;
+            }
 
-    var helpers = require('harp/lib/helpers');
-    var mime = require('mime');
-    app.use(function(req, rsp) {
-        var sourceFile = '404.ejs';
-        req.poly.render(sourceFile,
-            function(error, body) {
-                var type = helpers.mimeType("html");
-                var charset = mime.charsets.lookup(type);
-                rsp.setHeader('Content-Type', type + (charset ? '; charset=' + charset : ''));
-                rsp.setHeader('Content-Length', Buffer.byteLength(body, charset));
-                rsp.statusCode = 404;
-                rsp.end(body);
-            });
+            // respond with json
+            if (req.accepts('json')) {
+                res.send({ error: 'Not found' });
+                return;
+            }
+
+            // default to plain-text. send()
+            res.type('txt').send('Not found');
+        });
     });
 }
 

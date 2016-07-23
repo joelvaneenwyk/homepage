@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../../_partials/head %>
+</head>
+<body class="container-fluid">
+
+    <div class='header'>
+        <% include ../../_partials/header %>
+    </div>
+
+    <div class='row'>
+        <div class='blog col-xs-12'>
+            <% for(var slug in public.public.blog._data){ %>
+              <h2 class="text-center"><a href="/blog/<%= slug %>"><%= public.public.blog._data[slug].title %></a></h2>
+              <%- partial("blog/" + slug) %>
+            <% }; %>
+        </div>
+    </div>
+
+    <% include ../../_partials/footer %>
+
+</body>
+</html>
