@@ -95,7 +95,7 @@ function onLogin(user) {
 //
 
 function updateHeader() {
-    var height = Math.max($(window).height() / 2, $("#bottom-align").height());
+    var height = Math.max(($(window).height() - $("#parent").position().top) / 2, $("#bottom-align").height());
     var timeToDestination = 250;
     $("#top-header").clearQueue();
     $("#top-header").animate({ "height": height + 'px' }, {

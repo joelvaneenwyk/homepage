@@ -13,7 +13,7 @@ var format = require('string-template');
 var serveStatic = require('serve-static');
 
 // Variables for postgres
-var client = new pg.Client();
+var client;
 var databaseConnected = false;
 var serverRoot = path.normalize(__dirname);
 
@@ -38,55 +38,64 @@ function setupApp(app, root, databaseURL, next) {
     });
 
     passport.deserializeUser(function(user, done) {
-        // This is called to return a user from a passport
-        // stategy (e.g., after user logs in with GitHub)
-        // This also is what req.user is set to
-        var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
-        var sql_var = format(sql, {
-            profile_id: user.id
-        });
-        client.query(sql_var, function(err) {
-            done(err, user);
-        });
+		if (databaseConnected)
+		{
+			// This is called to return a user from a passport
+			// stategy (e.g., after user logs in with GitHub)
+			// This also is what req.user is set to
+			var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
+			var sql_var = format(sql, {
+				profile_id: user.id
+			});
+			client.query(sql_var, function(err) {
+				done(err, user);
+			});
+		}
     });
 
-    passport.use(new GoogleStrategy({
-            clientID: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: "/auth/google/callback"
-        },
-        function(accessToken, refreshToken, profile, done) {
-            // we make sure we are always using strings for our internal ids
-            var profileId = profile.id + "";
-
-            var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
-            var sql_var = format(sql, {
-                profile_id: profileId
-            });
-            client.query(sql_var, function(err, result) {
-                if (err || result.rows.length === 0) {
-                    profile._id = profileId;
-                    var user = profile._json;
-                    var create_sql = fs.readFileSync(serverRoot + '/postgres/create_user.sql').toString();
-                    var create_sql_var = format(create_sql, {
-                        profile_id: profileId,
-                        login: user.url,
-                        avatar_url: user.image.url,
-                        accessToken: accessToken
-                    });
-                    client.query(create_sql_var, function(err) {
-                        profile.login = user.url;
-                        profile.avatar_url = user.image.url;
-                        profile.accessToken = accessToken;
-                        return done(err, profile);
-                    });
-                } else {
-                    profile.accessToken = accessToken;
-                    return done(err, profile);
-                }
-            });
-        }
-    ));
+	if (process.env.GOOGLE_CLIENT_ID !== "" &&
+		process.env.GOOGLE_CLIENT_SECRET !== "")
+	{
+		passport.use(new GoogleStrategy({
+				clientID: process.env.GOOGLE_CLIENT_ID,
+				clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+				callbackURL: "/auth/google/callback"
+			},
+			function(accessToken, refreshToken, profile, done) {
+				if (databaseConnected)
+				{
+					// we make sure we are always using strings for our internal ids
+					var profileId = profile.id + "";
+					var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
+					var sql_var = format(sql, {
+						profile_id: profileId
+					});
+					client.query(sql_var, function(err, result) {
+						if (err || result.rows.length === 0) {
+							profile._id = profileId;
+							var user = profile._json;
+							var create_sql = fs.readFileSync(serverRoot + '/postgres/create_user.sql').toString();
+							var create_sql_var = format(create_sql, {
+								profile_id: profileId,
+								login: user.url,
+								avatar_url: user.image.url,
+								accessToken: accessToken
+							});
+							client.query(create_sql_var, function(err) {
+								profile.login = user.url;
+								profile.avatar_url = user.image.url;
+								profile.accessToken = accessToken;
+								return done(err, profile);
+							});
+						} else {
+							profile.accessToken = accessToken;
+							return done(err, profile);
+						}
+					});
+				}
+			}
+		));
+	}
 
     app.use(passport.session());
 
@@ -207,37 +216,45 @@ function setupApp(app, root, databaseURL, next) {
         });
         next();
     });
+	
+    console.log('Authentication setup complete!');
 }
 
-function setupDatabase(app, root, newClient, databaseURL, next) {
-    console.log('Connected to postgres!');
-
-    databaseConnected = true;
-
-    client = newClient;
-
-    var sqlUsers = fs.readFileSync(serverRoot + '/postgres/create_users.sql').toString();
-    client
-        .query(sqlUsers,
-            function(err, result) {
-                if (err) {
-                    console.log('Failed to create user table');
-                } else {
-                    console.log('Created user table');
-                    console.log(result);
-                }
-                var sqlSessions = fs.readFileSync(serverRoot + '/postgres/create_session.sql').toString();
-                client.query(sqlSessions,
-                    function(err, result) {
-                        if (err) {
-                            console.log('Session table already exists');
-                        } else {
-                            console.log('Successfully created session table');
-                            console.log(result);
-                        }
-                        setupApp(app, root, databaseURL, next);
-                    });
-            });
+function setupDatabase(app, root, databaseURL, next) {
+	var nextStep = function() { setupApp(app, root, databaseURL, next); };
+	
+	if (client !== undefined)
+	{		
+		console.log('Connected to postgres!');
+		databaseConnected = true;
+			
+		var sqlUsers = fs.readFileSync(serverRoot + '/postgres/create_users.sql').toString();
+		client
+			.query(sqlUsers,
+				function(err, result) {
+					if (err) {
+						console.log('Failed to create user table');
+					} else {
+						console.log('Created user table');
+						console.log(result);
+					}
+					var sqlSessions = fs.readFileSync(serverRoot + '/postgres/create_session.sql').toString();
+					client.query(sqlSessions,
+						function(err, result) {
+							if (err) {
+								console.log('Session table already exists');
+							} else {
+								console.log('Successfully created session table');
+								console.log(result);
+							}
+							nextStep();
+						});
+				});
+	}
+	else
+	{
+		nextStep();
+	}
 }
 
 function setup(app, root, next) {
@@ -260,12 +277,15 @@ function setup(app, root, next) {
                 if (localErr) {
                     console.log('Failed to connect to local postgres');
                     console.log(localErr);
-                } else {
-                    setupDatabase(app, root, localClient, process.env.PG_LOCAL_URL, next);
                 }
+				else {
+					client = localClient;
+				}
+				setupDatabase(app, root, process.env.PG_LOCAL_URL, next);
             });
         } else {
-            setupDatabase(app, root, remoteClient, process.env.PG_REMOTE_URL, next);
+			client = remoteClient;
+            setupDatabase(app, root, process.env.PG_REMOTE_URL, next);
         }
     });
 }
