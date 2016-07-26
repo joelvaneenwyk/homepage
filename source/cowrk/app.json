@@ -1,8 +1,0 @@
-{
-  "name": "cowrk",
-  "description": "CoWrk Landing Page",
-  "repository": "https://github.com/joelvaneenwyk/homepage",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["cowrk", "node", "express", "static"],
-  "image": "heroku/nodejs"
-}

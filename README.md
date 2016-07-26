@@ -9,10 +9,11 @@ This is the source code for the homepage of Joel Van Eenwyk (https://www.joelvan
 1. Install NodeJS (https://nodejs.org/en/download/)
 2. Install Heroku Toolbelt (https://toolbelt.heroku.com/)
 3. Run 'prompt.bat' from the root
-4. Run 'npm install -g npm'
-4. Run 'npm install -g bower'
-5. Run 'npm install -g grunt'
-4. Run 'npm install'
+4. Run 'copy .env.template env'
+5. Run 'npm install -g npm'
+6. Run 'npm install -g bower'
+7. Run 'npm install -g grunt'
+8. Run 'npm install'
 
 ## Notes
 
