@@ -19,7 +19,6 @@
     "npm": "3.9.6"
   },
   "dependencies": {
-    "cowrk": "file:./source/cowrk",
     "joelvaneenwyk": "file:./source/joelvaneenwyk",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
