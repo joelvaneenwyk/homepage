@@ -32,7 +32,7 @@ app
             console.log('Request URL: ', fullUrl);
             next();
         })
-    .use('/', require('./source/joelvaneenwyk'))
+    .use('/', require('./source/joelvaneenwyk'));
 
 var port = process.env.PORT || 5000;
 
