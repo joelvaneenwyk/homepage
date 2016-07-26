@@ -2,7 +2,7 @@
 @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
 // disable:endbower
 
-$footer-height: 60px;
+$footer-height: 30px;
 
 .custom-button {
     width: 50px;
@@ -35,13 +35,6 @@ body {
 }
 
 .row {
-    padding: 0;
-    margin: 0;
-}
-
-.panel-footer.panel-custom {
-    background: red;
-    color: white;
     padding: 0;
     margin: 0;
 }
@@ -183,6 +176,14 @@ a:link {
 
 .panel
 {
+	padding-top: 0px;
+    border: 0px;
+}
+
+.panel-footer
+{
+	padding: 0px;
+	padding-top: 5px;
     border: 0px;
 }
 
