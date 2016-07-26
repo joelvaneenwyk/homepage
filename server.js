@@ -13,6 +13,7 @@ var compression = require('compression');
 var express = require('express');
 var app = express();
 var cookieParser = require('cookie-parser');
+var helmet = require('helmet');
 
 console.log('Root Server Started');
 
@@ -24,6 +25,7 @@ app.set('showStackError', true);
 app
     .use(compression())
     .use(cookieParser())
+    .use(helmet())
     .use(
         function(req, res, next) {
             var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;

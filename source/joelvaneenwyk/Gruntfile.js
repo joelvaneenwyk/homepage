@@ -43,6 +43,9 @@ module.exports = function(grunt) {
             f.globals.version = version;
             f.globals.created = date;
             f.globals.owner = p.author.name;
+			f.globals.footer = "© Copyright 2016 " + f.globals.owner + " " + f.globals.version;
+			if (process.env.NODE_ENV !== "production")
+				f.globals.footer += " [" + f.globals.created + "]";
             grunt.log.writeln("%j", f);
             grunt.log.writeln('This is the success message');
             grunt.file.write(file, JSON.stringify(f));
@@ -216,7 +219,7 @@ module.exports = function(grunt) {
             },
             external: {
                 directory: 'dist/staging/thirdparty',
-                exclude: [/joelvaneenwyk/],
+                exclude: [/joelvaneenwyk/, /bootstrap-sass/],
                 src: [
                     'dist/views/**/*.ejs'
                 ]

@@ -1,6 +1,6 @@
 {
   "name": "joelvaneenwyk-homepage",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Homepage for Joel Van Eenwyk. Includes joelvaneenwyk.com and cowrkapp.com sources.",
   "main": "server.js",
   "homepage": "http://www.joelvaneenwyk.com",
@@ -29,6 +29,7 @@
     "grunt-cli": "^0.1.13",
     "bower": "^1.7.9",
     "d3": "^4.1.1",
+    "helmet": "^2.1.1",
     "topojson": "^1.6.26",
     "express-sslify": "^1.1.0",
     "load-grunt-tasks": "~0.2.0",
