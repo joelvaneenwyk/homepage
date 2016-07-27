@@ -1,4 +1,4 @@
-# Joel Van Eenwyk Homepage [![Dependency Status](https://david-dm.org/joelvaneenwyk/homepage.svg)](https://david-dm.org/joelvaneenwyk/homepage) [![Build Status](https://travis-ci.org/joelvaneenwyk/homepage.svg?branch=staging)](https://travis-ci.org/joelvaneenwyk/homepage)
+# Joel Van Eenwyk Homepage [![Dependency Status](https://david-dm.org/joelvaneenwyk/homepage.svg)](https://david-dm.org/joelvaneenwyk/homepage) [![Build Status](https://travis-ci.org/joelvaneenwyk/homepage.svg?branch=staging)](https://travis-ci.org/joelvaneenwyk/homepage) [![Code Climate](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/gpa.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage)
 
 This is the source code for the homepage of Joel Van Eenwyk (https://www.joelvaneenwyk.com). Going open source was not my original plan for this, but there are a lot of benefits to doing this. Perhaps my favorite reason being continuous integration support for free if hosted on a public repository.
 
