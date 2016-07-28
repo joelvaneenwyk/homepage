@@ -2,7 +2,6 @@
 "use strict";
 
 var path = require('path');
-var serveStatic = require('serve-static');
 var vhost = require('vhost');
 var express = require('express');
 var app = express.Router();
@@ -16,6 +15,11 @@ var siteStaging = siteRoot + '/dist/staging/';
 var siteWWW = siteStaging + '../www/';
 
 var fs = require('fs');
+
+var oneDay = 86400000; // in milliseconds
+var staticServeOptions = {
+  maxage: oneDay
+};
 
 // Determine where the staging area is by testing if there is a joelvaneenwyk/dist/staging folder
 // and if there isn't try the parent folder
@@ -46,14 +50,15 @@ function initialize() {
 
     var mainApp = express.Router();
 
-    mainApp.use("/", serveStatic(siteStaging));
+    mainApp.use("/", express.static(siteStaging, staticServeOptions));
     mainApp.use("/", favicon(siteStaging + '/favicon.ico'));
-    mainApp.use("/data", serveStatic(siteRoot + '/data'));
+    mainApp.use("/data", express.static(siteRoot + '/data', staticServeOptions));
     mainApp.use("/",
-        serveStatic(
+        express.static(
             path.join(siteWWW, 'public'),
             {
-                extensions: ['html']
+                extensions: ['html'],
+                maxage: staticServeOptions.maxage
             }));
 
     console.log('Starting up Joel Van Eenwyk server application');

@@ -30,19 +30,29 @@
 var globals = <%- globals %>;
 </script>
 
-<script src="/js/newrelic.js"></script>
-
 <!-- bower:css -->
 <!-- endbower -->
 
 <!-- Our custom CSS goes after anything Bower might include -->
 <link rel="stylesheet" type="text/css" href="/css/master.css" media="all">
 
-<!-- bower:js -->
-<!-- endbower -->
 
 <% if(environment == "production") { %>
-<script src="/js/main.min.js"></script>
+<!-- build:js /js/dependencies.min.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<!-- endbuild -->
+<% } else { %>
+<!-- bower:js -->
+<!-- endbower -->
+<% } %>
+
+<% if(environment == "production") { %>
+<!-- build:js /js/main.min.js -->
+<script src="/js/main.js"></script>
+<script src="/js/newrelic.js"></script>
+<!-- endbuild -->
 <% } else { %>
 <script src="/js/main.js"></script>
+<script src="/js/newrelic.js"></script>
 <% } %>
