@@ -209,13 +209,13 @@ module.exports = function(grunt) {
             }
         },
         preprocess: {
-          all_from_dir: {
-            src: '**/*.js',
-            ext: '.js',
-            cwd: 'dist/staging',
-            dest: 'dist/staging',
-            expand: true
-          }
+            all_from_dir: {
+                src: '**/*.js',
+                ext: '.js',
+                cwd: 'dist/staging',
+                dest: 'dist/staging',
+                expand: true
+            }
         },
         bower_main: {
             copy: {
@@ -331,19 +331,19 @@ module.exports = function(grunt) {
         // Need to bootlint before 'usemin' because it combines dependencies and
         // makes bootlint think we aren't using jquery
         'bootlint',
-        'useminPrepare', 'concat', 'uglify',
+        'useminPrepare', 'concat', 'uglify', 'imagemin',
         'usemin', 'htmlmin', 'jsbeautifier',
-        'csslint', 'jshint', 'htmllint',
-        'imagemin'
     ];
 
+    var postTasksValidate = ['csslint', 'jshint', 'htmllint'];
+
     grunt.registerTask('globals', ['update_globals']);
-    grunt.registerTask('default', requiredTasks);
+    grunt.registerTask('default', requiredTasks.concat(postTasksValidate));
     grunt.registerTask('update', ['copy:dist', 'copy:views', 'harp',
         'wiredep:internal', 'wiredep:external',
         'replace', 'update_globals', 'harp',
         'uglify', 'htmlmin', 'jsbeautifier'
     ]);
     grunt.registerTask('joelvaneenwyk', requiredTasks);
-    grunt.registerTask('joelvaneenwyk-dev', requiredTasks);
+    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(postTasksValidate));
 };
