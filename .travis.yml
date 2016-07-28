@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "4.4.5"
+before_install:
+  - npm install -g npm@'>=3.9.6'
+  - npm install -g grunt-cli
+install: npm install
+before_script: grunt joelvaneenwyk
+addons:
+    code_climate:
+        repo_token: f4fed7e049fce0a5cfd0bedb8ad6802c1e027cf596c6317ba6aaae9b534df611
