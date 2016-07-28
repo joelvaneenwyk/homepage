@@ -14,7 +14,9 @@ install:
   - npm install -g npm@">=3.9.6"
   - npm install -g grunt-cli
   - npm install
+  - npm update
   - grunt
+  - grunt dist
 test_script:
   - node --version && npm --version
 build: off

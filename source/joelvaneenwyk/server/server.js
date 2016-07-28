@@ -18,7 +18,7 @@ var fs = require('fs');
 
 var oneDay = 86400000; // in milliseconds
 var staticServeOptions = {
-  maxage: oneDay
+  maxAge: oneDay
 };
 
 // Determine where the staging area is by testing if there is a joelvaneenwyk/dist/staging folder
