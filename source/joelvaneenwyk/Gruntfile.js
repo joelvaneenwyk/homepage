@@ -21,12 +21,7 @@ module.exports = function(grunt) {
         currentDir = 'source/joelvaneenwyk/';
 
     grunt.registerMultiTask('update_globals', 'Update the globals', function() {
-        var options = this.options({
-            force: false
-        });
-
         var arrFilesSrc = this.filesSrc;
-        var verbose = grunt.verbose;
 
         arrFilesSrc.forEach(function(file) {
             var version = process.env.HEROKU_RELEASE_VERSION;
@@ -43,9 +38,9 @@ module.exports = function(grunt) {
             f.globals.version = version;
             f.globals.created = date;
             f.globals.owner = p.author.name;
-			f.globals.footer = "© Copyright 2016 " + f.globals.owner + " " + f.globals.version;
-			if (process.env.NODE_ENV !== "production")
-				f.globals.footer += " [" + f.globals.created + "]";
+            f.globals.footer = "© Copyright 2016 " + f.globals.owner + " " + f.globals.version;
+            if (process.env.NODE_ENV !== "production")
+                f.globals.footer += " [" + f.globals.created + "]";
             grunt.log.writeln("%j", f);
             grunt.log.writeln('This is the success message');
             grunt.file.write(file, JSON.stringify(f));
@@ -98,10 +93,20 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/staging/js/main.min.js': currentDir + 'www/js/main.js',
                     'dist/staging/js/login.min.js': currentDir + 'www/js/login.js',
                 }
             }
+        },
+        useminPrepare: {
+            html: 'dist/www/**/*.html',
+            options: {
+                dest: 'dist/staging',
+                staging: 'dist/_temp',
+                root: 'dist/staging'
+            }
+        },
+        usemin: {
+            html: 'dist/www/**/*.html',
         },
         jshint: {
             all: ['**.js', currentDir + 'server/*.js'],
@@ -203,6 +208,15 @@ module.exports = function(grunt) {
                 expand: true
             }
         },
+        preprocess: {
+            all_from_dir: {
+                src: '**/*.js',
+                ext: '.js',
+                cwd: 'dist/staging',
+                dest: 'dist/staging',
+                expand: true
+            }
+        },
         bower_main: {
             copy: {
                 options: {
@@ -219,10 +233,16 @@ module.exports = function(grunt) {
             },
             external: {
                 directory: 'dist/staging/thirdparty',
-                exclude: [/joelvaneenwyk/, /bootstrap-sass/],
+                exclude: [/joelvaneenwyk/, /bootstrap-sass/, /topojson/, /d3/, /datamaps/],
                 src: [
                     'dist/views/**/*.ejs'
                 ]
+            }
+        },
+        concat: {
+            dist: {
+                src: ['dist/none'],
+                dest: 'dist/_temp/empty.js'
             }
         },
         csslint: {
@@ -300,23 +320,30 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bootlint');
     grunt.loadNpmTasks('grunt-bower-main');
     grunt.loadNpmTasks('grunt-wiredep');
+    grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-preprocess');
 
-    var devTasks = ['csslint', 'jshint', 'htmllint', 'bootlint'];
     var requiredTasks = [
-        'bower_main', 'copy',
+        'bower_main',
+        'copy', 'preprocess',
         'wiredep:internal', 'wiredep:external',
         'replace', 'update_globals', 'harp',
-        'uglify', 'htmlmin', 'jsbeautifier',
-        'imagemin'
+        // Need to bootlint before 'usemin' because it combines dependencies and
+        // makes bootlint think we aren't using jquery
+        'bootlint',
+        'useminPrepare', 'concat', 'uglify', 'imagemin',
+        'usemin', 'htmlmin', 'jsbeautifier',
     ];
 
+    var postTasksValidate = ['csslint', 'jshint', 'htmllint'];
+
     grunt.registerTask('globals', ['update_globals']);
-    grunt.registerTask('default', requiredTasks.concat(devTasks));
+    grunt.registerTask('default', requiredTasks.concat(postTasksValidate));
     grunt.registerTask('update', ['copy:dist', 'copy:views', 'harp',
         'wiredep:internal', 'wiredep:external',
         'replace', 'update_globals', 'harp',
         'uglify', 'htmlmin', 'jsbeautifier'
     ]);
     grunt.registerTask('joelvaneenwyk', requiredTasks);
-    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(devTasks));
+    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(postTasksValidate));
 };

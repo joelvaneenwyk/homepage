@@ -10,7 +10,7 @@ var passport = require('passport');
 var session = require('express-session');
 var pgSession = require('connect-pg-simple')(session);
 var format = require('string-template');
-var serveStatic = require('serve-static');
+var express = require('express');
 
 // Variables for postgres
 var client;
@@ -189,7 +189,7 @@ function setupApp(app, root, databaseURL, next) {
                         res.redirect("/p/" + dir);
                     else
                         next();
-                }, serveStatic(privatePath + "/" + dir + "/login.html"));
+                }, express.static(privatePath + "/" + dir + "/login.html"));
 
             app.use("/p/" + dir + "/validate",
                 function(req, res) {
@@ -212,7 +212,7 @@ function setupApp(app, root, databaseURL, next) {
                     } else {
                         next();
                     }
-                }, serveStatic(privatePath + "/" + dir + "/index.html"));
+                }, express.static(privatePath + "/" + dir + "/index.html"));
         });
         next();
     });
