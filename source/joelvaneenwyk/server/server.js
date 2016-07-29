@@ -16,9 +16,9 @@ var siteWWW = siteStaging + '../www/';
 
 var fs = require('fs');
 
-var oneDay = 86400000; // in milliseconds
+var oneDay = 24 * 60 * 60 * 1000; // one day in milliseconds
 var staticServeOptions = {
-  maxAge: oneDay
+  maxAge: oneDay * 8 // 8 days
 };
 
 // Determine where the staging area is by testing if there is a joelvaneenwyk/dist/staging folder

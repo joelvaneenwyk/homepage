@@ -1,7 +1,7 @@
 # Joel Van Eenwyk Homepage
 
 [![Build Status](https://travis-ci.org/joelvaneenwyk/homepage.svg?branch=staging)](https://travis-ci.org/joelvaneenwyk/homepage)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/joelvaneenwyk/homepage?branch=staging&svg=true)](https://travis-ci.org/joelvaneenwyk/homepage) 
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/joelvaneenwyk/homepage?branch=staging&svg=true)](https://ci.appveyor.com/project/joelvaneenwyk/homepage)
 
 [![Code Climate](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/gpa.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage) [![Test Coverage](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/coverage.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage/coverage)
 

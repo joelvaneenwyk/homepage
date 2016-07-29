@@ -175,6 +175,14 @@ module.exports = function(grunt) {
             }
         },
         copy: {
+            css: {
+                files: [{
+                    expand: true,
+                    cwd: 'dist/www/public/css',
+                    src: '*.css',
+                    dest: 'dist/staging/css'
+                }]
+            },
             dist: {
                 files: [{
                     expand: true,
@@ -243,6 +251,12 @@ module.exports = function(grunt) {
             dist: {
                 src: ['dist/none'],
                 dest: 'dist/_temp/empty.js'
+            }
+        },
+        cssmin: {
+            dist: {
+                src: ['dist/none'],
+                dest: 'dist/_temp/empty.css'
             }
         },
         csslint: {
@@ -327,11 +341,11 @@ module.exports = function(grunt) {
         'bower_main',
         'copy', 'preprocess',
         'wiredep:internal', 'wiredep:external',
-        'replace', 'update_globals', 'harp',
+        'replace', 'update_globals', 'harp', 'copy:css',
         // Need to bootlint before 'usemin' because it combines dependencies and
         // makes bootlint think we aren't using jquery
         'bootlint',
-        'useminPrepare', 'concat', 'uglify', 'imagemin',
+        'useminPrepare', 'concat', 'uglify', 'cssmin', 'imagemin',
         'usemin', 'htmlmin', 'jsbeautifier',
     ];
 
