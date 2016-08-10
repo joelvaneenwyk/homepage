@@ -113,7 +113,7 @@ function updateHeader() {
 function fontsLoaded() {
     document.documentElement.className += " fonts-loaded";
     setTimeout(updateHeader, 100);
-    console.log('Fonts loaded');
+    customLog('Fonts loaded');
 }
 
 function showSuccess(msg) {
@@ -186,7 +186,7 @@ function addPasswordValidation() {
 $(document).ready(function() {
     updateHeader();
     $(window).on('resize', updateHeader);
-  	$('[data-toggle="tooltip"]').tooltip()
+  	$('[data-toggle="tooltip"]').tooltip();
 
     addPasswordValidation();
 

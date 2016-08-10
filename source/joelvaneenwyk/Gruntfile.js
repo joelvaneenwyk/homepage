@@ -209,11 +209,25 @@ module.exports = function(grunt) {
                     dest: 'dist/staging/thirdparty'
                 }]
             },
+            bower_pdfjs: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components',
+                    src: ['pdfjs-dist/web/**', 'pdfjs-dist/cmaps/**'],
+                    dest: 'dist/staging/thirdparty'
+                }]
+            },
             views: {
                 cwd: currentDir + 'views',
                 src: '**/*',
                 dest: 'dist/views',
                 expand: true
+            },
+            cssjs: {
+                expand: true,
+                cwd: 'dist/www/public',
+                src: ['**/*.css', '**/*.js', '**/*.png'],
+                dest: 'dist/www/static'
             }
         },
         preprocess: {
@@ -241,7 +255,7 @@ module.exports = function(grunt) {
             },
             external: {
                 directory: 'dist/staging/thirdparty',
-                exclude: [/joelvaneenwyk/, /bootstrap-sass/, /topojson/, /d3/, /datamaps/],
+                exclude: [/joelvaneenwyk/, /bootstrap-sass/, /topojson/, /d3/, /datamaps/, /pdfjs/],
                 src: [
                     'dist/views/**/*.ejs'
                 ]
@@ -339,9 +353,10 @@ module.exports = function(grunt) {
 
     var requiredTasks = [
         'bower_main',
-        'copy', 'preprocess',
+        'copy:dist', 'copy:bower', 'copy:bower_pdfjs', 'copy:views',
+        'preprocess',
         'wiredep:internal', 'wiredep:external',
-        'replace', 'update_globals', 'harp', 'copy:css',
+        'replace', 'update_globals', 'harp', 'copy:css', 'copy:cssjs',
         // Need to bootlint before 'usemin' because it combines dependencies and
         // makes bootlint think we aren't using jquery
         'bootlint',

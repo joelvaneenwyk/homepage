@@ -39,6 +39,22 @@ body {
     margin: 0;
 }
 
+.navbar-brand
+{
+    padding-left: 50px;
+}
+
+.navbar
+{
+    margin-bottom: 0px;
+}
+
+.navbar-brand > img
+{
+    width: 25px;
+    height: 25px;
+}
+
 /*
  * Set hyperlink typeface and remove underlines
  */

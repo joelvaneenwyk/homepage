@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../_partials/head %>
+
+    <link rel="stylesheet" href="/thirdparty/pdfjs-dist/web/pdf_viewer.css">
+    <link rel="stylesheet" href="/resume/viewer.css">
+
+    <!-- for legacy browsers -->
+    <script src="/thirdparty/pdfjs-dist/web/compatibility.js"></script>
+
+    <script src="/thirdparty/pdfjs-dist/build/pdf.js"></script>
+    <script src="/thirdparty/pdfjs-dist/web/pdf_viewer.js"></script>
+
+    <script src="/resume/viewer.js"></script>
+</head>
+
+<body>
+    <% include ../../_partials/header %>
+    <div id="title" hidden>
+    </div>
+    <div id="viewerContainer" class="container-fluid">
+        <div id="viewer" class="pdfViewer"></div>
+    </div>
+    <div id="loadingBar">
+        <div class="progress"></div>
+        <div class="glimmer"></div>
+    </div>
+    <div id="errorWrapper" hidden>
+        <div id="errorMessageLeft">
+            <span id="errorMessage"></span>
+            <button type="button" id="errorShowMore">
+                More Information
+            </button>
+            <button type="button" id="errorShowLess">
+                Less Information
+            </button>
+        </div>
+        <div id="errorMessageRight">
+            <button type="button" id="errorClose">
+                Close
+            </button>
+        </div>
+        <div class="clearBoth"></div>
+        <textarea id="errorMoreInfo" hidden readonly="readonly"></textarea>
+    </div>
+    <% include ../../_partials/footer %>
+</body>
+
+</html>

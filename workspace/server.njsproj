@@ -8,7 +8,7 @@
     <NodeExePath>C:\Program Files\nodejs\node.exe</NodeExePath>
     <Environment>
     </Environment>
-    <ScriptArguments>--use_strict</ScriptArguments>
+    <ScriptArguments>--use_strict --debug</ScriptArguments>
     <NameOfLastUsedPublishProfile>Linode</NameOfLastUsedPublishProfile>
     <AnalysisIgnoredDirectories>bower_components;node_modules</AnalysisIgnoredDirectories>
   </PropertyGroup>

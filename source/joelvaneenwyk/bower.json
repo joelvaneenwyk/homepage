@@ -28,6 +28,7 @@
         "prism": "^1.5.1",
         "fontfaceobserver": "^2.0.1",
         "bootstrap-validator": "^0.11.5",
-        "autotrack": "1.0.0"
+        "autotrack": "1.0.0",
+        "pdfjs-dist": "^1.5.376"
     }
 }

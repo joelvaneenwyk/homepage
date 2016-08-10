@@ -9,9 +9,29 @@ var path = require('path');
 var beautify_html = require('js-beautify').html;
 var minify = require('html-minifier').minify;
 
+var _do_prettify = function(html) {
+    var doMinify = true;
+    var formatted = html;
+
+    if (doMinify) {
+        formatted = minify(formatted,
+        {
+            removeAttributeQuotes: true,
+            collapseWhitespace: true,
+            removeComments: true
+        });
+    }
+
+    formatted = beautify_html(formatted, { indent_size: 2 });
+
+    return formatted;
+};
+
 var _custom_process = function(req, rsp, next) {
-    var normalizedPath = helpers.normalizeUrl(req.url);
+    var normalizedPath = helpers.normalizeUrl('/public/' + req.url);
+    var normalizedIndexPath = helpers.normalizeUrl('/public/' + req.url + '/index');
     var priorityList = terraform.helpers.buildPriorityList(normalizedPath);
+    priorityList = priorityList.concat(terraform.helpers.buildPriorityList(normalizedIndexPath));
     var sourceFile = terraform.helpers.findFirstFile(req.setup.publicPath, priorityList);
 
     /**
@@ -75,19 +95,8 @@ var _custom_process = function(req, rsp, next) {
             } else {
                 // 404
                 if (!body) return next();
-
-                var doMinify = true;
-                var formatted = body;
-
-                if (doMinify) {
-                    formatted = minify(formatted, {
-                        removeAttributeQuotes: true,
-                        collapseWhitespace: true,
-                        removeComments: true
-                    });
-                }
-
-                formatted = beautify_html(formatted, { indent_size: 2 });
+                
+                var formatted = _do_prettify(body);
 
                 var outputTypeInternal = terraform.helpers.outputType(sourceFile);
                 var mimeTypeInternal = helpers.mimeType(outputTypeInternal);
@@ -107,5 +116,6 @@ function prettify(harp) {
 }
 
 module.exports = {
-    prettify: prettify
+    prettify: prettify,
+    html_prettify: _do_prettify
 };

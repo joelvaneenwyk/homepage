@@ -7,6 +7,8 @@
 
 [![Dependency Status](https://david-dm.org/joelvaneenwyk/homepage.svg)](https://david-dm.org/joelvaneenwyk/homepage) [![Dependency Status](https://david-dm.org/joelvaneenwyk/homepage.svg?path=source/joelvaneenwyk)](https://david-dm.org/joelvaneenwyk/homepage?path=source/joelvaneenwyk)
 
+[![Stories in Ready](https://badge.waffle.io/joelvaneenwyk/homepage.png?label=ready&title=Ready)](https://waffle.io/joelvaneenwyk/homepage)
+
 This is the source code for the homepage of Joel Van Eenwyk (https://www.joelvaneenwyk.com). Going open source was not my original plan for this, but there are a lot of benefits to doing this. Perhaps my favorite reason being continuous integration support for free if hosted on a public repository.
 
 The staging branch is also deployed automatically to Heroku here: http://jvaneenwyk-public.herokuapp.com/

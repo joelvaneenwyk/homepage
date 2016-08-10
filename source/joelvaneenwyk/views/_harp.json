@@ -4,6 +4,8 @@
     "created": "",
     "owner": "UNDEFINED",
     "globals": "{}",
+    "nav": {},
+    "loggedIn": false,
 	"footer": "[PLACEHOLDER]"
   }
 }
