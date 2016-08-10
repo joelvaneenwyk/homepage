@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/joelvaneenwyk/homepage.png?label=ready&title=Ready)](https://waffle.io/joelvaneenwyk/homepage)
 # Joel Van Eenwyk Homepage
 
 [![Build Status](https://travis-ci.org/joelvaneenwyk/homepage.svg?branch=staging)](https://travis-ci.org/joelvaneenwyk/homepage)
