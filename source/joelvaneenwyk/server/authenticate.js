@@ -89,7 +89,9 @@ function setupApp(app, root, databaseURL, next) {
 								return done(err, profile);
 							});
 						} else {
-							profile.accessToken = accessToken;
+                            profile.accessToken = accessToken;
+                            profile.login = profile._json.url;
+                            profile.avatar_url = profile.photos[0].value;
 							return done(err, profile);
 						}
 					});
@@ -131,12 +133,12 @@ function setupApp(app, root, databaseURL, next) {
 
 	app.use(passport.session());
 
-	app.get('/auth/logout', function(req, res) {
-		req.logout();
-		if (req.query.redirect) {
-			return res.redirect(req.query.redirect);
-		}
-		res.redirect('/');
+	app.get('/auth/logout', function(req, res, next) {
+        req.logout();
+        req.session.destroy(function (err) {
+            if (err) return next(err)
+            res.redirect('/')
+        })
 	});
 
 	app.get("/db/status", function(req, res) {

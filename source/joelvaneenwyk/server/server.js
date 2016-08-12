@@ -59,9 +59,9 @@ function getGlobals(req) {
 	// a 'Login' button on the header
 	var user;
 	if (req.session !== undefined && req.session.passport !== undefined)
-		user = req.session.passport.user;
-	g.loggedIn = user !== undefined;
-	g.user = jsonminify(JSON.stringify(user));
+        user = req.session.passport.user;
+    g.user = jsonminify(JSON.stringify(user));
+	g.loggedIn = (g.user !== "");
 
 	// We pass in the current page so that it can be decided in EJS
 	// which tab to highlight

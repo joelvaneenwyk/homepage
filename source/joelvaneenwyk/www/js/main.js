@@ -60,9 +60,9 @@ var loginWindow;
 
 // Append custom data so that we know it comes from us
 function customLog(info) {
-// @if NODE_ENV!='production'
+    // @if NODE_ENV!='production'
     console.log("[JVE] " + info);
-// @endif
+    // @endif
 }
 
 // This is called explicitly by the user on button press
@@ -88,6 +88,7 @@ function getUser() {
 function onLogin(user) {
     customLog('Authentication called. User data: ' + JSON.stringify(user));
     setUser(user);
+    window.location.reload();
 }
 
 //
@@ -186,7 +187,7 @@ function addPasswordValidation() {
 $(document).ready(function() {
     updateHeader();
     $(window).on('resize', updateHeader);
-  	$('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip();
 
     addPasswordValidation();
 
