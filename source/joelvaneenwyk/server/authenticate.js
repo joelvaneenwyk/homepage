@@ -135,10 +135,10 @@ function setupApp(app, root, databaseURL, next) {
 
 	app.get('/auth/logout', function(req, res, next) {
         req.logout();
-        req.session.destroy(function (err) {
-            if (err) return next(err)
-            res.redirect('/')
-        })
+	    req.session.destroy(function(err) {
+	        if (err) return next(err);
+	        res.redirect('/');
+	    });
 	});
 
 	app.get("/db/status", function(req, res) {
