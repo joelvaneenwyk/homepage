@@ -163,7 +163,22 @@ function setupApp(app, root, databaseURL, next) {
 				authenticated: false
 			};
 		}
-	};
+    };
+
+    app.use("/api/delete_users",
+        function(req, res) {
+            var sqlUsers = fs.readFileSync(serverRoot + '/postgres/delete_users.sql').toString();
+            client
+			    .query(sqlUsers,
+				    function (err, result) {
+                if (err) {
+                    console.log('Failed to delete user table');
+                } else {
+                    console.log('Deleted user table');
+                    console.log(result);
+                }
+            });
+        });
 	
 	// Special API call to flush the session
 	app.use("/api/session/kill",

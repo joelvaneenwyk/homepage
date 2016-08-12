@@ -79,7 +79,7 @@ function getGlobals(req) {
 	g.owner = globals.owner;
 	g.globals = jsonminify(JSON.stringify(globals));
 	g.environment = "production";
-	g.footer = "© Copyright " + year + " " + globals.owner + "v" + g.version;
+	g.footer = "© Copyright " + year + " " + globals.owner + " " + g.version;
 
 	return g;
 }
@@ -115,7 +115,7 @@ function initialize() {
 	console.log('Starting up Joel Van Eenwyk server application');
 
 	// We setup authentication first since it needs to route the traffic
-	authenticate.setup(mainApp, siteWWW, function() {
+	authenticate.setup(app, siteWWW, function() {
 		for (var j = 0; j < allowedHosts.length; j++) {
 			var host = allowedHosts[j];
 			app.use(vhost(host, mainApp));

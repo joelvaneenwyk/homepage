@@ -49,12 +49,18 @@ var PDFViewerApplication = {
         loadingTask.then(function(pdfDocument) {
             // Document loaded, specifying document for the viewer.
             this.pdfDocument = pdfDocument;
+
             this.pdfViewer.setDocument(pdfDocument);
+
+            // We override scroll page into view just so that it doesn't happen
+            this.pdfViewer.scrollPageIntoView = function() {};
+
             this.pdfLinkService.setDocument(pdfDocument);
             this.pdfHistory.initialize(pdfDocument.fingerprint);
 
             this.loadingBar.hide();
             this.setTitleUsingMetadata(pdfDocument);
+            parent.scrollTop = 0;
         }.bind(this), function(exception) {
             var message = exception && exception.message;
             var loadingErrorMessage = mozL10n.get('loading_error', null,
