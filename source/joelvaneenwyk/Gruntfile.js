@@ -48,6 +48,22 @@ module.exports = function(grunt) {
     });
 
     grunt.initConfig({
+        watch: {
+            scripts: {
+                files: [currentDir + 'server/**/*.js'],
+                tasks: ['jshint:all'],
+                options: {
+                    debounceDelay: 250,
+                }
+            },
+            ejs: {
+                files: [currentDir + 'views/**/*.ejs'],
+                tasks: ['jshint:all'],
+                options: {
+                    debounceDelay: 250,
+                }
+            }
+        },
         imagemin: {
             dynamic: {
                 files: [{
