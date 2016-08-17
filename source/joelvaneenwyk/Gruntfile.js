@@ -20,30 +20,28 @@ module.exports = function(grunt) {
     if (!grunt.file.isDir(currentDir + '/views'))
         currentDir = 'source/joelvaneenwyk/';
 
+    var environment = require('./lib/environment.js');
+    var blog = require('./lib/blog.js');
+
     grunt.registerMultiTask('update_globals', 'Update the globals', function() {
         var arrFilesSrc = this.filesSrc;
 
         arrFilesSrc.forEach(function(file) {
-            var version = process.env.HEROKU_RELEASE_VERSION;
+            var globals = environment.getGlobals();
+            grunt.log.writeln("%j", globals);
+            grunt.log.writeln('Updated globals');
+            grunt.file.write(file, JSON.stringify(globals));
+        });
+    });
 
-            var created_date = new Date(process.env.HEROKU_RELEASE_CREATED_AT);
-            var month = created_date.getUTCMonth() + 1;
-            var day = created_date.getUTCDate();
-            var year = created_date.getUTCFullYear();
-            var date = year + "-" + month + "-" + day;
+    grunt.registerMultiTask('update_blog', 'Update the blog entries', function() {
+        var arrFilesSrc = this.filesSrc;
 
-            var p = grunt.file.readJSON('package.json');
-            var f = grunt.file.readJSON(file);
-            grunt.log.writeln("%j", f);
-            f.globals.version = version;
-            f.globals.created = date;
-            f.globals.owner = p.author.name;
-            f.globals.footer = "© Copyright 2016 " + f.globals.owner + " " + f.globals.version;
-            if (process.env.NODE_ENV !== "production")
-                f.globals.footer += " [" + f.globals.created + "]";
-            grunt.log.writeln("%j", f);
-            grunt.log.writeln('This is the success message');
-            grunt.file.write(file, JSON.stringify(f));
+        arrFilesSrc.forEach(function(file) {
+            var blogEntries = blog.updateBlogEntries(file, grunt.log);
+            grunt.log.writeln("%j", blogEntries);
+            grunt.log.writeln('Updated blog entries');
+            grunt.file.write(file, JSON.stringify(blogEntries));
         });
     });
 
@@ -143,6 +141,9 @@ module.exports = function(grunt) {
         },
         update_globals: {
             all: ['dist/views/_harp.json']
+        },
+        update_blog: {
+            all: ['dist/views/public/blog/_data.json']
         },
         clean: {
             options: {
@@ -372,7 +373,7 @@ module.exports = function(grunt) {
         'copy:dist', 'copy:bower', 'copy:bower_pdfjs', 'copy:views',
         'preprocess',
         'wiredep:internal', 'wiredep:external',
-        'replace', 'update_globals', 'harp', 'copy:css', 'copy:cssjs',
+        'replace', 'update_globals', 'update_blog', 'harp', 'copy:css', 'copy:cssjs',
         // Need to bootlint before 'usemin' because it combines dependencies and
         // makes bootlint think we aren't using jquery
         'bootlint',
@@ -382,11 +383,11 @@ module.exports = function(grunt) {
 
     var postTasksValidate = ['csslint', 'jshint', 'htmllint'];
 
-    grunt.registerTask('globals', ['update_globals']);
+    grunt.registerTask('globals', ['update_globals', 'update_blog']);
     grunt.registerTask('default', requiredTasks.concat(postTasksValidate));
     grunt.registerTask('update', ['copy:dist', 'copy:views', 'harp',
         'wiredep:internal', 'wiredep:external',
-        'replace', 'update_globals', 'harp',
+        'replace', 'update_globals', 'update_blog', 'harp',
         'uglify', 'htmlmin', 'jsbeautifier'
     ]);
     grunt.registerTask('joelvaneenwyk', requiredTasks);

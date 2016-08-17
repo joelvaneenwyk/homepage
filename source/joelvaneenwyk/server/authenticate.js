@@ -98,7 +98,7 @@ function setupApp(app, root, databaseURL, next) {
 				}
 			}
 		));
-		
+
 		app.get('/auth/google', function (req, res, next) {
 			if (req.query.redirect) {
 				req.session.redirectTo = req.query.redirect;
@@ -109,7 +109,7 @@ function setupApp(app, root, databaseURL, next) {
 				]
 			})(req, res, next);
 		});
-		
+
 		app.get('/auth/google/callback',
 		passport.authenticate('google', { failureRedirect: '/login' }),
 		function (req, res) {
@@ -168,7 +168,7 @@ function setupApp(app, root, databaseURL, next) {
     };
 
     app.use("/api/delete_users",
-        function(req, res) {
+        function() {
             var sqlUsers = fs.readFileSync(serverRoot + '/postgres/delete_users.sql').toString();
             client
 			    .query(sqlUsers,
@@ -181,7 +181,7 @@ function setupApp(app, root, databaseURL, next) {
                 }
             });
         });
-	
+
 	// Special API call to flush the session
 	app.use("/api/session/kill",
 		function(req, res) {
@@ -193,7 +193,7 @@ function setupApp(app, root, databaseURL, next) {
 			res.writeHead(200, { 'Content-Type': 'text/html' });
 			res.end("done");
 		});
-	
+
 	// For each folder in the private directory, setup requests to handle
 	// the login and validation procedure.
 	// #todo Read JSON file in root and grab passwords associated with it
@@ -234,18 +234,18 @@ function setupApp(app, root, databaseURL, next) {
 		});
 		next();
 	});
-	
+
 	console.log('Authentication setup complete!');
 }
 
 function setupDatabase(app, root, databaseURL, next) {
 	var nextStep = function() { setupApp(app, root, databaseURL, next); };
-	
+
 	if (client !== undefined)
-	{		
+	{
 		console.log('Connected to postgres!');
 		databaseConnected = true;
-			
+
 		var sqlUsers = fs.readFileSync(serverRoot + '/postgres/create_users.sql').toString();
 		client
 			.query(sqlUsers,

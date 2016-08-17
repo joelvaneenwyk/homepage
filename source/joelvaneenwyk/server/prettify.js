@@ -95,7 +95,7 @@ var _custom_process = function(req, rsp, next) {
             } else {
                 // 404
                 if (!body) return next();
-                
+
                 var formatted = _do_prettify(body);
 
                 var outputTypeInternal = terraform.helpers.outputType(sourceFile);

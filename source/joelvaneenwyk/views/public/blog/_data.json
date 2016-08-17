@@ -1,15 +1,5 @@
 {
-  "web_programming": {
-    "title": "Web Programming",
-    "tags": "web, nodejs, console"
-  },
-  "deep_learning": {
-    "title": "Deep Learning"
-  },
-  "gpu": {
-    "title": "Unlocking the GPU"
-  },
-  "tools": {
-    "title": "Tools of my Trade"
-  }
+  "//" : "This is completely replaced by an automated process in Grunt that searches through the folders",
+  "//" : "and combines the _data.json files from each entry and merges it here so that it can be used in",
+  "//" : "an easier way."
 }

@@ -6,9 +6,8 @@ var vhost = require('vhost');
 var express = require('express');
 var app = express.Router();
 var favicon = require('serve-favicon');
-var pjson = require('../package.json');
-var jsonminify = require("jsonminify");
 var authenticate = require('./authenticate');
+var environment = require('../lib/environment');
 
 var fs = require('fs');
 var harp = require('harp');
@@ -37,52 +36,6 @@ fs.access(siteStaging, fs.F_OK, function(err) {
 	console.log(siteWWW);
 	initialize();
 });
-
-function getGlobals(req) {
-	var g = {};
-
-	g.version = process.env.HEROKU_RELEASE_VERSION;
-
-	var created_date = new Date(process.env.HEROKU_RELEASE_CREATED_AT);
-	var month = created_date.getUTCMonth() + 1;
-	var day = created_date.getUTCDate();
-	var year = created_date.getUTCFullYear();
-	var date = year + "-" + month + "-" + day;
-
-	var globals = {
-		created: date,
-		owner: pjson.author.name,
-	};
-
-	// Pass user information so that we can display things like
-	// the profile picture and decide whether or not to show
-	// a 'Login' button on the header
-	var user;
-	if (req.session !== undefined && req.session.passport !== undefined)
-        user = req.session.passport.user;
-    g.user = jsonminify(JSON.stringify(user));
-	g.loggedIn = (g.user !== "");
-
-	// We pass in the current page so that it can be decided in EJS
-	// which tab to highlight
-	var pieces = req.url.split('/');
-	if (pieces.length >= 2)
-		g.page = pieces[1];
-	else
-		g.page = "";
-	g.nav = {
-		'Home': '',
-		'Resume': 'resume',
-		'Blog': 'blog'
-	};
-	g.created = globals.created;
-	g.owner = globals.owner;
-	g.globals = jsonminify(JSON.stringify(globals));
-	g.environment = "production";
-	g.footer = "© Copyright " + year + " " + globals.owner + " " + g.version;
-
-	return g;
-}
 
 function initialize() {
 	var allowedHosts = [
@@ -130,11 +83,11 @@ function initialize() {
 
 		var original_poly = middleware.poly;
 		middleware.poly = function(req, rsp, next) {
-			req.setup.config.globals = getGlobals(req);
+			req.setup.config.globals = environment.getGlobals(req);
 			original_poly(req, rsp, next);
 		};
 
-		app.use(function(req, res, next) {
+		app.use(function(req, res) {
 			res.status(404);
 
 			// respond with html page
