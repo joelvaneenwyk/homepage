@@ -1,5 +1,5 @@
 {
-	"private": false,
+	"private": true,
 	"title": "Web Programming",
 	"tags": ["news"],
 	"published": "8/20/2016",

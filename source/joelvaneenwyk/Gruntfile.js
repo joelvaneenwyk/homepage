@@ -36,12 +36,15 @@ module.exports = function(grunt) {
 
     grunt.registerMultiTask('update_blog', 'Update the blog entries', function() {
         var arrFilesSrc = this.filesSrc;
+        var done = this.async();
 
         arrFilesSrc.forEach(function(file) {
-            var blogEntries = blog.updateBlogEntries(file, grunt.log);
-            grunt.log.writeln("%j", blogEntries);
-            grunt.log.writeln('Updated blog entries');
-            grunt.file.write(file, JSON.stringify(blogEntries));
+            blog.updateBlogEntries(file, grunt.log, function(result)
+                {
+                    grunt.log.writeln('Updated blog entries');
+                    grunt.file.write(file, JSON.stringify(result));
+                    done(true);
+                });
         });
     });
 
