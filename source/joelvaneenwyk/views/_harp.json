@@ -3,7 +3,7 @@
     "version": "X.X.X",
     "created": "",
     "owner": "UNDEFINED",
-    "globals": "{}",
+    "public_globals": "{}",
     "nav": {},
     "loggedIn": false,
 	"footer": "[PLACEHOLDER]"

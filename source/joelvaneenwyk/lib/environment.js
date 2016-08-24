@@ -14,11 +14,14 @@ function updateGlobals(g) {
 	var year = created_date.getUTCFullYear();
 	var date = year + "-" + month + "-" + day;
 
-	if (g.globals === undefined )
-		g.globals = {};
+	// Pull out the existing globals first
+	var globals = g.globals;
 
-	g.globals.created = date;
-	g.globals.owner = pjson.author.name;
+	if (globals === undefined )
+		globals = {};
+
+	globals.created = date;
+	globals.owner = pjson.author.name;
 
 	g.nav = {
 		'Home': '',
@@ -26,10 +29,16 @@ function updateGlobals(g) {
 		'Blog': 'blog'
 	};
 
-	g.created = g.globals.created;
-	g.owner = g.globals.owner;
+	g.created = globals.created;
+	g.owner = globals.owner;
 	g.environment = "production";
-	g.footer = "© Copyright " + year + " " + g.globals.owner + " " + g.version;
+	g.footer = "© Copyright " + year + " " + globals.owner + " " + g.version;
+
+	var public_globals = {};
+	public_globals.owner = g.owner;
+	public_globals.environment = g.environment;
+
+	g.public_globals = JSON.stringify(public_globals);
 
 	return g;
 };

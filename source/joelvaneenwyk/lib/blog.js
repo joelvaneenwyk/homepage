@@ -81,7 +81,7 @@ exports.updateBlogEntries = function(file, log, done) {
             // https://api.github.com/repos/joelvaneenwyk/homepage/commits?path=README.md
             github.repos.getCommits({
                 user: "joelvaneenwyk",
-                repo: "homepage",
+                repo: process.env.GITHUB_REPO,
                 path: docPath
             }, function(err, res) {
                 log.writeln("Parsed: " + docPath);
