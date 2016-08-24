@@ -16,6 +16,7 @@ var express = require('express');
 var client;
 var databaseConnected = false;
 var serverRoot = path.normalize(__dirname);
+var hasGoogleSupport = false;
 
 function setupApp(app, root, databaseURL, next) {
     app.use(session({
@@ -38,104 +39,104 @@ function setupApp(app, root, databaseURL, next) {
     });
 
     passport.deserializeUser(function(user, done) {
-		if (databaseConnected)
-		{
-			// This is called to return a user from a passport
-			// stategy (e.g., after user logs in with GitHub)
-			// This also is what req.user is set to
-			var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
-			var sql_var = format(sql, {
-				profile_id: user.id
-			});
-			client.query(sql_var, function(err) {
-				done(err, user);
-			});
-		}
+        if (databaseConnected) {
+            // This is called to return a user from a passport
+            // stategy (e.g., after user logs in with GitHub)
+            // This also is what req.user is set to
+            var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
+            var sql_var = format(sql, {
+                profile_id: user.id
+            });
+            client.query(sql_var, function(err) {
+                done(err, user);
+            });
+        }
     });
 
-	if (process.env.GOOGLE_CLIENT_ID !== "" &&
-		process.env.GOOGLE_CLIENT_SECRET !== "")
-	{
-		passport.use(new GoogleStrategy({
-				clientID: process.env.GOOGLE_CLIENT_ID,
-				clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-				callbackURL: "/auth/google/callback"
-			},
-			function(accessToken, refreshToken, profile, done) {
-				if (databaseConnected)
-				{
-					// we make sure we are always using strings for our internal ids
-					var profileId = profile.id + "";
-					var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
-					var sql_var = format(sql, {
-						profile_id: profileId
-					});
-					client.query(sql_var, function(err, result) {
-						if (err || result.rows.length === 0) {
-							profile._id = profileId;
-							var user = profile._json;
-							var create_sql = fs.readFileSync(serverRoot + '/postgres/create_user.sql').toString();
-							var create_sql_var = format(create_sql, {
-								profile_id: profileId,
-								login: user.url,
-								avatar_url: user.image.url,
-								accessToken: accessToken
-							});
-							client.query(create_sql_var, function(err) {
-								profile.login = user.url;
-								profile.avatar_url = user.image.url;
-								profile.accessToken = accessToken;
-								return done(err, profile);
-							});
-						} else {
-							profile.accessToken = accessToken;
-							return done(err, profile);
-						}
-					});
-				}
-			}
-		));
-	}
+    if (process.env.GOOGLE_CLIENT_ID !== "" &&
+        process.env.GOOGLE_CLIENT_SECRET !== "") {
+        hasGoogleSupport = true;
+        passport.use(new GoogleStrategy({
+                clientID: process.env.GOOGLE_CLIENT_ID,
+                clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+                callbackURL: process.env.DEFAULT_URL + "/auth/google/callback"
+            },
+            function(accessToken, refreshToken, profile, done) {
+                if (databaseConnected) {
+                    // we make sure we are always using strings for our internal ids
+                    var profileId = profile.id + "";
+                    var sql = fs.readFileSync(serverRoot + '/postgres/find_user.sql').toString();
+                    var sql_var = format(sql, {
+                        profile_id: profileId
+                    });
+                    client.query(sql_var, function(err, result) {
+                        if (err || result.rows.length === 0) {
+                            profile._id = profileId;
+                            var user = profile._json;
+                            var create_sql = fs.readFileSync(serverRoot + '/postgres/create_user.sql').toString();
+                            var create_sql_var = format(create_sql, {
+                                profile_id: profileId,
+                                login: user.url,
+                                avatar_url: user.image.url,
+                                accessToken: accessToken
+                            });
+                            client.query(create_sql_var, function(err) {
+                                profile.login = user.url;
+                                profile.avatar_url = user.image.url;
+                                profile.accessToken = accessToken;
+                                return done(err, profile);
+                            });
+                        } else {
+                            profile.accessToken = accessToken;
+                            profile.login = profile._json.url;
+                            profile.avatar_url = profile.photos[0].value;
+                            return done(err, profile);
+                        }
+                    });
+                }
+            }
+        ));
+
+        app.get('/auth/google', function(req, res, next) {
+            if (req.query.redirect) {
+                req.session.redirectTo = req.query.redirect;
+            }
+            passport.authenticate('google', {
+                scope: [
+                    "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"
+                ]
+            })(req, res, next);
+        });
+
+        app.get('/auth/google/callback',
+            passport.authenticate('google', { failureRedirect: '/' }),
+            function(req, res) {
+                var output =
+                    '<html>\n' +
+                    '<head>\n' +
+                    '<script type="text/javascript" src="/js/login.js"></script>\n' +
+                    '<script>\n' +
+                    'function onLoad() {\n' +
+                    'var user={};\n' +
+                    'onLoginSuccess(user);\n' +
+                    '}\n' +
+                    '</script>\n' +
+                    '</head>\n' +
+                    '<body onload="onLoad();"></body>\n' +
+                    '</html>';
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(output);
+            });
+    }
 
     app.use(passport.session());
 
-    app.get('/auth/google', function(req, res, next) {
-        if (req.query.redirect) {
-            req.session.redirectTo = req.query.redirect;
-        }
-        passport.authenticate('google', {
-            scope: [
-                "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"
-            ]
-        })(req, res, next);
-    });
-
-    app.get('/auth/google/callback',
-        passport.authenticate('google', { failureRedirect: '/login' }),
-        function(req, res) {
-            var output =
-                '<html>\n' +
-                '<head>\n' +
-                '<script type="text/javascript" src="/js/login.js"></script>\n' +
-                '<script>\n' +
-                'function onLoad() {\n' +
-                'var user={};\n' +
-                'onLoginSuccess(user);\n' +
-                '}\n' +
-                '</script>\n' +
-                '</head>\n' +
-                '<body onload="onLoad();"></body>\n' +
-                '</html>';
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(output);
-        });
-
-    app.get('/auth/logout', function(req, res) {
+    app.get('/auth/logout', function(req, res, next) {
         req.logout();
-        if (req.query.redirect) {
-            return res.redirect(req.query.redirect);
-        }
-        res.redirect('/');
+        req.session.destroy(function(err) {
+            if (err) return next(err);
+            res.redirect('/');
+        });
     });
 
     app.get("/db/status", function(req, res) {
@@ -163,7 +164,22 @@ function setupApp(app, root, databaseURL, next) {
             };
         }
     };
-    
+
+    app.use("/api/delete_users",
+        function() {
+            var sqlUsers = fs.readFileSync(serverRoot + '/postgres/delete_users.sql').toString();
+            client
+                .query(sqlUsers,
+                    function(err, result) {
+                        if (err) {
+                            console.log('Failed to delete user table');
+                        } else {
+                            console.log('Deleted user table');
+                            console.log(result);
+                        }
+                    });
+        });
+
     // Special API call to flush the session
     app.use("/api/session/kill",
         function(req, res) {
@@ -175,7 +191,7 @@ function setupApp(app, root, databaseURL, next) {
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end("done");
         });
-    
+
     // For each folder in the private directory, setup requests to handle
     // the login and validation procedure.
     // #todo Read JSON file in root and grab passwords associated with it
@@ -216,50 +232,46 @@ function setupApp(app, root, databaseURL, next) {
         });
         next();
     });
-	
+
     console.log('Authentication setup complete!');
 }
 
 function setupDatabase(app, root, databaseURL, next) {
-	var nextStep = function() { setupApp(app, root, databaseURL, next); };
-	
-	if (client !== undefined)
-	{		
-		console.log('Connected to postgres!');
-		databaseConnected = true;
-			
-		var sqlUsers = fs.readFileSync(serverRoot + '/postgres/create_users.sql').toString();
-		client
-			.query(sqlUsers,
-				function(err, result) {
-					if (err) {
-						console.log('Failed to create user table');
-					} else {
-						console.log('Created user table');
-						console.log(result);
-					}
-					var sqlSessions = fs.readFileSync(serverRoot + '/postgres/create_session.sql').toString();
-					client.query(sqlSessions,
-						function(err, result) {
-							if (err) {
-								console.log('Session table already exists');
-							} else {
-								console.log('Successfully created session table');
-								console.log(result);
-							}
-							nextStep();
-						});
-				});
-	}
-	else
-	{
-		nextStep();
-	}
+    var nextStep = function() { setupApp(app, root, databaseURL, next); };
+
+    if (client !== undefined) {
+        console.log('Connected to postgres!');
+        databaseConnected = true;
+
+        var sqlUsers = fs.readFileSync(serverRoot + '/postgres/create_users.sql').toString();
+        client
+            .query(sqlUsers,
+                function(err, result) {
+                    if (err) {
+                        console.log('Failed to create user table');
+                    } else {
+                        console.log('Created user table');
+                        console.log(result);
+                    }
+                    var sqlSessions = fs.readFileSync(serverRoot + '/postgres/create_session.sql').toString();
+                    client.query(sqlSessions,
+                        function(err, result) {
+                            if (err) {
+                                console.log('Session table already exists');
+                            } else {
+                                console.log('Successfully created session table');
+                                console.log(result);
+                            }
+                            nextStep();
+                        });
+                });
+    } else {
+        nextStep();
+    }
 }
 
 function setup(app, root, next) {
-    if (process.env.USE_SECURE !== undefined && process.env.USE_SECURE === true)
-    {
+    if (process.env.USE_SECURE !== undefined && process.env.USE_SECURE === true) {
         var enforce = require('express-sslify');
         console.log('Forcing HTTPS...');
         app.use(enforce.HTTPS());
@@ -277,14 +289,13 @@ function setup(app, root, next) {
                 if (localErr) {
                     console.log('Failed to connect to local postgres');
                     console.log(localErr);
+                } else {
+                    client = localClient;
                 }
-				else {
-					client = localClient;
-				}
-				setupDatabase(app, root, process.env.PG_LOCAL_URL, next);
+                setupDatabase(app, root, process.env.PG_LOCAL_URL, next);
             });
         } else {
-			client = remoteClient;
+            client = remoteClient;
             setupDatabase(app, root, process.env.PG_REMOTE_URL, next);
         }
     });

@@ -3,18 +3,20 @@
 <head>
     <% include ../../_partials/head %>
 </head>
-<body class="container-fluid">
+<body>
 
-    <div class='header'>
-        <% include ../../_partials/header %>
-    </div>
+    <% include ../../_partials/header %>
 
-    <div class='row'>
-        <div class='blog col-sm-12'>
-            <% for(var slug in public.public.blog._data){ %>
-              <h2 class="text-center"><a href="/blog/<%= slug %>"><%= public.public.blog._data[slug].title %></a></h2>
-              <%- partial("blog/" + slug) %>
-            <% }; %>
+    <div class="container-fluid">
+        <div class='row'>
+            <div class='blog col-offset-sm-2 col-sm-12'>
+                <% for(var slug in public.public.blog._data) { %>
+                    <% if (!public.public.blog._data[slug].private) { %>
+                        <h2 class="text-center"><a href="/blog/<%= slug %>"><%= public.public.blog._data[slug].title %></a></h2>
+                        <p class="text-center"><%= public.public.blog._data[slug].abstract %></p>
+                    <% } %>
+                <% } %>
+            </div>
         </div>
     </div>
 

@@ -9,6 +9,12 @@ if (process.env.PG_REMOTE_URL === undefined) {
     require('dotenv').config();
 }
 
+// Currently we ignore all errors
+process.on('uncaughtException', function (exception) {
+    console.error('Ran into exception but we are ignoring. Full details:');
+    console.error(exception);
+});
+
 var compression = require('compression');
 var express = require('express');
 var app = express();
@@ -21,6 +27,9 @@ console.log('Root Server Started');
 app.disable('x-powered-by');
 // Show stack errors
 app.set('showStackError', true);
+
+app.locals.pretty = true;
+
 
 app
     .use(compression())

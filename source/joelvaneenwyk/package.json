@@ -1,6 +1,6 @@
 {
   "name": "joelvaneenwyk",
-  "version": "0.4.6",
+  "version": "0.4.8",
   "description": "Server setup for Joel Van Eenwyk",
   "main": "server/server.js",
   "author": {
@@ -27,6 +27,7 @@
     "string-template": "^1.0.0",
     "dotenv": "^2.0.0",
     "body-parser": "^1.15.2",
+    "github": "2.5.1",
     "grunt-jsbeautifier": "~0.2.12",
     "grunt-contrib-clean": ">=1.0.0",
     "grunt-contrib-concat": "^1.0.1",
