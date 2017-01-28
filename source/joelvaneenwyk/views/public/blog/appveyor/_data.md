@@ -17,6 +17,7 @@ This was amazingly easy and already working here: https://ci.appveyor.com/projec
 
 And look how simple the configuration for this is:
 
+~~~~
 version: 1.0.{build}
 configuration: Release
 platform: x86
@@ -29,5 +30,6 @@ before_build:
 build:
   project: visualc_net/dosbox.sln
   verbosity: minimal
+~~~~
 
 We live in an amazing time. I wish we had such simple build scripts at work!
