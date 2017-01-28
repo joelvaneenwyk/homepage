@@ -1,0 +1,22 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // Configure glob patterns for excluding files and folders.
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.heroku": true,
+        "**/.DS_Store": true,
+        "**/bower_components": true,
+        "**/node_modules": true,
+        "**/bin": true,
+        "**/dist": true,
+        "**/workspace": true,
+        "**/typings": true,
+        "**/thirdparty": true
+    },
+
+    "stylelint.enable": true,
+    "css.validate": false,
+    "typescript.tsdk": "./node_modules/typescript/lib"
+}
