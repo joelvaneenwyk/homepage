@@ -1,9 +1,9 @@
 {
     "name": "joelvaneenwyk-homepage",
     "version": "0.3.2",
-    "description": "Homepage for Joel Van Eenwyk. Includes joelvaneenwyk.com and cowrkapp.com sources.",
+    "description": "Homepage for Joel Van Eenwyk (joelvaneenwyk.com)",
     "main": "server.js",
-    "homepage": "http://www.joelvaneenwyk.com",
+    "homepage": "https://www.joelvaneenwyk.com",
     "author": {
         "name": "Joel Van Eenwyk",
         "email": "joel.vaneenwyk@gmail.com"
