@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     // manually if we are debugging through Visual Studio.
     if (process.env.PG_REMOTE_URL === undefined) {
         console.log('Manually loading environment...');
-        require('dotenv').config();
+        require('dotenv').config({ silent: true });
     }
 
     var path = require('path');
@@ -59,7 +59,20 @@ module.exports = function(grunt) {
             },
             ejs: {
                 files: [currentDir + 'views/**/*.ejs'],
-                tasks: ['jshint:all'],
+                tasks: ['copy:dist', 'copy:views', 'harp',
+                    'wiredep:internal', 'wiredep:external',
+                    'replace', 'update_globals', 'harp', 'bootlint'
+                ],
+                options: {
+                    debounceDelay: 250,
+                }
+            },
+            css: {
+                files: [currentDir + 'views/**/*.scss'],
+                tasks: ['copy:dist', 'copy:views', 'harp',
+                    'wiredep:internal', 'wiredep:external',
+                    'replace', 'update_globals', 'harp', 'bootlint'
+                ],
                 options: {
                     debounceDelay: 250,
                 }

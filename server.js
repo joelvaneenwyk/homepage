@@ -1,19 +1,19 @@
 ﻿/*jslint node: true */
 "use strict";
 
-// This is done automatically by Heroku but needs to be done
-// manually if we are debugging through Visual Studio.
-if (process.env.PG_REMOTE_URL === undefined) {
-    delete process.env.PORT;
-    console.log('Manually loading environment');
-    require('dotenv').config();
-}
-
 // Currently we ignore all errors
 process.on('uncaughtException', function (exception) {
     console.error('Ran into exception but we are ignoring. Full details:');
     console.error(exception);
 });
+// This is done automatically by Heroku but needs to be done
+// manually if we are debugging through Visual Studio.
+if (process.env.PG_REMOTE_URL === undefined) {
+    delete process.env.PORT;
+    console.log('Manually loading environment');
+    require('dotenv').config({silent: true});
+}
+
 
 var compression = require('compression');
 var express = require('express');
