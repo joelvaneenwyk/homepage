@@ -2,11 +2,11 @@
 
 As it happens, we can't actually build native plugins since VSCode is built off Javascript/Typescript.
 
-I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant. 
+I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant.
 
-The major issue I ran into was that 'emcc.bat' calls 'Python' but the default version of Python that I use is 32-bit while the binaries included in most standard versions of Emscript are 64-bit. This results in a somehwat obscure error "#todo"
+The major issue I ran into was that 'emcc.bat' calls 'Python' but the default version of Python that I use is 32-bit while the binaries included in most standard versions of Emscript are 64-bit. This results in a somewhat obscure error "#todo"
 
-The other problem is that vs-code always assumes that you install the plugin which results in copying files destructively into the MSBuild folder. This is, I suppose, fine for some people, but I want an out-of-the-box solution that just works. To do this, you need to have <import> statements in the vcxproj file for Visual Studio. This also means significant changes to vs-code.
+The other problem is that vs-code always assumes that you install the plugin which results in copying files destructively into the MSBuild folder. This is, I suppose, fine for some people, but I want an out-of-the-box solution that just works. To do this, you need to have import statements in the vcxproj file for Visual Studio. This also means significant changes to vs-code.
 
 There is a somewhat good example of this from the UE4 project.
 

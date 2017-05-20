@@ -1,7 +1,7 @@
 {
 	"private": false,
-	"title": "AppVeyor Explorations",
-	"tags": ["news"],
-	"published": "1/27/2016",
-	"abstract": "Explorations into open source build systems for Windows using DosBox."
+	"title": "Emscripten",
+	"tags": ["news", "programming", "javascript"],
+	"published": "5/20/2017",
+	"abstract": "Some details on usage of Emscripten."
 }
