@@ -19,18 +19,22 @@ var serverRoot = path.normalize(__dirname);
 var hasGoogleSupport = false;
 
 function setupApp(app, root, databaseURL, next) {
-    app.use(session({
-        store: new pgSession({
-            pg: pg,
-            conString: databaseURL,
-            tableName: 'session'
-        }),
-        unset: 'destroy',
-        saveUninitialized: true,
-        secret: process.env.COOKIE_SECRET,
-        resave: true,
-        cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
-    }));
+
+    if (databaseConnected)
+    {
+        app.use(session({
+            store: new pgSession({
+                pg: pg,
+                conString: databaseURL,
+                tableName: 'session'
+            }),
+            unset: 'destroy',
+            saveUninitialized: true,
+            secret: process.env.COOKIE_SECRET,
+            resave: true,
+            cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+        }));
+    }
 
     app.use(passport.initialize());
 
@@ -281,23 +285,22 @@ function setup(app, root, next) {
     app.use(bodyParser.urlencoded({ extended: true }));
 
     pg.defaults.ssl = true;
-    pg.connect(process.env.PG_REMOTE_URL, function(remoteErr, remoteClient) {
-        if (remoteErr) {
-            console.log('Failed to connect to remote postgres. Connecting to local postgres...');
-            pg.defaults.ssl = false;
-            pg.connect(process.env.PG_LOCAL_URL, function(localErr, localClient) {
-                if (localErr) {
-                    console.log('Failed to connect to local postgres');
-                    console.log(localErr);
-                } else {
-                    client = localClient;
-                }
-                setupDatabase(app, root, process.env.PG_LOCAL_URL, next);
-            });
-        } else {
-            client = remoteClient;
-            setupDatabase(app, root, process.env.PG_REMOTE_URL, next);
-        }
+    var pool = new pg.Pool();
+    pool.connect(process.env.PG_REMOTE_URL).then(remoteClient => {
+        console.log("Connected to remote postgres server.");
+        client = remoteClient;
+        setupDatabase(app, root, process.env.PG_REMOTE_URL, next);
+    }).catch(err => {
+        pg.defaults.ssl = false;
+        pool.connect(process.env.PG_LOCAL_URL).then(localClient => {
+            console.log("Connected to local postgres server.");
+            client = localClient;
+            setupDatabase(app, root, process.env.PG_LOCAL_URL, next);
+        })
+        .catch(err => {
+            console.log("No postgres server found.");
+            setupDatabase(app, root, '', next);
+        });
     });
 }
 
