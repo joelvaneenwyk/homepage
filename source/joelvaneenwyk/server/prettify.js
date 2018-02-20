@@ -76,7 +76,7 @@ var _custom_process = function(req, rsp, next) {
                 if (terraform.helpers.outputType(sourceFile) == 'css') {
                     var outputType = terraform.helpers.outputType(sourceFile);
                     var mimeType = helpers.mimeType(outputType);
-                    var charset = mime.charsets.lookup(mimeType);
+                    var charset = mime.getType(mimeType);
                     var bodyInternal = helpers.cssError(locals);
                     rsp.statusCode = 200;
                     rsp.setHeader('Content-Type', mimeType + (charset ? '; charset=' + charset : ''));
@@ -85,7 +85,7 @@ var _custom_process = function(req, rsp, next) {
                 } else {
                     terraform.root(__dirname + "/templates").render("error.jade", locals, function(err, body) {
                         var mimeType = helpers.mimeType('html');
-                        var charset = mime.charsets.lookup(mimeType);
+                        var charset = mime.getType(mimeType);
                         rsp.statusCode = 500;
                         rsp.setHeader('Content-Type', mimeType + (charset ? '; charset=' + charset : ''));
                         rsp.setHeader('Content-Length', Buffer.byteLength(body, charset));
@@ -100,7 +100,7 @@ var _custom_process = function(req, rsp, next) {
 
                 var outputTypeInternal = terraform.helpers.outputType(sourceFile);
                 var mimeTypeInternal = helpers.mimeType(outputTypeInternal);
-                var charsetInternal = mime.charsets.lookup(mimeTypeInternal);
+                var charsetInternal = mime.getType(mimeTypeInternal);
                 rsp.statusCode = 200;
                 rsp.setHeader('Content-Type', mimeTypeInternal + (charsetInternal ? '; charset=' + charsetInternal : ''));
                 rsp.setHeader('Content-Length', Buffer.byteLength(formatted, charsetInternal));

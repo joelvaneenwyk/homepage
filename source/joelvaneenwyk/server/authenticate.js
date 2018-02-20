@@ -11,21 +11,22 @@ var session = require('express-session');
 var pgSession = require('connect-pg-simple')(session);
 var format = require('string-template');
 var express = require('express');
+var enforce = require('express-sslify');
 
 // Variables for postgres
+var pgPool;
 var client;
 var databaseConnected = false;
 var serverRoot = path.normalize(__dirname);
 var hasGoogleSupport = false;
 
-function setupApp(app, root, databaseURL, next) {
+function setupApp(app, root, next) {
 
     if (databaseConnected)
     {
         app.use(session({
             store: new pgSession({
-                pg: pg,
-                conString: databaseURL,
+                pool: pgPool,
                 tableName: 'session'
             }),
             unset: 'destroy',
@@ -240,8 +241,8 @@ function setupApp(app, root, databaseURL, next) {
     console.log('Authentication setup complete!');
 }
 
-function setupDatabase(app, root, databaseURL, next) {
-    var nextStep = function() { setupApp(app, root, databaseURL, next); };
+function setupDatabase(app, root, next) {
+    var nextStep = function() { setupApp(app, root, next); };
 
     if (client !== undefined) {
         console.log('Connected to postgres!');
@@ -274,9 +275,30 @@ function setupDatabase(app, root, databaseURL, next) {
     }
 }
 
+function getPostgresConfig(connection, ssl) {    
+    var config = null;
+
+    if (connection)
+    {
+        const url = require('url');
+        const params = url.parse(connection);
+        const auth = params.auth.split(':');
+    
+        config = {
+            user: auth[0],
+            password: auth[1],
+            host: params.hostname,
+            port: params.port,
+            database: params.pathname.split('/')[1],
+            ssl: ssl
+        };   
+    }
+
+    return config;
+}
+
 function setup(app, root, next) {
     if (process.env.USE_SECURE !== undefined && process.env.USE_SECURE === true) {
-        var enforce = require('express-sslify');
         console.log('Forcing HTTPS...');
         app.use(enforce.HTTPS());
     }
@@ -284,24 +306,25 @@ function setup(app, root, next) {
     app.use(bodyParser.json({ limit: '50mb' }));
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    pg.defaults.ssl = true;
-    var pool = new pg.Pool();
-    pool.connect(process.env.PG_REMOTE_URL).then(remoteClient => {
-        console.log("Connected to remote postgres server.");
-        client = remoteClient;
-        setupDatabase(app, root, process.env.PG_REMOTE_URL, next);
-    }).catch(err => {
-        pg.defaults.ssl = false;
-        pool.connect(process.env.PG_LOCAL_URL).then(localClient => {
-            console.log("Connected to local postgres server.");
-            client = localClient;
-            setupDatabase(app, root, process.env.PG_LOCAL_URL, next);
+    pgPool = new pg.Pool(getPostgresConfig(process.env.PG_REMOTE_URL));
+    pgPool.connect()
+        .then(remoteClient => {
+            console.log("Connected to remote postgres server.");
+            client = remoteClient;
+            setupDatabase(app, root, next);
         })
         .catch(err => {
-            console.log("No postgres server found.");
-            setupDatabase(app, root, '', next);
+            pgPool = new pg.Pool(getPostgresConfig(process.env.PG_LOCAL_URL));
+            pgPool.connect().then(localClient => {
+                console.log("Connected to local postgres server.");
+                client = localClient;
+                setupDatabase(app, root, next);
+            })
+            .catch(err => {
+                console.log("No postgres server found.");
+                setupDatabase(app, root, next);
+            });
         });
-    });
 }
 
 module.exports = {
