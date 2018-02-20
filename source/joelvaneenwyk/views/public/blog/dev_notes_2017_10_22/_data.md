@@ -16,18 +16,18 @@ Some goals:
 
 ### Standalone
 
-To solve this problem, there turns out to be a good solution: (Electron)[https://electron.atom.io/docs/tutorial/about/]. Alternative is https://nwjs.io/
+To solve this problem, there turns out to be a good solution: [Electron](https://electron.atom.io/docs/tutorial/about/). Alternative is [NWJS.io](https://nwjs.io/)
 
 ### Resources
 
-* http://rollingstones.vizzuality.com/#/
-* https://www.xplatform.rocks/2015/02/19/developer-presentations-using-reveal-js/
-* https://www.sitepoint.com/creating-slick-html-presentations-using-reveal-js/
-* https://github.com/hakimel/reveal.js/blob/master/demo.html
+* [http://rollingstones.vizzuality.com](http://rollingstones.vizzuality.com/#/)
+* [https://www.xplatform.rocks/2015/02/19/developer-presentations-using-reveal-js/](https://www.xplatform.rocks/2015/02/19/developer-presentations-using-reveal-js/)
+* [https://www.sitepoint.com/creating-slick-html-presentations-using-reveal-js/](https://www.sitepoint.com/creating-slick-html-presentations-using-reveal-js/)
+* [reveal.js demo](https://github.com/hakimel/reveal.js/blob/master/demo.html)
 
 ## SQLite
 
-As with a lot of tech exploration the big problem is too much information. Finally found a decent (tutorial)[https://github.com/praeclarum/sqlite-net/wiki/GettingStarted] that made this straightforward.
+As with a lot of tech exploration the big problem is too much information. Finally found a decent [tutorial](https://github.com/praeclarum/sqlite-net/wiki/GettingStarted) that made this straightforward.
 
 ## Browser Extensions
 

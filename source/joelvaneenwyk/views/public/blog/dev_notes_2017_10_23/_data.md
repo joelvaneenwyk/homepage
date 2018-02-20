@@ -4,7 +4,7 @@ In updating my blog finally with some dev notes, it became quickly apparent that
 
 Few things:
 
-* Apparently Bower is now deprecated and need to move to Yarn: "Prevent this by migrating to Yarn: <https://bower.io/blog/2017/how-to-migrate-away-from-bower/">
+* Apparently Bower is now deprecated and need to move to Yarn: [Prevent this by migrating to Yarn](https://bower.io/blog/2017/how-to-migrate-away-from-bower/)
 * Currently I maintain a 'private' version and public version of the website. The reasons I did this seem no longer valid.
 * I've been paying to have a secure HTTPS version of the site. This no longer seems necessary.
 
