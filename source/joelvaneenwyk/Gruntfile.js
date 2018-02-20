@@ -141,6 +141,7 @@ module.exports = function(grunt) {
         jshint: {
             all: ['**.js', currentDir + 'server/*.js'],
             options: {
+                esversion: 6,
                 globals: {
                     jQuery: true,
                     console: true,
