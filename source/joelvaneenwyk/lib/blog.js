@@ -6,7 +6,7 @@ var path = require('path');
 var pjson = require('../package.json');
 
 // https://github.com/mikedeboer/node-github
-var GitHubApi = require("github");
+var GitHubApi = require("@octokit/rest");
 
 function getDirectories(srcpath) {
     return fs.readdirSync(srcpath).filter(function(file) {

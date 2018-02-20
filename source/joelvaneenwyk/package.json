@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "express": "^4.16.2",
-        "harp": "^0.23.0",
+        "harp": "^0.25.0",
         "js-beautify": "^1.7.5",
         "vhost": "^3.0.2",
         "pg": "^7.4.0",
@@ -19,8 +19,8 @@
         "connect-pg-simple": "^4.2.0",
         "html-minifier": "^3.0.1",
         "jsonminify": "0.4.1",
-        "load-grunt-tasks": "^3.5.0",
         "time-grunt": "^1.4.0",
+        "load-grunt-tasks": "^3.5.0",
         "passport": "0.3.2",
         "passport-google-oauth": "1.0.0",
         "express-session": "1.15.6",
@@ -32,10 +32,10 @@
         "grunt-contrib-clean": ">=1.0.0",
         "grunt-contrib-concat": "^1.0.1",
         "grunt-contrib-copy": "^1.0.0",
-        "grunt-contrib-cssmin": "^2.0.0",
+        "grunt-contrib-cssmin": "^2.2.1",
         "grunt-contrib-csslint": "^2.0.0",
-        "grunt-contrib-jshint": "^1.0.0",
         "grunt-contrib-uglify": "^3.3.0",
+        "grunt-contrib-jshint": "^1.0.0",
         "grunt-contrib-watch": "^1.0.0",
         "grunt-contrib-imagemin": "^1.0.1",
         "grunt-contrib-htmlmin": "^2.0.0",
@@ -46,7 +46,7 @@
         "grunt-bower-main": "^0.2.0",
         "grunt-replace": "^1.0.1",
         "grunt-preprocess": "^5.1.0",
-        "grunt-harp": "https://github.com/joelvaneenwyk/grunt-harp.git"
+        "grunt-harp": "git+https://github.com/joelvaneenwyk/grunt-harp.git"
     },
     "devDependencies": {}
 }
