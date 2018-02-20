@@ -34,7 +34,7 @@
         "grunt-contrib-jshint": "^1.0.0",
         "grunt-contrib-uglify": "^3.3.0",
         "grunt-contrib-watch": "^1.0.0",
-        "grunt-harp": "joelvaneenwyk/grunt-harp",
+        "grunt-harp": "github:joelvaneenwyk/grunt-harp",
         "helmet": "^3.11.0",
         "joelvaneenwyk": "file:./source/joelvaneenwyk",
         "load-grunt-tasks": "^3.5.0",
