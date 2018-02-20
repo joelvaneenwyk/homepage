@@ -24,7 +24,7 @@ PDFJS.workerSrc = '/thirdparty/pdfjs-dist/build/pdf.worker.js';
 PDFJS.cMapUrl = '/thirdparty/pdfjs-dist/cmaps/';
 PDFJS.cMapPacked = true;
 
-var DEFAULT_URL = '/data/portfolio/2016_joelvaneenwyk_resume.pdf';
+var DEFAULT_URL = '/data/portfolio/20176_joelvaneenwyk_resume.pdf';
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
 var MAX_SCALE = 10.0;
