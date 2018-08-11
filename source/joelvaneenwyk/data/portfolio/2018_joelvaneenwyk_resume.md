@@ -1,15 +1,15 @@
 # Joel Van Eenwyk
 
-## CONTACT INFORMATION
+## Contact Information
 
 * Cellphone: 541-232-1202
 * Email: joel.vaneenwyk@gmail.com
 * Homepage: http://joelvaneenwyk.com/
 
-## SUMMARY
+## Summary
 
-* 10+ years experience in software engineering
-* 4+ years in leadership roles
+* 11+ years experience in software engineering
+* 5+ years in leadership roles
 * Extensive programming languages experience: C/C++, C#, Python, etc
 * Extensive scripting language experience:  MEL, MaxScript, Tcl/Tk, Javascript
 * Shader creation: Houdini, Maya, GLSL
@@ -17,7 +17,7 @@
 * Extensive experience with DCC packages:: Maya, 3dsmax, and Side Effects Houdini
 * Experienced with various tools: Visual Studio, Perforce, Git
 
-## GAME TITLES
+## Shipped Game Titles
 
 * 2012 – Destiny [Bungie]
 * 2012 – Spec Ops: The Line (PS3) [2K Games]
@@ -42,7 +42,7 @@
 * 2003 – 2004.  Chief Technical Officer at 3DBuzz, Inc.
 * 1998 – 2012.  Freelance Developer
 
-## EDUCATION
+## Education
 
 * 2007.  Outstanding Senior at KU
 * 2002 – 2007.  BS in Computer Science at KU
