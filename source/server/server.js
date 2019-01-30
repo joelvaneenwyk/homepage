@@ -27,7 +27,7 @@ var staticServeOptions = {
 fs.access(siteStaging, fs.F_OK, function(err) {
 	var pathTemp = require('path');
 	if (err) {
-		siteStaging = pathTemp.join(__dirname, '..', '..', '..', 'dist', 'staging');
+		siteStaging = pathTemp.join(__dirname, '..', '..', 'dist', 'staging');
 	}
 	siteStaging = pathTemp.resolve(siteStaging);
 	siteWWW = pathTemp.resolve(siteStaging + '/../www/');

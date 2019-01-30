@@ -15,7 +15,7 @@ The staging branch is also deployed automatically to Heroku here: http://jvaneen
 
 ![Joel Van Eenwyk](source/joelvaneenwyk/www/images/stamp.png)
 
-Source for the website is in *source/joelvaneenwyk/*
+Source for the website is in *source/*
 
 ## Install (Windows)
 

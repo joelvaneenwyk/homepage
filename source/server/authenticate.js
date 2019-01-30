@@ -117,7 +117,7 @@ function setupApp(app, root, next) {
             passport.authenticate('google', { failureRedirect: '/' }),
             function(req, res) {
                 var output =
-                    '<html>\n' +
+                    '<html lang="en-US">\n' +
                     '<head>\n' +
                     '<script type="text/javascript" src="/js/login.js"></script>\n' +
                     '<script>\n' +

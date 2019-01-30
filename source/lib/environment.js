@@ -2,7 +2,7 @@
 "use strict";
 
 var jsonminify = require("jsonminify");
-var pjson = require('../package.json');
+var pjson = require('../../package.json');
 var harpjson = require('../views/_harp.json');
 
 function updateGlobals(g) {

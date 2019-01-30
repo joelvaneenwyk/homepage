@@ -3,10 +3,10 @@
 
 var fs = require('fs');
 var path = require('path');
-var pjson = require('../package.json');
+var pjson = require('../../package.json');
 
 // https://github.com/mikedeboer/node-github
-var GitHubApi = require("@octokit/rest");
+var Octokit = require("@octokit/rest");
 
 function getDirectories(srcpath) {
     return fs.readdirSync(srcpath).filter(function(file) {
@@ -36,20 +36,22 @@ exports.updateBlogEntries = function(file, log, done) {
     var github;
 
     if (process.env.GITHUB_TOKEN !== undefined) {
-        github = new GitHubApi({
+        github = new Octokit({
             // optional
             debug: true,
             protocol: "https",
             host: "api.github.com", // should be api.github.com for GitHub
-            Promise: require('bluebird'),
-            // default: true; there's currently an issue with non-get redirects, so allow ability to disable follow-redirects
             followRedirects: false,
-            timeout: 5000
-        });
-
-        github.authenticate({
-            type: "oauth",
-            token: process.env.GITHUB_TOKEN
+            auth: process.env.GITHUB_TOKEN,
+            request: {
+              // Node.js only: advanced request options can be passed as http(s) agent,
+              // such as custom SSL certificate or proxy settings.
+              // See https://nodejs.org/api/http.html#http_class_http_agent
+              agent: undefined,
+          
+              // request timeout in ms. 0 means no timeout
+              timeout: 0
+            }
         });
     }
 
@@ -74,12 +76,21 @@ exports.updateBlogEntries = function(file, log, done) {
             finalizeBlogEntry(blogOutput, name, pjson.author.name, done);
         }
 
+        var processMarkdown = false;
+
         if (github !== undefined) {
-            let docPath = "source/joelvaneenwyk/views/public/blog/" + name + "/_data.md";
+            processMarkdown = true;
+        }
+
+        // Forcing it off for now during refactor
+        processMarkdown = false;
+
+        if (processMarkdown) {
+            let docPath = "source/views/public/blog/" + name + "/_data.md";
             log.writeln("Get Commits: " + docPath);
 
             // https://api.github.com/repos/joelvaneenwyk/homepage/commits?path=README.md
-            github.repos.getCommits({
+            github.repos.listCommits({
                 user: "joelvaneenwyk",
                 repo: process.env.GITHUB_REPO,
                 path: docPath
