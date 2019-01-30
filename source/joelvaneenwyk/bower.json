@@ -16,18 +16,18 @@
         "bower_components"
     ],
     "dependencies": {
-        "jquery": "2.2.4",
-        "bootstrap": "3.3.4",
-        "bootstrap-sass": "3.3.4",
-        "modernizr": "~2.8.3",
-        "d3": "^3.5.6",
+        "jquery": "3.3.1",
+        "bootstrap": "4.2.1",
+        "bootstrap-sass": "3.4.0",
+        "modernizr": "~3.6.0",
+        "d3": "^3.5.17",
         "topojson": "1.6.26",
         "html5shiv": "3.7.3",
         "js-cookie": "2.1.2",
-        "datamaps": "^0.5.0",
+        "datamaps": "^0.5.9",
         "prism": "^1.5.1",
         "fontfaceobserver": "^2.0.1",
-        "bootstrap-validator": "^0.11.5",
+        "bootstrap-validator": "^0.11.9",
         "autotrack": "1.0.0",
         "pdfjs-dist": "^1.5.376"
     }
