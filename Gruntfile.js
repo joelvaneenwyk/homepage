@@ -10,33 +10,6 @@ module.exports = function(grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
-    grunt.initConfig({
-        watch: {
-            scripts: {
-                files: ['Gruntfile.js'],
-                tasks: ['jshint:all'],
-                options: {
-                    debounceDelay: 250,
-                }
-            }
-        },
-        jshint: {
-            all: ['Gruntfile.js'],
-            options: {
-                esversion: 6,
-                globals: {
-                    jQuery: true,
-                    console: true,
-                    module: true,
-                    document: true
-                }
-            }
-        },
-        clean: {
-            files: ['dist']
-        }
-    });
-
     // This is done automatically by Heroku but needs to be done
     // manually if we are debugging through Visual Studio.
     if (process.env.PG_REMOTE_URL === undefined) {
@@ -252,6 +225,16 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: [{
+                    expand: true,
+                    cwd: currentDir + 'www',
+                    src: '*.json',
+                    dest: 'dist/staging/'
+                }, {
+                    expand: true,
+                    cwd: currentDir + 'www',
+                    src: '*.txt',
+                    dest: 'dist/staging/'
+                }, {
                     expand: true,
                     cwd: currentDir + 'www',
                     src: '*.html',
