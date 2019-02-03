@@ -10,7 +10,7 @@ var beautify_html = require('js-beautify').html;
 var minify = require('html-minifier').minify;
 
 var _do_prettify = function(html) {
-    var doMinify = true;
+    var doMinify = false;
     var formatted = html;
 
     if (doMinify) {
@@ -76,12 +76,7 @@ var _custom_process = function(req, rsp, next) {
                 if (terraform.helpers.outputType(sourceFile) == 'css') {
                     var outputType = terraform.helpers.outputType(sourceFile);
                     var mimeType = helpers.mimeType(outputType);
-                    var charset;
-                    if ('lookup' in mime.charsets) {
-                        charset = mime.charsets.lookup(mimeType);
-                    } else {
-                        charset = mime.charsets.getType(mimeType);
-                    }
+                    var charset= mime.charsets.lookup(mimeType);
                     var bodyInternal = helpers.cssError(locals);
                     rsp.statusCode = 200;
                     rsp.setHeader('Content-Type', mimeType + (charset ? '; charset=' + charset : ''));
@@ -90,12 +85,7 @@ var _custom_process = function(req, rsp, next) {
                 } else {
                     terraform.root(__dirname + "/templates").render("error.jade", locals, function(err, body) {
                         var mimeType = helpers.mimeType('html');
-                        var charset;
-                        if ('lookup' in mime.charsets) {
-                            charset = mime.charsets.lookup(mimeType);
-                        } else {
-                            charset = mime.charsets.getType(mimeType);
-                        }
+                        var charset = mime.charsets.lookup(mimeType);
                         rsp.statusCode = 500;
                         rsp.setHeader('Content-Type', mimeType + (charset ? '; charset=' + charset : ''));
                         rsp.setHeader('Content-Length', Buffer.byteLength(body, charset));
@@ -110,12 +100,7 @@ var _custom_process = function(req, rsp, next) {
 
                 var outputTypeInternal = terraform.helpers.outputType(sourceFile);
                 var mimeTypeInternal = helpers.mimeType(outputTypeInternal);
-                var charsetInternal;
-                if ('lookup' in mime.charsets) {
-                    charsetInternal = mime.charsets.lookup(mimeTypeInternal);
-                } else {
-                    charsetInternal = mime.charsets.getType(mimeTypeInternal);
-                }
+                var charsetInternal = mime.charsets.lookup(mimeTypeInternal);
                 rsp.statusCode = 200;
                 rsp.setHeader('Content-Type', mimeTypeInternal + (charsetInternal ? '; charset=' + charsetInternal : ''));
                 rsp.setHeader('Content-Length', Buffer.byteLength(formatted, charsetInternal));

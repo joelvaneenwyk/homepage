@@ -15,8 +15,6 @@
         "**/typings": true,
         "**/thirdparty": true
     },
-
-    "stylelint.enable": true,
     "css.validate": false,
     "typescript.tsdk": "./node_modules/typescript/lib"
 }

@@ -7,8 +7,20 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch via NPM",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "port": 9229
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceRoot}\\server.js",
+            "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
             "cwd": "${workspaceRoot}"
         },
         {
