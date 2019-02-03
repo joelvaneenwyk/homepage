@@ -187,7 +187,9 @@ function addPasswordValidation() {
 $(document).ready(function() {
     updateHeader();
     $(window).on('resize', updateHeader);
-    $('[data-toggle="tooltip"]').tooltip();
+
+    // #todo - Failing when deployed
+    //$('[data-toggle="tooltip"]').tooltip();
 
     addPasswordValidation();
 
