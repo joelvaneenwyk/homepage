@@ -415,7 +415,10 @@ module.exports = function(grunt) {
         'usemin', 'htmlmin', 'jsbeautifier',
     ];
 
-    var postTasksValidate = ['csslint', 'jshint', 'htmllint'];
+    // Disabled 'htmllint' as Heroku defaults to Java 1.7 which is too old. Extensive tests
+    // does not seem to reveal any way of changing this.
+    var postTasksValidate = ['csslint', 'jshint'];
+    //var postTasksValidate = ['csslint', 'jshint', 'htmllint'];
 
     grunt.registerTask('globals', ['update_globals', 'update_blog']);
 
