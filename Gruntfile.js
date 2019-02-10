@@ -381,6 +381,7 @@ module.exports = function(grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -417,19 +418,15 @@ module.exports = function(grunt) {
     var postTasksValidate = ['csslint', 'jshint', 'htmllint'];
 
     grunt.registerTask('globals', ['update_globals', 'update_blog']);
-    grunt.registerTask('default', requiredTasks.concat(postTasksValidate));
+
     grunt.registerTask('update', ['copy:dist', 'copy:views', 'harp',
         'wiredep:internal', 'wiredep:external',
         'replace', 'update_globals', 'update_blog', 'harp',
         'uglify', 'htmlmin', 'jsbeautifier'
     ]);
-    grunt.registerTask('joelvaneenwyk', requiredTasks);
-    grunt.registerTask('joelvaneenwyk-dev', requiredTasks.concat(postTasksValidate));
 
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.registerTask('joelvaneenwyk', requiredTasks.concat(postTasksValidate));
 
-    grunt.registerTask('default', ['jshint', 'joelvaneenwyk-dev']);
+    grunt.registerTask('default', ['jshint', 'joelvaneenwyk']);
     grunt.registerTask('dist', ['jshint', 'joelvaneenwyk']);
 };
