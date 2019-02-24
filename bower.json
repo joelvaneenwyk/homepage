@@ -29,8 +29,6 @@
     "fontfaceobserver": "2.0.1",
     "bootstrap-validator": "0.11.9",
     "autotrack": "1.0.0",
-    "pdfjs-dist": "2.1.266",
-    "jquery.l10n": "^1.0.2",
-    "l10n": "*"
+    "pdfjs-dist": "2.1.266"
   }
 }
