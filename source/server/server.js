@@ -12,28 +12,31 @@ var environment = require('../lib/environment');
 var fs = require('fs');
 var harp = require('harp');
 
-var siteRoot = path.normalize(__dirname + '/../');
-var siteStaging = siteRoot + '/dist/staging/';
-var siteWWW = siteStaging + '../www/';
-var siteViews = siteStaging + '../views/';
-
-var oneDay = 24 * 60 * 60 * 1000; // one day in milliseconds
+// one day in milliseconds
+var oneDay = 24 * 60 * 60 * 1000;
 var staticServeOptions = {
-  maxAge: oneDay * 8 // 8 days
+	// 8 days
+  	maxAge: oneDay * 8
 };
 
-// Determine where the staging area is by testing if there is a joelvaneenwyk/dist/staging folder
+// Set defaults
+var siteRoot = path.normalize(__dirname + '/../');
+var siteStaging = '';
+var siteWWW = '';
+var siteViews = '';
+
+// Determine where the staging area is by testing if there is a {ROOT}/dist/staging folder
 // and if there isn't try the parent folder
-fs.access(siteStaging, fs.F_OK, function(err) {
-	var pathTemp = require('path');
+fs.access(`${siteRoot}/app.json`, fs.F_OK, function(err) {
 	if (err) {
-		siteStaging = pathTemp.join(__dirname, '..', '..', 'dist', 'staging');
+		siteRoot = path.normalize(__dirname + '/../../');
 	}
-	siteStaging = pathTemp.resolve(siteStaging);
-	siteWWW = pathTemp.resolve(siteStaging + '/../www/');
-	siteViews = pathTemp.resolve(siteStaging + '/../views/');
-	console.log(siteStaging);
-	console.log(siteWWW);
+	siteStaging = path.resolve(path.join(__dirname, '..', '..', 'dist', 'staging'));
+	siteWWW = path.resolve(siteStaging + '/../www/');
+	siteViews = path.resolve(siteStaging + '/../views/');
+	console.log(`Staging: ${siteStaging}`);
+	console.log(`WWW: ${siteWWW}`);
+	console.log(`Views: ${siteViews}`);
 	initialize();
 });
 
@@ -52,9 +55,12 @@ function initialize() {
 
 	var mainApp = express.Router();
 
-	mainApp.use("/", express.static(siteStaging, staticServeOptions));
-	mainApp.use("/", favicon(siteStaging + '/favicon.ico'));
-	mainApp.use("/data", express.static(siteRoot + '/data', staticServeOptions));
+	mainApp.use("/",
+		express.static(siteStaging, staticServeOptions));
+	mainApp.use("/",
+		favicon(siteStaging + '/favicon.ico'));
+	mainApp.use("/data",
+		express.static(siteRoot + '/source/data', staticServeOptions));
 	mainApp.use("/",
 		express.static(
 			path.join(siteWWW, 'static'),
@@ -78,7 +84,7 @@ function initialize() {
 		// the source code looks pretty when viewing source on a page
 		var middleware = harp.middleware;
 
-		var prettify = require('./prettify');
+		 var prettify = require('./prettify');
 		prettify.prettify(harp);
 
 		var original_poly = middleware.poly;

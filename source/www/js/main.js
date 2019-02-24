@@ -188,8 +188,7 @@ $(document).ready(function() {
     updateHeader();
     $(window).on('resize', updateHeader);
 
-    // #todo - Failing when deployed
-    //$('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip();
 
     addPasswordValidation();
 
