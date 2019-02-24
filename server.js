@@ -33,6 +33,10 @@ app.set('showStackError', true);
 // This is expensive but makes client-side HTML cleaner
 app.locals.pretty = true;
 
+var use_secure =
+    process.env.USE_SECURE !== undefined &&
+    process.env.USE_SECURE === true;
+
 app
     .use(compression())
     .use(cookieParser())
@@ -40,13 +44,13 @@ app
         {
             // Strict-Transport-Security should only be enabled if we are using HTTPS
             // See here for more details: https://helmetjs.github.io/docs/hsts/
-            hsts: process.env.USE_SECURE !== undefined && process.env.USE_SECURE === true
+            hsts: use_secure
         }
     ))
     .use(
         function(req, res, next) {
             var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-            console.log('Request URL: ', fullUrl);
+            console.log(`Request URL: ${fullUrl}`);
             next();
         })
     .use('/', require('./source/server/server'));
