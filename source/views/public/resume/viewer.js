@@ -29,7 +29,7 @@ var CMAP_PACKED = true;
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   '/thirdparty/pdfjs-dist/build/pdf.worker.js';
 
-var DEFAULT_URL = '/data/portfolio/2018_joelvaneenwyk_resume.pdf';
+var DEFAULT_URL = '/data/portfolio/joelvaneenwyk_resume.pdf';
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
 var MAX_SCALE = 10.0;
