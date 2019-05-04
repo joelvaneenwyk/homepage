@@ -4,5 +4,6 @@
   "repository": "https://github.com/joelvaneenwyk/homepage",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["joelvaneenwyk", "node", "express", "static"],
-  "image": "heroku/nodejs"
+  "image": "heroku/nodejs",
+  "stack": "heroku-18"
 }
