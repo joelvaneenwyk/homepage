@@ -35,6 +35,7 @@
 
 * 2012: Destiny [Bungie]
 * 2012: Spec Ops: The Line (PS3) [2K Games]
+* 2012: Rinth Island (iOS, Facebook) [Buzz Monkey Software, Chillingo] 
 * 2010: The Tomb Raider Trilogy (PS3)
 * 2010: ESPNU College Town (Facebook)
 * 2010: Tony Hawk: RIDE 2 (PS3/360 and Wii)
