@@ -1,0 +1,69 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# This is top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Unix-style newlines with a newline ending every file
+[*.{bat,txt}]
+end_of_line = crlf
+insert_final_newline = true
+
+[*.{bat,ps1}]
+indent_style = space
+indent_size = 4
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.{js,py}]
+charset = utf-8
+
+# 4 space indentation
+[*.py]
+indent_style = space
+indent_size = 4
+
+[*.sh]
+# like -i=4
+indent_style = space
+indent_size = 4
+
+shell_variant      = posix # like -ln=posix
+binary_next_line   = true  # like -bn
+switch_case_indent = true  # like -ci
+space_redirects    = true  # like -sr
+keep_padding       = true  # like -kp
+function_next_line = true  # like -fn
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+[*.md]
+indent_style = space
+indent_size = 2
+
+# Indentation override for all JS under lib directory
+[source/**.js]
+indent_style = space
+indent_size = 2
+
+# Matches the exact files either package.json or .travis.yml
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2
+
+# Ignore the entire "third_party" directory.
+[**/{external,node_modules,__pycache__}/**]
+ignore = true
+end_of_line = unset
+insert_final_newline = unset
+
+[*.pyc]
+ignore = true
+end_of_line = unset
+insert_final_newline = unset
