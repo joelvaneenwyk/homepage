@@ -73,6 +73,7 @@
         "grunt-wiredep": "^3.0.1"
     },
     "scripts": {
+        "preinstall": "npm install -g grunt-cli bower",
         "postinstall": "bower install && grunt dist",
         "test": "cross-env NODE_ENV=production grunt dist",
         "start": "node server.js"

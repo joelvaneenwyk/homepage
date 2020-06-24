@@ -6,11 +6,10 @@ env:
   - NODE_ENV=staging
 node_js:
   - "10.15.0"
-before_install:
-  - npm install -g npm@'>=6.7.0'
-  - npm install -g grunt-cli
-  - npm install -g bower
-install: npm install
+install:
+  - npm install
+  # In production mode the dev dependencies like grunt will not be installed without this.
+  - npm install --only=dev
 before_script: grunt dist
 addons:
     code_climate:
