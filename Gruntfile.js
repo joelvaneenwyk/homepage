@@ -2,22 +2,23 @@
 
 "use strict";
 
-module.exports = function(grunt) {
+// Load grunt tasks automatically
+require('load-grunt-tasks');
+// Time how long tasks take. Can help when optimizing build times
+require('time-grunt');
 
-    // Load grunt tasks automatically
-    require('load-grunt-tasks')(grunt);
+var dotenv = require('dotenv');
+var path = require('path');
+var environment = require('./source/lib/environment.js');
+var blog = require('./source/lib/blog.js');
 
-    // Time how long tasks take. Can help when optimizing build times
-    require('time-grunt')(grunt);
-
+module.exports = function (grunt) {
     // This is done automatically by Heroku but needs to be done
     // manually if we are debugging through Visual Studio.
     if (process.env.PG_REMOTE_URL === undefined) {
         console.log('Manually loading environment...');
-        require('dotenv').config({ silent: true });
+        dotenv.config({ silent: true });
     }
-
-    var path = require('path');
 
     // This is a bit of a hack due to the Harp plugin not handling paths like
     // everyone else. We need to ensure that the path points at the right place
@@ -26,13 +27,10 @@ module.exports = function(grunt) {
     if (!grunt.file.isDir(currentDir + '/views'))
         currentDir = 'source/';
 
-    var environment = require('./source/lib/environment.js');
-    var blog = require('./source/lib/blog.js');
-
-    grunt.registerMultiTask('update_globals', 'Update the globals', function() {
+    grunt.registerMultiTask('update_globals', 'Update the globals', function () {
         var arrFilesSrc = this.filesSrc;
 
-        arrFilesSrc.forEach(function(file) {
+        arrFilesSrc.forEach(function (file) {
             var globals = environment.getGlobals();
             grunt.log.writeln("%j", globals);
             grunt.log.writeln('Updated globals');
@@ -40,17 +38,16 @@ module.exports = function(grunt) {
         });
     });
 
-    grunt.registerMultiTask('update_blog', 'Update the blog entries', function() {
+    grunt.registerMultiTask('update_blog', 'Update the blog entries', function () {
         var arrFilesSrc = this.filesSrc;
         var done = this.async();
 
-        arrFilesSrc.forEach(function(file) {
-            blog.updateBlogEntries(file, grunt.log, function(result)
-                {
-                    grunt.log.writeln('Updated blog entries');
-                    grunt.file.write(file, JSON.stringify(result));
-                    done(true);
-                });
+        arrFilesSrc.forEach(function (file) {
+            blog.updateBlogEntries(file, grunt.log, function (result) {
+                grunt.log.writeln('Updated blog entries');
+                grunt.file.write(file, JSON.stringify(result));
+                done(true);
+            });
         });
     });
 
@@ -60,7 +57,7 @@ module.exports = function(grunt) {
                 files: [currentDir + 'server/**/*.js'],
                 tasks: ['jshint:all'],
                 options: {
-                    debounceDelay: 250,
+                    debounceDelay: 250
                 }
             },
             ejs: {
@@ -70,7 +67,7 @@ module.exports = function(grunt) {
                     'replace', 'update_globals', 'harp', 'bootlint'
                 ],
                 options: {
-                    debounceDelay: 250,
+                    debounceDelay: 250
                 }
             },
             css: {
@@ -80,7 +77,7 @@ module.exports = function(grunt) {
                     'replace', 'update_globals', 'harp', 'bootlint'
                 ],
                 options: {
-                    debounceDelay: 250,
+                    debounceDelay: 250
                 }
             }
         },
@@ -121,7 +118,7 @@ module.exports = function(grunt) {
                     src: 'staging/**/*.html',
                     dest: 'dist/'
                 }]
-            },
+            }
         },
         uglify: {
             options: {
@@ -129,7 +126,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/staging/js/login.min.js': currentDir + 'www/js/login.js',
+                    'dist/staging/js/login.min.js': currentDir + 'www/js/login.js'
                 }
             }
         },
@@ -142,7 +139,7 @@ module.exports = function(grunt) {
             }
         },
         usemin: {
-            html: 'dist/www/**/*.html',
+            html: 'dist/www/**/*.html'
         },
         jshint: {
             all: ['**.js', currentDir + 'server/*.js'],
@@ -323,16 +320,16 @@ module.exports = function(grunt) {
                 dest: 'dist/_temp/empty.css'
             }
         },
-        csslint: {
-            lax: {
-                options: {
-                    important: false,
-                    'qualified-headings': false,
-                    'adjoining-classes': false
-                },
-                src: ['dist/www/**/*.css']
-            }
-        },
+        //csslint: {
+        //    lax: {
+        //        options: {
+        //            important: false,
+        //            'qualified-headings': false,
+        //            'adjoining-classes': false
+        //        },
+        //        src: ['dist/www/**/*.css']
+        //    }
+        //},
         replace: {
             dist: {
                 files: [{
@@ -343,7 +340,7 @@ module.exports = function(grunt) {
                 options: {
                     patterns: [{
                         match: /<script src="(.*?)">/ig,
-                        replacement: function(match, offset, str, source, target) {
+                        replacement: function (match, offset, str, source, target) {
                             var targetRoot = process.cwd() + '/' + path.dirname(target);
                             var to = path.resolve(targetRoot + '/' + offset);
                             if (grunt.file.exists(to)) {
@@ -357,7 +354,7 @@ module.exports = function(grunt) {
                         }
                     }, {
                         match: /<link rel="stylesheet" href="(.*?)" /ig,
-                        replacement: function(match, offset, str, source, target) {
+                        replacement: function (match, offset, str, source, target) {
                             var targetRoot = process.cwd() + '/' + path.dirname(target);
                             var to = path.resolve(targetRoot + '/' + offset);
                             if (grunt.file.exists(to)) {
@@ -412,12 +409,12 @@ module.exports = function(grunt) {
         // makes bootlint think we aren't using jquery
         'bootlint',
         'useminPrepare', 'concat', 'uglify', 'cssmin', 'imagemin',
-        'usemin', 'htmlmin', 'jsbeautifier',
+        'usemin', 'htmlmin', 'jsbeautifier'
     ];
 
     // Disabled 'htmllint' as Heroku defaults to Java 1.7 which is too old. Extensive tests
     // does not seem to reveal any way of changing this.
-    var postTasksValidate = ['csslint', 'jshint'];
+    var postTasksValidate = ['jshint'];
     //var postTasksValidate = ['csslint', 'jshint', 'htmllint'];
 
     grunt.registerTask('globals', ['update_globals', 'update_blog']);
