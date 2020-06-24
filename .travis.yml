@@ -8,7 +8,8 @@ node_js:
   - "10.15.0"
 before_install:
   - npm install -g npm@'>=6.7.0'
-  - npm install -g grunt-cli
+  - npm install -g grunt
+  - npm install -g bower
 install: npm install
 before_script: grunt dist
 addons:
