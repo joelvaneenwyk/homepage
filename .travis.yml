@@ -8,9 +8,8 @@ node_js:
   - "10.15.0"
 install:
   - npm install
-  # In production mode the dev dependencies like grunt will not be installed without this.
-  - npm install --only=dev
-before_script: grunt dist
+before_script: 
+  - npm test
 addons:
     code_climate:
         repo_token: f4fed7e049fce0a5cfd0bedb8ad6802c1e027cf596c6317ba6aaae9b534df611
