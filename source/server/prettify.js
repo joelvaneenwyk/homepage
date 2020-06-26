@@ -2,6 +2,7 @@
 "use strict";
 
 var mime = require('mime');
+var mimetypes = require('mime-types');
 var path = require('path');
 var helpers = require('harp/lib/helpers');
 var pkg = require('harp/package.json');
@@ -73,10 +74,10 @@ var _custom_process = function(req, rsp, next) {
                     error: error,
                     pkg: pkg
                 };
-                if (terraform.helpers.outputType(sourceFile) == 'css') {
+                if (terraform.helpers.outputType(sourceFile) === 'css') {
                     var outputType = terraform.helpers.outputType(sourceFile);
                     var mimeType = helpers.mimeType(outputType);
-                    var charset= mime.charsets.lookup(mimeType);
+                    var charset= mimetypes.charset(mimeType);
                     var bodyInternal = helpers.cssError(locals);
                     rsp.statusCode = 200;
                     rsp.setHeader('Content-Type', mimeType + (charset ? '; charset=' + charset : ''));
@@ -85,7 +86,7 @@ var _custom_process = function(req, rsp, next) {
                 } else {
                     terraform.root(__dirname + "/templates").render("error.jade", locals, function(err, body) {
                         var mimeType = helpers.mimeType('html');
-                        var charset = mime.charsets.lookup(mimeType);
+                        var charset = mimetypes.charset(mimeType);
                         rsp.statusCode = 500;
                         rsp.setHeader('Content-Type', mimeType + (charset ? '; charset=' + charset : ''));
                         rsp.setHeader('Content-Length', Buffer.byteLength(body, charset));
@@ -100,7 +101,7 @@ var _custom_process = function(req, rsp, next) {
 
                 var outputTypeInternal = terraform.helpers.outputType(sourceFile);
                 var mimeTypeInternal = helpers.mimeType(outputTypeInternal);
-                var charsetInternal = mime.charsets.lookup(mimeTypeInternal);
+                var charsetInternal = mimetypes.charset(mimeTypeInternal);
                 rsp.statusCode = 200;
                 rsp.setHeader('Content-Type', mimeTypeInternal + (charsetInternal ? '; charset=' + charsetInternal : ''));
                 rsp.setHeader('Content-Length', Buffer.byteLength(formatted, charsetInternal));

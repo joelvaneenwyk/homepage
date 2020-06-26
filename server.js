@@ -1,6 +1,8 @@
 ﻿/*jslint node: true */
 "use strict";
 
+var dotenv = require('dotenv');
+
 // Currently we ignore all errors but at least log them
 process.on('uncaughtException', function (exception) {
     console.error('Ran into exception but we are ignoring. Full details:');
@@ -12,9 +14,8 @@ process.on('uncaughtException', function (exception) {
 if (process.env.PG_REMOTE_URL === undefined) {
     delete process.env.PORT;
     console.log('Manually loading environment');
-    require('dotenv').config({silent: true});
+    dotenv.config({silent: true});
 }
-
 
 var compression = require('compression');
 var express = require('express');

@@ -1,17 +1,18 @@
 /*jslint node: true */
 "use strict";
 
-var pg = require('pg');
-var fs = require('fs');
-var path = require('path');
-var bodyParser = require('body-parser');
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var passport = require('passport');
-var session = require('express-session');
-var pgSession = require('connect-pg-simple')(session);
-var format = require('string-template');
-var express = require('express');
-var enforce = require('express-sslify');
+const url = require('url');
+const pg = require('pg');
+const fs = require('fs');
+const path = require('path');
+const bodyParser = require('body-parser');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const passport = require('passport');
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
+const format = require('string-template');
+const express = require('express');
+const enforce = require('express-sslify');
 
 // Variables for postgres
 var pgPool;
@@ -280,7 +281,6 @@ function getPostgresConfig(connection, ssl) {
 
     if (connection)
     {
-        const url = require('url');
         const params = url.parse(connection);
         const auth = params.auth.split(':');
     

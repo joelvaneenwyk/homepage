@@ -19,6 +19,7 @@
     "npm": ">=6.12.0"
   },
   "dependencies": {
+    "yarn": "^1.22.4",
     "bower": "^1.8.8",
     "cross-env": "^7.0.2",
     "grunt": "^1.1.0",
@@ -62,6 +63,7 @@
     "js-beautify": "^1.11.0",
     "jsonminify": "^0.4.1",
     "mime": "^2.4.6",
+    "mime-types": "^2.1.2y",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "pg": "^8.2.1",
@@ -72,7 +74,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "preinstall": "npm install --force -g grunt-cli bower",
+    "preinstall": "npm install --force -g grunt-cli bower yarn",
     "postinstall": "bower install && grunt dist",
     "test": "cross-env NODE_ENV=production grunt dist",
     "start": "node server.js"

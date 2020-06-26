@@ -14,8 +14,8 @@ install:
   - npm install
 test_script:
   - npm test
-  - node --version
   - npm --version
+  - node --version
 build: off
 matrix:
   fast_finish: true
