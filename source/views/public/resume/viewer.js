@@ -16,10 +16,6 @@
 
 'use strict';
 
-if (!pdfjsLib.getDocument || !pdfjsViewer.PDFViewer) {
-  alert('Please build the pdfjs-dist library using\n `gulp dist-install`');
-}
-
 var USE_ONLY_CSS_ZOOM = true;
 var TEXT_LAYER_MODE = 0; // DISABLE
 var MAX_IMAGE_SIZE = 1024 * 1024;
@@ -47,7 +43,7 @@ var PDFViewerApplication = {
    * @returns {Promise} - Returns the promise, which is resolved when document
    *                      is opened.
    */
-  open: function(params) {
+  open: function (params) {
     if (this.pdfLoadingTask) {
       // We need to destroy already opened document
       return this.close().then(function () {
@@ -65,7 +61,7 @@ var PDFViewerApplication = {
       url: url,
       maxImageSize: MAX_IMAGE_SIZE,
       cMapUrl: CMAP_URL,
-      cMapPacked: CMAP_PACKED,
+      cMapPacked: CMAP_PACKED
     });
     this.pdfLoadingTask = loadingTask;
 
@@ -78,7 +74,7 @@ var PDFViewerApplication = {
       self.pdfDocument = pdfDocument;
       self.pdfViewer.setDocument(pdfDocument);
       self.pdfLinkService.setDocument(pdfDocument);
-      self.pdfHistory.initialize({ fingerprint: pdfDocument.fingerprint, });
+      self.pdfHistory.initialize({ fingerprint: pdfDocument.fingerprint });
 
       self.loadingBar.hide();
       self.setTitleUsingMetadata(pdfDocument);
@@ -104,7 +100,7 @@ var PDFViewerApplication = {
       }
 
       loadingErrorMessage.then(function (msg) {
-        self.error(msg, { message: message, });
+        self.error(msg, { message: message });
       });
       self.loadingBar.hide();
     });
@@ -115,7 +111,7 @@ var PDFViewerApplication = {
    * @returns {Promise} - Returns the promise, which is resolved when all
    *                      destruction is completed.
    */
-  close: function() {
+  close: function () {
     var errorWrapper = document.getElementById('errorWrapper');
     errorWrapper.setAttribute('hidden', 'true');
 
@@ -154,18 +150,18 @@ var PDFViewerApplication = {
     this.setTitle(title);
   },
 
-  setTitleUsingMetadata: function(pdfDocument) {
+  setTitleUsingMetadata: function (pdfDocument) {
     var self = this;
-    pdfDocument.getMetadata().then(function(data) {
+    pdfDocument.getMetadata().then(function (data) {
       var info = data.info, metadata = data.metadata;
       self.documentInfo = info;
       self.metadata = metadata;
 
       // Provides some basic debug information
       console.log('PDF ' + pdfDocument.fingerprint + ' [' +
-                  info.PDFFormatVersion + ' ' + (info.Producer || '-').trim() +
-                  ' / ' + (info.Creator || '-').trim() + ']' +
-                  ' (PDF.js: ' + (pdfjsLib.version || '-') + ')');
+        info.PDFFormatVersion + ' ' + (info.Producer || '-').trim() +
+        ' / ' + (info.Creator || '-').trim() + ']' +
+        ' (PDF.js: ' + (pdfjsLib.version || '-') + ')');
 
       var pdfTitle;
       if (metadata && metadata.has('dc:title')) {
@@ -195,27 +191,29 @@ var PDFViewerApplication = {
   error: function pdfViewError(message, moreInfo) {
     var l10n = this.l10n;
     var moreInfoText = [l10n.get('error_version_info',
-      { version: pdfjsLib.version || '?',
-        build: pdfjsLib.build || '?', },
+      {
+        version: pdfjsLib.version || '?',
+        build: pdfjsLib.build || '?'
+      },
       'PDF.js v{{version}} (build: {{build}})')];
 
     if (moreInfo) {
       moreInfoText.push(
-        l10n.get('error_message', { message: moreInfo.message, },
+        l10n.get('error_message', { message: moreInfo.message },
           'Message: {{message}}'));
       if (moreInfo.stack) {
         moreInfoText.push(
-          l10n.get('error_stack', { stack: moreInfo.stack, },
+          l10n.get('error_stack', { stack: moreInfo.stack },
             'Stack: {{stack}}'));
       } else {
         if (moreInfo.filename) {
           moreInfoText.push(
-            l10n.get('error_file', { file: moreInfo.filename, },
+            l10n.get('error_file', { file: moreInfo.filename },
               'File: {{file}}'));
         }
         if (moreInfo.lineNumber) {
           moreInfoText.push(
-            l10n.get('error_line', { line: moreInfo.lineNumber, },
+            l10n.get('error_line', { line: moreInfo.lineNumber },
               'Line: {{line}}'));
         }
       }
@@ -228,20 +226,20 @@ var PDFViewerApplication = {
     errorMessage.textContent = message;
 
     var closeButton = document.getElementById('errorClose');
-    closeButton.onclick = function() {
+    closeButton.onclick = function () {
       errorWrapper.setAttribute('hidden', 'true');
     };
 
     var errorMoreInfo = document.getElementById('errorMoreInfo');
     var moreInfoButton = document.getElementById('errorShowMore');
     var lessInfoButton = document.getElementById('errorShowLess');
-    moreInfoButton.onclick = function() {
+    moreInfoButton.onclick = function () {
       errorMoreInfo.removeAttribute('hidden');
       moreInfoButton.setAttribute('hidden', 'true');
       lessInfoButton.removeAttribute('hidden');
       errorMoreInfo.style.height = errorMoreInfo.scrollHeight + 'px';
     };
-    lessInfoButton.onclick = function() {
+    lessInfoButton.onclick = function () {
       errorMoreInfo.setAttribute('hidden', 'true');
       moreInfoButton.removeAttribute('hidden');
       lessInfoButton.setAttribute('hidden', 'true');
@@ -305,13 +303,13 @@ var PDFViewerApplication = {
       linkService: linkService,
       l10n: this.l10n,
       useOnlyCssZoom: USE_ONLY_CSS_ZOOM,
-      textLayerMode: TEXT_LAYER_MODE,
+      textLayerMode: TEXT_LAYER_MODE
     });
     this.pdfViewer = pdfViewer;
     linkService.setViewer(pdfViewer);
 
     this.pdfHistory = new pdfjsViewer.PDFHistory({
-      linkService: linkService,
+      linkService: linkService
     });
     linkService.setHistory(this.pdfHistory);
 
@@ -362,7 +360,7 @@ var PDFViewerApplication = {
       document.getElementById('next').disabled = (page >= numPages);
     }, true);
     */
-  },
+  }
 };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -376,11 +374,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function (resolve) {
       window.requestAnimationFrame(resolve);
     });
-})();
+}());
 
 // We need to delay opening until all HTML is loaded.
 PDFViewerApplication.animationStartedPromise.then(function () {
   PDFViewerApplication.open({
-    url: DEFAULT_URL,
+    url: DEFAULT_URL
   });
 });

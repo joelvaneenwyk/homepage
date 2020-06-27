@@ -95,6 +95,9 @@ exports.updateBlogEntries = function (file, log, done) {
         repo: process.env.GITHUB_REPO,
         path: docPath
       }, function (err, res) {
+        if (err) {
+          log.writeln(err.stack);
+        }
         log.writeln("Parsed: " + docPath);
         try {
           if (res !== undefined && res.length > 0) {
