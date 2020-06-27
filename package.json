@@ -51,7 +51,7 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-bootlint": "^1.1.0",
     "grunt-bower-main": "^0.2.0",
-    "grunt-harp": "joelvaneenwyk/grunt-harp#semver:^0.21.0",
+    "grunt-harp": "git://github.com/joelvaneenwyk/grunt-harp.git",
     "grunt-html": "^14.1.0",
     "grunt-jsbeautifier": "^0.2.13",
     "grunt-preprocess": "^5.1.0",
