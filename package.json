@@ -77,7 +77,7 @@
     "js-beautify": "^1.11.0",
     "jsonminify": "^0.4.1",
     "mime": "^2.4.6",
-    "mime-types": "^2.1.2y",
+    "mime-types": "^2.1.27",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "pg": "^8.2.1",

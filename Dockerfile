@@ -8,7 +8,9 @@ COPY "*" ./
 COPY "source/" ./
 COPY "assets/" ./
 
-RUN npm install --production
+# https://stackoverflow.com/questions/18136746/npm-install-failed-with-cannot-run-in-wd
+RUN npm install --production --unsafe-perm --force
+
 RUN mv node_modules ../
 RUN mv bower_components ../
 COPY . .
