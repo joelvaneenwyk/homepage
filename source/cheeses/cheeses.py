@@ -14,9 +14,9 @@ import sys
 
 COMMAND_LINE_OPTIONS = (
     (('-v', '--verbose'), {'action': 'store', 'dest': 'verbose', 'default': False,
-                             'help': 'Print out extra information'}),
+                            'help': 'Print out extra information'}),
     (('--preview',), {'action': 'store_true', 'dest': 'preview', 'default': False,
-                     'help': "Preview changes only and don't do any work"})
+                    'help': "Preview changes only and don't do any work"})
     )
 
 def main(options):

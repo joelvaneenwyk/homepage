@@ -1,69 +1,64 @@
-/*jslint node: true */
-"use strict";
+/* jslint node: true */
 
-var jsonminify = require("jsonminify");
-var pjson = require('../../package.json');
-var harpjson = require('../views/_harp.json');
+const jsonminify = require("jsonminify");
+const pjson = require("../../package.json");
+const harpjson = require("../views/_harp.json");
 
 function updateGlobals(g) {
-  g.version = process.env.HEROKU_RELEASE_VERSION;
+    g.version = process.env.HEROKU_RELEASE_VERSION;
 
-  var created_date = new Date(process.env.HEROKU_RELEASE_CREATED_AT);
-  var month = created_date.getUTCMonth() + 1;
-  var day = created_date.getUTCDate();
-  var year = created_date.getUTCFullYear();
-  var date = year + "-" + month + "-" + day;
+    const created_date = new Date(process.env.HEROKU_RELEASE_CREATED_AT);
+    const month = created_date.getUTCMonth() + 1;
+    const day = created_date.getUTCDate();
+    const year = created_date.getUTCFullYear();
+    const date = `${year}-${month}-${day}`;
 
-  // Pull out the existing globals first
-  var globals = g.globals;
+    // Pull out the existing globals first
+    let { globals } = g;
 
-  if (globals === undefined)
-    globals = {};
+    if (globals === undefined) globals = {};
 
-  globals.created = date;
-  globals.owner = pjson.author.name;
+    globals.created = date;
+    globals.owner = pjson.author.name;
 
-  g.nav = {
-    'Home': '',
-    'Resume': 'resume',
-    'Blog': 'blog'
-  };
+    g.nav = {
+        Home: "",
+        Resume: "resume",
+        Blog: "blog"
+    };
 
-  g.created = globals.created;
-  g.owner = globals.owner;
-  g.environment = "production";
-  g.footer = "© Copyright " + year + " " + globals.owner + " " + g.version;
+    g.created = globals.created;
+    g.owner = globals.owner;
+    g.environment = "production";
+    g.footer = `© Copyright ${year} ${globals.owner} ${g.version}`;
 
-  var public_globals = {};
-  public_globals.owner = g.owner;
-  public_globals.environment = g.environment;
+    const public_globals = {};
+    public_globals.owner = g.owner;
+    public_globals.environment = g.environment;
 
-  g.public_globals = JSON.stringify(public_globals);
+    g.public_globals = JSON.stringify(public_globals);
 
-  return g;
+    return g;
 }
 
 exports.getGlobals = function (req) {
-  var g = updateGlobals(harpjson);
+    const g = updateGlobals(harpjson);
 
-  if (req !== undefined) {
+    if (req !== undefined) {
     // Pass user information so that we can display things like
     // the profile picture and decide whether or not to show
     // a 'Login' button on the header
-    var user;
-    if (req.session !== undefined && req.session.passport !== undefined)
-      user = req.session.passport.user;
-    g.user = jsonminify(JSON.stringify(user));
-    g.loggedIn = (g.user !== "");
+        let user;
+        if (req.session !== undefined && req.session.passport !== undefined) user = req.session.passport.user;
+        g.user = jsonminify(JSON.stringify(user));
+        g.loggedIn = (g.user !== "");
 
-    // We pass in the current page so that it can be decided in EJS
-    // which tab to highlight
-    var pieces = req.url.split('/');
-    if (pieces.length >= 2)
-      g.page = pieces[1];
-    else
-      g.page = "";
-  }
+        // We pass in the current page so that it can be decided in EJS
+        // which tab to highlight
+        const pieces = req.url.split("/");
+        if (pieces.length >= 2) g.page = pieces[1];
+        else g.page = "";
+    }
 
-  return g;
+    return g;
 };

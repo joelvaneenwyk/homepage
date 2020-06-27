@@ -11,6 +11,13 @@
             "program": "${workspaceRoot}\\server.js",
             "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
             "cwd": "${workspaceRoot}"
+        },
+        {
+            "name": "Docker Node.js Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "platform": "node"
         }
     ]
 }

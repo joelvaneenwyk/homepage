@@ -1,11 +1,12 @@
-"use strict";
-
+/*
+* Functions to handle logins on the frontend e.g. when a successful login
+* to Google is copmleted.
+*/
 function onLoginSuccess(user) {
-	var w = window;
-	if (window.opener !== undefined && window.opener.customLog !== undefined)
-	{
-		w = window.opener;
-	}
+    let w = window;
+    if (window.opener !== undefined && window.opener.customLog !== undefined) {
+        w = window.opener;
+    }
 
     w.customLog("On login success!");
     try {
@@ -15,6 +16,5 @@ function onLoginSuccess(user) {
     }
     w.customLog("Closing window");
 
-    if (w !== window)
-    	window.close();
+    if (w !== window) { window.close(); }
 }

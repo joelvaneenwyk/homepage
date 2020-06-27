@@ -1,50 +1,47 @@
 /* jshint node: true */
 
-"use strict";
-
 // Load grunt tasks automatically
-require('load-grunt-tasks');
+require("load-grunt-tasks");
 // Time how long tasks take. Can help when optimizing build times
-require('time-grunt');
+require("time-grunt");
 
-var dotenv = require('dotenv');
-var path = require('path');
-var environment = require('./source/lib/environment.js');
-var blog = require('./source/lib/blog.js');
+const dotenv = require("dotenv");
+const path = require("path");
+const environment = require("./source/lib/environment.js");
+const blog = require("./source/lib/blog.js");
 
 module.exports = function (grunt) {
     // This is done automatically by Heroku but needs to be done
     // manually if we are debugging through Visual Studio.
     if (process.env.PG_REMOTE_URL === undefined) {
-        console.log('Manually loading environment...');
+        console.log("Manually loading environment...");
         dotenv.config({ silent: true });
     }
 
     // This is a bit of a hack due to the Harp plugin not handling paths like
     // everyone else. We need to ensure that the path points at the right place
     // regardless of where you run the Gruntfile from
-    var currentDir = process.cwd() + '/';
-    if (!grunt.file.isDir(currentDir + '/views'))
-        currentDir = 'source/';
+    let currentDir = `${process.cwd()}/`;
+    if (!grunt.file.isDir(`${currentDir}/views`)) { currentDir = "source/"; }
 
-    grunt.registerMultiTask('update_globals', 'Update the globals', function () {
-        var arrFilesSrc = this.filesSrc;
+    grunt.registerMultiTask("update_globals", "Update the globals", function () {
+        const arrFilesSrc = this.filesSrc;
 
-        arrFilesSrc.forEach(function (file) {
-            var globals = environment.getGlobals();
+        arrFilesSrc.forEach((file) => {
+            const globals = environment.getGlobals();
             grunt.log.writeln("%j", globals);
-            grunt.log.writeln('Updated globals');
+            grunt.log.writeln("Updated globals");
             grunt.file.write(file, JSON.stringify(globals));
         });
     });
 
-    grunt.registerMultiTask('update_blog', 'Update the blog entries', function () {
-        var arrFilesSrc = this.filesSrc;
-        var done = this.async();
+    grunt.registerMultiTask("update_blog", "Update the blog entries", function () {
+        const arrFilesSrc = this.filesSrc;
+        const done = this.async();
 
-        arrFilesSrc.forEach(function (file) {
-            blog.updateBlogEntries(file, grunt.log, function (result) {
-                grunt.log.writeln('Updated blog entries');
+        arrFilesSrc.forEach((file) => {
+            blog.updateBlogEntries(file, grunt.log, (result) => {
+                grunt.log.writeln("Updated blog entries");
                 grunt.file.write(file, JSON.stringify(result));
                 done(true);
             });
@@ -54,27 +51,27 @@ module.exports = function (grunt) {
     grunt.initConfig({
         watch: {
             scripts: {
-                files: [currentDir + 'server/**/*.js'],
-                tasks: ['jshint:all'],
+                files: [`${currentDir}server/**/*.js`],
+                tasks: ["jshint:all"],
                 options: {
                     debounceDelay: 250
                 }
             },
             ejs: {
-                files: [currentDir + 'views/**/*.ejs'],
-                tasks: ['copy:dist', 'copy:views', 'harp',
-                    'wiredep:internal', 'wiredep:external',
-                    'replace', 'update_globals', 'harp', 'bootlint'
+                files: [`${currentDir}views/**/*.ejs`],
+                tasks: ["copy:dist", "copy:views", "harp",
+                    "wiredep:internal", "wiredep:external",
+                    "replace", "update_globals", "harp", "bootlint"
                 ],
                 options: {
                     debounceDelay: 250
                 }
             },
             css: {
-                files: [currentDir + 'views/**/*.scss'],
-                tasks: ['copy:dist', 'copy:views', 'harp',
-                    'wiredep:internal', 'wiredep:external',
-                    'replace', 'update_globals', 'harp', 'bootlint'
+                files: [`${currentDir}views/**/*.scss`],
+                tasks: ["copy:dist", "copy:views", "harp",
+                    "wiredep:internal", "wiredep:external",
+                    "replace", "update_globals", "harp", "bootlint"
                 ],
                 options: {
                     debounceDelay: 250
@@ -85,9 +82,9 @@ module.exports = function (grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: currentDir + 'www/',
-                    src: ['**/*.{png,jpg,gif}'],
-                    dest: 'dist/staging/'
+                    cwd: `${currentDir}www/`,
+                    src: ["**/*.{png,jpg,gif}"],
+                    dest: "dist/staging/"
                 }]
             }
         },
@@ -109,40 +106,40 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'dist/',
-                    src: 'www/**/*.html',
-                    dest: 'dist/'
+                    cwd: "dist/",
+                    src: "www/**/*.html",
+                    dest: "dist/"
                 }, {
                     expand: true,
-                    cwd: 'dist/',
-                    src: 'staging/**/*.html',
-                    dest: 'dist/'
+                    cwd: "dist/",
+                    src: "staging/**/*.html",
+                    dest: "dist/"
                 }]
             }
         },
         uglify: {
             options: {
-                banner: '/*! joelvaneenwyk <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                banner: "/*! joelvaneenwyk <%= grunt.template.today(\"dd-mm-yyyy\") %> */\n"
             },
             dist: {
                 files: {
-                    'dist/staging/js/login.min.js': currentDir + 'www/js/login.js'
+                    "dist/staging/js/login.min.js": `${currentDir}www/js/login.js`
                 }
             }
         },
         useminPrepare: {
-            html: 'dist/www/**/*.html',
+            html: "dist/www/**/*.html",
             options: {
-                dest: 'dist/staging',
-                staging: 'dist/_temp',
-                root: 'dist/staging'
+                dest: "dist/staging",
+                staging: "dist/_temp",
+                root: "dist/staging"
             }
         },
         usemin: {
-            html: 'dist/www/**/*.html'
+            html: "dist/www/**/*.html"
         },
         jshint: {
-            all: ['**.js', currentDir + 'server/*.js'],
+            all: ["**.js", `${currentDir}server/*.js`],
             options: {
                 esversion: 6,
                 globals: {
@@ -155,24 +152,24 @@ module.exports = function (grunt) {
         },
         harp: {
             dist: {
-                source: 'dist/views/',
-                dest: 'dist/www/'
+                source: "dist/views/",
+                dest: "dist/www/"
             }
         },
         update_globals: {
-            all: ['dist/views/_harp.json']
+            all: ["dist/views/_harp.json"]
         },
         update_blog: {
-            all: ['dist/views/public/blog/_data.json']
+            all: ["dist/views/public/blog/_data.json"]
         },
         clean: {
             options: {
-                'force': true
+                force: true
             },
-            build: [currentDir + 'dist']
+            build: [`${currentDir}dist`]
         },
         jsbeautifier: {
-            files: ['dist/staging/**/*.html', 'dist/www/**/*.html'],
+            files: ["dist/staging/**/*.html", "dist/www/**/*.html"],
             options: {
                 html: {
                     braceStyle: "collapse",
@@ -215,74 +212,74 @@ module.exports = function (grunt) {
             css: {
                 files: [{
                     expand: true,
-                    cwd: 'dist/www/public/css',
-                    src: '*.css',
-                    dest: 'dist/staging/css'
+                    cwd: "dist/www/public/css",
+                    src: "*.css",
+                    dest: "dist/staging/css"
                 }]
             },
             dist: {
                 files: [{
                     expand: true,
-                    cwd: currentDir + 'www',
-                    src: '*.json',
-                    dest: 'dist/staging/'
+                    cwd: `${currentDir}www`,
+                    src: "*.json",
+                    dest: "dist/staging/"
                 }, {
                     expand: true,
-                    cwd: currentDir + 'www',
-                    src: '*.txt',
-                    dest: 'dist/staging/'
+                    cwd: `${currentDir}www`,
+                    src: "*.txt",
+                    dest: "dist/staging/"
                 }, {
                     expand: true,
-                    cwd: currentDir + 'www',
-                    src: '*.html',
-                    dest: 'dist/staging/'
+                    cwd: `${currentDir}www`,
+                    src: "*.html",
+                    dest: "dist/staging/"
                 }, {
                     expand: true,
-                    cwd: currentDir + 'www/js',
-                    src: '*.js',
-                    dest: 'dist/staging/js/'
+                    cwd: `${currentDir}www/js`,
+                    src: "*.js",
+                    dest: "dist/staging/js/"
                 }, {
                     expand: true,
-                    cwd: currentDir + 'www',
-                    src: '*.ico',
-                    dest: 'dist/staging'
+                    cwd: `${currentDir}www`,
+                    src: "*.ico",
+                    dest: "dist/staging"
                 }]
             },
             bower: {
                 files: [{
                     expand: true,
-                    cwd: 'bower_components',
-                    src: ['**/bower.json', '**/.bower.json'],
-                    dest: 'dist/staging/thirdparty'
+                    cwd: "bower_components",
+                    src: ["**/bower.json", "**/.bower.json"],
+                    dest: "dist/staging/thirdparty"
                 }]
             },
             bower_pdfjs: {
                 files: [{
                     expand: true,
-                    cwd: 'bower_components',
-                    src: ['pdfjs-dist/web/**', 'pdfjs-dist/cmaps/**'],
-                    dest: 'dist/staging/thirdparty'
+                    cwd: "bower_components",
+                    src: ["pdfjs-dist/web/**", "pdfjs-dist/cmaps/**"],
+                    dest: "dist/staging/thirdparty"
                 }]
             },
             views: {
-                cwd: currentDir + 'views',
-                src: '**/*',
-                dest: 'dist/views',
+                cwd: `${currentDir}views`,
+                src: "**/*",
+                dest: "dist/views",
                 expand: true
             },
             cssjs: {
                 expand: true,
-                cwd: 'dist/www/public',
-                src: ['**/*.css', '**/*.js', '**/*.png'],
-                dest: 'dist/www/static'
+                cwd: "dist/www/public",
+                src: ["**/*.css", "**/*.js", "**/*.png"],
+                dest: "dist/www/static"
             }
         },
         preprocess: {
             all_from_dir: {
-                src: '**/*.js',
-                ext: '.js',
-                cwd: 'dist/staging',
-                dest: 'dist/staging',
+                src: "**/*.js",
+                ext: ".js",
+                cwd: "dist/staging",
+                dest: "dist/staging",
                 expand: true
             }
         },
@@ -290,37 +287,37 @@ module.exports = function (grunt) {
             copy: {
                 options: {
                     method: "copy",
-                    dest: 'dist/staging/thirdparty'
+                    dest: "dist/staging/thirdparty"
                 }
             }
         },
         wiredep: {
             internal: {
                 src: [
-                    'dist/views/**/*.scss'
+                    "dist/views/**/*.scss"
                 ]
             },
             external: {
-                directory: 'dist/staging/thirdparty',
+                directory: "dist/staging/thirdparty",
                 exclude: [/joelvaneenwyk/, /bootstrap-sass/, /topojson/, /d3/, /datamaps/, /pdfjs/],
                 src: [
-                    'dist/views/**/*.ejs'
+                    "dist/views/**/*.ejs"
                 ]
             }
         },
         concat: {
             dist: {
-                src: ['dist/none'],
-                dest: 'dist/_temp/empty.js'
+                src: ["dist/none"],
+                dest: "dist/_temp/empty.js"
             }
         },
         cssmin: {
             dist: {
-                src: ['dist/none'],
-                dest: 'dist/_temp/empty.css'
+                src: ["dist/none"],
+                dest: "dist/_temp/empty.css"
             }
         },
-        //csslint: {
+        // csslint: {
         //    lax: {
         //        options: {
         //            important: false,
@@ -329,39 +326,39 @@ module.exports = function (grunt) {
         //        },
         //        src: ['dist/www/**/*.css']
         //    }
-        //},
+        // },
         replace: {
             dist: {
                 files: [{
                     expand: true,
-                    src: 'dist/views/**/*.ejs',
-                    dest: ''
+                    src: "dist/views/**/*.ejs",
+                    dest: ""
                 }],
                 options: {
                     patterns: [{
                         match: /<script src="(.*?)">/ig,
-                        replacement: function (match, offset, str, source, target) {
-                            var targetRoot = process.cwd() + '/' + path.dirname(target);
-                            var to = path.resolve(targetRoot + '/' + offset);
+                        replacement(match, offset, str, source, target) {
+                            const targetRoot = `${process.cwd()}/${path.dirname(target)}`;
+                            const to = path.resolve(`${targetRoot}/${offset}`);
                             if (grunt.file.exists(to)) {
-                                var from = process.cwd() + '/dist/staging';
-                                var rel = path.relative(from, to);
-                                rel = rel.replace(/\\/g, '/');
-                                var result = '<script src="/' + rel + '">';
+                                const from = `${process.cwd()}/dist/staging`;
+                                let rel = path.relative(from, to);
+                                rel = rel.replace(/\\/g, "/");
+                                const result = `<script src="/${rel}">`;
                                 return result;
                             }
                             return match;
                         }
                     }, {
                         match: /<link rel="stylesheet" href="(.*?)" /ig,
-                        replacement: function (match, offset, str, source, target) {
-                            var targetRoot = process.cwd() + '/' + path.dirname(target);
-                            var to = path.resolve(targetRoot + '/' + offset);
+                        replacement(match, offset, str, source, target) {
+                            const targetRoot = `${process.cwd()}/${path.dirname(target)}`;
+                            const to = path.resolve(`${targetRoot}/${offset}`);
                             if (grunt.file.exists(to)) {
-                                var from = process.cwd() + '/dist/staging';
-                                var rel = path.relative(from, to);
-                                rel = rel.replace(/\\/g, '/');
-                                var result = '<link rel="stylesheet" href="/' + rel + '" ';
+                                const from = `${process.cwd()}/dist/staging`;
+                                let rel = path.relative(from, to);
+                                rel = rel.replace(/\\/g, "/");
+                                const result = `<link rel="stylesheet" href="/${rel}" `;
                                 return result;
                             }
                             return match;
@@ -373,61 +370,61 @@ module.exports = function (grunt) {
     });
 
     // Load grunt tasks automatically
-    require('load-grunt-tasks')(grunt);
+    require("load-grunt-tasks")(grunt);
 
     // Time how long tasks take. Can help when optimizing build times
-    require('time-grunt')(grunt);
+    require("time-grunt")(grunt);
 
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-csslint');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-jsbeautifier');
-    grunt.loadNpmTasks('grunt-replace');
-    grunt.loadNpmTasks('grunt-harp');
-    grunt.loadNpmTasks('grunt-html');
-    grunt.loadNpmTasks('grunt-bootlint');
-    grunt.loadNpmTasks('grunt-bower-main');
-    grunt.loadNpmTasks('grunt-wiredep');
-    grunt.loadNpmTasks('grunt-usemin');
-    grunt.loadNpmTasks('grunt-preprocess');
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks("grunt-contrib-jshint");
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-contrib-concat");
+    grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-contrib-cssmin");
+    grunt.loadNpmTasks("grunt-contrib-csslint");
+    grunt.loadNpmTasks("grunt-contrib-imagemin");
+    grunt.loadNpmTasks("grunt-contrib-htmlmin");
+    grunt.loadNpmTasks("grunt-jsbeautifier");
+    grunt.loadNpmTasks("grunt-replace");
+    grunt.loadNpmTasks("grunt-harp");
+    grunt.loadNpmTasks("grunt-html");
+    grunt.loadNpmTasks("grunt-bootlint");
+    grunt.loadNpmTasks("grunt-bower-main");
+    grunt.loadNpmTasks("grunt-wiredep");
+    grunt.loadNpmTasks("grunt-usemin");
+    grunt.loadNpmTasks("grunt-preprocess");
 
-    var requiredTasks = [
-        'bower_main',
-        'copy:dist', 'copy:bower', 'copy:bower_pdfjs', 'copy:views',
-        'preprocess',
-        'wiredep:internal', 'wiredep:external',
-        'replace', 'update_globals', 'update_blog', 'harp', 'copy:css', 'copy:cssjs',
+    const requiredTasks = [
+        "bower_main",
+        "copy:dist", "copy:bower", "copy:bower_pdfjs", "copy:views",
+        "preprocess",
+        "wiredep:internal", "wiredep:external",
+        "replace", "update_globals", "update_blog", "harp", "copy:css", "copy:cssjs",
         // Need to bootlint before 'usemin' because it combines dependencies and
         // makes bootlint think we aren't using jquery
-        'bootlint',
-        'useminPrepare', 'concat', 'uglify', 'cssmin', 'imagemin',
-        'usemin', 'htmlmin', 'jsbeautifier'
+        "bootlint",
+        "useminPrepare", "concat", "uglify", "cssmin", "imagemin",
+        "usemin", "htmlmin", "jsbeautifier"
     ];
 
     // Disabled 'htmllint' as Heroku defaults to Java 1.7 which is too old. Extensive tests
     // does not seem to reveal any way of changing this.
-    var postTasksValidate = ['jshint'];
+    const postTasksValidate = ["jshint"];
 
-    //var postTasksValidate = ['csslint', 'jshint', 'htmllint'];
+    // var postTasksValidate = ['csslint', 'jshint', 'htmllint'];
 
-    grunt.registerTask('globals', ['update_globals', 'update_blog']);
+    grunt.registerTask("globals", ["update_globals", "update_blog"]);
 
-    grunt.registerTask('update', ['copy:dist', 'copy:views', 'harp',
-        'wiredep:internal', 'wiredep:external',
-        'replace', 'update_globals', 'update_blog', 'harp',
-        'uglify', 'htmlmin', 'jsbeautifier'
+    grunt.registerTask("update", ["copy:dist", "copy:views", "harp",
+        "wiredep:internal", "wiredep:external",
+        "replace", "update_globals", "update_blog", "harp",
+        "uglify", "htmlmin", "jsbeautifier"
     ]);
 
-    grunt.registerTask('joelvaneenwyk', requiredTasks.concat(postTasksValidate));
+    grunt.registerTask("joelvaneenwyk", requiredTasks.concat(postTasksValidate));
 
-    grunt.registerTask('default', ['jshint', 'joelvaneenwyk']);
-    grunt.registerTask('dist', ['jshint', 'joelvaneenwyk']);
+    grunt.registerTask("default", ["jshint", "joelvaneenwyk"]);
+    grunt.registerTask("dist", ["jshint", "joelvaneenwyk"]);
 };

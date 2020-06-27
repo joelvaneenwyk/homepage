@@ -1,43 +1,42 @@
-
-var map = new Datamap({
-    element: document.getElementById('container'),
+const map = new Datamap({
+    element: document.getElementById("container"),
     responsive: true,
     geographyConfig: {
         popupOnHover: false,
         highlightOnHover: false
     },
     fills: {
-        defaultFill: '#ABDDA4',
-        USA: 'blue',
-        RUS: 'red'
+        defaultFill: "#ABDDA4",
+        USA: "blue",
+        RUS: "red"
     }
 });
 
-d3.json("/cheeses/locations.json", function(error, locations) {
+d3.json("/cheeses/locations.json", (error, locations) => {
     bubbles = [];
 
-	for (var key in locations) {
-	    num = parseFloat(locations[key]['count']) / 10.0;
+    for (var key in locations) {
+        num = parseFloat(locations[key].count) / 10.0;
 
         bubbles.push({
             name: key,
             radius: Math.max(4.0, num),
-            centered: 'BRA',
+            centered: "BRA",
             country: key,
             cheeses: locations[key],
-            fillKey: 'RUS',
-		    latitude: locations[key]['lat'],
-		    longitude: locations[key]['long']
+            fillKey: "RUS",
+            latitude: locations[key].lat,
+            longitude: locations[key].long
         });
-	}
+    }
 
     map.bubbles(bubbles, {
-        popupTemplate: function(geo, data) {
-            return '<div class="hoverinfo">' + locations[key]['count'] + ' cheeses in ' + data.name
+        popupTemplate(geo, data) {
+            return `<div class="hoverinfo">${locations[key].count} cheeses in ${data.name}`;
         }
     });
 });
 
-d3.select(window).on('resize', function() {
+d3.select(window).on("resize", () => {
     map.resize();
 });
