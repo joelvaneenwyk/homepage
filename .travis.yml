@@ -5,7 +5,7 @@ env:
   - NODE_ENV=production
   - NODE_ENV=staging
 node_js:
-  - "10.15.0"
+  - "14.4.0"
 install:
   - npm install
 before_script: 

@@ -15,7 +15,7 @@
     "url": "https://github.com/joelvaneenwyk/homepage.git"
   },
   "engines": {
-    "node": ">=12.13.0",
+    "node": ">=14.4.0",
     "npm": ">=6.12.0"
   },
   "dependencies": {
