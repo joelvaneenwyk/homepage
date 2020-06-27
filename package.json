@@ -3,25 +3,39 @@
   "version": "0.5.4",
   "description": "Homepage for Joel Van Eenwyk (joelvaneenwyk.com)",
   "main": "server.js",
+  "keywords": [
+    "homepage",
+    "nodejs",
+    "bower",
+    "resume"
+  ],
+  "contributors": [
+    "Joel Van Eenwyk"
+  ],
+  "bugs": {
+    "url": "https://github.com/joelvaneenwyk/workspace/issues",
+    "email": "joel.vaneenwyk@gmail.com"
+  },
   "homepage": "http://www.joelvaneenwyk.com",
   "author": {
     "name": "Joel Van Eenwyk",
     "email": "joel.vaneenwyk@gmail.com"
   },
   "private": true,
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/joelvaneenwyk/homepage.git"
   },
   "engines": {
-    "node": ">=14.4.0",
-    "npm": ">=6.12.0"
+    "node": "12.x.x",
+    "npm": "6.14.x"
   },
   "dependencies": {
     "yarn": "^1.22.4",
     "bower": "^1.8.8",
     "cross-env": "^7.0.2",
+    "npm-run-all": "^4.1.5",
     "grunt": "^1.1.0",
     "grunt-cli": "^1.3.2",
     "grunt-contrib-clean": "^2.0.0",
@@ -33,11 +47,11 @@
     "grunt-contrib-imagemin": "^4.0.0",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-nodeunit": "^2.1.0",
-    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-bootlint": "^1.1.0",
     "grunt-bower-main": "^0.2.0",
-    "grunt-harp": "joelvaneenwyk/grunt-harp",
+    "grunt-harp": "joelvaneenwyk/grunt-harp#semver:^0.21.0",
     "grunt-html": "^14.1.0",
     "grunt-jsbeautifier": "^0.2.13",
     "grunt-preprocess": "^5.1.0",
@@ -72,11 +86,20 @@
     "terraform": "^1.10.0",
     "vhost": "^3.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2"
+  },
   "scripts": {
-    "preinstall": "npm install --force -g grunt-cli bower yarn",
+    "preinstall": "npm install --force -g grunt-cli bower yarn eclint eslint",
     "postinstall": "bower install && grunt dist",
     "test": "cross-env NODE_ENV=production grunt dist",
-    "start": "node server.js"
+    "cleanup": "eclint fix && eslint --fix && grunt dist",
+    "lint": "eslint source && eslint *.js",
+    "start": "node server.js",
+    "all": "npm-run-all cleanup lint test"
   }
 }
