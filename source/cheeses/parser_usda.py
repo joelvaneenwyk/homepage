@@ -20,10 +20,7 @@ from cheese import Cheese, CheeseLibrary
 import parser_utils
 
 def parseFdaLine(line):
-    fields = []
-    for field in line.split('^'):
-        fields.append(field.strip('~'))
-    return fields
+    return [field.strip('~') for field in line.split('^')]
 
 def parseFdaFileUniqueDict(filename):
     output = {}

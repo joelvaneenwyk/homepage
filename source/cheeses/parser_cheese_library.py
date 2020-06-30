@@ -46,7 +46,7 @@ def parseCheeseLibrary(library):
                 cheese_pages.append(source + page)
         else:
             print("Failed to find cheese information for " + page)
-    
+
     for cheese_page in cheese_pages:
         soup = get_cached_page(cheese_page, getOutputFolder())
         cheese = Cheese()
@@ -88,8 +88,10 @@ def parseCheeseLibrary(library):
                 elif type == 'pasteurized':
                     cheese.texture = value
                 chunk_data = ''
-            if (not root_text in chunk_data) and not ("Aging Time:" in root_text and "Texture:" in root_text):
-                chunk_data += root_text 
+            if root_text not in chunk_data and (
+                "Aging Time:" not in root_text or "Texture:" not in root_text
+            ):
+                chunk_data += root_text
             if isinstance(root, bs4.Tag) and root.name == 'img':
                 break
             root = root.next_element

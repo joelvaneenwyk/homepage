@@ -23,12 +23,12 @@ import inspect
 
 def parseCheese(library):
     source = 'http://www.cheese.com'
-    url = 'http://www.cheese.com/alphabetical/?page=%d&per_page=20&i=%s#top'
     out_folder = os.path.join(get_output_folder(), "cheese")
     letters = map(chr, range(97, 123))
 
     findCheeseTypes = False
     if findCheeseTypes:
+        url = 'http://www.cheese.com/alphabetical/?page=%d&per_page=20&i=%s#top'
         for letter in letters:
             lastPage = False
             lastPageData = ""
