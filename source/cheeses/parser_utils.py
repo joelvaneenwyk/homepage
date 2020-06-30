@@ -16,25 +16,21 @@ import geopy
 
 def get_root():
     root = os.path.dirname(os.path.realpath(__file__))
-    out_folder = os.path.abspath(os.path.join(root, os.path.pardir, os.path.pardir))
-    return out_folder
+    return os.path.abspath(os.path.join(root, os.path.pardir, os.path.pardir))
 
 def get_output_folder():
     root = os.path.dirname(os.path.realpath(__file__))
-    out_folder = os.path.join(root, "output")
-    return out_folder
+    return os.path.join(root, "output")
 
 def get_data_folder():
-    out_folder = os.path.join(get_root(), "data", "cheeses")
-    return out_folder
+    return os.path.join(get_root(), "data", "cheeses")
 
 def get_map_folder():
-    out_folder = os.path.join(get_root(), "data", "map")
-    return out_folder
+    return os.path.join(get_root(), "data", "map")
 
 def get_env():
     file = os.path.join(get_root(), ".env")
-    env = dict()
+    env = {}
     with open(file) as f:
         for line in f:
             vals = line.split('=')
@@ -154,4 +150,4 @@ def center_geolocation(geolocations):
     y = float(y / len(geolocations))
     z = float(z / len(geolocations))
 
-    return ( degrees(atan2(z, sqrt(x * x + y * y))), degrees(atan2(y, x)) ) 
+    return degrees(atan2(z, sqrt(x**2 + y**2))), degrees(atan2(y, x)) 
