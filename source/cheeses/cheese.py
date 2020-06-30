@@ -8,11 +8,11 @@ import copy
 
 class CheeseLibrary():
     def __init__(self):
-        self.cheeses = dict()
+        self.cheeses = {}
         self.max = -1
         self.filename = os.path.abspath(os.path.join(parser_utils.get_data_folder(), "cheeses.json"))
         self.locations_filename = os.path.abspath(os.path.join(parser_utils.get_data_folder(), "locations.json"))
-        self.locations = dict()
+        self.locations = {}
         self.load()
 
     def load(self):
@@ -21,7 +21,7 @@ class CheeseLibrary():
                 try:
                     self.cheeses = json.load(data_file)
                 except:
-                    self.cheeses = dict()
+                    self.cheeses = {}
 
     def add(self, cheese, source):
         if self.max != -1 and len(self.cheeses) >= self.max:
@@ -46,18 +46,18 @@ class CheeseLibrary():
             for location in cheese.origin:
                 location = location.replace("countries throughout the world", "")
                 location = location.replace("Swtizerland", "Switzerland")
-                location = location.replace("Originally in", "")   
+                location = location.replace("Originally in", "")
                 location = location.strip()
                 if location != "":
-                    if not location in self.locations:
-                        self.locations[location] = dict()
+                    if location not in self.locations:
+                        self.locations[location] = {}
                         self.locations[location]["count"] = 0
                         coordinates = parser_utils.get_country_coordinates(location)
                         self.locations[location]["lat"] = coordinates[0]
                         self.locations[location]["long"] = coordinates[1]
                     self.locations[location]["count"] += 1
 
-        if not cheese.name in self.cheeses:
+        if cheese.name not in self.cheeses:
             self.cheeses[cheese.name] = cheese
 
         print("Adding " + display_name)
