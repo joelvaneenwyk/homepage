@@ -24,7 +24,17 @@ module.exports = function (grunt) {
     // everyone else. We need to ensure that the path points at the right place
     // regardless of where you run the Gruntfile from
     let currentDir = `${process.cwd()}/`;
-    if (!grunt.file.isDir(`${currentDir}/views`)) { currentDir = "source/"; }
+    if (!grunt.file.isDir(`${currentDir}/views`)) {
+        currentDir = `${process.cwd()}/source/`;
+    }
+
+    if (!grunt.file.isDir(`${currentDir}/views`)) {
+        console.log(`ERROR: Failed to find valid directory: '${currentDir}'`);
+        return;
+    }
+
+    currentDir = path.normalize(currentDir);
+    console.log(`Local path: '${currentDir}'`);
 
     grunt.registerMultiTask("update_globals", "Update the globals", function () {
         const arrFilesSrc = this.filesSrc;
@@ -67,7 +77,8 @@ module.exports = function (grunt) {
                     "replace", "update_globals", "harp", "bootlint"
                 ],
                 options: {
-                    debounceDelay: 250
+                    debounceDelay: 250,
+                    async: true
                 }
             },
             css: {
@@ -141,6 +152,9 @@ module.exports = function (grunt) {
         usemin: {
             html: "dist/www/**/*.html"
         },
+        ejslint: {
+            target: ["source/views/**/*.ejs"]
+        },
         jshint: {
             all: ["**.js", `${currentDir}server/*.js`],
             options: {
@@ -154,7 +168,7 @@ module.exports = function (grunt) {
             }
         },
         harp: {
-            dist: {
+            options: {
                 source: "dist/views/",
                 dest: "dist/www/"
             }
@@ -378,6 +392,7 @@ module.exports = function (grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require("time-grunt")(grunt);
 
+    grunt.loadNpmTasks("grunt-ejslint");
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-jshint");
@@ -428,6 +443,14 @@ module.exports = function (grunt) {
 
     grunt.registerTask("joelvaneenwyk", requiredTasks.concat(postTasksValidate));
 
+    grunt.registerTask("web", [
+        "bower_main",
+        "copy:dist", "copy:bower", "copy:bower_pdfjs", "copy:views",
+        "preprocess",
+        "wiredep:internal", "wiredep:external",
+        "replace", "update_globals", "update_blog", "harp"
+    ]);
+    grunt.registerTask("lint", ["ejslint", "jshint"]);
     grunt.registerTask("default", ["jshint", "joelvaneenwyk"]);
     grunt.registerTask("dist", ["jshint", "joelvaneenwyk"]);
 };

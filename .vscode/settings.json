@@ -25,7 +25,6 @@
     "**/bower_components": true,
     "**/node_modules": true,
     "**/bin": true,
-    "**/dist": true,
     "**/workspace": true,
     "**/typings": true,
     "**/thirdparty": true

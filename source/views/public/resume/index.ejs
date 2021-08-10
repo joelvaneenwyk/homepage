@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <% include ../../_partials/head %>
+    <% include("../../_partials/head") %>
 
     <link rel="stylesheet" href="/thirdparty/pdfjs-dist/web/pdf_viewer.css">
     <link rel="stylesheet" href="/resume/viewer.css">
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <% include ../../_partials/header %>
+    <% include("../../_partials/header") %>
     <div id="title" hidden>
     </div>
     <div id="viewerContainer" class="container-fluid">
@@ -44,7 +44,7 @@
         <div class="clearBoth"></div>
         <textarea id="errorMoreInfo" hidden readonly="readonly"></textarea>
     </div>
-    <% include ../../_partials/footer %>
+    <% include("../../_partials/footer") %>
 </body>
 
 </html>

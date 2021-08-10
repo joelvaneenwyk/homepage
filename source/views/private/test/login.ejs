@@ -2,12 +2,12 @@
 <html lang="en-US">
 
 <head>
-    <% include ../../_partials/head %>
+    <% include("../../_partials/head") %>
 </head>
 
 <body>
     <div class="container-fluid parent">
-        <% include ../../_partials/header %>
+        <% include("../../_partials/header") %>
         <div class='row'>
             <div class='blog col-sm-12 col-md-offset-2 col-md-8'>
                 <form  data-toggle="validator" class="well form-horizontal" action="login" method="POST" id="private_form" name="private_form">
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <% include ../../_partials/footer %>
+    <% include("../../_partials/footer") %>
 </body>
 
 </html>
