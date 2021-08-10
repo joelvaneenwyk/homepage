@@ -2,3 +2,4 @@ yarn-error.log
 node_modules
 .yarn/cache
 .yarn/install-state.gz
+resources

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About on Joel Van Eenwyk</title>
-    <link>https://joelvaneenwyk.github.io/</link>
-    <description>Recent content in About on Joel Van Eenwyk</description>
+    <title>Joel Van Eenwyk</title>
+    <link>https://www.joelvaneenwyk.com/</link>
+    <description>Recent content on Joel Van Eenwyk</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://joelvaneenwyk.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://www.joelvaneenwyk.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Contact</title>
-      <link>https://joelvaneenwyk.github.io/contact/</link>
+      <link>https://www.joelvaneenwyk.com/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://joelvaneenwyk.github.io/contact/</guid>
+      <guid>https://www.joelvaneenwyk.com/contact/</guid>
       <description> Email: joel.vaneenwyk@gmail.com    Social  Twitter  </description>
     </item>
     

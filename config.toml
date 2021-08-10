@@ -12,6 +12,9 @@ math = true
 # Add your tracking id
 googleAnalytics = ""
 
+[build]
+useResourceCacheWhen = 'never'
+
 [params]
   author = "Joel Van Eenwyk"
   description = "A simple monospaced resume theme for Hugo."
