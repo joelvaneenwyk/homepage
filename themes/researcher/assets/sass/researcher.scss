@@ -1,0 +1,134 @@
+@import "variables";
+
+// Internal variables
+$y-small: 0.6rem;
+$y-medium: 1.0rem;
+
+// Placeholders
+%link-default {
+    color: $red;
+    text-decoration: none;
+    & * {
+        color: $red;
+    }
+    &:hover {
+        color: $red;
+        text-decoration: underline;
+    }
+}
+%link-dark {
+    color: $black;
+    text-decoration: none;
+    & * {
+        color: $black;
+    }
+    &:hover {
+        color: $black;
+        text-decoration: underline;
+    }
+}
+%table-cell {
+    border: 1px solid #cccccc;
+    padding: 6px 12px;
+    text-align: left;
+}
+
+// Style
+* {
+    color: $black;
+    font-family: "Inconsolata";
+    line-height: 1.2;
+}
+.container {
+    max-width: $max-width;
+}
+.navbar-brand {
+    @extend %link-dark;
+    font-size: 2rem;
+}
+.nav-link {
+    @extend %link-default;
+}
+#content {
+    a {
+        @extend %link-default;
+    }
+    p {
+        margin-bottom: $y-small;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-size: medium;
+        font-weight: bold;
+        margin: $y-medium 0 $y-small 0;
+    }
+    @for $i from 1 through 4 {
+        h#{$i} {
+            font-size: 1.2rem + 0.2 * (4 - $i);
+        }
+    }
+    img {
+        display: block;
+        margin: $y-medium auto;
+    }
+    .avatar > img {
+        border-radius: 50%;
+        float: right;
+        margin: -8px 0 0 16px;
+        height: $avatar-size;
+        width: $avatar-size;
+    }
+    ol {
+        counter-reset: list;
+        list-style: none;
+        padding-left: 0;
+        & > li:before {
+            content: "[" counter(list, decimal) "] ";
+            counter-increment: list;
+        }
+    }
+    ul {
+        list-style: inside;
+        padding-left: 0;
+    }
+    table {
+        margin: $y-medium auto;
+        width: 100%;
+        & th {
+            @extend %table-cell;
+            font-weight: bold;
+        }
+        & td {
+            @extend %table-cell;
+        }
+        & tr:nth-child(2n) {
+            background-color: #f8f8f8;
+        }
+    }
+    blockquote {
+        border-left: 4px solid;
+        font-style: italic;
+        margin: $y-medium 0;
+        padding: 8px 8px;
+    }
+    code {
+        color: $black;
+        background-color: #f8f8f8;
+        border: 1px solid #cccccc;
+        border-radius: 10%;
+        padding: 0px 4px;
+    }
+    pre code {
+        all: unset;
+    }
+    .highlight {
+        margin: $y-medium auto;
+        & > pre {
+            padding: 8px 8px;
+        }
+    }
+}
+#footer {
+    a {
+        @extend %link-dark;
+    }
+}
