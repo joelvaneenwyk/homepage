@@ -1,3 +1,6 @@
+/* eslint-disable func-names */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 /* global Cookies: false */
 /* jslint browser: true */
 
@@ -29,14 +32,23 @@ const FontObservers = [
     s.parentNode.insertBefore(wf, s);
 
     // Load up Google analytics
+    // eslint-disable-next-line func-names, no-shadow
     (function (i, s, o, g, r, a, m) {
+        // eslint-disable-next-line no-param-reassign
         i.GoogleAnalyticsObject = r;
+        // eslint-disable-next-line func-names, no-unused-expressions, no-param-reassign
         i[r] = i[r] || function () {
+            // eslint-disable-next-line func-names, no-unused-expressions, no-param-reassign, prefer-rest-params
             (i[r].q = i[r].q || []).push(arguments);
+            // eslint-disable-next-line no-sequences, no-param-reassign
         }, i[r].l = 1 * new Date();
+        // eslint-disable-next-line no-sequences, no-param-reassign, no-unused-expressions
         a = s.createElement(o),
+        // eslint-disable-next-line no-sequences, no-param-reassign, no-unused-expressions, prefer-destructuring
         m = s.getElementsByTagName(o)[0];
+        // eslint-disable-next-line no-sequences, no-param-reassign, no-unused-expressions
         a.async = 1;
+        // eslint-disable-next-line no-sequences, no-param-reassign, no-unused-expressions
         a.src = g;
         m.parentNode.insertBefore(a, m);
     }(window, document, "script", "//www.google-analytics.com/analytics.js", "ga"));

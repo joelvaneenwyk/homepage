@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
 /* jslint node: true */
 
 const url = require("url");
@@ -22,6 +24,7 @@ const serverRoot = path.normalize(__dirname);
 function setupApp(app, root, next) {
     if (databaseConnected) {
         app.use(session({
+            // eslint-disable-next-line new-cap
             store: new pgSession({
                 pool: pgPool,
                 tableName: "session"
@@ -47,9 +50,8 @@ function setupApp(app, root, next) {
 
     passport.deserializeUser((user, done) => {
         if (databaseConnected) {
-            // This is called to return a user from a passport
-            // stategy (e.g., after user logs in with GitHub)
-            // This also is what req.user is set to
+            // This is called to return a user from a passport strategy (e.g., after user
+            // logs in with GitHub). This also is what `req.user` is set to.
             const sql = fs.readFileSync(`${serverRoot}/postgres/find_user.sql`).toString();
             const sqlVariables = format(sql, {
                 profile_id: user.id
@@ -66,15 +68,17 @@ function setupApp(app, root, next) {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: `${process.env.DEFAULT_URL}/auth/google/callback`
         },
-        ((accessToken, refreshToken, profile, done) => {
+        ((accessToken, _, profile, done) => {
             if (databaseConnected) {
-                // we make sure we are always using strings for our internal ids
+                // Make sure we are always using strings for our internal ids
                 const profileId = `${profile.id}`;
                 const sql = fs.readFileSync(`${serverRoot}/postgres/find_user.sql`).toString();
-                const sql_var = format(sql, {
+                const sqlVariable = format(sql, {
                     profile_id: profileId
                 });
-                client.query(sql_var, (err, result) => {
+
+                // eslint-disable-next-line consistent-return
+                client.query(sqlVariable, (err, result) => {
                     if (err || result.rows.length === 0) {
                         profile._id = profileId;
                         const user = profile._json;
@@ -136,10 +140,10 @@ onLoginSuccess(user);
 
     app.use(passport.session());
 
-    app.get("/auth/logout", (req, res, next) => {
+    app.get("/auth/logout", (req, res, afterLogout) => {
         req.logout();
         req.session.destroy((err) => {
-            if (err) return next(err);
+            if (err) return afterLogout(err);
             res.redirect("/");
             return true;
         });
@@ -150,9 +154,9 @@ onLoginSuccess(user);
     });
 
     app.get("/api/me", (req, res) => {
-    // res.header("Access-Control-Allow-Origin", "*");
-    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    // this is safe as it is just the user id, login name and avatar url
+        // res.header("Access-Control-Allow-Origin", "*");
+        // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        // this is safe as it is just the user id, login name and avatar url
         let user;
         if (req.session.passport) user = req.session.passport.user;
         if (!user) return res.send({});
@@ -245,6 +249,7 @@ onLoginSuccess(user);
 }
 
 function setupDatabase(app, root, next) {
+    // eslint-disable-next-line func-names
     const nextStep = function () { setupApp(app, root, next); };
 
     if (client !== undefined) {
@@ -324,9 +329,9 @@ function setup(app, root, next) {
                 client = localClient;
                 setupDatabase(app, root, next);
             })
-                .catch((errconnect) => {
-                    if (errconnect) {
-                        console.log(errconnect.stack);
+                .catch((connectionError) => {
+                    if (connectionError) {
+                        console.log(connectionError.stack);
                     }
                     console.log("No postgres server found.");
                     setupDatabase(app, root, next);

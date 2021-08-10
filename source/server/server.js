@@ -60,7 +60,7 @@ function initialize() {
 
     // We setup authentication first since it needs to route the traffic
     authenticate.setup(app, siteWWW, () => {
-        for (let j = 0; j < allowedHosts.length; j++) {
+        for (let j = 0; j < allowedHosts.length; j += 1) {
             const host = allowedHosts[j];
             app.use(vhost(host, mainApp));
         }
@@ -68,9 +68,6 @@ function initialize() {
         // Modify harp to prettify every HTML page that it outputs so that
         // the source code looks pretty when viewing source on a page
         const { middleware } = harp;
-
-        const prettify = require("./prettify");
-        prettify.prettify(harp);
 
         const originalPoly = middleware.poly;
 

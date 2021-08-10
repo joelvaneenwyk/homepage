@@ -80,7 +80,7 @@ const runCustomProcess = function customProcess(req, rsp, next) {
                     rsp.setHeader("Content-Length", Buffer.byteLength(bodyInternal, charset));
                     rsp.end(bodyInternal);
                 } else {
-                    terraform.root(path.join(__dirname, "templates"))
+                    terraform.root(path.join(__dirname, "..", "views"))
                         .render("error.jade", locals, (err, body) => {
                             if (err) {
                                 console.log(err.stack);

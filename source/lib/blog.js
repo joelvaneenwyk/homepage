@@ -1,3 +1,7 @@
+/* eslint-disable no-bitwise */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-param-reassign */
 /* jslint node: true */
 
 const fs = require("fs");
@@ -28,7 +32,7 @@ function finalizeBlogEntry(blogOutput, name, author, done) {
     if (isDone) done(blogOutput);
 }
 
-exports.updateBlogEntries = function (file, log, done) {
+exports.updateBlogEntries = function _updateBlogEntries(file, log, done) {
     let github;
 
     if (process.env.GITHUB_TOKEN !== undefined) {

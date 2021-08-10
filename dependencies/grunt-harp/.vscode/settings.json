@@ -1,0 +1,9 @@
+{
+  "cSpell.words": [
+    "gruntfile"
+  ],
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  }
+}

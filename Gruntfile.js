@@ -1,3 +1,5 @@
+/* eslint-disable func-names */
+/* eslint-disable global-require */
 /* jshint node: true */
 
 // Load grunt tasks automatically
@@ -7,8 +9,8 @@ require("time-grunt");
 
 const dotenv = require("dotenv");
 const path = require("path");
-const environment = require("./source/lib/environment.js");
-const blog = require("./source/lib/blog.js");
+const environment = require("./source/lib/environment");
+const blog = require("./source/lib/blog");
 
 module.exports = function (grunt) {
     // This is done automatically by Heroku but needs to be done
@@ -59,7 +61,8 @@ module.exports = function (grunt) {
             },
             ejs: {
                 files: [`${currentDir}views/**/*.ejs`],
-                tasks: ["copy:dist", "copy:views", "harp",
+                tasks: [
+                    "copy:dist", "copy:views", "harp",
                     "wiredep:internal", "wiredep:external",
                     "replace", "update_globals", "harp", "bootlint"
                 ],
