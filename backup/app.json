@@ -1,9 +1,0 @@
-{
-  "name": "Joel Van Eenwyk",
-  "description": "Homepage for Joel Van Eenwyk using NodeJS",
-  "repository": "https://github.com/joelvaneenwyk/homepage",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["joelvaneenwyk", "node", "express", "static"],
-  "image": "heroku/nodejs",
-  "stack": "heroku-18"
-}

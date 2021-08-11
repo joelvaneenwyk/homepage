@@ -2,9 +2,8 @@
     "name": "joelvaneenwyk-homepage",
     "version": "0.5.5",
     "description": "Homepage for Joel Van Eenwyk (joelvaneenwyk.com)",
-    "main": "server.js",
-    "private": true,
-    "type": "module",
+    "main": "dist/server/server.js",
+    "type": "commonjs",
     "keywords": [
         "homepage",
         "nodejs",
@@ -16,7 +15,7 @@
     ],
     "scripts": {
         "vscode": "yarn sdks vscode",
-        "serve": "tsc && node .tmp/server/server.js",
+        "start": "tsc && node ./dist/server/server.js",
         "lint": "htmlhint dist/**/*.html",
         "build": "tsc && hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
         "watch": "hugo --cleanDestinationDir --buildDrafts server",

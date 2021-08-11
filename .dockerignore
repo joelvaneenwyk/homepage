@@ -1,0 +1,36 @@
+#
+# Ignore list for website
+#
+
+.tmp
+.env
+.env.*
+!.env.template
+
+
+#
+# Yarn
+#
+
+yarn-error.log
+.yarn/cache
+.yarn/install-state.gz
+
+#
+# Node / npm
+#
+
+node_modules/
+bower_components/
+
+#
+# Hugo
+#
+
+resources/
+
+#
+# Browserify
+#
+
+*.js.tmp-*

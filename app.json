@@ -1,0 +1,18 @@
+{
+    "name": "Joel Van Eenwyk",
+    "description": "Homepage for Joel Van Eenwyk using NodeJS",
+    "website": "https://www.joelvaneenwyk.com/",
+    "repository": "https://github.com/joelvaneenwyk/homepage",
+    "logo": "http://node-js-sample.herokuapp.com/node.svg",
+    "keywords": ["joelvaneenwyk", "node", "express", "static"],
+    "image": "heroku/nodejs",
+    "stack": "heroku-20",
+    "environments": {
+        "test": {
+            "scripts": {
+                "test-setup": "gem install rubocop",
+                "test": "hugo build"
+            }
+        }
+    }
+}

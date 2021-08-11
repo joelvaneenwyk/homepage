@@ -1,0 +1,9 @@
+build:
+  docker:
+    release:
+      dockerfile: Dockerfile
+      target: builder
+    web: Dockerfile
+
+run:
+  web: node dist/server/server.js
