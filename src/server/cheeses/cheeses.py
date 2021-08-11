@@ -13,11 +13,16 @@ import parser_utils
 import sys
 
 COMMAND_LINE_OPTIONS = (
-    (('-v', '--verbose'), {'action': 'store', 'dest': 'verbose', 'default': False,
-                            'help': 'Print out extra information'}),
-    (('--preview',), {'action': 'store_true', 'dest': 'preview', 'default': False,
-                    'help': "Preview changes only and don't do any work"})
-    )
+    (('-v', '--verbose'), {
+        'action': 'store',
+        'dest': 'verbose',
+        'default': False,
+        'help': 'Print out extra information'}),
+    (('--preview',), {
+        'action': 'store_true', 'dest': 'preview', 'default': False,
+        'help': "Preview changes only and don't do any work"})
+)
+
 
 def main(options):
     library = cheese.CheeseLibrary()
@@ -27,6 +32,7 @@ def main(options):
     parser_usda.parseUSDA(library)
 
     library.save()
+
 
 if __name__ == "__main__":
     from optparse import OptionParser

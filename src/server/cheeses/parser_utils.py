@@ -1,5 +1,5 @@
 """
-Some utilties to help with parsing data off website
+Some utilities to help with parsing data off website.
 """
 
 import os
@@ -14,19 +14,24 @@ from math import cos, sin, atan2, sqrt, degrees, radians
 import json
 import geopy
 
+
 def get_root():
     root = os.path.dirname(os.path.realpath(__file__))
     return os.path.abspath(os.path.join(root, os.path.pardir, os.path.pardir))
+
 
 def get_output_folder():
     root = os.path.dirname(os.path.realpath(__file__))
     return os.path.join(root, "output")
 
+
 def get_data_folder():
     return os.path.join(get_root(), "data", "cheeses")
 
+
 def get_map_folder():
     return os.path.join(get_root(), "data", "map")
+
 
 def get_env():
     file = os.path.join(get_root(), ".env")
@@ -51,16 +56,18 @@ def get_country_coordinates(country):
     locationReceived = False
 
     if not locationReceived:
-        coords_path = os.path.join(get_map_folder(), "countries", "country-geo-cordinations.json")
+        coords_path = os.path.join(
+            get_map_folder(), "countries", "country-geo-cordinations.json")
         if os.path.exists(coords_path):
-            with open(coords_path) as data_file:    
+            with open(coords_path) as data_file:
                 try:
                     coords = json.load(data_file)
                     for c in coords:
                         if c["country"] == country:
                             top_left = (c["north"], c["west"])
                             bottom_right = (c["south"], c["east"])
-                            coord = center_geolocation( [top_left, bottom_right] )
+                            coord = center_geolocation(
+                                [top_left, bottom_right])
                             locationReceived = True
                             break
                 except ex:
@@ -70,12 +77,12 @@ def get_country_coordinates(country):
     if not locationReceived:
         try:
             google = geopy.GoogleV3(
-                api_key=env['GOOGLE_API_KEY_SERVER'] )
+                api_key=env['GOOGLE_API_KEY_SERVER'])
             address = google.geocode(country)
             coord = (address.latitude, address.longitude)
             locationReceived = True
         except:
-            locationReceived = False;
+            locationReceived = False
 
     return coord
 
@@ -98,6 +105,7 @@ def strip_whitespace(text):
     output = output.replace(" '", "'")
     return output
 
+
 def get_cached_page(page, folder):
     result = None
     url = urlsplit(page)
@@ -108,7 +116,7 @@ def get_cached_page(page, folder):
         data = f.read()
         result = BeautifulSoup(data, 'html.parser')
     else:
-        print('Parsing %s' % page)         
+        print('Parsing %s' % page)
         html = urlopen(page)
 
         # Always sleep for 1 to 5 seconds so that we don't get blocked
@@ -121,13 +129,15 @@ def get_cached_page(page, folder):
         file.write(data.encode('utf8'))
         file.close()
         result = soup
-    return  result
+    return result
 
 #
 # https://gist.github.com/amites/3718961
 #
 # Return (lat, long)
 #
+
+
 def center_geolocation(geolocations):
     """
     Provide a relatively accurate center lat, lon returned as a list pair, given
@@ -150,4 +160,4 @@ def center_geolocation(geolocations):
     y = float(y / len(geolocations))
     z = float(z / len(geolocations))
 
-    return degrees(atan2(z, sqrt(x**2 + y**2))), degrees(atan2(y, x)) 
+    return degrees(atan2(z, sqrt(x**2 + y**2))), degrees(atan2(y, x))

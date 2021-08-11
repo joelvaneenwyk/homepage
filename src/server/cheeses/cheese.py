@@ -1,23 +1,26 @@
 import json
-import inspect    
+import inspect
 import os
 import parser_utils
 import codecs
 import pprint
 import copy
 
+
 class CheeseLibrary():
     def __init__(self):
         self.cheeses = {}
         self.max = -1
-        self.filename = os.path.abspath(os.path.join(parser_utils.get_data_folder(), "cheeses.json"))
-        self.locations_filename = os.path.abspath(os.path.join(parser_utils.get_data_folder(), "locations.json"))
+        self.filename = os.path.abspath(os.path.join(
+            parser_utils.get_data_folder(), "cheeses.json"))
+        self.locations_filename = os.path.abspath(os.path.join(
+            parser_utils.get_data_folder(), "locations.json"))
         self.locations = {}
         self.load()
 
     def load(self):
         if os.path.exists(self.filename):
-            with open(self.filename) as data_file:    
+            with open(self.filename) as data_file:
                 try:
                     self.cheeses = json.load(data_file)
                 except:
@@ -44,7 +47,8 @@ class CheeseLibrary():
             cheese.origin = extract_elements_from_sentence(cheese.origin)
 
             for location in cheese.origin:
-                location = location.replace("countries throughout the world", "")
+                location = location.replace(
+                    "countries throughout the world", "")
                 location = location.replace("Swtizerland", "Switzerland")
                 location = location.replace("Originally in", "")
                 location = location.strip()
@@ -52,7 +56,8 @@ class CheeseLibrary():
                     if location not in self.locations:
                         self.locations[location] = {}
                         self.locations[location]["count"] = 0
-                        coordinates = parser_utils.get_country_coordinates(location)
+                        coordinates = parser_utils.get_country_coordinates(
+                            location)
                         self.locations[location]["lat"] = coordinates[0]
                         self.locations[location]["long"] = coordinates[1]
                     self.locations[location]["count"] += 1
@@ -63,17 +68,17 @@ class CheeseLibrary():
         print("Adding " + display_name)
 
         return True
-        
-    
 
     def save(self):
-        jsonData = json.dumps( self.cheeses, indent=4, sort_keys=True, cls=CheeseJsonEncoder )
+        jsonData = json.dumps(self.cheeses, indent=4,
+                              sort_keys=True, cls=CheeseJsonEncoder)
         file = codecs.open(self.filename, "w", encoding='utf-8')
         file.write(jsonData)
 
-        jsonData = json.dumps( self.locations, indent=4, sort_keys=True )
+        jsonData = json.dumps(self.locations, indent=4, sort_keys=True)
         file = codecs.open(self.locations_filename, "w", encoding='utf-8')
         file.write(jsonData)
+
 
 class Cheese():
     def __init__(self):
@@ -111,8 +116,9 @@ class Cheese():
                 del result[key]
         return result
 
+
 class CheeseJsonEncoder(json.JSONEncoder):
     def default(self, o):
-        self.indent="\t"
-        self.sort_keys=True
+        self.indent = "\t"
+        self.sort_keys = True
         return o.getDict()

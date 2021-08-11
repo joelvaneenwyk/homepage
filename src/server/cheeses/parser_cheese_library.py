@@ -18,11 +18,13 @@ import codecs
 import json
 import inspect
 
+
 def getOutputFolder():
     out_folder = os.path.join(get_output_folder(), "cheese_library")
     if not os.path.exists(out_folder):
         os.makedirs(out_folder)
     return out_folder
+
 
 def parseCheeseLibrary(library):
     source = 'http://www.cheeselibrary.com/'
@@ -50,8 +52,10 @@ def parseCheeseLibrary(library):
     for cheese_page in cheese_pages:
         soup = get_cached_page(cheese_page, getOutputFolder())
         cheese = Cheese()
-        master_table = soup.find("body").table.findAll("tr", recursive=False)[2]
-        master_data_table = master_table.find("table").findAll("tr", recursive=False)
+        master_table = soup.find("body").table.findAll(
+            "tr", recursive=False)[2]
+        master_data_table = master_table.find(
+            "table").findAll("tr", recursive=False)
         cheese.name = strip_whitespace(master_data_table[0].text)
 
         cheese_data_and_summary = master_data_table[1].findAll("td")
@@ -67,10 +71,10 @@ def parseCheeseLibrary(library):
             if isinstance(root, bs4.Tag):
                 root_text = root.text
             elif isinstance(root, bs4.NavigableString):
-                root_text = unicode(root);
+                root_text = unicode(root)
             if ':' in root_text and \
                 ':' in chunk_data and \
-                not root_text in chunk_data:
+                    not root_text in chunk_data:
                 data = strip_whitespace(chunk_data)
                 data_split = data.split(':')
                 type = strip_whitespace(data_split[0]).lower()
@@ -102,4 +106,3 @@ def parseCheeseLibrary(library):
             break
 
     return
-    

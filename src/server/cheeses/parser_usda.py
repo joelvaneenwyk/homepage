@@ -15,24 +15,27 @@ import glob
 from random import randint
 import codecs
 import json
-import inspect    
+import inspect
 from cheese import Cheese, CheeseLibrary
 import parser_utils
+
 
 def parseFdaLine(line):
     return [field.strip('~') for field in line.split('^')]
 
+
 def parseFdaFileUniqueDict(filename):
     output = {}
-    lines = open(filename,'r').readlines()
+    lines = open(filename, 'r').readlines()
     for line in lines:
         fields = parseFdaLine(line)
         output[fields[0]] = fields[1:]
     return output
 
+
 def parseFdaFileArray(filename):
     output = {}
-    lines = open(filename,'r').readlines()
+    lines = open(filename, 'r').readlines()
 
     # For debugging so that it doesn't parse forever
     numLineLimit = 1000
@@ -47,6 +50,7 @@ def parseFdaFileArray(filename):
         if lineIndex > numLineLimit:
             break
     return output
+
 
 def parseUSDA(library):
     source = 'USDA'
@@ -63,26 +67,36 @@ def parseUSDA(library):
     nutritional_data = parseFdaFileArray(nutritional_data_filename)
 
     nutritional_definitions_filename = os.path.join(sr22, 'NUTR_DEF.txt')
-    nutritional_definitions = parseFdaFileUniqueDict(nutritional_definitions_filename)
+    nutritional_definitions = parseFdaFileUniqueDict(
+        nutritional_definitions_filename)
 
-    food_descriptions_headers = ['FdGrp_Cd', 'Long_Desc', 'Shrt_Desc', 'ComName']
-    nutritional_data_headers = ['Nutr_No', 'Nutr_Val', 'Num_Data_Pts', 'ComName']
+    food_descriptions_headers = ['FdGrp_Cd',
+                                 'Long_Desc', 'Shrt_Desc', 'ComName']
+    nutritional_data_headers = ['Nutr_No',
+                                'Nutr_Val', 'Num_Data_Pts', 'ComName']
     nutritional_definition_headers = ['Units', 'Tagname', 'NutrDesc']
 
     for (ndb_no, food) in food_descriptions.iteritems():
         if ndb_no in nutritional_data:
             nutritions = nutritional_data[ndb_no]
-            short_food_names = food[ food_descriptions_headers.index('Shrt_Desc') ].split(',')
-            long_food_names = food[ food_descriptions_headers.index('Long_Desc') ].split(',')
-            common_food_names = food[ food_descriptions_headers.index('ComName') ].split(',')
+            short_food_names = food[food_descriptions_headers.index(
+                'Shrt_Desc')].split(',')
+            long_food_names = food[food_descriptions_headers.index(
+                'Long_Desc')].split(',')
+            common_food_names = food[food_descriptions_headers.index(
+                'ComName')].split(',')
 
             if short_food_names[0].lower() == 'cheese':
                 for nutrition in nutritions:
-                    nutritional_definition_index = nutrition[nutritional_data_headers.index('Nutr_No')]
+                    nutritional_definition_index = nutrition[nutritional_data_headers.index(
+                        'Nutr_No')]
                     nutritional_definition = nutritional_definitions[nutritional_definition_index]
-                    value = nutrition[ nutritional_data_headers.index('Nutr_Val') ]
-                    units = nutritional_definition[ nutritional_definition_headers.index('Units') ]
-                    name = nutritional_definition[ nutritional_definition_headers.index('NutrDesc') ]
+                    value = nutrition[nutritional_data_headers.index(
+                        'Nutr_Val')]
+                    units = nutritional_definition[nutritional_definition_headers.index(
+                        'Units')]
+                    name = nutritional_definition[nutritional_definition_headers.index(
+                        'NutrDesc')]
 
                 cheese = Cheese()
                 cheese.name = ' '.join(long_food_names[1:]).strip()
@@ -91,4 +105,3 @@ def parseUSDA(library):
                     break
 
     return
-    

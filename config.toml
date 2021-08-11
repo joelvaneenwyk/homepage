@@ -13,11 +13,58 @@ enableGitInfo = true
 # Enable KaTeX (https://katex.org/) globally
 math = true
 
+# Author config
+[author]
+  name = "Joel Van Eenwyk"
+  email = "joel.vaneenwyk@gmail.com"
+  link = ""
+
 [build]
 useResourceCacheWhen = 'never'
 
 [permalinks]
   "/" = "/:filename"
+
+# Sitemap config
+# 网站地图配置
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+# Permalinks config (https://gohugo.io/content-management/urls/#permalinks)
+[Permalinks]
+  # posts = ":year/:month/:filename"
+  posts = ":filename"
+
+# Privacy config (https://gohugo.io/about/hugo-and-gdpr/)
+[privacy]
+  # privacy of the Google Analytics (replaced by params.analytics.google)
+  [privacy.googleAnalytics]
+    # ...
+  [privacy.twitter]
+    enableDNT = true
+  [privacy.youtube]
+    privacyEnhanced = true
+
+# Options to make output .md files
+[mediaTypes]
+  [mediaTypes."text/plain"]
+    suffixes = ["md"]
+
+# Options to make output .md files=
+[outputFormats.MarkDown]
+  mediaType = "text/plain"
+  isPlainText = true
+  isHTML = false
+
+# Options to make hugo output files
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML", "MarkDown"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  taxonomyTerm = ["HTML"]
 
 [taxonomies]
 series = "series"
@@ -38,7 +85,7 @@ category = "categories"
     # [UA-XXXXXXXX-X] google analytics code
     googleAnalytics = ""
     # copyright description used only for seo schema
-    copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+    copyright = "This work is licensed under a MIT License."
     # Menu config
     [languages.en.menu]
       [[languages.en.menu.main]]
@@ -212,18 +259,14 @@ category = "categories"
   [params.footer]
     enable = true
     # Custom content (HTML format is supported)
-    custom = 'Copyright (R) Joel Van Eenwyk'
+    custom = ''
     # whether to show Hugo and theme info
-    # 是否显示 Hugo 和主题信息
     hugo = true
     # whether to show copyright info
-    # 是否显示版权信息
     copyright = true
     # whether to show the author
-    # 是否显示作者
     author = true
     # site creation time
-    # 网站创立年份
     since = 2021
     # ICP info only in China (HTML format is supported)
     icp = ""
@@ -240,7 +283,6 @@ category = "categories"
     rss = 10
 
   # List (category or tag) page config
-  # List (目录或标签) 页面配置
   [params.list]
     # special amount of posts in each list page
     paginate = 20
@@ -282,7 +324,6 @@ category = "categories"
       # whether to show the copy button of the code block
       copy = true
       # the maximum number of lines of displayed code by default
-      # 默认展开显示的代码行数
       maxShownLines = 10
     # KaTeX mathematical formulas config (KaTeX https://katex.org/)
     [params.page.math]
@@ -424,14 +465,12 @@ category = "categories"
     [params.page.library]
       [params.page.library.css]
         # someCSS = "some.css"
-        # located in "assets/" 位于 "assets/"
-        # Or 或者
-        # someCSS = "https://cdn.example.com/some.css"
+        # located in "assets/"
+        # or some CSS = "https://cdn.example.com/some.css"
       [params.page.library.js]
         # someJavascript = "some.js"
-        # located in "assets/" 位于 "assets/"
-        # Or 或者
-        # someJavascript = "https://cdn.example.com/some.js"
+        # located in "assets/"
+        # or some Javascript = "https://cdn.example.com/some.js"
 
     # Page SEO config
     [params.page.seo]
@@ -480,7 +519,6 @@ category = "categories"
     [params.analytics.fathom]
       id = ""
       # server url for your tracker if you're self hosting
-      # 自行托管追踪器时的主机路径
       server = ""
 
   # Cookie consent config
@@ -499,37 +537,27 @@ category = "categories"
     # located in "themes/LoveIt/assets/data/cdn/" directory
     # you can store your own data files in the same path under your project:
     # "assets/data/cdn/"
-    # CDN 数据文件名称, 默认不启用
-    # ("jsdelivr.yml")
-    # 位于 "themes/LoveIt/assets/data/cdn/" 目录
-    # 可以在你的项目下相同路径存放你自己的数据文件:
-    # "assets/data/cdn/"
     data = "jsdelivr.yml"
 
   # Compatibility config
-  # 兼容性设置
   [params.compatibility]
     # whether to use Polyfill.io to be compatible with older browsers
-    # 是否使用 Polyfill.io 来兼容旧式浏览器
-    polyfill = false
+    polyfill = true
     # whether to use object-fit-images to be compatible with older browsers
-    # 是否使用 object-fit-images 来兼容旧式浏览器
     objectFit = false
 
 # Markup related configuration in Hugo
 [markup]
   # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
-  # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
   [markup.highlight]
     codeFences = true
     guessSyntax = true
     lineNos = true
     lineNumbersInTable = true
     # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
-    # false 是必要的设置 (https://github.com/dillonzq/LoveIt/issues/158)
     noClasses = false
+
   # Goldmark is from Hugo 0.60 the default library used for Markdown
-  # Goldmark 是 Hugo 0.60 以来的默认 Markdown 解析库
   [markup.goldmark]
     [markup.goldmark.extensions]
       definitionList = true
@@ -539,79 +567,12 @@ category = "categories"
       table = true
       taskList = true
       typographer = true
+
     [markup.goldmark.renderer]
       # whether to use HTML tags directly in the document
-      # 是否在文档中直接使用 HTML 标签
       unsafe = true
+
   # Table Of Contents settings
-  # 目录设置
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 6
-
-# Author config
-[author]
-  name = "Joel Van Eenwyk"
-  email = "joel.vaneenwyk@gmail.com"
-  link = ""
-
-# Sitemap config
-# 网站地图配置
-[sitemap]
-  changefreq = "weekly"
-  filename = "sitemap.xml"
-  priority = 0.5
-
-# Permalinks config (https://gohugo.io/content-management/urls/#permalinks)
-# Permalinks 配置 (https://gohugo.io/content-management/urls/#permalinks)
-[Permalinks]
-  # posts = ":year/:month/:filename"
-  posts = ":filename"
-
-# Privacy config (https://gohugo.io/about/hugo-and-gdpr/)
-# 隐私信息配置 (https://gohugo.io/about/hugo-and-gdpr/)
-[privacy]
-  # privacy of the Google Analytics (replaced by params.analytics.google)
-  # Google Analytics 相关隐私 (被 params.analytics.google 替代)
-  [privacy.googleAnalytics]
-    # ...
-  [privacy.twitter]
-    enableDNT = true
-  [privacy.youtube]
-    privacyEnhanced = true
-
-# Options to make output .md files
-[mediaTypes]
-  [mediaTypes."text/plain"]
-    suffixes = ["md"]
-
-# Options to make output .md files=
-[outputFormats.MarkDown]
-  mediaType = "text/plain"
-  isPlainText = true
-  isHTML = false
-
-# Options to make hugo output files
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-  page = ["HTML", "MarkDown"]
-  section = ["HTML", "RSS"]
-  taxonomy = ["HTML", "RSS"]
-  taxonomyTerm = ["HTML"]
-
-#[menu]
-#  [[menu.main]]
-#    name = "About"
-#    url = "/"
-#    weight = 1
-#  [[menu.main]]
-#    name = "Resume"
-#    url = "/content/resume.pdf"
-#    # 'pre' and 'post' hooks are available
-#    # here we use an icon from Bootstrap https://icons.getbootstrap.com/
-#    pre = '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/></svg> '
-#    weight = 2
-#  [[menu.main]]
-#    name = "Contact"
-#    url = "/contact"
-#    weight = 3
