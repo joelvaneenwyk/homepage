@@ -4,10 +4,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const node_static_1 = require("node-static");
 const http_1 = require("http");
 const path_1 = require("path");
-let root = path_1.resolve(path_1.join(__dirname, "../../../"));
+let root = path_1.resolve(path_1.join(__dirname, "../../"));
 var fileServer = new (node_static_1.Server)(`${root}/dist/www`);
 // Use a default port of 5000 unless it's specified in server config
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 6000;
 console.log(`Server root: ${root}`);
 console.log(`Listening: http://localhost:${port}`);
 http_1.createServer(function (req, res) {

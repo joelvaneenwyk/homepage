@@ -4,6 +4,8 @@
     "description": "Homepage for Joel Van Eenwyk (joelvaneenwyk.com)",
     "main": "dist/server/server.js",
     "type": "commonjs",
+    "node": "14.x",
+    "packageManager": "yarn@3.0.1-rc.2",
     "keywords": [
         "homepage",
         "nodejs",
@@ -15,7 +17,8 @@
     ],
     "scripts": {
         "vscode": "yarn sdks vscode",
-        "start": "tsc && node ./dist/server/server.js",
+        "start": "yarn install && yarn run server",
+        "server": "tsc && node ./dist/server/server.js",
         "lint": "htmlhint dist/**/*.html",
         "build": "tsc && hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
         "watch": "hugo --cleanDestinationDir --buildDrafts server",
@@ -72,6 +75,5 @@
         "hooks": {
             "pre-commit": "yarn build && git add dist"
         }
-    },
-    "packageManager": "yarn@3.0.1-rc.2"
+    }
 }

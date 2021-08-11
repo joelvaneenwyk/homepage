@@ -4,11 +4,11 @@ import { Server } from 'node-static';
 import { createServer } from 'http';
 import { join, resolve } from 'path';
 
-let root = resolve(join(__dirname, "../../../"));
+let root = resolve(join(__dirname, "../../"));
 var fileServer = new (Server)(`${root}/dist/www`);
 
 // Use a default port of 5000 unless it's specified in server config
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 6000;
 
 console.log(`Server root: ${root}`);
 console.log(`Listening: http://localhost:${port}`);
