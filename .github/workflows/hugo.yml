@@ -2,9 +2,9 @@ name: hugo
 
 on:
   push:
-    branches: [ main, revamp ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, revamp ]
+    branches: [ main ]
 
 jobs:
   build:
