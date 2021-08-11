@@ -1,31 +1,65 @@
-# Joel Van Eenwyk Homepage
+# Joel Van Eenwyk
 
-[![Build Status](https://travis-ci.org/joelvaneenwyk/homepage.svg?branch=master)](https://travis-ci.org/joelvaneenwyk/homepage)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/joelvaneenwyk/homepage?branch=master&svg=true)](https://ci.appveyor.com/project/joelvaneenwyk/homepage)
+These are the pages and source for [joelvaneenwyk.github.io](https://joelvaneenwyk.github.io/).
 
+[![Build Status](https://travis-ci.org/joelvaneenwyk/homepage.svg?branch=main)](https://travis-ci.org/joelvaneenwyk/homepage)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/joelvaneenwyk/homepage?branch=main&svg=true)](https://ci.appveyor.com/project/joelvaneenwyk/homepage)
 [![Code Climate](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/gpa.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage) [![Test Coverage](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/coverage.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage/coverage)
-
 [![Dependency Status](https://david-dm.org/joelvaneenwyk/homepage.svg)](https://david-dm.org/joelvaneenwyk/homepage)
 
-[![Stories in Ready](https://badge.waffle.io/joelvaneenwyk/homepage.png?label=ready&title=Ready)](https://waffle.io/joelvaneenwyk/homepage)
+This is the source code for the homepage of Joel Van Eenwyk (<https://www.joelvaneenwyk.com>). Going open source was not my original plan for this, but there are a lot of benefits to doing this. Perhaps my favorite reason being continuous integration (CI) support for free if hosted on a public repository.
 
-This is the source code for the homepage of Joel Van Eenwyk (https://www.joelvaneenwyk.com). Going open source was not my original plan for this, but there are a lot of benefits to doing this. Perhaps my favorite reason being continuous integration (CI) support for free if hosted on a public repository.
-
-The staging branch is also deployed automatically to Heroku here: http://jvaneenwyk.herokuapp.com/
+The staging branch is also deployed automatically to Heroku here: <http://jvaneenwyk.herokuapp.com/>
 
 ![Joel Van Eenwyk](source/joelvaneenwyk/www/images/stamp.png)
 
-Source for the website is in *source/*
+## Links
 
-## Install (Windows)
+* 🔒 [jvaneenwyk | Heroku](https://dashboard.heroku.com/apps/jvaneenwyk)
 
-1. Install NodeJS (https://nodejs.org/en/download/)
-2. Install Heroku Toolbelt (https://toolbelt.heroku.com/)
-3. Install JDK (needed by htmllint)
-4. Run 'prompt.bat' from the root
-5. Run 'copy .env.template env'
-6. Update GITHUB_TOKEN
-7. Run 'npm install -g npm'
-8. Run 'npm install -g bower'
-9. Run 'npm install -g grunt'
-10. Run 'npm install'
+## Structure
+
+* 📃 `app.json` - Defines the application for deploying to Heroku, more details at [app.json Schema | Heroku Dev Center](https://devcenter.heroku.com/articles/app-json-schema).
+* 📃 `heroku.yml` - Configuration file for [Heroku](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml) that replaces the [Procfile](https://devcenter.heroku.com/articles/procfile#procfile-and-heroku-yml).
+* 📁 `content` - Markdown files and the text content of the site.
+* 📁 `static` - Assets not intended to change e.g., stylesheets, images,
+etc.
+
+## Principles and Guidelines
+
+Based on the previous version of this site, there were a lot of learnings. The primary take-away is that the previous site was too complicated. This was especially apparent when trying to go back and revise/update it. This is in part poor documentation but also just relying on unreliable technology. Unfortunately, in the world of the web this is hard to avoid -- it moves at an incredible pace and technology you choose **will** get deprecated and replaced by something that may or may not be production ready.
+
+1. Use only statically typed languages i.e., no JavaScript
+2. Everything in the project must be linted
+3. CI must be enabled from the start
+4. Architecture must be well documented
+
+**Keep it simple.**
+
+## Setup
+
+1. [Install Hugo](https://gohugo.io/getting-started/installing/)
+    * Recommend using [Scoop](https://scoop.sh/) on Windows
+2. Install Heroku CLI
+3. From the root, run `heroku git:remote -a jvaneenwyk` so that the app name is assigned
+4. Install NodeJS
+5. Install Yarn
+6. Run `yarn install`
+7. Run `yarn start` or just `hugo server`
+
+### Building
+
+`hugo build`
+
+### Development
+
+1. Install Yarn 3.x
+2. Run `yarn install`
+
+## Templates
+
+Current Hugo template is not ideal as it does not have good support for blog content (time-based content) along with general documentation and/or articles. Some other options:
+
+* [Goldydocs](https://example.docsy.dev/)
+* [Portio](https://portio-hugo.staticmania.com/)
+* [hugoBasicExample: Example site to use with Hugo & Hugo Themes](https://github.com/gohugoio/hugoBasicExample)

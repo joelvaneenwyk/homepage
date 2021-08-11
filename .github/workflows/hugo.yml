@@ -1,0 +1,57 @@
+name: hugo
+
+on:
+  push:
+    branches: [ main, revamp ]
+  pull_request:
+    branches: [ main, revamp ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [14, 16]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # Fetch Hugo themes (true OR recursive)
+          submodules: recursive
+          # Fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.85.0'
+          # extended: true
+
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '^1.13.1' # The Go version to download (if necessary) and use.
+      - run: go version
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install Packages
+        run: |
+          yarn install
+
+      - name: Build Hugo
+        run: |
+          git clone https://github.com/gohugoio/hugo.git
+          cd hugo
+          go install --tags extended
+
+      - name: Hugo Build
+        run: |
+          hugo

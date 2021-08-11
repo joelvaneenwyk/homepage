@@ -1,0 +1,90 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Programming - Tag - Joel Van Eenwyk</title>
+        <link>https://www.joelvaneenwyk.com/tags/programming/</link>
+        <description>Programming - Tag - Joel Van Eenwyk</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>joel.vaneenwyk@gmail.com (Joel Van Eenwyk)</managingEditor>
+            <webMaster>joel.vaneenwyk@gmail.com (Joel Van Eenwyk)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 11 Aug 2021 15:58:26 &#43;0800</lastBuildDate><atom:link href="https://www.joelvaneenwyk.com/tags/programming/" rel="self" type="application/rss+xml" /><item>
+    <title>Hugo Website Refresh</title>
+    <link>https://www.joelvaneenwyk.com/website-hugo-refresh/</link>
+    <pubDate>Wed, 11 Aug 2021 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/website-hugo-refresh/</guid>
+    <description><![CDATA[Finally made the switch to Hugo after battling with my hand-crafted website for too long. Final straw was that there were just too many out-of-date dependencies which caused everything to break in small and subtle ways. My options were to either spend a lot of time fixing that site or start from scratch. The former option would mean being stuck with hand-crafted garbage that would inevitably break again or switch to something that would last a bit longer (hopefully) and be a bit more battle-tested.]]></description>
+</item><item>
+    <title>Dev Notes - February 24th, 2019</title>
+    <link>https://www.joelvaneenwyk.com/dev-notes-2019-02-24/</link>
+    <pubDate>Sun, 24 Feb 2019 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/dev-notes-2019-02-24/</guid>
+    <description><![CDATA[I decided to refactor my website to make it easier to use and update as well as remove HTTPS support since it was expensive and not really necessary for my needs. In short, huge mistake.
+First issue was with stopping auto-redirect after disabling HSTS (HTTP Strict Transport Security) and the SSL endpoint. Seems like disabling it should be really straightforward but turns out it really isn&rsquo;t because browsers cache a lot of information and the default age of HSTS is pretty long (60+ days).]]></description>
+</item><item>
+    <title>Dev Notes - October 23rd, 2017</title>
+    <link>https://www.joelvaneenwyk.com/dev-notes-2017-10-23/</link>
+    <pubDate>Mon, 23 Oct 2017 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/dev-notes-2017-10-23/</guid>
+    <description><![CDATA[In updating my blog finally with some dev notes, it became quickly apparent that my website tech was outdated already. Yet another reason I really don&rsquo;t like web dev.
+Few things:
+ Apparently Bower is now deprecated and need to move to Yarn: Prevent this by migrating to Yarn Currently I maintain a &lsquo;private&rsquo; version and public version of the website. The reasons I did this seem no longer valid. I&rsquo;ve been paying to have a secure HTTPS version of the site.]]></description>
+</item><item>
+    <title>Dev Notes - October 22nd, 2017</title>
+    <link>https://www.joelvaneenwyk.com/dev-notes-2017-10-22/</link>
+    <pubDate>Sun, 22 Oct 2017 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/dev-notes-2017-10-22/</guid>
+    <description><![CDATA[Traveling is always my most productive time for random thoughts and coding exercises. Doesn&rsquo;t always mean clean code in fact it basically never does, but I always have a list of topics I&rsquo;d like to explore and then when on a plane I finally have time to do that. This time I tackled a few topics:
+ SQLite-net Reveal.js Browser extensions (webpack, TypeScript)  Reveal.js For work, I create presentations using PowerPoint quite a bit.]]></description>
+</item><item>
+    <title>Emscripten</title>
+    <link>https://www.joelvaneenwyk.com/emscripten/</link>
+    <pubDate>Sat, 20 May 2017 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/emscripten/</guid>
+    <description><![CDATA[As it happens, we can&rsquo;t actually build native plugins since VSCode is built off Javascript/Typescript.
+I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant.
+The major issue I ran into was that &lsquo;emcc.bat&rsquo; calls &lsquo;Python&rsquo; but the default version of Python that I use is 32-bit while the binaries included in most standard versions of Emscript are 64-bit.]]></description>
+</item><item>
+    <title>Web Programming for Console Developers</title>
+    <link>https://www.joelvaneenwyk.com/web-programming/</link>
+    <pubDate>Sat, 20 Aug 2016 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/web-programming/</guid>
+    <description><![CDATA[As a C++ programmer by profession, every few years I look into the web and scoff at it. The tools are usually nowhere near the robustness I&rsquo;m used to and the level of control I have is just not the same. As a type-safe programmer, Javascript upsets me and the likes of jQuery scare me.
+But over time I&rsquo;ve come to realize that this is in great part due to my fear of the unknown.]]></description>
+</item><item>
+    <title>Website Launched</title>
+    <link>https://www.joelvaneenwyk.com/website-launch/</link>
+    <pubDate>Sat, 20 Aug 2016 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/website-launch/</guid>
+    <description><![CDATA[This website has been in the works for quite some time now, but finally pushing it out to the world. It is nice to have a place to store my experiments and thoughts, but in great part this website is here as a testing ground for me to play with web technologies. I&rsquo;m a console game programmer by trade, but it&rsquo;s always interesting to play with the new hotness. Usually that isn&rsquo;t in the web world but hey, it&rsquo;s all interesting to me.]]></description>
+</item><item>
+    <title>AppVeyor Explorations</title>
+    <link>https://www.joelvaneenwyk.com/appveyor/</link>
+    <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/appveyor/</guid>
+    <description><![CDATA[After my very positive experience with Travis CI (see Homepage Build), I decided it was time to take a look at some Windows options for builds. This led me very quickly to AppVeyor. But unfortunately, I don&rsquo;t have a Windows project to test this on, so I made one up.
+I&rsquo;ve long been a fan of DosBox and since I follow DosNostalgic I can&rsquo;t help but be reminded daily of how much I love past games.]]></description>
+</item><item>
+    <title>Deep Learning</title>
+    <link>https://www.joelvaneenwyk.com/deep-learning/</link>
+    <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/deep-learning/</guid>
+    <description><![CDATA[Turns out deep learning is kind of a big deal right now and for good reason. It&rsquo;s cool, powerful, GPU-friendly, and just pretty great. I wanted to be a part of the fun and realized it wasn&rsquo;t as easy to do for Windows developers. But the good news is that it is actually supported.
+Found this useful: https://www.quora.com/How-does-Enthought-Canopy-compare-to-Anaconda
+The stack:
+ Anaconda x64 (https://www.continuum.io/downloads)  Make sure to select the 64-bit version!]]></description>
+</item><item>
+    <title>GPU</title>
+    <link>https://www.joelvaneenwyk.com/gpu/</link>
+    <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/gpu/</guid>
+    <description><![CDATA[Long have I wanted to create a cross-platform raytracing system that works on Xbox One, PS4, PC and whatever modern platform is in style at the moment. You have some common options including CUDA, OpenCL, and others. Essentially it seems what I want is a cross-platform https://developer.nvidia.com/optix written in something like OpenCL or something. There are some path-tracers commercialized for this (e.g. https://home.otoy.com/render/brigade/).
+This seems to be quite commonly regarded as an impossible task [1].]]></description>
+</item></channel>
+</rss>

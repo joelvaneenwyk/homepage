@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>documentation - Category - Joel Van Eenwyk</title>
+        <link>https://www.joelvaneenwyk.com/categories/documentation/</link>
+        <description>documentation - Category - Joel Van Eenwyk</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>joel.vaneenwyk@gmail.com (Joel Van Eenwyk)</managingEditor>
+            <webMaster>joel.vaneenwyk@gmail.com (Joel Van Eenwyk)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 20 May 2017 15:58:26 &#43;0800</lastBuildDate><atom:link href="https://www.joelvaneenwyk.com/categories/documentation/" rel="self" type="application/rss+xml" /><item>
+    <title>Emscripten</title>
+    <link>https://www.joelvaneenwyk.com/emscripten/</link>
+    <pubDate>Sat, 20 May 2017 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/emscripten/</guid>
+    <description><![CDATA[As it happens, we can&rsquo;t actually build native plugins since VSCode is built off Javascript/Typescript.
+I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant.
+The major issue I ran into was that &lsquo;emcc.bat&rsquo; calls &lsquo;Python&rsquo; but the default version of Python that I use is 32-bit while the binaries included in most standard versions of Emscript are 64-bit.]]></description>
+</item><item>
+    <title>Web Programming for Console Developers</title>
+    <link>https://www.joelvaneenwyk.com/web-programming/</link>
+    <pubDate>Sat, 20 Aug 2016 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/web-programming/</guid>
+    <description><![CDATA[As a C++ programmer by profession, every few years I look into the web and scoff at it. The tools are usually nowhere near the robustness I&rsquo;m used to and the level of control I have is just not the same. As a type-safe programmer, Javascript upsets me and the likes of jQuery scare me.
+But over time I&rsquo;ve come to realize that this is in great part due to my fear of the unknown.]]></description>
+</item></channel>
+</rss>

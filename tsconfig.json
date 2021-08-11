@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "./dist/server",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": false,
+        "forceConsistentCasingInFileNames": true
+    }
+}

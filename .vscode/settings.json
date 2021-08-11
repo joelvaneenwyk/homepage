@@ -1,37 +1,151 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    // Configure glob patterns for excluding files and folders.
+    "[json]": {
+        "editor.defaultFormatter": "HookyQR.beautify",
+        "editor.formatOnSave": true
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "HookyQR.beautify",
+        "editor.formatOnSave": true
+    },
+    "eslint.format.enable": false,
+    "sortJSON.excludedFiles": [
+        "package.json",
+        "settings.json"
+    ],
+    "perl.enable": false,
+    "prettier.enable": true,
+    "editor.formatOnSave": false,
+    "json.format.enable": false,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
         "**/.heroku": true,
         "**/.DS_Store": true,
+        "**/.yarn/cache": true,
         "**/bower_components": true,
         "**/node_modules": true,
         "**/bin": true,
-        "**/dist": true,
         "**/workspace": true,
         "**/typings": true,
         "**/thirdparty": true
     },
+    "liveServer.settings.port": 13555,
+    "liveServer.settings.root": "/dist",
+    "liveServer.settings.ignoreFiles": [
+        ".vscode/**",
+        ".tmp/**",
+        "backup/**",
+        ".yarn/**",
+        "themes/**",
+        "**/*.scss",
+        "**/*.sass",
+        "**/*.ts"
+    ],
+    "search.exclude": {
+        "**/.yarn/cache": true,
+        "**/backup/**": true,
+        "**/dist/**": true,
+        "themes/**/*.md": true,
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/.yarn": true,
+        "**/.pnp.*": true
+    },
+    "htmlhint.enable": false,
     "css.validate": false,
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     },
-
-    // The number of spaces a tab is equal to. This setting is overridden
-    // based on the file contents when `editor.detectIndentation` is true.
+    "files.associations": {
+        "tsconfig.json": "jsonc",
+        ".eslintrc.json": "jsonc",
+        "*.json.git": "jsonc"
+    },
     "editor.tabSize": 4,
-
-    // Insert spaces when pressing Tab. This setting is overriden
-    // based on the file contents when `editor.detectIndentation` is true.
     "editor.insertSpaces": true,
-
-    // When opening a file, `editor.tabSize` and `editor.insertSpaces`
-    // will be detected based on the file contents. Set to false to keep
-    // the values you've explicitly set, above.
     "editor.detectIndentation": false,
-
-    "typescript.tsdk": "./node_modules/typescript/lib"
+    "typescript.tsdk": ".yarn/sdks/typescript/lib",
+    "eslint.nodePath": ".yarn/sdks",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "cSpell.ignorePaths": [
+        "**/package-lock.json",
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.git/objects/**",
+        ".vscode",
+        ".vscode-insiders",
+        "dist",
+        "resources",
+        ".yarn",
+        "backup",
+        "**/*.min.js"
+    ],
+    "cSpell.words": [
+        "Datamap",
+        "Gruntfile",
+        "actions",
+        "autosearch",
+        "autotrack",
+        "bootlint",
+        "cmaps",
+        "cond",
+        "cookieconsent",
+        "cssjs",
+        "datamaps",
+        "dosis",
+        "echarts",
+        "eclint",
+        "eenwyk",
+        "emscripten",
+        "esversion",
+        "fontfaceobserver",
+        "gitalk",
+        "glyphicon",
+        "gruntjs",
+        "herokuapp",
+        "hoverinfo",
+        "hsts",
+        "htmlhint",
+        "htmllint",
+        "htmlproofer",
+        "hugo",
+        "joelvaneenwyk",
+        "jsbeautifier",
+        "jsonminify",
+        "jvaneenwyk",
+        "lastmod",
+        "linebreak",
+        "loveit",
+        "mapbox",
+        "maxage",
+        "modernizr",
+        "nodeunit",
+        "octokit",
+        "pageview",
+        "peaceiris",
+        "pjson",
+        "pnpify",
+        "postgres",
+        "preinstall",
+        "readonly",
+        "relaxerror",
+        "repos",
+        "resave",
+        "sdks",
+        "segmentit",
+        "siggraph",
+        "sslify",
+        "stoponerror",
+        "submodules",
+        "thirdparty",
+        "topojson",
+        "twemoji",
+        "typeit",
+        "v",
+        "wasm",
+        "yarnpkg"
+    ]
 }
