@@ -1,7 +1,7 @@
 baseURL = "https://www.joelvaneenwyk.com/"
 languageCode = "en-us"
 title = "Joel Van Eenwyk"
-theme = "default"
+theme = "base"
 publishDir = "dist"
 enableEmoji = true
 
@@ -94,7 +94,7 @@ category = "categories"
         weight = 6
     [languages.en.params]
       # site description
-      description = "About Joel Van Eenwyk Theme"
+      description = "About Joel Van Eenwyk"
       # site keywords
       keywords = ["Theme", "Hugo"]
       # App icon config
@@ -142,13 +142,13 @@ category = "categories"
           # Gravatar Email for preferred avatar in home page
           gravatarEmail = ""
           # URL of avatar shown in home page
-          avatarURL = "/images/avatar.png"
+          avatarURL = "/images/avatar.jpg"
           # title shown in home page (HTML format is supported)
           title = ""
           # subtitle shown in home page
-          subtitle = "A Clean, Elegant but Advanced Hugo Theme"
+          subtitle = "Programmer, explorer, and life enthusiast. Work for Microsoft and part of Havok middleware team. Views expressed here are my own."
           # whether to use typeit animation for subtitle
-          typeit = true
+          typeit = false
           # whether to show social links
           social = true
           # disclaimer (HTML format is supported)
@@ -160,77 +160,17 @@ category = "categories"
           paginate = 6
       # Social config in home page
       [languages.en.params.social]
-        GitHub = "xxxx"
-        Linkedin = ""
-        Twitter = "xxxx"
-        Instagram = "xxxx"
-        Facebook = "xxxx"
-        Telegram = "xxxx"
-        Medium = ""
-        Gitlab = ""
-        Youtubelegacy = "xxxx"
-        Youtubecustom = ""
-        Youtubechannel = ""
-        Tumblr = ""
-        Quora = ""
-        Keybase = ""
-        Pinterest = ""
-        Reddit = ""
-        Codepen = ""
-        FreeCodeCamp = ""
-        Bitbucket = ""
-        Stackoverflow = ""
-        Weibo = ""
-        Odnoklassniki = ""
-        VK = ""
-        Flickr = ""
-        Xing = ""
-        Snapchat = ""
-        Soundcloud = ""
-        Spotify = ""
-        Bandcamp = ""
-        Paypal = ""
-        Fivehundredpx = ""
-        Mix = ""
-        Goodreads = ""
-        Lastfm = ""
-        Foursquare = ""
-        Hackernews = ""
-        Kickstarter = ""
-        Patreon = ""
-        Steam = ""
-        Twitch = ""
-        Strava = ""
-        Skype = ""
-        Whatsapp = ""
-        Zhihu = ""
-        Douban = ""
-        Angellist = ""
-        Slidershare = ""
-        Jsfiddle = ""
-        Deviantart = ""
-        Behance = ""
-        Dribbble = ""
-        Wordpress = ""
-        Vine = ""
-        Googlescholar = ""
-        Researchgate = ""
-        Thingiverse = ""
-        Devto = ""
-        Gitea = ""
-        XMPP = ""
-        Matrix = ""
-        Bilibili = ""
-        Email = "xxxx@xxxx.com"
+        GitHub = "joelvaneenwyk"
+        Linkedin = "joelvaneenwyk"
+        Twitter = "joelvaneenwyk"
+        Instagram = "jvaneenwyk"
+        Email = "joel.vaneenwyk@gmail.com"
         RSS = true
-        [languages.en.params.social.Mastodon]
-          id = "@xxxx"
-          prefix = "https://mastodon.technology/"
 
 [params]
   author = "Joel Van Eenwyk"
   description = "A simple monospaced resume theme for Hugo."
-  favicon = "favicon.ico"  # path to a .ico to use as favicon
+  favicon = "images/favicon.ico"  # path to a .ico to use as favicon
 
   # LoveIt theme version
   version = "0.2.X"
@@ -288,7 +228,7 @@ category = "categories"
     # ICP info only in China (HTML format is supported)
     icp = ""
     # license info (HTML format is supported)
-    license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+    license= '<a rel="license external nofollow noopener noreffer" href="https://opensource.org/licenses/MIT/" target="_blank">MIT License</a>'
 
   # Section (all posts) page config
   [params.section]

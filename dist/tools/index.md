@@ -8,7 +8,7 @@
 * NodeJS
 * PTVS (Python Tools for VS)
 
-# Tools to Explore
+## Tools to Explore
 
 * <http://rmarkdown.rstudio.com/index.html>
 * [HostsMan](http://www.abelhadigital.com/hostsman) a tool for editing your Hosts file

@@ -39,6 +39,14 @@ Few things:
 I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant.
 The major issue I ran into was that &lsquo;emcc.bat&rsquo; calls &lsquo;Python&rsquo; but the default version of Python that I use is 32-bit while the binaries included in most standard versions of Emscript are 64-bit.]]></description>
 </item><item>
+    <title>Web Programming for Console Developers</title>
+    <link>https://www.joelvaneenwyk.com/web-programming/</link>
+    <pubDate>Sat, 20 Aug 2016 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/web-programming/</guid>
+    <description><![CDATA[As a C++ programmer by profession, every few years I look into the web and scoff at it. The tools are usually nowhere near the robustness I&rsquo;m used to and the level of control I have is just not the same. As a type-safe programmer, Javascript upsets me and the likes of jQuery scare me.
+But over time I&rsquo;ve come to realize that this is in great part due to my fear of the unknown.]]></description>
+</item><item>
     <title>AppVeyor Explorations</title>
     <link>https://www.joelvaneenwyk.com/appveyor/</link>
     <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
@@ -46,13 +54,6 @@ The major issue I ran into was that &lsquo;emcc.bat&rsquo; calls &lsquo;Python&r
     <guid>https://www.joelvaneenwyk.com/appveyor/</guid>
     <description><![CDATA[After my very positive experience with Travis CI (see Homepage Build), I decided it was time to take a look at some Windows options for builds. This led me very quickly to AppVeyor. But unfortunately, I don&rsquo;t have a Windows project to test this on, so I made one up.
 I&rsquo;ve long been a fan of DosBox and since I follow DosNostalgic I can&rsquo;t help but be reminded daily of how much I love past games.]]></description>
-</item><item>
-    <title>Cheeses</title>
-    <link>https://www.joelvaneenwyk.com/cheeses/</link>
-    <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://www.joelvaneenwyk.com/cheeses/</guid>
-    <description><![CDATA[&lt;div class='header'&gt;&lt;% include(&quot;../../../_partials/header&quot;) %&gt;&lt;/div&gt;&lt;div class='row'&gt;&lt;div class='col-sm-offset-1 col-sm-10'&gt;&lt;h1&gt;Cheeses of the World&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class='row'&gt;&lt;div class='col-sm-offset-1 col-sm-10'&gt;&lt;div class='container' id=&quot;container&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; ]]></description>
 </item><item>
     <title>Deep Learning</title>
     <link>https://www.joelvaneenwyk.com/deep-learning/</link>
@@ -80,12 +81,12 @@ This seems to be quite commonly regarded as an impossible task [1].]]></descript
     <description><![CDATA[This outlines my very brief look into the world of vaping.
 Resources  Grease case: https://blackrockog.com/pages/best-oil-vape-pen-case?utm_source=whaxy&amp;utm_medium=content&amp;utm_content=casegrid&amp;utm_campaign=vapecartridges Decent pen: http://kandypens.com/gravity-quartz-crystal-coilless-ceramic-vaporizer-sandblasted-black.html High CPD: https://www.medicaljane.com/review/pop-naturals-high-cbd-co2-oil-cartridge-review/ Vape: https://www.sourcevapes.com/collections/top-rated-products/products/flosstradamus-source-orb-xl-gr1-ti-triple-coil-vape-pen?variant=14140365062  ]]></description>
 </item><item>
-    <title>Web Programming</title>
-    <link>https://www.joelvaneenwyk.com/web-programming/</link>
+    <title>Website Launched</title>
+    <link>https://www.joelvaneenwyk.com/website-launch/</link>
     <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://www.joelvaneenwyk.com/web-programming/</guid>
-    <description><![CDATA[{ &ldquo;private&rdquo;: true, &ldquo;title&rdquo;: &ldquo;Web Programming&rdquo;, &ldquo;tags&rdquo;: [&ldquo;news&rdquo;], &ldquo;published&rdquo;: &ldquo;8/20/2016&rdquo;, &ldquo;abstract&rdquo;: &ldquo;Introduction to how the website is setup&rdquo; }
-Web Programming for Console Developers As a C++ programmer by profession, every few years I look into the web and scoff at it. The tools are usually nowhere near the robustness I&rsquo;m used to and the level of control I have is just not the same. As a type-safe programmer, Javascript upsets me and the likes of jQuery scare me.]]></description>
+    <guid>https://www.joelvaneenwyk.com/website-launch/</guid>
+    <description><![CDATA[{ &ldquo;private&rdquo;: false, &ldquo;title&rdquo;: &ldquo;Website Launch!&rdquo;, &ldquo;tags&rdquo;: [&ldquo;news&rdquo;], &ldquo;published&rdquo;: &ldquo;8/20/2016&rdquo;, &ldquo;abstract&rdquo;: &ldquo;Finally launched the website and have the main components in place. Long time coming, but good to have something available.&rdquo; }
+This website has been in the works for quite some time now, but finally pushing it out to the world. It is nice to have a place to store my experiments and thoughts, but in great part this website is here as a testing ground for me to play with web technologies.]]></description>
 </item></channel>
 </rss>

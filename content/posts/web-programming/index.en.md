@@ -1,10 +1,10 @@
 ---
-title: "Web Programming"
-date: 2016-01-27T15:58:26+08:00
-lastmod: 2016-01-27T15:58:26+08:00
-description: "Explorations into open source build systems for Windows using DosBox."
+title: "Web Programming for Console Developers"
+date: 2016-08-20T65:58:26+08:00
+lastmod: 2016-08-20T15:58:26+08:00
+description: "Introduction to how the website is setup."
 tags: ["news", "programming", "javascript"]
-categories: ["news"]
+categories: ["Documentation"]
 author: "Joel Van Eenwyk"
 authorLink: "https://www.joelvaneenwyk.com"
 weight: 2
@@ -14,16 +14,6 @@ toc:
 math:
   enable: true
 ---
-
-{
- "private": true,
- "title": "Web Programming",
- "tags": ["news"],
- "published": "8/20/2016",
- "abstract": "Introduction to how the website is setup"
-}
-
-# Web Programming for Console Developers
 
 As a C++ programmer by profession, every few years I look into the web and scoff at it. The tools are usually nowhere near the robustness I'm used to and the level of control I have is just not the same. As a type-safe programmer, Javascript upsets me and the likes of jQuery scare me.
 
@@ -35,9 +25,9 @@ This is just a side project of mine and as with any side project you need to set
 
 So, I boiled it down to these fundamental goals:
 
-1) Create something that is easy to maintain
-2) As easy to deploy live as possible
-3) Can test it locally while traveling
+1. Create something that is easy to maintain
+2. As easy to deploy live as possible
+3. Can test it locally while traveling
 
 ## The Stack
 
@@ -101,13 +91,13 @@ Also some details on [Connecting to Postgres](https://devcenter.heroku.com/artic
 
 You can get all the details about the server from the stats page in my case something like this:
 
-```
+```url
 https://postgres.heroku.com/databases/jvaneenwyk-database
 ```
 
 I ran into the following:
 
-```
+```shell
 connect to PostgreSQL server: FATAL: no pg_hba.conf entry for host "4X.XXX.XX.XXX"
 ```
 
@@ -141,7 +131,7 @@ There are innumerable other technologies I looked at while implementing my websi
 
 For live editing you have StackEdit and Prose.io and numerous others which all seem pretty great, but honestly if you're using GitHub then you can use your favorite desktop app like Sublime in my case.
 
-Cloudpipes is another that caught my eye, but spending money to visually program automated interactions with the world seems a bit strange to me.
+[Cloudpipes](https://www.quickbase.com/cloudpipes-announcement) is another that caught my eye, but spending money to visually program automated interactions with the world seems a bit strange to me.
 
 ## Resources
 

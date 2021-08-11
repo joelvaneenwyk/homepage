@@ -8,13 +8,14 @@ categories: ["news"]
 author: "Joel Van Eenwyk"
 authorLink: "https://www.joelvaneenwyk.com"
 weight: 2
-draft: false
+draft: true
 toc:
   auto: false
 math:
   enable: true
 ---
 
+```html
 <script src="/blog/cheeses/cheeses.js"></script>
 <link rel="stylesheet" type="text/css" href="/blog/cheeses/cheeses.css" media="all">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
@@ -39,3 +40,4 @@ math:
     </div>
 
 </div>
+```
