@@ -6,8 +6,14 @@
 
 set -e
 
-apt-get update
-apt-get install -y sudo wget build-essential gcc g++ make git curl
+if [ ! -x "$(command -v sudo)" ]; then
+    apt-get update
+    apt-get install -y sudo
+else
+    sudo apt-get update
+fi
+
+apt-get install -y wget build-essential gcc g++ make git curl
 
 # Install Golang
 if [ ! -f "/tmp/go1.16.7.linux-amd64.tar.gz" ]; then
