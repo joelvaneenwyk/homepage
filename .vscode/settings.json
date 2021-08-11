@@ -32,8 +32,24 @@
         "**/thirdparty": true
     },
 
+    "liveServer.settings.port": 13555,
+    "liveServer.settings.root": "/dist",
+    "liveServer.settings.ignoreFiles": [
+        ".vscode/**",
+        ".tmp/**",
+        "backup/**",
+        ".yarn/**",
+        "themes/**",
+        "**/*.scss",
+        "**/*.sass",
+        "**/*.ts"
+    ],
+
     "search.exclude": {
         "**/.yarn/cache": true,
+        "**/backup/**": true,
+        "**/dist/**": true,
+        "themes/**/*.md": true,
         "**/node_modules": true,
         "**/bower_components": true,
         "**/*.code-search": true,
@@ -60,7 +76,6 @@
 
     "typescript.tsdk": ".yarn/sdks/typescript/lib",
     "eslint.nodePath": ".yarn/sdks",
-    "liveServer.settings.port": 5585,
     "typescript.enablePromptUseWorkspaceTsdk": true,
 
     "cSpell.words": [

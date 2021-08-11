@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Emscripten - Joel Van Eenwyk</title><meta name="Description" content="Explorations into Emscripten and WASM."><meta property="og:title" content="Emscripten" />
+<meta property="og:description" content="Explorations into Emscripten and WASM." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.joelvaneenwyk.com/emscripten/" />
+<meta property="og:image" content="https://www.joelvaneenwyk.com/logo.png"/>
+<meta property="article:published_time" content="2017-05-20T15:58:26+08:00" />
+<meta property="article:modified_time" content="2017-05-20T15:58:26+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.joelvaneenwyk.com/logo.png"/>
+
+<meta name="twitter:title" content="Emscripten"/>
+<meta name="twitter:description" content="Explorations into Emscripten and WASM."/>
+<meta name="application-name" content="Joel Van Eenwyk">
+<meta name="apple-mobile-web-app-title" content="Joel Van Eenwyk"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.joelvaneenwyk.com/emscripten/" /><link rel="prev" href="https://www.joelvaneenwyk.com/theme-documentation-built-in-shortcodes/" /><link rel="next" href="https://www.joelvaneenwyk.com/theme-documentation-content/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Emscripten",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.joelvaneenwyk.com\/emscripten\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/www.joelvaneenwyk.com\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "news, programming, javascript","wordcount":  271 ,
+        "url": "https:\/\/www.joelvaneenwyk.com\/emscripten\/","datePublished": "2017-05-20T15:58:26+08:00","dateModified": "2017-05-20T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/www.joelvaneenwyk.com\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "Joel Van Eenwyk"
+            },"description": "Explorations into Emscripten and WASM."
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Joel Van Eenwyk"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/seal_red.png"
+        data-srcset="/images/seal_red.png, /images/seal_red.png 1.5x, /images/seal_red.png 2x"
+        data-sizes="auto"
+        alt="/images/seal_red.png"
+        title="/images/seal_red.png" />  Joel Van Eenwyk</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/joelvaneenwyk/homepage" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Joel Van Eenwyk"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/seal_red.png"
+        data-srcset="/images/seal_red.png, /images/seal_red.png 1.5x, /images/seal_red.png 2x"
+        data-sizes="auto"
+        alt="/images/seal_red.png"
+        title="/images/seal_red.png" />  Joel Van Eenwyk</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/joelvaneenwyk/homepage" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Emscripten</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://www.joelvaneenwyk.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Joel Van Eenwyk</a></span>&nbsp;<span class="post-category">included in <a href=""><i class="far fa-folder fa-fw"></i>Documentation</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2017-05-20">2017-05-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;271 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><h1 id="emscripten">Emscripten</h1>
+<p>As it happens, we can&rsquo;t actually build native plugins since VSCode is built off Javascript/Typescript.</p>
+<p>I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant.</p>
+<p>The major issue I ran into was that &lsquo;emcc.bat&rsquo; calls &lsquo;Python&rsquo; but the default version of Python that I use is 32-bit while the binaries included in most standard versions of Emscript are 64-bit. This results in a somewhat obscure error &ldquo;#todo&rdquo;</p>
+<p>The other problem is that vs-code always assumes that you install the plugin which results in copying files destructively into the MSBuild folder. This is, I suppose, fine for some people, but I want an out-of-the-box solution that just works. To do this, you need to have import statements in the vcxproj file for Visual Studio. This also means significant changes to vs-code.</p>
+<p>There is a somewhat good example of this from the UE4 project.</p>
+<p>Apparently there is an option to pass the config file path directly to emcc via &ndash;em-config. Otherwise it always tries to create one in your user folder which is not ideal.</p>
+<h1 id="other-notes">Other Notes</h1>
+<p>First off, let me just say that I am very impressed with the Emscripten project. It is fantastic that people are supporting this and opening up this whole new world to the web.</p>
+<p>That being said, I do think the project needs a lot of work and code review. The Python files in emscripten project could really use a pylint pass and some standarization.</p>
+<h1 id="related">Related</h1>
+<ul>
+<li><a href="https://github.com/Microsoft/vscode/issues/658">https://github.com/Microsoft/vscode/issues/658</a></li>
+<li><a href="https://github.com/Microsoft/vscode-vsce/issues/54">https://github.com/Microsoft/vscode-vsce/issues/54</a></li>
+<li><a href="https://github.com/Microsoft/vscode/issues/1589">https://github.com/Microsoft/vscode/issues/1589</a></li>
+<li><a href="https://github.com/electron/electron/blob/master/docs/tutorial/using-native-node-modules.md">https://github.com/electron/electron/blob/master/docs/tutorial/using-native-node-modules.md</a></li>
+<li><a href="https://github.com/RLovelett/node-sourcekit/issues/14">https://github.com/RLovelett/node-sourcekit/issues/14</a></li>
+<li><a href="https://github.com/cortezcristian/dosbox-client/tree/master/dosbox">https://github.com/cortezcristian/dosbox-client/tree/master/dosbox</a></li>
+<li><a href="https://github.com/caiiiycuk/js-dos.com/">https://github.com/caiiiycuk/js-dos.com/</a></li>
+<li><a href="https://code.visualstudio.com/docs/tools/samples">https://code.visualstudio.com/docs/tools/samples</a></li>
+<li><a href="https://github.com/Microsoft/vscode-extension-samples/tree/master/previewhtml-sample">https://github.com/Microsoft/vscode-extension-samples/tree/master/previewhtml-sample</a></li>
+</ul>
+<h1 id="resources">Resources</h1>
+<ul>
+<li><a href="https://github.com/kripken/emscripten/blob/07b87426f898d6e9c677db291d9088c839197291/site/source/docs/building_from_source/manually_integrating_emscripten_with_vs2010.rst">https://github.com/kripken/emscripten/blob/07b87426f898d6e9c677db291d9088c839197291/site/source/docs/building_from_source/manually_integrating_emscripten_with_vs2010.rst</a></li>
+<li><a href="https://github.com/juj/vs-tool">https://github.com/juj/vs-tool</a></li>
+<li><a href="https://github.com/james-allison/vs-tool">https://github.com/james-allison/vs-tool</a></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2017-05-20</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/emscripten/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.joelvaneenwyk.com/emscripten/" data-title="Emscripten" data-via="xxxx" data-hashtags="news,programming,javascript"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.joelvaneenwyk.com/emscripten/" data-hashtag="news"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.joelvaneenwyk.com/emscripten/" data-title="Emscripten"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.joelvaneenwyk.com/emscripten/" data-title="Emscripten"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.joelvaneenwyk.com/emscripten/" data-title="Emscripten"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=""></a>,&nbsp;<a href=""></a>,&nbsp;<a href=""></a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/theme-documentation-built-in-shortcodes/" class="prev" rel="prev" title="Theme Documentation - Built-in Shortcodes"><i class="fas fa-angle-left fa-fw"></i>Theme Documentation - Built-in Shortcodes</a>
+            <a href="/theme-documentation-content/" class="next" rel="next" title="Theme Documentation - Content">Theme Documentation - Content<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Copyright (R) Joel Van Eenwyk</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.79.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Joel Van Eenwyk</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

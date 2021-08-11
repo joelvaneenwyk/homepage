@@ -1,0 +1,85 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - Joel Van Eenwyk</title>
+        <link>https://www.joelvaneenwyk.com/posts/</link>
+        <description>All Posts | Joel Van Eenwyk</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>joel.vaneenwyk@gmail.com (Joel Van Eenwyk)</managingEditor>
+            <webMaster>joel.vaneenwyk@gmail.com (Joel Van Eenwyk)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 06 Mar 2020 21:29:01 &#43;0800</lastBuildDate><atom:link href="https://www.joelvaneenwyk.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Theme Documentation - Basics</title>
+    <link>https://www.joelvaneenwyk.com/theme-documentation-basics/</link>
+    <pubDate>Fri, 06 Mar 2020 21:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/theme-documentation-basics/</guid>
+    <description><![CDATA[<p>Discover what the Hugo - <strong>LoveIt</strong> theme is all about and the core-concepts behind it.</p>]]></description>
+</item><item>
+    <title>Theme Documentation - Content</title>
+    <link>https://www.joelvaneenwyk.com/theme-documentation-content/</link>
+    <pubDate>Thu, 05 Mar 2020 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/theme-documentation-content/</guid>
+    <description><![CDATA[<p>Find out how to create and organize your content quickly and intuitively in <strong>LoveIt</strong> theme.</p>]]></description>
+</item><item>
+    <title>Emscripten</title>
+    <link>https://www.joelvaneenwyk.com/emscripten/</link>
+    <pubDate>Sat, 20 May 2017 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/emscripten/</guid>
+    <description><![CDATA[Emscripten As it happens, we can&rsquo;t actually build native plugins since VSCode is built off Javascript/Typescript.
+I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant.
+The major issue I ran into was that &lsquo;emcc.bat&rsquo; calls &lsquo;Python&rsquo; but the default version of Python that I use is 32-bit while the binaries included in most standard versions of Emscript are 64-bit.]]></description>
+</item><item>
+    <title>Theme Documentation - Built-in Shortcodes</title>
+    <link>https://www.joelvaneenwyk.com/theme-documentation-built-in-shortcodes/</link>
+    <pubDate>Wed, 04 Mar 2020 16:29:41 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/theme-documentation-built-in-shortcodes/</guid>
+    <description><![CDATA[<p><strong>Hugo</strong> provides multiple built-in shortcodes for author convenience and to keep your markdown content clean.</p>]]></description>
+</item><item>
+    <title>Theme Documentation - Extended Shortcodes</title>
+    <link>https://www.joelvaneenwyk.com/theme-documentation-extended-shortcodes/</link>
+    <pubDate>Tue, 03 Mar 2020 16:29:41 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/theme-documentation-extended-shortcodes/</guid>
+    <description><![CDATA[<p><strong>LoveIt</strong> theme provides multiple shortcodes on top of built-in ones in Hugo.</p>]]></description>
+</item><item>
+    <title>Basic Markdown Syntax</title>
+    <link>https://www.joelvaneenwyk.com/basic-markdown-syntax/</link>
+    <pubDate>Sun, 01 Dec 2019 21:57:40 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/basic-markdown-syntax/</guid>
+    <description><![CDATA[<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files.</p>]]></description>
+</item><item>
+    <title>Emoji Support</title>
+    <link>https://www.joelvaneenwyk.com/emoji-support/</link>
+    <pubDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/emoji-support/</guid>
+    <description><![CDATA[<p>Emoji can be enabled in a Hugo project in a number of ways.</p>]]></description>
+</item><item>
+    <title></title>
+    <link>https://www.joelvaneenwyk.com/_data/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/_data/</guid>
+    <description><![CDATA[AppVeyor Explorations After my very positive experience with Travis CI (see Homepage Build), I decided it was time to take a look at some Windows options for builds. This led me very quickly to AppVeyor. But unfortunately, I don&rsquo;t have a Windows project to test this on, so I made one up.
+I&rsquo;ve long been a fan of DosBox and since I follow DosNostalgic I can&rsquo;t help but be reminded daily of how much I love past games.]]></description>
+</item><item>
+    <title></title>
+    <link>https://www.joelvaneenwyk.com/_data/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/_data/</guid>
+    <description><![CDATA[Introduction Turns out deep learning is kind of a big deal right now and for good reason. It&rsquo;s cool, powerful, GPU-friendly, and just pretty great. I wanted to be a part of the fun and realized it wasn&rsquo;t as easy to do for Windows developers. But the good news is that it is actually supported.
+Found this useful: https://www.quora.com/How-does-Enthought-Canopy-compare-to-Anaconda
+The stack:
+ Anaconda x64 (https://www.continuum.io/downloads)  Make sure to select the 64-bit version!]]></description>
+</item><item>
+    <title></title>
+    <link>https://www.joelvaneenwyk.com/_data/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/_data/</guid>
+    <description><![CDATA[Dev Notes (Oct 22, 2017) Traveling is always my most productive time for random thoughts and coding exercises. Doesn&rsquo;t always mean clean code in fact it basically never does, but I always have a list of topics I&rsquo;d like to explore and then when on a plane I finally have time to do that. This time I tackled a few topics:
+ SQLite-net Reveal.js Browser extensions (webpack, TypeScript)  Reveal.js For work, I create presentations using PowerPoint quite a bit.]]></description>
+</item></channel>
+</rss>

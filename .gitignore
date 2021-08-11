@@ -20,11 +20,11 @@ yarn-error.log
 # Node / npm
 #
 
-node_modules
-bower_components
+node_modules/
+bower_components/
 
 #
 # Hugo
 #
 
-resources
+resources/
