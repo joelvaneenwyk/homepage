@@ -5,8 +5,6 @@ lastmod: 2016-01-27T15:58:26+08:00
 description: "Explorations into open source build systems for Windows using DosBox."
 tags: ["Markdown", "HTML"]
 categories: ["Markdown"]
-author: "Joel Van Eenwyk"
-authorLink: "https://www.joelvaneenwyk.com"
 weight: 4
 draft: false
 ---

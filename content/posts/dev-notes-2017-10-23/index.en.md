@@ -3,10 +3,8 @@ title: "Dev Notes - October 23rd, 2017"
 date: 2017-10-23T15:58:26+08:00
 lastmod: 2017-10-23T15:58:26+08:00
 description: "Upgrading the website."
-tags: ["news", "programming", "javascript"]
-categories: ["news"]
-author: "Joel Van Eenwyk"
-authorLink: "https://www.joelvaneenwyk.com"
+tags: ["News", "Programming", "JavaScript"]
+categories: ["News"]
 weight: 2
 draft: false
 toc:

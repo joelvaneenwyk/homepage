@@ -13,8 +13,8 @@
     "scripts": {
         "serve": "tsc && node .tmp/server/server.js",
         "lint": "htmlhint dist/**/*.html",
-        "build": "hugo --cleanDestinationDir",
-        "watch": "hugo --cleanDestinationDir server"
+        "build": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
+        "watch": "hugo --cleanDestinationDir --buildDrafts server"
     },
     "contributors": [
         "Joel Van Eenwyk"

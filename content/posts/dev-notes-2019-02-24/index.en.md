@@ -3,10 +3,8 @@ title: "Dev Notes - February 24th, 2019"
 date: 2019-02-24T15:58:26+08:00
 lastmod: 2019-02-24T15:58:26+08:00
 description: "Refactoring the website."
-tags: ["news", "programming", "javascript"]
-categories: ["news"]
-author: "Joel Van Eenwyk"
-authorLink: "https://www.joelvaneenwyk.com"
+tags: ["News", "Programming", "JavaScript"]
+categories: ["News"]
 weight: 2
 draft: false
 toc:

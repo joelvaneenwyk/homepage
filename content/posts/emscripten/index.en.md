@@ -4,10 +4,8 @@ title: "Emscripten"
 date: 2017-05-20T15:58:26+08:00
 lastmod: 2017-05-20T15:58:26+08:00
 draft: false
-author: "Joel Van Eenwyk"
-authorLink: "https://www.joelvaneenwyk.com"
 description: "Explorations into Emscripten and WASM."
-tags: ["news", "programming", "javascript"]
+tags: ["News", "Programming", "JavaScript"]
 categories: ["documentation"]
 toc:
   auto: false

@@ -1,12 +1,10 @@
 ---
 title: "Website Launched"
-date: 2016-01-27T15:58:26+08:00
-lastmod: 2016-01-27T15:58:26+08:00
-description: "Explorations into open source build systems for Windows using DosBox."
-tags: ["news", "programming", "javascript"]
-categories: ["news"]
-author: "Joel Van Eenwyk"
-authorLink: "https://www.joelvaneenwyk.com"
+date: 2016-08-20T15:58:26+08:00
+lastmod: 2016-08-20T15:58:26+08:00
+description: "Finally launched the website and have the main components in place. Long time coming, but good to have something available."
+tags: ["News", "Programming", "JavaScript"]
+categories: ["News"]
 weight: 2
 draft: false
 toc:
@@ -14,14 +12,6 @@ toc:
 math:
   enable: true
 ---
-
-{
- "private": false,
- "title": "Website Launch!",
- "tags": ["news"],
- "published": "8/20/2016",
- "abstract": "Finally launched the website and have the main components in place. Long time coming, but good to have something available."
-}
 
 This website has been in the works for quite some time now, but finally pushing it out to the world. It is nice to have a place to store my experiments and thoughts, but in great part this website is here as a testing ground for me to play with web technologies. I'm a console game programmer by trade, but it's always interesting to play with the new hotness. Usually that isn't in the web world but hey, it's all interesting to me.
 

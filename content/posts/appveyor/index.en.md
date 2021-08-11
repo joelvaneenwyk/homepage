@@ -3,10 +3,8 @@ title: "AppVeyor Explorations"
 date: 2016-01-27T15:58:26+08:00
 lastmod: 2016-01-27T15:58:26+08:00
 description: "Explorations into open source build systems for Windows using DosBox."
-tags: ["news", "programming", "javascript"]
-categories: ["news"]
-author: "Joel Van Eenwyk"
-authorLink: "https://www.joelvaneenwyk.com"
+tags: ["News", "Programming", "JavaScript"]
+categories: ["News"]
 weight: 2
 draft: false
 toc:

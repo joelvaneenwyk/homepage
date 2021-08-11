@@ -3,10 +3,8 @@ title: "Web Programming for Console Developers"
 date: 2016-08-20T65:58:26+08:00
 lastmod: 2016-08-20T15:58:26+08:00
 description: "Introduction to how the website is setup."
-tags: ["news", "programming", "javascript"]
+tags: ["News", "Programming", "JavaScript"]
 categories: ["Documentation"]
-author: "Joel Van Eenwyk"
-authorLink: "https://www.joelvaneenwyk.com"
 weight: 2
 draft: false
 toc:
