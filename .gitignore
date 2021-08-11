@@ -4,6 +4,9 @@
 
 .tmp
 .env
+.env.*
+!.env.template
+
 
 #
 # Yarn
