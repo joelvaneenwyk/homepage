@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://www.joelvaneenwyk.com/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>https://www.joelvaneenwyk.com/</loc>
-  </url>
-  
-  <url>
-    <loc>https://www.joelvaneenwyk.com/tools/</loc>
-  </url>
-  
-</urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://www.joelvaneenwyk.com/blog/appveyor/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/deep_learning/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/dev_notes_2017_10_22/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/dev_notes_2017_10_23/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/dev_notes_2019_02_24/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/emscripten/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/gpu/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/tools/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/vapes/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/web_programming/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/website_launch/_data/</loc></url><url><loc>https://www.joelvaneenwyk.com/blog/</loc></url><url><loc>https://www.joelvaneenwyk.com/contact/</loc></url><url><loc>https://www.joelvaneenwyk.com/</loc></url><url><loc>https://www.joelvaneenwyk.com/tools/</loc></url></urlset>

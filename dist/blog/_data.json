@@ -1,0 +1,5 @@
+{
+  "//" : "This is completely replaced by an automated process in Grunt that searches through the folders",
+  "//" : "and combines the _data.json files from each entry and merges it here so that it can be used in",
+  "//" : "an easier way."
+}

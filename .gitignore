@@ -3,6 +3,7 @@
 #
 
 .tmp
+.env
 
 #
 # Yarn

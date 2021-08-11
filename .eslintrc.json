@@ -20,7 +20,7 @@
     "plugins": [
         "@typescript-eslint"
     ],
-    "ignorePatterns": ["dist/**", "**/*{.,-}min.js", "**/newrelic.js"],
+    "ignorePatterns": ["backup/**", "dist/**", "**/*{.,-}min.js", "**/newrelic.js"],
     "rules": {
         // enable additional rules
         "indent": ["error", 4],

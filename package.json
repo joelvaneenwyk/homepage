@@ -11,7 +11,8 @@
         "resume"
     ],
     "scripts": {
-        "serve": "tsc && node .tmp/server/server.js"
+        "serve": "tsc && node .tmp/server/server.js",
+        "lint": "htmlhint dist/**/*.html"
     },
     "contributors": [
         "Joel Van Eenwyk"
@@ -33,6 +34,8 @@
     "dependencies": {
         "@types/node": "^16.4.13",
         "@types/node-static": "^0.7.7",
+        "@yarnpkg/pnpify": "^3.0.1-rc.1",
+        "@yarnpkg/sdks": "^2.4.1-rc.4",
         "htmlhint": "^0.15.1",
         "node-static": "^0.7.11",
         "ts-node": "^10.2.0",

@@ -11,10 +11,12 @@
         "package.json",
         "settings.json"
     ],
+
+    "perl.enable": false,
     "prettier.enable": true,
     "editor.formatOnSave": false,
     "json.format.enable": false,
-    // Configure glob patterns for excluding files and folders.
+
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -29,6 +31,7 @@
         "**/typings": true,
         "**/thirdparty": true
     },
+
     "search.exclude": {
         "**/.yarn/cache": true,
         "**/node_modules": true,
@@ -37,27 +40,33 @@
         "**/.yarn": true,
         "**/.pnp.*": true
     },
+
+    "htmlhint.enable": false,
     "css.validate": false,
+
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     },
+
     "files.associations": {
-        "tsconfig.json": "jsonc"
+        "tsconfig.json": "jsonc",
+        ".eslintrc.json": "jsonc",
+        "*.json.git": "jsonc"
     },
-    // The number of spaces a tab is equal to. This setting is overridden
-    // based on the file contents when `editor.detectIndentation` is true.
+
     "editor.tabSize": 4,
-    // Insert spaces when pressing Tab. This setting is overriden
-    // based on the file contents when `editor.detectIndentation` is true.
     "editor.insertSpaces": true,
-    // When opening a file, `editor.tabSize` and `editor.insertSpaces`
-    // will be detected based on the file contents. Set to false to keep
-    // the values you've explicitly set, above.
     "editor.detectIndentation": false,
-    "typescript.tsdk": "./node_modules/typescript/lib",
+
+    "typescript.tsdk": ".yarn/sdks/typescript/lib",
+    "eslint.nodePath": ".yarn/sdks",
+    "liveServer.settings.port": 5585,
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+
     "cSpell.words": [
         "Datamap",
         "Gruntfile",
+        "actions",
         "autotrack",
         "bootlint",
         "cmaps",
@@ -75,16 +84,19 @@
         "hoverinfo",
         "hsts",
         "htmllint",
+        "hugo",
         "joelvaneenwyk",
         "jsbeautifier",
         "jsonminify",
         "jvaneenwyk",
+        "lastmod",
         "linebreak",
         "maxage",
         "modernizr",
         "nodeunit",
         "octokit",
         "pageview",
+        "peaceiris",
         "pjson",
         "postgres",
         "preinstall",
@@ -94,8 +106,9 @@
         "resave",
         "sslify",
         "stoponerror",
+        "submodules",
         "thirdparty",
-        "topojson"
-    ],
-    "eslint.nodePath": ".yarn/sdks"
+        "topojson",
+        "v"
+    ]
 }

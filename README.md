@@ -2,6 +2,17 @@
 
 These are the pages and source for [joelvaneenwyk.github.io](https://joelvaneenwyk.github.io/).
 
+## Principles and Guidelines
+
+Based on the previous version of this site, there were a lot of learnings. The primary take-away is that the previous site was too complicated. This was especially apparent when trying to go back and revise/update it. This is in part poor documentation but also just relying on unreliable technology. Unfortunately, in the world of the web this is hard to avoid -- it moves at an incredible pace and technology you choose **will** get deprecated and replaced by something that may or may not be production ready.
+
+1. Use only statically typed languages i.e., no JavaScript
+2. Everything in the project must be linted
+3. CI must be enabled from the start
+4. Architecture must be well documented
+
+**Keep it simple.**
+
 ## Setup
 
 1. [Install Hugo](https://gohugo.io/getting-started/installing/)
