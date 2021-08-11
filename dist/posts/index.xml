@@ -19,67 +19,71 @@
     <guid>https://www.joelvaneenwyk.com/theme-documentation-content/</guid>
     <description><![CDATA[<p>Find out how to create and organize your content quickly and intuitively in <strong>LoveIt</strong> theme.</p>]]></description>
 </item><item>
+    <title>Dev Notes - February 24th, 2019</title>
+    <link>https://www.joelvaneenwyk.com/dev-notes-2019-02-24/</link>
+    <pubDate>Sun, 24 Feb 2019 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/dev-notes-2019-02-24/</guid>
+    <description><![CDATA[I decided to refactor my website to make it easier to use and update as well as remove HTTPS support since it was expensive and not really necessary for my needs. In short, huge mistake.
+First issue was with stopping auto-redirect after disabling HSTS (HTTP Strict Transport Security) and the SSL endpoint. Seems like disabling it should be really straightforward but turns out it really isn&rsquo;t because browsers cache a lot of information and the default age of HSTS is pretty long (60+ days).]]></description>
+</item><item>
+    <title>Dev Notes - October 23rd, 2017</title>
+    <link>https://www.joelvaneenwyk.com/dev-notes-2017-10-23/</link>
+    <pubDate>Mon, 23 Oct 2017 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/dev-notes-2017-10-23/</guid>
+    <description><![CDATA[In updating my blog finally with some dev notes, it became quickly apparent that my website tech was outdated already. Yet another reason I really don&rsquo;t like web dev.
+Few things:
+ Apparently Bower is now deprecated and need to move to Yarn: Prevent this by migrating to Yarn Currently I maintain a &lsquo;private&rsquo; version and public version of the website. The reasons I did this seem no longer valid. I&rsquo;ve been paying to have a secure HTTPS version of the site.]]></description>
+</item><item>
+    <title>Dev Notes - October 22nd, 2017</title>
+    <link>https://www.joelvaneenwyk.com/dev-notes-2017-10-22/</link>
+    <pubDate>Sun, 22 Oct 2017 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/dev-notes-2017-10-22/</guid>
+    <description><![CDATA[Traveling is always my most productive time for random thoughts and coding exercises. Doesn&rsquo;t always mean clean code in fact it basically never does, but I always have a list of topics I&rsquo;d like to explore and then when on a plane I finally have time to do that. This time I tackled a few topics:
+ SQLite-net Reveal.js Browser extensions (webpack, TypeScript)  Reveal.js For work, I create presentations using PowerPoint quite a bit.]]></description>
+</item><item>
     <title>Emscripten</title>
     <link>https://www.joelvaneenwyk.com/emscripten/</link>
     <pubDate>Sat, 20 May 2017 15:58:26 &#43;0800</pubDate>
     <author>Author</author>
     <guid>https://www.joelvaneenwyk.com/emscripten/</guid>
-    <description><![CDATA[Emscripten As it happens, we can&rsquo;t actually build native plugins since VSCode is built off Javascript/Typescript.
+    <description><![CDATA[As it happens, we can&rsquo;t actually build native plugins since VSCode is built off Javascript/Typescript.
 I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant.
 The major issue I ran into was that &lsquo;emcc.bat&rsquo; calls &lsquo;Python&rsquo; but the default version of Python that I use is 32-bit while the binaries included in most standard versions of Emscript are 64-bit.]]></description>
 </item><item>
-    <title>Theme Documentation - Built-in Shortcodes</title>
-    <link>https://www.joelvaneenwyk.com/theme-documentation-built-in-shortcodes/</link>
-    <pubDate>Wed, 04 Mar 2020 16:29:41 &#43;0800</pubDate>
+    <title>AppVeyor Explorations</title>
+    <link>https://www.joelvaneenwyk.com/appveyor/</link>
+    <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://www.joelvaneenwyk.com/theme-documentation-built-in-shortcodes/</guid>
-    <description><![CDATA[<p><strong>Hugo</strong> provides multiple built-in shortcodes for author convenience and to keep your markdown content clean.</p>]]></description>
-</item><item>
-    <title>Theme Documentation - Extended Shortcodes</title>
-    <link>https://www.joelvaneenwyk.com/theme-documentation-extended-shortcodes/</link>
-    <pubDate>Tue, 03 Mar 2020 16:29:41 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://www.joelvaneenwyk.com/theme-documentation-extended-shortcodes/</guid>
-    <description><![CDATA[<p><strong>LoveIt</strong> theme provides multiple shortcodes on top of built-in ones in Hugo.</p>]]></description>
-</item><item>
-    <title>Basic Markdown Syntax</title>
-    <link>https://www.joelvaneenwyk.com/basic-markdown-syntax/</link>
-    <pubDate>Sun, 01 Dec 2019 21:57:40 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://www.joelvaneenwyk.com/basic-markdown-syntax/</guid>
-    <description><![CDATA[<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files.</p>]]></description>
-</item><item>
-    <title>Emoji Support</title>
-    <link>https://www.joelvaneenwyk.com/emoji-support/</link>
-    <pubDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://www.joelvaneenwyk.com/emoji-support/</guid>
-    <description><![CDATA[<p>Emoji can be enabled in a Hugo project in a number of ways.</p>]]></description>
-</item><item>
-    <title></title>
-    <link>https://www.joelvaneenwyk.com/_data/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://www.joelvaneenwyk.com/_data/</guid>
-    <description><![CDATA[AppVeyor Explorations After my very positive experience with Travis CI (see Homepage Build), I decided it was time to take a look at some Windows options for builds. This led me very quickly to AppVeyor. But unfortunately, I don&rsquo;t have a Windows project to test this on, so I made one up.
+    <guid>https://www.joelvaneenwyk.com/appveyor/</guid>
+    <description><![CDATA[After my very positive experience with Travis CI (see Homepage Build), I decided it was time to take a look at some Windows options for builds. This led me very quickly to AppVeyor. But unfortunately, I don&rsquo;t have a Windows project to test this on, so I made one up.
 I&rsquo;ve long been a fan of DosBox and since I follow DosNostalgic I can&rsquo;t help but be reminded daily of how much I love past games.]]></description>
 </item><item>
-    <title></title>
-    <link>https://www.joelvaneenwyk.com/_data/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <title>Cheeses</title>
+    <link>https://www.joelvaneenwyk.com/cheeses/</link>
+    <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://www.joelvaneenwyk.com/_data/</guid>
-    <description><![CDATA[Introduction Turns out deep learning is kind of a big deal right now and for good reason. It&rsquo;s cool, powerful, GPU-friendly, and just pretty great. I wanted to be a part of the fun and realized it wasn&rsquo;t as easy to do for Windows developers. But the good news is that it is actually supported.
+    <guid>https://www.joelvaneenwyk.com/cheeses/</guid>
+    <description><![CDATA[&lt;div class='header'&gt;&lt;% include(&quot;../../../_partials/header&quot;) %&gt;&lt;/div&gt;&lt;div class='row'&gt;&lt;div class='col-sm-offset-1 col-sm-10'&gt;&lt;h1&gt;Cheeses of the World&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class='row'&gt;&lt;div class='col-sm-offset-1 col-sm-10'&gt;&lt;div class='container' id=&quot;container&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; ]]></description>
+</item><item>
+    <title>Deep Learning</title>
+    <link>https://www.joelvaneenwyk.com/deep-learning/</link>
+    <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/deep-learning/</guid>
+    <description><![CDATA[Turns out deep learning is kind of a big deal right now and for good reason. It&rsquo;s cool, powerful, GPU-friendly, and just pretty great. I wanted to be a part of the fun and realized it wasn&rsquo;t as easy to do for Windows developers. But the good news is that it is actually supported.
 Found this useful: https://www.quora.com/How-does-Enthought-Canopy-compare-to-Anaconda
 The stack:
  Anaconda x64 (https://www.continuum.io/downloads)  Make sure to select the 64-bit version!]]></description>
 </item><item>
-    <title></title>
-    <link>https://www.joelvaneenwyk.com/_data/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <title>GPU</title>
+    <link>https://www.joelvaneenwyk.com/gpu/</link>
+    <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://www.joelvaneenwyk.com/_data/</guid>
-    <description><![CDATA[Dev Notes (Oct 22, 2017) Traveling is always my most productive time for random thoughts and coding exercises. Doesn&rsquo;t always mean clean code in fact it basically never does, but I always have a list of topics I&rsquo;d like to explore and then when on a plane I finally have time to do that. This time I tackled a few topics:
- SQLite-net Reveal.js Browser extensions (webpack, TypeScript)  Reveal.js For work, I create presentations using PowerPoint quite a bit.]]></description>
+    <guid>https://www.joelvaneenwyk.com/gpu/</guid>
+    <description><![CDATA[Long have I wanted to create a cross-platform raytracing system that works on Xbox One, PS4, PC and whatever modern platform is in style at the moment. You have some common options including CUDA, OpenCL, and others. Essentially it seems what I want is a cross-platform https://developer.nvidia.com/optix written in something like OpenCL or something. There are some path-tracers commercialized for this (e.g. https://home.otoy.com/render/brigade/).
+This seems to be quite commonly regarded as an impossible task [1].]]></description>
 </item></channel>
 </rss>

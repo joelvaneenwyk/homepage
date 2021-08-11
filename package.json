@@ -12,7 +12,9 @@
     ],
     "scripts": {
         "serve": "tsc && node .tmp/server/server.js",
-        "lint": "htmlhint dist/**/*.html"
+        "lint": "htmlhint dist/**/*.html",
+        "build": "hugo --cleanDestinationDir",
+        "watch": "hugo --cleanDestinationDir --watch"
     },
     "contributors": [
         "Joel Van Eenwyk"

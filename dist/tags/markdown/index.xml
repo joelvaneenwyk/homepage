@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Markdown - Tag - Joel Van Eenwyk</title>
+        <link>https://www.joelvaneenwyk.com/tags/markdown/</link>
+        <description>Markdown - Tag - Joel Van Eenwyk</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>joel.vaneenwyk@gmail.com (Joel Van Eenwyk)</managingEditor>
+            <webMaster>joel.vaneenwyk@gmail.com (Joel Van Eenwyk)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 05 Mar 2020 15:58:26 &#43;0800</lastBuildDate><atom:link href="https://www.joelvaneenwyk.com/tags/markdown/" rel="self" type="application/rss+xml" /><item>
+    <title>Theme Documentation - Content</title>
+    <link>https://www.joelvaneenwyk.com/theme-documentation-content/</link>
+    <pubDate>Thu, 05 Mar 2020 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/theme-documentation-content/</guid>
+    <description><![CDATA[<p>Find out how to create and organize your content quickly and intuitively in <strong>LoveIt</strong> theme.</p>]]></description>
+</item><item>
+    <title>Basic Markdown Syntax</title>
+    <link>https://www.joelvaneenwyk.com/basic-markdown-syntax/</link>
+    <pubDate>Sun, 01 Dec 2019 21:57:40 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/basic-markdown-syntax/</guid>
+    <description><![CDATA[<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files.</p>]]></description>
+</item><item>
+    <title>Tools</title>
+    <link>https://www.joelvaneenwyk.com/tools/</link>
+    <pubDate>Wed, 27 Jan 2016 15:58:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://www.joelvaneenwyk.com/tools/</guid>
+    <description><![CDATA[Visual Studio Sublime pgAdmin III P4V NodeJS PTVS (Python Tools for VS)  Tools to Explore  http://rmarkdown.rstudio.com/index.html HostsMan a tool for editing your Hosts file  Comparison of tools for this: https://winbeginner.com/hosts-file-editor-windows/    Helpful Utilities  https://justgetflux.com/  Helps with eye strain    Writing Documentation My preferred way of writing documentation is definitely Markdown. Preferably with IEEE reference style (http://library.queensu.ca/book/export/html/5846).]]></description>
+</item></channel>
+</rss>

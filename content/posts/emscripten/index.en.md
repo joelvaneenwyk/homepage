@@ -15,8 +15,6 @@ math:
   enable: true
 ---
 
-# Emscripten
-
 As it happens, we can't actually build native plugins since VSCode is built off Javascript/Typescript.
 
 I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant.
@@ -35,7 +33,7 @@ First off, let me just say that I am very impressed with the Emscripten project.
 
 That being said, I do think the project needs a lot of work and code review. The Python files in emscripten project could really use a pylint pass and some standarization.
 
-# Related
+## Related
 
 * <https://github.com/Microsoft/vscode/issues/658>
 * <https://github.com/Microsoft/vscode-vsce/issues/54>
@@ -47,7 +45,7 @@ That being said, I do think the project needs a lot of work and code review. The
 * <https://code.visualstudio.com/docs/tools/samples>
 * <https://github.com/Microsoft/vscode-extension-samples/tree/master/previewhtml-sample>
 
-# Resources
+## Resources
 
 * <https://github.com/kripken/emscripten/blob/07b87426f898d6e9c677db291d9088c839197291/site/source/docs/building_from_source/manually_integrating_emscripten_with_vs2010.rst>
 * <https://github.com/juj/vs-tool>

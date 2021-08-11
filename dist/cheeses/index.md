@@ -1,0 +1,28 @@
+# Cheeses
+
+
+<script src="/blog/cheeses/cheeses.js"></script>
+<link rel="stylesheet" type="text/css" href="/blog/cheeses/cheeses.css" media="all">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
+
+<div class="container-fluid">
+
+    <div class='header'>
+        <% include("../../../_partials/header") %>
+    </div>
+
+    <div class='row'>
+        <div class='col-sm-offset-1 col-sm-10'>
+        <h1>Cheeses of the World</h1>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-sm-offset-1 col-sm-10'>
+            <div class='container' id="container">
+            </div>
+        </div>
+    </div>
+
+</div>
+

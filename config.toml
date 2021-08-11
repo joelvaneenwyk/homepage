@@ -3,7 +3,6 @@ languageCode = "en-us"
 title = "Joel Van Eenwyk"
 theme = "default"
 publishDir = "dist"
-disableKinds = ["taxonomy", "term"]
 enableEmoji = true
 
 googleAnalytics = ""
@@ -19,6 +18,11 @@ useResourceCacheWhen = 'never'
 
 [permalinks]
   "/" = "/:filename"
+
+[taxonomies]
+series = "series"
+tag = "tags"
+category = "categories"
 
 [languages]
   [languages.en]
