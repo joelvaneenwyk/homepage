@@ -1,98 +1,101 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "[json]": {
-    "editor.formatOnSave": false
-  },
-  "[jsonc]": {
-    "editor.formatOnSave": false
-  },
-  "eslint.format.enable": false,
-  "sortJSON.excludedFiles": [
-    "package.json",
-    "settings.json"
-  ],
-  "prettier.enable": true,
-  "editor.formatOnSave": false,
-  "json.format.enable": false,
-  // Configure glob patterns for excluding files and folders.
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.heroku": true,
-    "**/.DS_Store": true,
-    "**/.yarn/cache": true,
-    "**/bower_components": true,
-    "**/node_modules": true,
-    "**/bin": true,
-    "**/workspace": true,
-    "**/typings": true,
-    "**/thirdparty": true
-  },
-  "search.exclude": {
-    "**/.yarn/cache": true,
-    "**/node_modules": true,
-    "**/bower_components": true,
-    "**/*.code-search": true,
-    "**/.yarn": true,
-    "**/.pnp.*": true
-  },
-  "css.validate": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true
-  },
-  // The number of spaces a tab is equal to. This setting is overridden
-  // based on the file contents when `editor.detectIndentation` is true.
-  "editor.tabSize": 4,
-  // Insert spaces when pressing Tab. This setting is overriden
-  // based on the file contents when `editor.detectIndentation` is true.
-  "editor.insertSpaces": true,
-  // When opening a file, `editor.tabSize` and `editor.insertSpaces`
-  // will be detected based on the file contents. Set to false to keep
-  // the values you've explicitly set, above.
-  "editor.detectIndentation": false,
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "cSpell.words": [
-    "Datamap",
-    "Gruntfile",
-    "autotrack",
-    "bootlint",
-    "cmaps",
-    "cond",
-    "cssjs",
-    "datamaps",
-    "dosis",
-    "eclint",
-    "eenwyk",
-    "esversion",
-    "fontfaceobserver",
-    "glyphicon",
-    "gruntjs",
-    "herokuapp",
-    "hoverinfo",
-    "hsts",
-    "htmllint",
-    "joelvaneenwyk",
-    "jsbeautifier",
-    "jsonminify",
-    "jvaneenwyk",
-    "linebreak",
-    "maxage",
-    "modernizr",
-    "nodeunit",
-    "octokit",
-    "pageview",
-    "pjson",
-    "postgres",
-    "preinstall",
-    "readonly",
-    "relaxerror",
-    "repos",
-    "resave",
-    "sslify",
-    "stoponerror",
-    "thirdparty",
-    "topojson"
-  ],
-  "eslint.nodePath": ".yarn/sdks"
+    "[json]": {
+        "editor.formatOnSave": false
+    },
+    "[jsonc]": {
+        "editor.formatOnSave": false
+    },
+    "eslint.format.enable": false,
+    "sortJSON.excludedFiles": [
+        "package.json",
+        "settings.json"
+    ],
+    "prettier.enable": true,
+    "editor.formatOnSave": false,
+    "json.format.enable": false,
+    // Configure glob patterns for excluding files and folders.
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.heroku": true,
+        "**/.DS_Store": true,
+        "**/.yarn/cache": true,
+        "**/bower_components": true,
+        "**/node_modules": true,
+        "**/bin": true,
+        "**/workspace": true,
+        "**/typings": true,
+        "**/thirdparty": true
+    },
+    "search.exclude": {
+        "**/.yarn/cache": true,
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/.yarn": true,
+        "**/.pnp.*": true
+    },
+    "css.validate": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "files.associations": {
+        "tsconfig.json": "jsonc"
+    },
+    // The number of spaces a tab is equal to. This setting is overridden
+    // based on the file contents when `editor.detectIndentation` is true.
+    "editor.tabSize": 4,
+    // Insert spaces when pressing Tab. This setting is overriden
+    // based on the file contents when `editor.detectIndentation` is true.
+    "editor.insertSpaces": true,
+    // When opening a file, `editor.tabSize` and `editor.insertSpaces`
+    // will be detected based on the file contents. Set to false to keep
+    // the values you've explicitly set, above.
+    "editor.detectIndentation": false,
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "cSpell.words": [
+        "Datamap",
+        "Gruntfile",
+        "autotrack",
+        "bootlint",
+        "cmaps",
+        "cond",
+        "cssjs",
+        "datamaps",
+        "dosis",
+        "eclint",
+        "eenwyk",
+        "esversion",
+        "fontfaceobserver",
+        "glyphicon",
+        "gruntjs",
+        "herokuapp",
+        "hoverinfo",
+        "hsts",
+        "htmllint",
+        "joelvaneenwyk",
+        "jsbeautifier",
+        "jsonminify",
+        "jvaneenwyk",
+        "linebreak",
+        "maxage",
+        "modernizr",
+        "nodeunit",
+        "octokit",
+        "pageview",
+        "pjson",
+        "postgres",
+        "preinstall",
+        "readonly",
+        "relaxerror",
+        "repos",
+        "resave",
+        "sslify",
+        "stoponerror",
+        "thirdparty",
+        "topojson"
+    ],
+    "eslint.nodePath": ".yarn/sdks"
 }

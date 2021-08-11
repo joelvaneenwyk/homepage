@@ -3,13 +3,16 @@
     "version": "0.5.5",
     "description": "Homepage for Joel Van Eenwyk (joelvaneenwyk.com)",
     "main": "server.js",
+    "type": "commonjs",
     "keywords": [
         "homepage",
         "nodejs",
         "bower",
         "resume"
     ],
-    "platform": "node",
+    "scripts": {
+        "serve": "tsc && node .tmp/server/server.js"
+    },
     "contributors": [
         "Joel Van Eenwyk"
     ],
@@ -28,7 +31,13 @@
         "url": "https://github.com/joelvaneenwyk/homepage.git"
     },
     "dependencies": {
-        "htmlhint": "^0.15.1"
+        "@types/node": "^16.4.13",
+        "@types/node-static": "^0.7.7",
+        "htmlhint": "^0.15.1",
+        "node-static": "^0.7.11",
+        "ts-node": "^10.2.0",
+        "tslib": "^2.3.0",
+        "typescript": "^4.3.5"
     },
     "packageManager": "yarn@3.0.1-rc.2"
 }

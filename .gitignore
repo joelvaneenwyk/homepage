@@ -1,5 +1,26 @@
+#
+# Ignore list for website
+#
+
+.tmp
+
+#
+# Yarn
+#
+
 yarn-error.log
-node_modules
 .yarn/cache
 .yarn/install-state.gz
+
+#
+# Node / npm
+#
+
+node_modules
+bower_components
+
+#
+# Hugo
+#
+
 resources
