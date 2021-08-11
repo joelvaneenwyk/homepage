@@ -28,3 +28,9 @@ bower_components/
 #
 
 resources/
+
+#
+# Browserify
+#
+
+*.js.tmp-*

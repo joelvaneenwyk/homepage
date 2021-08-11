@@ -2,7 +2,7 @@ baseURL = "https://www.joelvaneenwyk.com/"
 languageCode = "en-us"
 title = "Joel Van Eenwyk"
 theme = "base"
-publishDir = "dist"
+publishDir = "dist/www"
 enableEmoji = true
 
 googleAnalytics = ""
