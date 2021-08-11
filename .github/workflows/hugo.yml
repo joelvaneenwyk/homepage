@@ -10,11 +10,12 @@ jobs:
   build:
     strategy:
       matrix:
-        node: 14
+        node:
+          - 14
         platform:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
+          - ubuntu-20.04
+          - macos-10.15
+          - windows-2019
 
     runs-on: ${{ matrix.platform }}
 
@@ -30,7 +31,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
-          cache: 'yarn'
+
+      - name: Install Yarn
+        run: npm install -g yarn
 
       # We do not require Go installed but installing anyways so that we have the
       # option to either install our own version of Hugo or run plugins.

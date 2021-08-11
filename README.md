@@ -36,7 +36,7 @@ Based on the previous version of this site, there were a lot of learnings. The p
 
 **Keep it simple.**
 
-## Setup
+## Build and Run
 
 1. [Install Hugo](https://gohugo.io/getting-started/installing/)
     * Recommend using [Scoop](https://scoop.sh/) on Windows
@@ -46,20 +46,3 @@ Based on the previous version of this site, there were a lot of learnings. The p
 5. Install Yarn
 6. Run `yarn install`
 7. Run `yarn start` or just `hugo server`
-
-### Building
-
-`hugo build`
-
-### Development
-
-1. Install Yarn 3.x
-2. Run `yarn install`
-
-## Templates
-
-Current Hugo template is not ideal as it does not have good support for blog content (time-based content) along with general documentation and/or articles. Some other options:
-
-* [Goldydocs](https://example.docsy.dev/)
-* [Portio](https://portio-hugo.staticmania.com/)
-* [hugoBasicExample: Example site to use with Hugo & Hugo Themes](https://github.com/gohugoio/hugoBasicExample)

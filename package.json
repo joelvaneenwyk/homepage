@@ -1,6 +1,6 @@
 {
     "name": "joelvaneenwyk-homepage",
-    "version": "0.5.5",
+    "version": "2.0.1",
     "description": "Homepage for Joel Van Eenwyk (joelvaneenwyk.com)",
     "main": "dist/server/server.js",
     "type": "commonjs",
@@ -30,6 +30,7 @@
         "babel": "babel themes/base/src/js --out-file themes/base/assets/js/theme.min.js --source-maps",
         "build-theme": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
         "check": "htmlproofer dist --check-html --allow-hash-href --empty-alt-ignore --disable-external",
+        "ci": "act",
         "preinstall": "run-script-os",
         "preinstall:default": "echo No pre-install necessary for this platform.",
         "preinstall:linux": "bash ./src/utilities/setup.sh",
