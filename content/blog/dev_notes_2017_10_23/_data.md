@@ -8,7 +8,7 @@ Few things:
 * Currently I maintain a 'private' version and public version of the website. The reasons I did this seem no longer valid.
 * I've been paying to have a secure HTTPS version of the site. This no longer seems necessary.
 
-## Chromium Embdedded Foundation (CEF)
+## Chromium Embedded Foundation (CEF)
 
 As part of this what I'm exploring is the possibility of using CEF inside an game engine, but have the output of the game engine run as an element inside the rendered HTML. So the idea here would be to render the frame into a framebuffer, convert it into something CEF can consume, and have it display it through it's render compositor so that it could be layered appropriately.
 

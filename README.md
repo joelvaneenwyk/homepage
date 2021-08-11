@@ -5,7 +5,7 @@ These are the pages and source for [joelvaneenwyk.github.io](https://joelvaneenw
 ## Setup
 
 1. [Install Hugo](https://gohugo.io/getting-started/installing/)
-    * Recommend using `scoop` on Windows
+    * Recommend using [Scoop](https://scoop.sh/) on Windows
 2. Run `hugo serve` to see page live in a browser
 
 ### Building
