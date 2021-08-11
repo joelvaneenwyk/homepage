@@ -56,6 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["minimist", "npm:1.2.5"],
             ["node-static", "npm:0.7.11"],
             ["pinst", "npm:2.1.6"],
+            ["run-script-os", "npm:1.1.6"],
             ["segmentit", "npm:2.0.3"],
             ["ts-node", "virtual:4d1ff62498cfef6d2967db0547e03e2b01cd46367a27d99b27cfc25843ea31a62ca2a40dd12d0282db53410b84cfa84ea3e820ac93d07b1480b072721056ca0d#npm:10.2.0"],
             ["tslib", "npm:2.3.0"],
@@ -6282,6 +6283,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["minimist", "npm:1.2.5"],
             ["node-static", "npm:0.7.11"],
             ["pinst", "npm:2.1.6"],
+            ["run-script-os", "npm:1.1.6"],
             ["segmentit", "npm:2.0.3"],
             ["ts-node", "virtual:4d1ff62498cfef6d2967db0547e03e2b01cd46367a27d99b27cfc25843ea31a62ca2a40dd12d0282db53410b84cfa84ea3e820ac93d07b1480b072721056ca0d#npm:10.2.0"],
             ["tslib", "npm:2.3.0"],
@@ -8065,6 +8067,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["run-parallel", "npm:1.2.0"],
             ["queue-microtask", "npm:1.2.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["run-script-os", [
+        ["npm:1.1.6", {
+          "packageLocation": "./.yarn/cache/run-script-os-npm-1.1.6-52dfa875b6-395c9576c1.zip/node_modules/run-script-os/",
+          "packageDependencies": [
+            ["run-script-os", "npm:1.1.6"]
           ],
           "linkType": "HARD",
         }]

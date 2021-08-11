@@ -15,6 +15,11 @@
     "workspaces": [
         "themes/base"
     ],
+    "engines": {
+        "node": ">=14.0.0",
+        "npm": ">=7.0.0",
+        "yarn": ">=3.0.0"
+    },
     "scripts": {
         "vscode": "yarn sdks vscode",
         "start": "yarn install && yarn run server",
@@ -25,6 +30,9 @@
         "babel": "babel themes/base/src/js --out-file themes/base/assets/js/theme.min.js --source-maps",
         "build-theme": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
         "check": "htmlproofer dist --check-html --allow-hash-href --empty-alt-ignore --disable-external",
+        "preinstall": "run-script-os",
+        "preinstall:default": "echo No pre-install necessary for this platform.",
+        "preinstall:linux": "bash ./src/utilities/setup.sh",
         "postinstall": "husky install",
         "prepublishOnly": "pinst --disable",
         "postpublish": "pinst --enable",
@@ -67,6 +75,7 @@
         "husky": "^7.0.1",
         "minimist": "^1.2.5",
         "node-static": "^0.7.11",
+        "run-script-os": "^1.1.6",
         "segmentit": "^2.0.3",
         "ts-node": "^10.2.0",
         "tslib": "^2.3.0",
