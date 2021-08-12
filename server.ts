@@ -8,7 +8,7 @@ let root = resolve(join(__dirname, "../../"));
 var fileServer = new (Server)(`${root}/dist/www`);
 
 // Use a default port of 5000 unless it's specified in server config
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 40000;
 
 console.log(`Server root: ${root}`);
 console.log(`Listening: http://localhost:${port}`);

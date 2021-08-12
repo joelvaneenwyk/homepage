@@ -7,7 +7,7 @@ const path_1 = require("path");
 let root = path_1.resolve(path_1.join(__dirname, "../../"));
 var fileServer = new (node_static_1.Server)(`${root}/dist/www`);
 // Use a default port of 5000 unless it's specified in server config
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 40000;
 console.log(`Server root: ${root}`);
 console.log(`Listening: http://localhost:${port}`);
 http_1.createServer(function (req, res) {
