@@ -1,11 +1,11 @@
-# LoveIt Theme | Hugo [![Netlify Status](https://api.netlify.com/api/v1/badges/e60303f2-862c-4342-bf59-7c9adb10812e/deploy-status)](https://app.netlify.com/sites/hugo-loveit/deploys)
+# LoveIt Theme | Hugo
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e60303f2-862c-4342-bf59-7c9adb10812e/deploy-status)](https://app.netlify.com/sites/hugo-loveit/deploys)
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/dillonzq/LoveIt?style=flat-square)](https://github.com/dillonzq/LoveIt/releases)
 [![Hugo](https://img.shields.io/badge/Hugo-%5E0.62.0-ff4088?style=flat-square&logo=hugo)](https://gohugo.io/)
 [![License](https://img.shields.io/github/license/dillonzq/LoveIt?style=flat-square)](https://github.com/dillonzq/LoveIt/blob/master/LICENSE)
 [![CircleCI](https://img.shields.io/circleci/build/github/dillonzq/LoveIt/develop?label=CI&style=flat-square&logo=circleci)](https://app.circleci.com/pipelines/github/dillonzq/LoveIt)
-
-English README | [简体中文说明](https://github.com/dillonzq/LoveIt/blob/master/README.zh-cn.md)
 
 > **LoveIt** is a **clean**, **elegant** but **advanced** blog theme for [Hugo](https://gohugo.io/).
 

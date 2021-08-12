@@ -16,9 +16,9 @@
         "themes/base"
     ],
     "engines": {
-        "node": ">=14.0.0",
-        "npm": ">=7.0.0",
-        "yarn": ">=3.0.0"
+        "node": "^14.0.0",
+        "npm": "^7.0.0",
+        "yarn": "^3.0.0"
     },
     "scripts": {
         "vscode": "yarn sdks vscode",
@@ -72,6 +72,7 @@
         "babelify": "^10.0.0",
         "browserify": "^17.0.0",
         "core-js": "^3.16.1",
+        "eslint": "^7.32.0",
         "eslint-config-prettier": "^8.3.0",
         "htmlhint": "^0.15.1",
         "husky": "^7.0.1",
@@ -81,6 +82,7 @@
         "prettier-eslint": "^13.0.0",
         "run-script-os": "^1.1.6",
         "segmentit": "^2.0.3",
+        "stylelint": "^13.13.1",
         "stylelint-config-prettier": "^8.0.2",
         "ts-node": "^10.2.0",
         "tslib": "^2.3.0",
