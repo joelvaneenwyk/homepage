@@ -29,7 +29,7 @@
         "vscode": "yarn sdks vscode",
         "start": "yarn install && yarn node --require=./.pnp.cjs ./dist/server/server.js",
         "server": "tsc && node ./dist/server/server.js",
-        "heroku-build": "echo '[mycelio] Heroku does not build the site and relies on what is submitted.'",
+        "heroku-build": "echo '[mycelio] Heroku build.' && yarn install && rm ./.gitignore",
         "heroku-postbuild": "echo '[mycelio] This runs after Heroku installs dependencies'. && yarn test",
         "heroku-cleanup": "echo '[mycelio] Heroku cleanup step.'",
         "lint": "eslint *.ts",
