@@ -18,8 +18,5 @@
 .prettierignore
 .prettierrc.json
 Dockerfile
-Procfile
-app.json
 docker-compose.yml
-heroku.yml
 *.bat
