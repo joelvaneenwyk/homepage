@@ -1,11 +1,21 @@
 {
     "semi": true,
-    "overrides": [{
-        "files": ["content/**/*.md"],
-        "options": {
-            "tabWidth": 2,
-            "printWidth": 130,
-            "proseWrap": "preserve"
+    "overrides": [
+        {
+            "files": ["**/*.json"],
+            "options": {
+                "tabWidth": 4,
+                "printWidth": 130,
+                "proseWrap": "preserve"
+            }
+        },
+        {
+            "files": ["content/**/*.md"],
+            "options": {
+                "tabWidth": 2,
+                "printWidth": 130,
+                "proseWrap": "preserve"
+            }
         }
-    }]
+    ]
 }

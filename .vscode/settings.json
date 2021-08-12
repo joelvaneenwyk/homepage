@@ -1,22 +1,29 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "[json]": {
-        "editor.defaultFormatter": "HookyQR.beautify",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
     },
     "[jsonc]": {
-        "editor.defaultFormatter": "HookyQR.beautify",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
     },
-    "eslint.format.enable": false,
-    "sortJSON.excludedFiles": [
-        "package.json",
-        "settings.json"
-    ],
+    "json.format.enable": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.formatOnSave": true
+    },
+    "typescript.tsdk": ".yarn/sdks/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "eslint.nodePath": ".yarn/sdks",
+    "eslint.format.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.lintTask.enable": true,
+    "eslint.run": "onSave",
+    "sortJSON.excludedFiles": ["package.json", "settings.json"],
     "perl.enable": false,
     "prettier.enable": true,
     "editor.formatOnSave": false,
-    "json.format.enable": false,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -66,9 +73,8 @@
         ".eslintrc.json": "jsonc",
         "*.json.git": "jsonc"
     },
-    "typescript.tsdk": ".yarn/sdks/typescript/lib",
-    "eslint.nodePath": ".yarn/sdks",
-    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+    "stylelint.stylelintPath": ".yarn/sdks/stylelint/lib/index.js",
     "cSpell.ignorePaths": [
         "**/package-lock.json",
         "**/node_modules/**",
@@ -160,7 +166,5 @@
         "v",
         "wasm",
         "yarnpkg"
-    ],
-    "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-    "stylelint.stylelintPath": ".yarn/sdks/stylelint/lib/index.js"
+    ]
 }

@@ -3,7 +3,8 @@
     // for the documentation about the tasks.json format
     "version": "2.0.0",
     "command": "grunt",
-    "tasks": [{
+    "tasks": [
+        {
             "label": "default",
             "args": [],
             "group": {
@@ -11,21 +12,13 @@
                 "isDefault": true
             },
             "isBackground": false,
-            "problemMatcher": [
-                "$lessCompile",
-                "$tsc",
-                "$jshint"
-            ]
+            "problemMatcher": ["$lessCompile", "$tsc", "$jshint"]
         },
         {
             "label": "watch",
             "args": [],
             "isBackground": true,
-            "problemMatcher": [
-                "$lessCompile",
-                "$tsc",
-                "$jshint"
-            ]
+            "problemMatcher": ["$lessCompile", "$tsc", "$jshint"]
         },
         {
             "type": "docker-build",
@@ -40,17 +33,13 @@
         {
             "type": "docker-run",
             "label": "docker-run: release",
-            "dependsOn": [
-                "docker-build"
-            ],
+            "dependsOn": ["docker-build"],
             "platform": "node"
         },
         {
             "type": "docker-run",
             "label": "docker-run: debug",
-            "dependsOn": [
-                "docker-build"
-            ],
+            "dependsOn": ["docker-build"],
             "dockerRun": {
                 "env": {
                     "DEBUG": "*",

@@ -6,9 +6,7 @@
         "jquery": true,
         "node": true
     },
-    "extends": [
-        "airbnb-base"
-    ],
+    "extends": ["airbnb-base"],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -17,9 +15,7 @@
     "parserOptions": {
         "ecmaVersion": 2018
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
+    "plugins": ["@typescript-eslint"],
     "ignorePatterns": ["backup/**", "dist/**", "**/*{.,-}min.js", "**/newrelic.js"],
     "rules": {
         // enable additional rules
@@ -34,13 +30,16 @@
         // override default options for rules from base configurations
         "no-cond-assign": ["error", "always"],
 
-        "comma-dangle": ["error", {
-            "arrays": "never",
-            "objects": "never",
-            "imports": "never",
-            "exports": "never",
-            "functions": "never"
-        }],
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "never",
+                "objects": "never",
+                "imports": "never",
+                "exports": "never",
+                "functions": "never"
+            }
+        ],
 
         // disable rules from base configurations
         "no-console": "off"
