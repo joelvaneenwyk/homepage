@@ -16,7 +16,7 @@
         "ecmaVersion": 2018
     },
     "plugins": ["@typescript-eslint"],
-    "ignorePatterns": ["backup/**", "dist/**", "**/*.min.js", "**/newrelic.js"],
+    "ignorePatterns": ["themes/base/assets/lib/**", "src/server/cheeses/output/**", "dist/**", "**/*.min.js", "**/newrelic.js"],
     "rules": {
         // enable additional rules
         "indent": ["error", 4],

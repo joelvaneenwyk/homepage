@@ -37,7 +37,7 @@
         "lint": "eslint *.ts",
         "lint-html": "htmlproofer dist --check-html --allow-hash-href --empty-alt-ignore --disable-external",
         "pretty": "yarn prettier --write .vscode/ *.json .*.json themes/base/.babelrc",
-        "build": "echo Building typescript server and website... && tsc && yarn pretty && yarn build-theme && hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
+        "build": "echo Building typescript server and website... && tsc && yarn pretty && yarn theme && hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
         "theme": "yarn theme:babel && yarn theme:build",
         "theme:babel": "cd themes/base && babel src/js --out-file assets/js/theme.min.js --source-maps",
         "theme:build": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",

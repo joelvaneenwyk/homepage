@@ -53,7 +53,7 @@ app
             next();
         }
     )
-    .use("/", require("./source/server/server"));
+    .use("/", require("./server"));
 
 // Use a default port of 5000 unless it's specified in server config
 const port = process.env.PORT || 5000;

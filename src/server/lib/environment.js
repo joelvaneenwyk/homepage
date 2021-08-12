@@ -1,7 +1,7 @@
 /* jslint node: true */
 
 const jsonminify = require("jsonminify");
-const pjson = require("../../package.json");
+const pjson = require("../../../package.json");
 const harpjson = require("../views/_harp.json");
 
 function updateGlobals(g) {
