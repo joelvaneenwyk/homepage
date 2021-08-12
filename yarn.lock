@@ -1529,10 +1529,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.4.14":
-  version: 16.4.14
-  resolution: "@types/node@npm:16.4.14"
-  checksum: cc459a213f0d9401628356ec3c98c6826698dae663393cec1c67e1a4d799eb7e45c6d521a9fdf63e59cae60dda51069306aed51978ac5e740909e34a41ed66c1
+"@types/node@npm:^16.6.0":
+  version: 16.6.0
+  resolution: "@types/node@npm:16.6.0"
+  checksum: 72ab4b9fb47a64657d83336093867aba5bcf2f36facf3c18e9aeff802c078e44fa9f54025b02f2837eb0f2b19c1f551a5201fb4222766454c439de481dbf83d0
   languageName: node
   linkType: hard
 
@@ -5135,7 +5135,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"husky@npm:^7.0.0":
+"husky@npm:^7.0.1":
   version: 7.0.1
   resolution: "husky@npm:7.0.1"
   bin:
@@ -5746,7 +5746,7 @@ fsevents@~2.3.2:
     "@babel/cli": ^7.14.8
     "@babel/core": ^7.15.0
     "@babel/preset-env": ^7.15.0
-    "@types/node": ^16.4.14
+    "@types/node": ^16.6.0
     "@types/node-static": ^0.7.7
     "@yarnpkg/pnpify": ^3.0.1-rc.1
     "@yarnpkg/sdks": ^2.4.1-rc.4
@@ -5757,10 +5757,10 @@ fsevents@~2.3.2:
     eslint: ^7.32.0
     eslint-config-prettier: ^8.3.0
     htmlhint: ^0.15.1
-    husky: ^7.0.0
+    husky: ^7.0.1
     minimist: ^1.2.5
     node-static: ^0.7.11
-    pinst: ^2.0.0
+    pinst: ^2.1.6
     prettier: ^2.3.2
     prettier-eslint: ^13.0.0
     run-script-os: ^1.1.6
@@ -5768,7 +5768,7 @@ fsevents@~2.3.2:
     stylelint: ^13.13.1
     stylelint-config-prettier: ^8.0.2
     ts-node: ^10.2.0
-    tslib: ^2.3.0
+    tslib: ^2.3.1
     typescript: ^4.3.5
   languageName: unknown
   linkType: soft
@@ -7128,7 +7128,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"pinst@npm:^2.0.0":
+"pinst@npm:^2.1.6":
   version: 2.1.6
   resolution: "pinst@npm:2.1.6"
   dependencies:
@@ -8835,10 +8835,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "tslib@npm:2.3.0"
-  checksum: 8869694c26e4a7b56d449662fd54a4f9ba872c889d991202c74462bd99f10e61d5bd63199566c4284c0f742277736292a969642cc7b590f98727a7cae9529122
+"tslib@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "tslib@npm:2.3.1"
+  checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
   languageName: node
   linkType: hard
 

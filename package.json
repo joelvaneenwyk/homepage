@@ -22,7 +22,7 @@
     },
     "scripts": {
         "vscode": "yarn sdks vscode",
-        "start": "node ./dist/server/server.js",
+        "start": "yarn install && node --require=./.pnp.cjs ./dist/server/server.js",
         "server": "tsc && node ./dist/server/server.js",
         "heroku-build": "echo 'Heroku does not build the site and relies on what is submitted.'",
         "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
@@ -64,29 +64,32 @@
         "@babel/cli": "^7.14.8",
         "@babel/core": "^7.15.0",
         "@babel/preset-env": "^7.15.0",
-        "@types/node": "^16.4.14",
+        "@types/node": "^16.6.0",
         "@types/node-static": "^0.7.7",
-        "@yarnpkg/pnpify": "^3.0.1-rc.1",
-        "@yarnpkg/sdks": "^2.4.1-rc.4",
         "babel-preset-minify": "^0.5.1",
         "babelify": "^10.0.0",
         "browserify": "^17.0.0",
         "core-js": "^3.16.1",
+        "minimist": "^1.2.5",
+        "node-static": "^0.7.11",
+        "run-script-os": "^1.1.6",
+        "segmentit": "^2.0.3",
+        "ts-node": "^10.2.0",
+        "tslib": "^2.3.1",
+        "typescript": "^4.3.5"
+    },
+    "devDependencies": {
+        "@yarnpkg/pnpify": "^3.0.1-rc.1",
+        "@yarnpkg/sdks": "^2.4.1-rc.4",
         "eslint": "^7.32.0",
         "eslint-config-prettier": "^8.3.0",
         "htmlhint": "^0.15.1",
         "husky": "^7.0.1",
-        "minimist": "^1.2.5",
-        "node-static": "^0.7.11",
+        "pinst": "^2.1.6",
         "prettier": "^2.3.2",
         "prettier-eslint": "^13.0.0",
-        "run-script-os": "^1.1.6",
-        "segmentit": "^2.0.3",
         "stylelint": "^13.13.1",
-        "stylelint-config-prettier": "^8.0.2",
-        "ts-node": "^10.2.0",
-        "tslib": "^2.3.0",
-        "typescript": "^4.3.5"
+        "stylelint-config-prettier": "^8.0.2"
     },
     "resolutions": {
         "minimist": "^1.2.5"
@@ -95,9 +98,5 @@
         "hooks": {
             "pre-commit": "yarn build && git add dist"
         }
-    },
-    "devDependencies": {
-        "husky": "^7.0.0",
-        "pinst": "^2.0.0"
     }
 }
