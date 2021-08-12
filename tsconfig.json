@@ -3,11 +3,12 @@
         "target": "ES2018",
         "module": "commonjs",
         "sourceMap": true,
-        "outDir": "./dist/server",
+        "outDir": "./dist/dev",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": false,
         "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node"
-    }
+    },
+    "files": ["src/server/server.ts"]
 }

@@ -1883,6 +1883,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yarnpkg/esbuild-plugin-pnp@npm:^1.0.1-rc.1":
+  version: 1.0.1-rc.1
+  resolution: "@yarnpkg/esbuild-plugin-pnp@npm:1.0.1-rc.1"
+  dependencies:
+    tslib: ^1.13.0
+  peerDependencies:
+    esbuild: ">=0.8.36"
+  bin:
+    esbuild-plugin-pnp: ./lib/cli.js
+  checksum: 62de9b689c1817ed886665d7ec069cfaf1da56218391da2dfdcb6be7e181a6cb0df2eea198ce23538186e77485dd7576a640e02cbb6d3790e6f5676be3b18f51
+  languageName: node
+  linkType: hard
+
 "@yarnpkg/fslib@npm:^2.5.0, @yarnpkg/fslib@npm:^2.5.0-rc.13, @yarnpkg/fslib@npm:^2.5.1, @yarnpkg/fslib@npm:^2.5.1-rc.1":
   version: 2.5.1
   resolution: "@yarnpkg/fslib@npm:2.5.1"
@@ -4479,6 +4492,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"esbuild@npm:^0.12.19":
+  version: 0.12.19
+  resolution: "esbuild@npm:0.12.19"
+  bin:
+    esbuild: bin/esbuild
+  checksum: f6ba6b9ee0e114c24b222bf95f18f6742002c4462d8b74e779effd1244bae8af964452ad8f6d70120d8ddf311a3b8ccc5026fb8ff1d0ac1fda14ed6435e2f6b3
+  languageName: node
+  linkType: hard
+
 "escalade@npm:^3.1.1":
   version: 3.1.1
   resolution: "escalade@npm:3.1.1"
@@ -5514,6 +5536,7 @@ fsevents@~2.3.2:
     "@typescript-eslint/parser": ^4.29.1
     "@yarnpkg/cli": ^3.0.1
     "@yarnpkg/core": ^3.1.0-rc.1
+    "@yarnpkg/esbuild-plugin-pnp": ^1.0.1-rc.1
     "@yarnpkg/plugin-workspace-tools": ^3.0.0
     "@yarnpkg/pnpify": ^3.0.1
     "@yarnpkg/sdks": ^2.4.1-rc.4
@@ -5521,6 +5544,7 @@ fsevents@~2.3.2:
     babelify: ^10.0.0
     browserify: ^17.0.0
     core-js: ^3.16.1
+    esbuild: ^0.12.19
     eslint: ^7.32.0
     eslint-config-airbnb-base: ^14.2.1
     eslint-config-prettier: ^8.3.0
@@ -5543,6 +5567,7 @@ fsevents@~2.3.2:
     ts-node: ^10.2.0
     tslib: ^2.3.1
     typescript: ^4.3.5
+    typescript-bundle: ^1.0.17
   languageName: unknown
   linkType: soft
 
@@ -9653,6 +9678,15 @@ fsevents@~2.3.2:
   version: 0.0.6
   resolution: "typedarray@npm:0.0.6"
   checksum: 33b39f3d0e8463985eeaeeacc3cb2e28bc3dfaf2a5ed219628c0b629d5d7b810b0eb2165f9f607c34871d5daa92ba1dc69f49051cf7d578b4cbd26c340b9d1b1
+  languageName: node
+  linkType: hard
+
+"typescript-bundle@npm:^1.0.17":
+  version: 1.0.17
+  resolution: "typescript-bundle@npm:1.0.17"
+  bin:
+    tsc-bundle: tsc-bundle
+  checksum: f1e53951519d110b05c26493e3b11733674e13eabaa1c0918ac3815250e8641f14f05e8749ddf340a572af67a62423bd9dcc6586e4c92fc567055ea45e836bfb
   languageName: node
   linkType: hard
 
