@@ -24,7 +24,7 @@
         "vscode": "yarn sdks vscode",
         "start": "yarn install --verbose && yarn run server",
         "server": "tsc && node ./dist/server/server.js",
-        "heroku-prebuild": "echo 'Heroku pre-build action' && ./src/utilities/setup.sh",
+        "heroku-build": "echo 'Heroku does not build the site and relies on what is submitted.'",
         "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
         "heroku-cleanup": "rm -rf .yarn",
         "lint": "htmlhint dist/**/*.html",
