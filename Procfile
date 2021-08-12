@@ -1,2 +1,2 @@
-release: bash src/utilities/release.sh
-web: echo Custom build start && yarn start
+release: bash src/heroku/release.sh
+web: bash src/heroku/start.sh

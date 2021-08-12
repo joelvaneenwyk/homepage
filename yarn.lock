@@ -1398,6 +1398,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toml-tools/lexer@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "@toml-tools/lexer@npm:0.3.1"
+  dependencies:
+    chevrotain: 4.1.1
+  checksum: 3fef79ce28cacb4196c088946c25ceff4527660a7cd75000a06526481b9255d42e5592f6d9120143a34f2bfba16b902c042258aa439c23fb62985f0c8f2a5f70
+  languageName: node
+  linkType: hard
+
+"@toml-tools/parser@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "@toml-tools/parser@npm:0.3.1"
+  dependencies:
+    "@toml-tools/lexer": ^0.3.1
+    chevrotain: 4.1.1
+  checksum: c94918cf9f5205d5f0c6b05370e1c236ac8dc2eb4606e6448e542d85a54be73df509e94132ad6c09c02c4a04b58f4e390446854c13260f5189551dde130af8f8
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -3579,6 +3598,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chevrotain@npm:4.1.1":
+  version: 4.1.1
+  resolution: "chevrotain@npm:4.1.1"
+  dependencies:
+    regexp-to-ast: 0.3.5
+  checksum: 209229115f4e6610238008282afe13b67f57edfd9bc2514371e4e1349c32bd6cf2792088e125e1c19c2d8343611ef89f54747ac97b4f641dba5f2a74f5235a45
+  languageName: node
+  linkType: hard
+
 "chokidar@npm:^3.4.0":
   version: 3.5.2
   resolution: "chokidar@npm:3.5.2"
@@ -5479,6 +5507,7 @@ fsevents@~2.3.2:
     "@babel/cli": ^7.14.8
     "@babel/core": ^7.15.0
     "@babel/preset-env": ^7.15.0
+    "@toml-tools/lexer": ^0.3.1
     "@types/node": ^16.6.1
     "@types/node-static": ^0.7.7
     "@typescript-eslint/eslint-plugin": ^4.29.1
@@ -5505,6 +5534,8 @@ fsevents@~2.3.2:
     pinst: ^2.1.6
     prettier: ^2.3.2
     prettier-eslint: ^13.0.0
+    prettier-plugin-sh: ^0.7.1
+    prettier-plugin-toml: ^0.3.1
     run-script-os: ^1.1.6
     segmentit: ^2.0.3
     stylelint: ^13.13.1
@@ -7047,6 +7078,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"mvdan-sh@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "mvdan-sh@npm:0.5.0"
+  checksum: b662308861c8d77076513d7f154ec2e340b28f34bedcf413450381255408dd6749b92b51b56946945cf016887789decfe7e89f3b201a71e3d908f59bd9e77474
+  languageName: node
+  linkType: hard
+
 "nanoclone@npm:^0.2.1":
   version: 0.2.1
   resolution: "nanoclone@npm:0.2.1"
@@ -7853,6 +7891,36 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"prettier-plugin-sh@npm:^0.7.1":
+  version: 0.7.1
+  resolution: "prettier-plugin-sh@npm:0.7.1"
+  dependencies:
+    mvdan-sh: ^0.5.0
+  peerDependencies:
+    prettier: ^2.0.5
+  checksum: 861d66010cef9d354e96b1d980328dbf538f26b5c888697c2f2982e9d5b99db8df00c787293d9017b483acdcf6b226e9c86ea17b612d1c1c995a85255cc3a480
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-toml@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "prettier-plugin-toml@npm:0.3.1"
+  dependencies:
+    "@toml-tools/parser": ^0.3.1
+    prettier: ^1.16.0
+  checksum: 9c34cc4a3566f1e23186861a1c141c1a320552dd836fbf3e3742c7d123006ac302fbc1aabb3606f6ee1dfc393c840df1c7d47efb597f6aefebba354a8cdccaca
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^1.16.0":
+  version: 1.19.1
+  resolution: "prettier@npm:1.19.1"
+  bin:
+    prettier: ./bin-prettier.js
+  checksum: bc78219e0f8173a808f4c6c8e0a137dd8ebd4fbe013e63fe1a37a82b48612f17b8ae8e18a992adf802ee2cf7428f14f084e7c2846ca5759cf4013c6e54810e1f
+  languageName: node
+  linkType: hard
+
 "prettier@npm:^2.0.0, prettier@npm:^2.3.2":
   version: 2.3.2
   resolution: "prettier@npm:2.3.2"
@@ -8250,6 +8318,13 @@ fsevents@~2.3.2:
     extend-shallow: ^3.0.2
     safe-regex: ^1.1.0
   checksum: 3081403de79559387a35ef9d033740e41818a559512668cef3d12da4e8a29ef34ee13c8ed1256b07e27ae392790172e8a15c8a06b72962fd4550476cde3d8f77
+  languageName: node
+  linkType: hard
+
+"regexp-to-ast@npm:0.3.5":
+  version: 0.3.5
+  resolution: "regexp-to-ast@npm:0.3.5"
+  checksum: 8b738a6da564ea0816c61bfd26243e4313346a09d7a1d63ec505002e99a82cce12dde50e7b7a98f179cd0782ee652e99a7b2a9e83b53cf9497b8a5fbb4bf652e
   languageName: node
   linkType: hard
 

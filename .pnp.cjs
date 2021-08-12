@@ -38,6 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/cli", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:7.14.8"],
             ["@babel/core", "npm:7.15.0"],
             ["@babel/preset-env", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:7.15.0"],
+            ["@toml-tools/lexer", "npm:0.3.1"],
             ["@types/node", "npm:16.6.1"],
             ["@types/node-static", "npm:0.7.7"],
             ["@typescript-eslint/eslint-plugin", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:4.29.1"],
@@ -64,6 +65,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pinst", "npm:2.1.6"],
             ["prettier", "npm:2.3.2"],
             ["prettier-eslint", "npm:13.0.0"],
+            ["prettier-plugin-sh", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.7.1"],
+            ["prettier-plugin-toml", "npm:0.3.1"],
             ["run-script-os", "npm:1.1.6"],
             ["segmentit", "npm:2.0.3"],
             ["stylelint", "npm:13.13.1"],
@@ -2364,6 +2367,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@szmarczak/http-timer", "npm:4.0.6"],
             ["defer-to-connect", "npm:2.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@toml-tools/lexer", [
+        ["npm:0.3.1", {
+          "packageLocation": "./.yarn/cache/@toml-tools-lexer-npm-0.3.1-fb17e55dd3-3fef79ce28.zip/node_modules/@toml-tools/lexer/",
+          "packageDependencies": [
+            ["@toml-tools/lexer", "npm:0.3.1"],
+            ["chevrotain", "npm:4.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@toml-tools/parser", [
+        ["npm:0.3.1", {
+          "packageLocation": "./.yarn/cache/@toml-tools-parser-npm-0.3.1-92339187a3-c94918cf9f.zip/node_modules/@toml-tools/parser/",
+          "packageDependencies": [
+            ["@toml-tools/parser", "npm:0.3.1"],
+            ["@toml-tools/lexer", "npm:0.3.1"],
+            ["chevrotain", "npm:4.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -5178,6 +5202,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["chevrotain", [
+        ["npm:4.1.1", {
+          "packageLocation": "./.yarn/cache/chevrotain-npm-4.1.1-efb4d0cd87-209229115f.zip/node_modules/chevrotain/",
+          "packageDependencies": [
+            ["chevrotain", "npm:4.1.1"],
+            ["regexp-to-ast", "npm:0.3.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["chokidar", [
         ["npm:3.5.2", {
           "packageLocation": "./.yarn/cache/chokidar-npm-3.5.2-6752340fec-d1fda32fcd.zip/node_modules/chokidar/",
@@ -7375,6 +7409,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/cli", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:7.14.8"],
             ["@babel/core", "npm:7.15.0"],
             ["@babel/preset-env", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:7.15.0"],
+            ["@toml-tools/lexer", "npm:0.3.1"],
             ["@types/node", "npm:16.6.1"],
             ["@types/node-static", "npm:0.7.7"],
             ["@typescript-eslint/eslint-plugin", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:4.29.1"],
@@ -7401,6 +7436,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pinst", "npm:2.1.6"],
             ["prettier", "npm:2.3.2"],
             ["prettier-eslint", "npm:13.0.0"],
+            ["prettier-plugin-sh", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.7.1"],
+            ["prettier-plugin-toml", "npm:0.3.1"],
             ["run-script-os", "npm:1.1.6"],
             ["segmentit", "npm:2.0.3"],
             ["stylelint", "npm:13.13.1"],
@@ -9124,6 +9161,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["mvdan-sh", [
+        ["npm:0.5.0", {
+          "packageLocation": "./.yarn/cache/mvdan-sh-npm-0.5.0-e7cb78827c-b662308861.zip/node_modules/mvdan-sh/",
+          "packageDependencies": [
+            ["mvdan-sh", "npm:0.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["nanoclone", [
         ["npm:0.2.1", {
           "packageLocation": "./.yarn/cache/nanoclone-npm-0.2.1-972ee958a0-96b2954e22.zip/node_modules/nanoclone/",
@@ -10043,6 +10089,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["prettier", [
+        ["npm:1.19.1", {
+          "packageLocation": "./.yarn/cache/prettier-npm-1.19.1-e56d246fd2-bc78219e0f.zip/node_modules/prettier/",
+          "packageDependencies": [
+            ["prettier", "npm:1.19.1"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:2.3.2", {
           "packageLocation": "./.yarn/cache/prettier-npm-2.3.2-4467ec48dc-17ce5784ac.zip/node_modules/prettier/",
           "packageDependencies": [
@@ -10068,6 +10121,40 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["require-relative", "npm:0.8.7"],
             ["typescript", "patch:typescript@npm%3A3.9.10#~builtin<compat/typescript>::version=3.9.10&hash=d8b4e7"],
             ["vue-eslint-parser", "virtual:fa9cd001777ca089ecda00eb12162faa0cff32d81a56f16208eacfa67f48a872e6fe20acc30dd98959e8ed707aacde71b472150db7d2575206a740ab6d335270#npm:7.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["prettier-plugin-sh", [
+        ["npm:0.7.1", {
+          "packageLocation": "./.yarn/cache/prettier-plugin-sh-npm-0.7.1-dce6ebadd6-861d66010c.zip/node_modules/prettier-plugin-sh/",
+          "packageDependencies": [
+            ["prettier-plugin-sh", "npm:0.7.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.7.1", {
+          "packageLocation": "./.yarn/__virtual__/prettier-plugin-sh-virtual-893e5432b0/0/cache/prettier-plugin-sh-npm-0.7.1-dce6ebadd6-861d66010c.zip/node_modules/prettier-plugin-sh/",
+          "packageDependencies": [
+            ["prettier-plugin-sh", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.7.1"],
+            ["@types/prettier", null],
+            ["mvdan-sh", "npm:0.5.0"],
+            ["prettier", "npm:2.3.2"]
+          ],
+          "packagePeers": [
+            "@types/prettier",
+            "prettier"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["prettier-plugin-toml", [
+        ["npm:0.3.1", {
+          "packageLocation": "./.yarn/cache/prettier-plugin-toml-npm-0.3.1-a4a923f5b6-9c34cc4a35.zip/node_modules/prettier-plugin-toml/",
+          "packageDependencies": [
+            ["prettier-plugin-toml", "npm:0.3.1"],
+            ["@toml-tools/parser", "npm:0.3.1"],
+            ["prettier", "npm:1.19.1"]
           ],
           "linkType": "HARD",
         }]
@@ -10517,6 +10604,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["regex-not", "npm:1.0.2"],
             ["extend-shallow", "npm:3.0.2"],
             ["safe-regex", "npm:1.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["regexp-to-ast", [
+        ["npm:0.3.5", {
+          "packageLocation": "./.yarn/cache/regexp-to-ast-npm-0.3.5-58e437ff63-8b738a6da5.zip/node_modules/regexp-to-ast/",
+          "packageDependencies": [
+            ["regexp-to-ast", "npm:0.3.5"]
           ],
           "linkType": "HARD",
         }]
