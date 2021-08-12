@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# docker run --rm -it -v %cd%:/usr/src/project ubuntu bash -c "bash --init-file <(echo 'cd /usr/src/project')"
+# docker run --rm -it -v %cd%:/usr/src/project heroku/heroku:20 bash -c "bash --init-file <(echo 'cd /usr/src/project')"
 #
 
 set -e
@@ -18,20 +18,36 @@ fi
 
 sudo apt-get install -y wget build-essential gcc g++ make git curl
 
-if [ ! -x "$(command -v go)" ]; then
+if [ -x "$(command -v go)" ]; then
+    version=$(go version | { read -r _ _ v _; echo "${v#go}"; })
+    major=$(echo "$version" | cut -d. -f1)
+    minor=$(echo "$version" | cut -d. -f2)
+    revision=$(echo "$version" | cut -d. -f3)
+    echo "Go v$major.$minor.$revision"
+fi
+
+if [ ! -x "$(command -v go)" ] || (( minor < 16 )); then
     # Install Golang
     if [ ! -f "/tmp/go1.16.7.linux-amd64.tar.gz" ]; then
         wget https://dl.google.com/go/go1.16.7.linux-amd64.tar.gz --directory-prefix=/tmp/
     fi
 
-    if [ ! -d "/usr/local/go" ]; then
-        sudo tar -xvf "/tmp/go1.16.7.linux-amd64.tar.gz" --directory "/tmp/"
-        sudo mv "/tmp/go" "/usr/local"
-    fi
+    sudo rm -rf "/tmp/go"
+    sudo tar -xvf "/tmp/go1.16.7.linux-amd64.tar.gz" --directory "/tmp/"
+    sudo rm -rf "/usr/local/go"
+    sudo mv "/tmp/go" "/usr/local"
+    echo "Updated 'go' install: '/usr/local/go'"
 
     export GOROOT="/usr/local/go"
-    export PATH=$PATH:/usr/local/go/bin
-    go env -w GOBIN=/usr/local/go/bin
+    export GOBIN="$GOROOT/bin"
+    export PATH="$GOBIN:$PATH"
+
+    GOPATH="$(go env GOPATH)"
+    export GOPATH
+
+    go env -w GOROOT="$GOROOT"
+    go env -w GOBIN="$GOROOT/bin"
+
 fi
 go version
 
@@ -45,13 +61,14 @@ fi
 if [ ! -x "$(command -v yarn)" ]; then
     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
     echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt-get update && sudo apt-get install yarn
+    sudo apt-get update && sudo apt-get -y install yarn
 fi
 
 # Install Hugo
-if [ ! -x "$(command -v yarn)" ]; then
-    git clone -b "v0.87.0" "https://github.com/gohugoio/hugo.git" "/tmp/hugo"
+if [ ! -x "$(command -v hugo)" ]; then
+    rm -rf "/tmp/hugo"
+    git -c advice.detachedHead=false clone -b "v0.87.0" "https://github.com/gohugoio/hugo.git" "/tmp/hugo"
     cd "/tmp/hugo" || true
-    go install --tags extended
+    sudo PATH="$PATH" GOROOT="$GOROOT" GOBIN="$GOBIN" GOPATH="$GOPATH" "$GOBIN/go" install --tags extended
 fi
 hugo version
