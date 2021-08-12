@@ -22,7 +22,6 @@
     "private": true,
     "packageManager": "yarn@3.0.1-rc.2",
     "engines": {
-        "yarn": "1.x",
         "node": "^14.0.0",
         "npm": "^7.0.0"
     },
@@ -30,9 +29,9 @@
         "vscode": "yarn sdks vscode",
         "start": "node --require=./.pnp.cjs ./dist/server/server.js",
         "server": "tsc && node ./dist/server/server.js",
-        "heroku-build": "echo 'Heroku does not build the site and relies on what is submitted.'",
-        "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
-        "heroku-cleanup": "echo Heroku cleanup step.",
+        "heroku-build": "echo '[mycelio] Heroku does not build the site and relies on what is submitted.'",
+        "heroku-postbuild": "echo '[mycelio] This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.'",
+        "heroku-cleanup": "echo '[mycelio] Heroku cleanup step.'",
         "lint": "htmlhint dist/**/*.html",
         "build": "tsc && yarn build-theme && hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
         "build-theme": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
