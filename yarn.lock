@@ -6582,23 +6582,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"loveit-src@workspace:themes/base":
-  version: 0.0.0-use.local
-  resolution: "loveit-src@workspace:themes/base"
-  dependencies:
-    "@babel/cli": ^7.14.8
-    "@babel/core": ^7.15.0
-    "@babel/preset-env": ^7.15.0
-    babel-preset-minify: ^0.5.1
-    babelify: ^10.0.0
-    browserify: ^17.0.0
-    core-js: ^3.16.1
-    husky: ^7.0.1
-    minimist: ^1.2.5
-    segmentit: ^2.0.3
-  languageName: unknown
-  linkType: soft
-
 "lowercase-keys@npm:^2.0.0":
   version: 2.0.0
   resolution: "lowercase-keys@npm:2.0.0"

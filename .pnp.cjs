@@ -21,17 +21,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "homepage",
         "reference": "workspace:."
-      },
-      {
-        "name": "loveit-src",
-        "reference": "workspace:themes/base"
       }
     ],
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["homepage", ["workspace:."]],
-      ["loveit-src", ["workspace:themes/base"]]
+      ["homepage", ["workspace:."]]
     ],
     "fallbackPool": [
     ],
@@ -8620,25 +8615,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["longest-streak", "npm:2.0.4"]
           ],
           "linkType": "HARD",
-        }]
-      ]],
-      ["loveit-src", [
-        ["workspace:themes/base", {
-          "packageLocation": "./themes/base/",
-          "packageDependencies": [
-            ["loveit-src", "workspace:themes/base"],
-            ["@babel/cli", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:7.14.8"],
-            ["@babel/core", "npm:7.15.0"],
-            ["@babel/preset-env", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:7.15.0"],
-            ["babel-preset-minify", "npm:0.5.1"],
-            ["babelify", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:10.0.0"],
-            ["browserify", "npm:17.0.0"],
-            ["core-js", "npm:3.16.1"],
-            ["husky", "npm:7.0.1"],
-            ["minimist", "npm:1.2.5"],
-            ["segmentit", "npm:2.0.3"]
-          ],
-          "linkType": "SOFT",
         }]
       ]],
       ["lowercase-keys", [
