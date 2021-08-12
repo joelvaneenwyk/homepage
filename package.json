@@ -30,7 +30,7 @@
     ],
     "scripts": {
         "vscode": "yarn sdks vscode",
-        "start": "yarn workspaces focus --production && yarn node --require=./.pnp.cjs ./dist/server/server.js",
+        "start": "yarn node --require=./.pnp.cjs ./dist/server/server.js",
         "server": "tsc && node ./dist/server/server.js",
         "heroku-build": "echo '[mycelio] Heroku build.' && yarn install && rm ./.gitignore",
         "heroku-postbuild": "echo '[mycelio] This runs after Heroku installs dependencies'. && yarn test",

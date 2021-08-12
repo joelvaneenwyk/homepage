@@ -10,5 +10,11 @@ ls -la "$ROOT_DIR"
 echo "------------------------------"
 ls -la "$ROOT_DIR/.yarn"
 
+(
+    echo "------------------------------"
+    cd "$ROOT_DIR" || true
+    yarn workspaces focus --production
+)
+
 echo "------------------------------"
 echo "Release process complete."
