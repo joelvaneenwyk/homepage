@@ -12,9 +12,16 @@
 # Yarn
 #
 
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Not doing zero-install so remove cache
+# !.yarn/cache
 yarn-error.log
-.yarn/cache
-.yarn/install-state.gz
 
 #
 # Node / npm

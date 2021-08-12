@@ -2,15 +2,19 @@
     "name": "homepage",
     "version": "2.0.1",
     "description": "Homepage for Joel Van Eenwyk (joelvaneenwyk.com)",
+    "homepage": "https://www.joelvaneenwyk.com",
+    "author": {
+        "name": "Joel Van Eenwyk",
+        "email": "joel.vaneenwyk@gmail.com"
+    },
     "main": "dist/server/server.js",
     "type": "commonjs",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/joelvaneenwyk/homepage.git"
+    },
     "node": "14.x",
-    "keywords": [
-        "homepage",
-        "nodejs",
-        "bower",
-        "resume"
-    ],
     "workspaces": [
         "homepage",
         "themes/base"
@@ -28,12 +32,12 @@
         "server": "tsc && node ./dist/server/server.js",
         "heroku-build": "echo 'Heroku does not build the site and relies on what is submitted.'",
         "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
-        "heroku-cleanup": "rm -rf .yarn",
+        "heroku-cleanup": "echo Heroku cleanup step.",
         "lint": "htmlhint dist/**/*.html",
         "build": "tsc && yarn build-theme && hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
+        "build-theme": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
         "watch": "hugo --cleanDestinationDir --buildDrafts server",
         "babel": "babel themes/base/src/js --out-file themes/base/assets/js/theme.min.js --source-maps",
-        "build-theme": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
         "check": "htmlproofer dist --check-html --allow-hash-href --empty-alt-ignore --disable-external",
         "ci": "act",
         "postinstall": "husky install",
@@ -41,26 +45,15 @@
         "postpublish": "pinst --enable",
         "test": "yarn build"
     },
-    "files": [
-        "dist",
-        "README.md"
-    ],
-    "contributors": [
-        "Joel Van Eenwyk"
+    "keywords": [
+        "homepage",
+        "nodejs",
+        "bower",
+        "resume"
     ],
     "bugs": {
         "url": "https://github.com/joelvaneenwyk/workspace/issues",
         "email": "joel.vaneenwyk@gmail.com"
-    },
-    "homepage": "http://www.joelvaneenwyk.com",
-    "author": {
-        "name": "Joel Van Eenwyk",
-        "email": "joel.vaneenwyk@gmail.com"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/joelvaneenwyk/homepage.git"
     },
     "dependencies": {
         "@babel/cli": "^7.14.8",
@@ -68,6 +61,11 @@
         "@babel/preset-env": "^7.15.0",
         "@types/node": "^16.6.0",
         "@types/node-static": "^0.7.7",
+        "@yarnpkg/cli": "^3.0.1",
+        "@yarnpkg/core": "^3.1.0-rc.1",
+        "@yarnpkg/plugin-workspace-tools": "^3.0.0",
+        "@yarnpkg/pnpify": "^3.0.1",
+        "@yarnpkg/sdks": "^2.4.1-rc.4",
         "babel-preset-minify": "^0.5.1",
         "babelify": "^10.0.0",
         "browserify": "^17.0.0",
@@ -81,8 +79,6 @@
         "typescript": "^4.3.5"
     },
     "devDependencies": {
-        "@yarnpkg/pnpify": "^3.0.1-rc.1",
-        "@yarnpkg/sdks": "^2.4.1-rc.4",
         "eslint": "^7.32.0",
         "eslint-config-prettier": "^8.3.0",
         "htmlhint": "^0.15.1",
@@ -92,13 +88,5 @@
         "prettier-eslint": "^13.0.0",
         "stylelint": "^13.13.1",
         "stylelint-config-prettier": "^8.0.2"
-    },
-    "resolutions": {
-        "minimist": "^1.2.5"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "yarn build && git add dist"
-        }
     }
 }
