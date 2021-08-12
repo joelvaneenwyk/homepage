@@ -25,7 +25,7 @@
         "start": "yarn install && yarn run server",
         "server": "tsc && node ./dist/server/server.js",
         "lint": "htmlhint dist/**/*.html",
-        "build": "tsc && hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
+        "build": "tsc && yarn build-theme && hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
         "watch": "hugo --cleanDestinationDir --buildDrafts server",
         "babel": "babel themes/base/src/js --out-file themes/base/assets/js/theme.min.js --source-maps",
         "build-theme": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",

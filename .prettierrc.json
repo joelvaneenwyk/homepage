@@ -1,1 +1,11 @@
-{}
+{
+    "semi": true,
+    "overrides": [{
+        "files": ["content/**/*.md"],
+        "options": {
+            "tabWidth": 2,
+            "printWidth": 130,
+            "proseWrap": "preserve"
+        }
+    }]
+}
