@@ -16,7 +16,7 @@ RUN \
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null \
 && echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
 && sudo apt-get update \
-&& sudo apt-get install yarn
+&& sudo apt-get install -y yarn
 
 # Install Golang
 RUN wget https://dl.google.com/go/go1.16.7.linux-amd64.tar.gz --directory-prefix=/tmp/
@@ -33,11 +33,8 @@ RUN go env -w GOBIN=/usr/local/go/bin
 
 # Install Hugo
 RUN git clone -b "v0.87.0" --single-branch "https://github.com/gohugoio/hugo.git" "/tmp/hugo"
-RUN cd "/tmp/hugo" && go install --tags extended
+RUN cd "/tmp/hugo" && sudo go install --tags extended
 RUN hugo version
-
-# Install TypeScript and 'tsc'
-RUN yarn global add typescript
 
 WORKDIR /usr/src/app
 

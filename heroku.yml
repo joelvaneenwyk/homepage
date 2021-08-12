@@ -1,9 +1,12 @@
 build:
   docker:
-    release:
-      dockerfile: Dockerfile
-      target: builder
     web: Dockerfile
+
+release:
+  command:
+    - yarn install
+    - yarn build
+  image: web
 
 run:
   web: node dist/server/server.js
