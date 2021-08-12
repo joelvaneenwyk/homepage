@@ -22,7 +22,7 @@
     },
     "scripts": {
         "vscode": "yarn sdks vscode",
-        "start": "yarn install && node --require=./.pnp.cjs ./dist/server/server.js",
+        "start": "node --require=./.pnp.cjs ./dist/server/server.js",
         "server": "tsc && node ./dist/server/server.js",
         "heroku-build": "echo 'Heroku does not build the site and relies on what is submitted.'",
         "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
