@@ -1522,10 +1522,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.6.0":
-  version: 16.6.0
-  resolution: "@types/node@npm:16.6.0"
-  checksum: 72ab4b9fb47a64657d83336093867aba5bcf2f36facf3c18e9aeff802c078e44fa9f54025b02f2837eb0f2b19c1f551a5201fb4222766454c439de481dbf83d0
+"@types/node@npm:*, @types/node@npm:^16.6.1":
+  version: 16.6.1
+  resolution: "@types/node@npm:16.6.1"
+  checksum: c13aa0da0c2bf9070e521d1b537ba38f64b213dd1b8aeec66c279fc21f8c0ccaf380364f6dc2ec8f84440c4cd1460b67dfe47de2cafcb6eaf4b648817cb27dc4
   languageName: node
   linkType: hard
 
@@ -1864,17 +1864,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/fslib@npm:^2.5.0, @yarnpkg/fslib@npm:^2.5.0-rc.13":
-  version: 2.5.0
-  resolution: "@yarnpkg/fslib@npm:2.5.0"
-  dependencies:
-    "@yarnpkg/libzip": ^2.2.2
-    tslib: ^1.13.0
-  checksum: 20948eeac66af6cc1c37b3e59a0730fdcadd5bea327e8a7954671c5ca9a1f3daee6d23f9906fd98f991b5a31c14e460961bf3c0de6530915862b89f4ab08f8a4
-  languageName: node
-  linkType: hard
-
-"@yarnpkg/fslib@npm:^2.5.1, @yarnpkg/fslib@npm:^2.5.1-rc.1":
+"@yarnpkg/fslib@npm:^2.5.0, @yarnpkg/fslib@npm:^2.5.0-rc.13, @yarnpkg/fslib@npm:^2.5.1, @yarnpkg/fslib@npm:^2.5.1-rc.1":
   version: 2.5.1
   resolution: "@yarnpkg/fslib@npm:2.5.1"
   dependencies:
@@ -2188,19 +2178,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/pnp@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@yarnpkg/pnp@npm:3.0.0"
-  dependencies:
-    "@types/node": ^13.7.0
-    "@yarnpkg/fslib": ^2.5.0
-    resolve.exports: ^1.0.2
-    tslib: ^1.13.0
-  checksum: f52dba12ab23e5c417ccad12153683c6d2a2e31748b11a0e5044494583c53267746e1f02b63b1cfe0b44c7c24370c2bbdc34b25e4aba88f2db76e70b41616661
-  languageName: node
-  linkType: hard
-
-"@yarnpkg/pnp@npm:^3.0.1, @yarnpkg/pnp@npm:^3.0.1-rc.1":
+"@yarnpkg/pnp@npm:^3.0.0, @yarnpkg/pnp@npm:^3.0.1, @yarnpkg/pnp@npm:^3.0.1-rc.1":
   version: 3.0.1
   resolution: "@yarnpkg/pnp@npm:3.0.1"
   dependencies:
@@ -5592,7 +5570,7 @@ fsevents@~2.3.2:
     "@babel/cli": ^7.14.8
     "@babel/core": ^7.15.0
     "@babel/preset-env": ^7.15.0
-    "@types/node": ^16.6.0
+    "@types/node": ^16.6.1
     "@types/node-static": ^0.7.7
     "@typescript-eslint/eslint-plugin": ^4.29.1
     "@typescript-eslint/parser": ^4.29.1
@@ -5613,6 +5591,7 @@ fsevents@~2.3.2:
     htmlhint: ^0.15.1
     husky: ^7.0.1
     minimist: ^1.2.5
+    node-gyp: ^8.1.0
     node-static: ^0.7.11
     pinst: ^2.1.6
     prettier: ^2.3.2
@@ -7262,7 +7241,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"node-gyp@npm:latest":
+"node-gyp@npm:^8.1.0, node-gyp@npm:latest":
   version: 8.1.0
   resolution: "node-gyp@npm:8.1.0"
   dependencies:
