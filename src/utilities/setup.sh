@@ -10,6 +10,9 @@ echo "Initiated setup process for homepage."
 
 if [ ! -x "$(command -v sudo)" ]; then
     echo "Installing missing 'sudo' command"
+
+    mkdir -p "/var/lib/apt/lists/partial"
+
     apt-get update
     apt-get install -y sudo
 else
