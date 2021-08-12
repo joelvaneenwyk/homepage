@@ -1,2 +1,2 @@
-release: echo No action needed for release.
+release: bash src/utilities/release.sh
 web: echo Custom build start && yarn start

@@ -12,6 +12,7 @@
 # Yarn
 #
 
+yarn-error.log
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
@@ -21,7 +22,6 @@
 
 # Not doing zero-install so remove cache
 # !.yarn/cache
-yarn-error.log
 
 #
 # Node / npm

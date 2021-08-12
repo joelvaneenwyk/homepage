@@ -25,6 +25,9 @@
         "node": "^14.0.0",
         "npm": "^7.0.0"
     },
+    "cacheDirectories": [
+        ".yarn/cache"
+    ],
     "scripts": {
         "vscode": "yarn sdks vscode",
         "start": "yarn workspaces focus --production && yarn node --require=./.pnp.cjs ./dist/server/server.js",
