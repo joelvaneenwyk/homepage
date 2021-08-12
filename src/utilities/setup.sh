@@ -6,14 +6,17 @@
 
 set -e
 
+echo "Initiated setup process for homepage."
+
 if [ ! -x "$(command -v sudo)" ]; then
+    echo "Installing missing 'sudo' command"
     apt-get update
     apt-get install -y sudo
 else
     sudo apt-get update
 fi
 
-apt-get install -y wget build-essential gcc g++ make git curl
+sudo apt-get install -y wget build-essential gcc g++ make git curl
 
 if [ ! -x "$(command -v go)" ]; then
     # Install Golang
