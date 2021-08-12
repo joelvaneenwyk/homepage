@@ -1,5 +1,5 @@
 {
-    "name": "joelvaneenwyk-homepage",
+    "name": "homepage",
     "version": "2.0.1",
     "description": "Homepage for Joel Van Eenwyk (joelvaneenwyk.com)",
     "main": "dist/server/server.js",
@@ -12,8 +12,10 @@
         "resume"
     ],
     "workspaces": [
+        "homepage",
         "themes/base"
     ],
+    "private": true,
     "packageManager": "yarn@3.0.1-rc.2",
     "engines": {
         "yarn": "1.x",
