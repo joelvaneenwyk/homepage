@@ -260,8 +260,7 @@ mobileMode = "auto"
 # Header title config
 [params.header.title]
 # URL of the LOGO
-# LOGO 的 URL
-logo = "/images/seal_red.png"
+logo = "/images/jve_stamp_bright_red.png"
 # title name
 # 标题名称
 name = "  Joel Van Eenwyk"
@@ -506,7 +505,7 @@ images = []
 
 # Publisher info
 [params.page.seo.publisher]
-name = "xxxx"
+name = "Joel Van Eenwyk"
 logoUrl = "/images/avatar.png"
 
 # TypeIt config

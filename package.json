@@ -34,6 +34,7 @@
         "test": "yarn build server && node --require=./.pnp.cjs ./dist/server/server.js --test",
         "dev": "yarn sdks vscode && yarn pretty",
         "github": "act",
+        "reinstall": "yarn cache clean --all && yarn install",
         "lint": "eslint *.ts",
         "lint:html": "htmlproofer dist --check-html --allow-hash-href --empty-alt-ignore --disable-external",
         "build": "echo Building typescript server and website... && concurrently -m 1 \"yarn:build:*\"",

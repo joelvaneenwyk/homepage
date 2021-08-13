@@ -58,7 +58,10 @@
         "**/node_modules/**": true,
         "**/bower_components/**": true,
         "**/*.code-search": true,
-        "**/.pnp.*": true
+        "**/.pnp.*": true,
+        "**/*.min.css": true,
+        "**/*.min.js": true,
+        "**/*.min.js.map": true
     },
     "htmlhint.enable": false,
     "css.validate": false,
