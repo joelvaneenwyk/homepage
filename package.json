@@ -44,7 +44,7 @@
         "build:hugo": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
         "build:server": "ts-node ./src/tools/bundle-server.ts",
         "build:pretty": "yarn prettier --write dist/ .vscode/ *.json .*.json themes/base/.babelrc config.toml src/heroku/*.sh && ts-node ./src/tools/beautify.ts",
-        "heroku-build": "echo '[mycelio] Heroku build.' && yarn install && rm ./.gitignore",
+        "heroku-build": "echo '[mycelio] Heroku build.'",
         "heroku-postbuild": "bash ./src/heroku/clean.sh",
         "heroku-cleanup": "echo '[mycelio] Heroku cleanup step.'",
         "postinstall": "yarn build:server",
