@@ -1,6 +1,5 @@
 # Design contemplations
 
-
 Today started out bright and early with a trip to the driving class, which lasted all the way to 4pm. It was quite awful. The class was filled with mostly teenagers, and some people from other countries that had never driven a car before. All that to say I was a bit out of place...college student seeking cheaper insurance...weird. We spent most of the time watching cheesy videos on how people can die from being stupid on the road. It was...special. But it's over, so all is good.
 
 Once I got back from that I switched straight over to the engine. It's really starting to come together. A lot of the base code is now in place and functional, so I'm able to load a mesh and send it to the scene manager, which renders the mesh with the proper materials and everything. Not very special, but since it's been rebuilt from the ground-up with a new design, it's not a shabby accomplishment.
@@ -12,4 +11,3 @@ On Agents, I need to go into some of the custom controls I made ever so long ago
 Random link for today: [Project Offset](http://projectoffset.com/). If you haven't checked it out already, it has cool tech vids...so go check it out!
 
 Alright, enough ramblings. Off to bed...need to get an early start tomorrow.
-

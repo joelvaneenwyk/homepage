@@ -531,9 +531,9 @@ baidu = ""
 # Site SEO config
 [params.seo]
 # image URL
-image = "/images/Apple-Devices-Preview.png"
+image = ""
 # thumbnail URL
-thumbnailUrl = "/images/screenshot.png"
+thumbnailUrl = ""
 
 # Analytics config
 [params.analytics]
@@ -541,7 +541,7 @@ enable = false
 
 # Google Analytics
 [params.analytics.google]
-id = ""
+id = "UA-63489189-1"
 # whether to anonymize IP
 anonymizeIP = true
 

@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "D:/Projects/joelvaneenwyk/homepage",
+	"sourceRoot": "/home/jvaneenwyk/projects/homepage",
 	"sources": [
 		"themes/base/assets/css/style.scss",
 		"themes/base/assets/css/_variables.scss",

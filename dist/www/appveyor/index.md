@@ -1,6 +1,5 @@
 # AppVeyor Explorations
 
-
 After my very positive experience with Travis CI (see
 [Homepage Build](https://travis-ci.org/joelvaneenwyk/homepage)), I decided it was time to take a look at some Windows options for builds. This led me very quickly to [AppVeyor](https://www.appveyor.com/). But unfortunately, I don't have a Windows project to test this on, so I made one up.
 
@@ -12,8 +11,8 @@ You can find my work here: <https://github.com/joelvaneenwyk/dosbox>
 
 So the two tasks I wanted to achieve short-term:
 
-* Convert to VS2015
-* Have it build automatically with AppVeyor
+-   Convert to VS2015
+-   Have it build automatically with AppVeyor
 
 This was amazingly easy and already working here: <https://ci.appveyor.com/project/joelvaneenwyk/dosbox>
 
@@ -24,17 +23,16 @@ version: 1.0.{build}
 configuration: Release
 platform: x86
 install:
-- cmd: >-
-    git submodule update --init --recursive
-    python src\version.py include/version.h . none
+    - cmd: >-
+          git submodule update --init --recursive
+          python src\version.py include/version.h . none
 before_build:
-- cmd: build/build_dependencies.bat
+    - cmd: build/build_dependencies.bat
 build:
-  project: visualc_net/dosbox.sln
-  verbosity: minimal
+    project: visualc_net/dosbox.sln
+    verbosity: minimal
 ```
 
 We live in an amazing time. I wish we had such simple build scripts at work!
 
 Now that this is working, the next step is to get Emscripten build working.
-

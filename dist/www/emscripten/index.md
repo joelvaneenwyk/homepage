@@ -1,6 +1,5 @@
 # Emscripten
 
-
 As it happens, we can't actually build native plugins since VSCode is built off Javascript/Typescript.
 
 I have a vague memory of setting up Emscripten in the past and it not being that painful to setup, but this experience was less than pleasant.
@@ -21,19 +20,18 @@ That being said, I do think the project needs a lot of work and code review. The
 
 ## Related
 
-* <https://github.com/Microsoft/vscode/issues/658>
-* <https://github.com/Microsoft/vscode-vsce/issues/54>
-* <https://github.com/Microsoft/vscode/issues/1589>
-* <https://github.com/electron/electron/blob/master/docs/tutorial/using-native-node-modules.md>
-* <https://github.com/RLovelett/node-sourcekit/issues/14>
-* <https://github.com/cortezcristian/dosbox-client/tree/master/dosbox>
-* <https://github.com/caiiiycuk/js-dos.com/>
-* <https://code.visualstudio.com/docs/tools/samples>
-* <https://github.com/Microsoft/vscode-extension-samples/tree/master/previewhtml-sample>
+-   <https://github.com/Microsoft/vscode/issues/658>
+-   <https://github.com/Microsoft/vscode-vsce/issues/54>
+-   <https://github.com/Microsoft/vscode/issues/1589>
+-   <https://github.com/electron/electron/blob/master/docs/tutorial/using-native-node-modules.md>
+-   <https://github.com/RLovelett/node-sourcekit/issues/14>
+-   <https://github.com/cortezcristian/dosbox-client/tree/master/dosbox>
+-   <https://github.com/caiiiycuk/js-dos.com/>
+-   <https://code.visualstudio.com/docs/tools/samples>
+-   <https://github.com/Microsoft/vscode-extension-samples/tree/master/previewhtml-sample>
 
 ## Resources
 
-* <https://github.com/kripken/emscripten/blob/07b87426f898d6e9c677db291d9088c839197291/site/source/docs/building_from_source/manually_integrating_emscripten_with_vs2010.rst>
-* <https://github.com/juj/vs-tool>
-* <https://github.com/james-allison/vs-tool>
-
+-   <https://github.com/kripken/emscripten/blob/07b87426f898d6e9c677db291d9088c839197291/site/source/docs/building_from_source/manually_integrating_emscripten_with_vs2010.rst>
+-   <https://github.com/juj/vs-tool>
+-   <https://github.com/james-allison/vs-tool>

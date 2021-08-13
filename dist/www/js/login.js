@@ -1,7 +1,7 @@
 /*
-* Functions to handle logins on the frontend e.g. when a successful login
-* to Google is copmleted.
-*/
+ * Functions to handle logins on the frontend e.g. when a successful login
+ * to Google is copmleted.
+ */
 function onLoginSuccess(user) {
     let w = window;
     if (window.opener !== undefined && window.opener.customLog !== undefined) {
@@ -16,5 +16,7 @@ function onLoginSuccess(user) {
     }
     w.customLog("Closing window");
 
-    if (w !== window) { window.close(); }
+    if (w !== window) {
+        window.close();
+    }
 }

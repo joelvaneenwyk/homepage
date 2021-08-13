@@ -1,6 +1,5 @@
 # Image loading and XML
 
-
 Today was much more productive than yesterday. After getting back from shopping (needed some food desperately), I started work on the engine. Previously, my engine only supported TGAs for textures, which was fine before, but as this is more generic, it needed more format support. Therefore, looked around a bit and decided to use [DevIL](http://openil.sourceforge.net/). It's open source and under the Lesser GPL (a necessity since the engine might be used commercially). Plus, it supports a host of different formats: JPG, TGA, TIFF, etc etc...all packaged into a nice library. So, got that implemented into my engine and it's working beautifully. The loading code is now very small thanks to the library. I did, however, run into a bit of a hitch when implementing it. For some reason, all textures on the models I tested were completely messed up. Turns out I had to call:
 
 iluFlipImage();
@@ -12,4 +11,3 @@ Now that techniques, passes and all that have been implemented, I now need a way
 So that's pretty much where I stand now. Next on the agenda is to integrate my shader handling classes into the mix, so that I can get some per-pixel lighting, parallax mapping, and all that fun stuff implemented.
 
 Alright, that about does it...another update will be coming tomorrow.
-

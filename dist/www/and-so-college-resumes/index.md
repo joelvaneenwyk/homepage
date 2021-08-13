@@ -1,6 +1,5 @@
 # And so college resumes...
 
-
 It was certainly nice to have a bit of a break. I still did some homework, but I tried really hard to relax as much as possible. Worked some more on my engine and website...both are coming along nicely. Ran into somewhat of a snag with the engine, though.
 
 Was trying to split the engine up into separate dynamic libraries (they were all static before), and it was extremely easy for the render engine and scene graph, but my custom controls made in wxWidgets was a serious pain. Essentially, I wanted to compile a library that contained all of wxWidgets functions as well as my own, but it seems the only way to do this is include all the source files of wxWidgets into my project to compile it to a library. Strangely enough, you can't compile the static library of wxWidgets into your own dynamic library. I asked around on the wxWidgets forums, and that seems to be their conclusion as well. Seems terribly bizarre, but I'm not going to worry about it until I need to when I make an official release. Unfortunately, that whole mess pretty much killed my Friday as I worked most of the day on it....rather disappointing.
@@ -10,4 +9,3 @@ On the bright side, I played some B&W 2 as well as some SSX on Tour. Both are ve
 Think that pretty much sums up the last few days. Hope you all had a great weekend!
 
 EDIT: Was looking through the cg char forums and found this: [TSM 2.0](http://cgchar.toonstruck.com/forum/index.php?topic=4857.0). It's a really nice rig for Maya that's being developed for TSM 2.0. Go check it out!
-

@@ -1,2 +1,14 @@
+/.yarn/
+/dist/dev/
+/dist/server/
+/asserts/
+/content/
+/themes/
+/static/
+/server/data/
+/server/static/
+/server/views
+
 .pnp.cjs
-.yarn/
+*.html
+*.css

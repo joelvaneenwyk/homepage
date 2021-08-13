@@ -39,7 +39,7 @@
         "**/thirdparty": true
     },
     "liveServer.settings.port": 13555,
-    "liveServer.settings.root": "/dist",
+    "liveServer.settings.root": "/dist/www",
     "liveServer.settings.ignoreFiles": [
         ".vscode/**",
         ".tmp/**",
@@ -163,6 +163,7 @@
         "submodules",
         "thirdparty",
         "topojson",
+        "transpiled",
         "twemoji",
         "typeit",
         "v",

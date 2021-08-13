@@ -1,6 +1,5 @@
 # Web Programming for Console Developers
 
-
 As a C++ programmer by profession, every few years I look into the web and scoff at it. The tools are usually nowhere near the robustness I'm used to and the level of control I have is just not the same. As a type-safe programmer, Javascript upsets me and the likes of jQuery scare me.
 
 But over time I've come to realize that this is in great part due to my fear of the unknown. Yes, there are parts of web programming that are truly terrible (See [NPM left-pad Chaos](http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/)), but it's really coming around at least from my perspective. TypeScript and CoffeeScript exist for those of us that like some degree of type safety. NodeJS for Visual Studio is great and debugging works beautifully. And we have tools like Grunt which provide a 'compile' step for for code cleanup, validation, image optimization and much more.
@@ -19,25 +18,25 @@ So, I boiled it down to these fundamental goals:
 
 ### Backend
 
-* Heroku
-* NodeJS
-* Grunt
-* Express
-* HARP
+-   Heroku
+-   NodeJS
+-   Grunt
+-   Express
+-   HARP
 
 ### Frontend
 
-* jQuery
-* Bootstrap
-* SASS
-* EJS
+-   jQuery
+-   Bootstrap
+-   SASS
+-   EJS
 
 ### Tools
 
-* Windows 10
-* Visual Studio 2015
-* Sublime
-* Heroku CLI
+-   Windows 10
+-   Visual Studio 2015
+-   Sublime
+-   Heroku CLI
 
 ## Server Setup
 
@@ -47,19 +46,19 @@ To satisfy goals 2) and 3) this simply will not work for me. And then I found th
 
 To deploy, you simply connect it to your GitHub account which allows for private accounts as well. When you submit to GitHub it automatically pulls and builds it. Setup is easy, in the root of your project you define:
 
-* app.json
+-   app.json
 
 ```
 Basic description of your application.
 ```
 
-* Procfile
+-   Procfile
 
 ```
 Command to launch the web server (e.g. node server.js)
 ```
 
-* package.json
+-   package.json
 
 ```
 This is used by npm to store information about the package. Here you define dependencies, basic information like username and email, and so on.
@@ -71,7 +70,7 @@ Once you have these defined and a basic NodeJS server
 
 Heroku also has postgres support directly which can be very handy and easy to use connection using pgAdmin III. Details on connecting [using NodeJS][10]:
 
-* [Connecting in NodeJS](https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js)
+-   [Connecting in NodeJS](https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js)
 
 Also some details on [Connecting to Postgres](https://devcenter.heroku.com/articles/connecting-to-heroku-postgres-databases-from-outside-of-heroku)
 
@@ -90,16 +89,18 @@ connect to PostgreSQL server: FATAL: no pg_hba.conf entry for host "4X.XXX.XX.XX
 Turns out this was because I didn't enable SSL.
 
 ```javascript
-var pg = require('pg');
+var pg = require("pg");
 pg.defaults.ssl = true;
-var client = new pg.Client()
-pg.connect(process.env.PG_REMOTE_URL, function(err, client) {
+var client = new pg.Client();
+pg.connect(process.env.PG_REMOTE_URL, function (err, client) {
     if (err) {
-        console.log('Failed to connect to remote postgres. Connecting to local postgres');
+        console.log(
+            "Failed to connect to remote postgres. Connecting to local postgres"
+        );
         console.log(err);
-        pg.connect(process.env.PG_LOCAL_URL, function(err, client) {
+        pg.connect(process.env.PG_LOCAL_URL, function (err, client) {
             if (err) {
-                console.log('Failed to connect to local postgres');
+                console.log("Failed to connect to local postgres");
                 console.log(err);
             } else {
                 setupDatabase(client);
@@ -131,4 +132,3 @@ For live editing you have StackEdit and Prose.io and numerous others which all s
 [8]: https://help.disqus.com/customer/en/portal/articles/2158629
 [9]: https://www.godaddy.com/help/manually-forwarding-or-masking-your-domain-name-422
 [10]: http://mherman.org/blog/2015/02/12/postgresql-and-nodejs/ "Useful NodeJS and Postgres Tutorial"
-
