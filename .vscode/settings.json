@@ -1,5 +1,16 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+
+    "htmlhint.enable": false,
+    "css.validate": false,
+
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
@@ -8,22 +19,52 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
     },
-    "json.format.enable": false,
+    "json.format.enable": true,
+
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features",
         "editor.formatOnSave": true
     },
     "typescript.tsdk": ".yarn/sdks/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true,
+
+    "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+    "stylelint.stylelintPath": ".yarn/sdks/stylelint/lib/index.js",
+
     "eslint.nodePath": ".yarn/sdks",
     "eslint.format.enable": true,
     "eslint.alwaysShowStatus": true,
     "eslint.lintTask.enable": true,
     "eslint.run": "onSave",
-    "sortJSON.excludedFiles": ["package.json", "settings.json"],
-    "perl.enable": false,
+
+    "sortJSON.excludedFiles": [
+        "package.json",
+        "settings.json"
+    ],
+
     "prettier.enable": true,
-    "editor.formatOnSave": false,
+
+    "perl.enable": false,
+
+    "liveServer.settings.port": 13555,
+    "liveServer.settings.root": "/dist/www",
+    "liveServer.settings.ignoreFiles": [
+        ".vscode/**",
+        ".tmp/**",
+        "backup/**",
+        ".yarn/**",
+        "themes/**",
+        "**/*.scss",
+        "**/*.sass",
+        "**/*.ts"
+    ],
+
+    "files.associations": {
+        "tsconfig.json": "jsonc",
+        ".eslintrc.json": "jsonc",
+        "*.json.git": "jsonc"
+    },
+
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -38,18 +79,7 @@
         "**/typings": true,
         "**/thirdparty": true
     },
-    "liveServer.settings.port": 13555,
-    "liveServer.settings.root": "/dist/www",
-    "liveServer.settings.ignoreFiles": [
-        ".vscode/**",
-        ".tmp/**",
-        "backup/**",
-        ".yarn/**",
-        "themes/**",
-        "**/*.scss",
-        "**/*.sass",
-        "**/*.ts"
-    ],
+
     "search.exclude": {
         "**/.yarn": true,
         "**/backup/**": true,
@@ -63,21 +93,7 @@
         "**/*.min.js": true,
         "**/*.min.js.map": true
     },
-    "htmlhint.enable": false,
-    "css.validate": false,
-    "editor.codeActionsOnSave": {
-        "source.fixAll": true
-    },
-    "editor.tabSize": 4,
-    "editor.insertSpaces": true,
-    "editor.detectIndentation": false,
-    "files.associations": {
-        "tsconfig.json": "jsonc",
-        ".eslintrc.json": "jsonc",
-        "*.json.git": "jsonc"
-    },
-    "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-    "stylelint.stylelintPath": ".yarn/sdks/stylelint/lib/index.js",
+
     "cSpell.ignorePaths": [
         "**/package-lock.json",
         "**/node_modules/**",
@@ -111,6 +127,7 @@
         "eclint",
         "eenwyk",
         "emscripten",
+        "errno",
         "esbuild",
         "espnu",
         "esversion",
@@ -160,12 +177,14 @@
         "sdks",
         "segmentit",
         "siggraph",
+        "speedtest",
         "sslify",
         "stoponerror",
         "stylelint",
         "submodules",
         "thirdparty",
         "topojson",
+        "traceback",
         "transpiled",
         "twemoji",
         "typeit",
