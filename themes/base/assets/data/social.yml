@@ -501,9 +501,17 @@ email:
   Icon:
     Class: far fa-envelope fa-fw
 
-# 064: RSS
-rss:
+# 064: mobygames
+mobygames:
   Weight: 64
+  Prefix: https://www.mobygames.com/
+  Title: MobyGames
+  Icon:
+    Src: svg/icons/mobygames.svg
+
+# 065: RSS
+rss:
+  Weight: 65
   Url: /index.xml
   Title: RSS
   Newtab: true
