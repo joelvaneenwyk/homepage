@@ -1,10 +1,31 @@
 version: '3.8'
 
+volumes:
+  heroku_yarn_cache:
+  heroku_dist:
+  heroku_git:
+
 services:
   homepage:
     image: homepage
+    container_name: homepage_base
     build: .
     environment:
       NODE_ENV: production
     ports:
       - 3000
+
+  heroku:
+    image: heroku/heroku:20
+    container_name: homepage_heroku
+    volumes:
+      - .:/app/
+      - ./.git/:/app/.git/:ro
+      - heroku_yarn_cache:/app/.yarn/cache/
+      - heroku_dist:/app/dist/
+
+    # docker run -i
+    stdin_open: true
+
+    # docker run -t
+    tty: true
