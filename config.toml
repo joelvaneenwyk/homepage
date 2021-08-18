@@ -4,7 +4,7 @@ title = "Joel Van Eenwyk"
 theme = "base"
 publishDir = "dist/www"
 enableEmoji = true
-googleAnalytics = ""
+googleAnalytics = "UA-63489189-1"
 defaultContentLanguage = "en"
 enableRobotsTXT = true
 enableGitInfo = true
@@ -154,7 +154,17 @@ weight = 6
 # site description
 description = "About Joel Van Eenwyk"
 # site keywords
-keywords = ["Theme", "Hugo"]
+keywords = [
+  "programmer",
+  "jvaneenwyk",
+  "van eenwyk",
+  "joel van eenwyk",
+  "bingo",
+  "vfx journal",
+  "vfx",
+  "houdini",
+  "haskell"
+]
 
 # App icon config
 [languages.en.params.app]
@@ -230,6 +240,7 @@ Linkedin = "joelvaneenwyk"
 Twitter = "joelvaneenwyk"
 Instagram = "jvaneenwyk"
 Email = "joel.vaneenwyk@gmail.com"
+MobyGames = "developer/sheet/view/developerId,231132"
 RSS = true
 
 [params]
