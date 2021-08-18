@@ -50,7 +50,6 @@ if [ ! -x "$(command -v go)" ] || (( minor < 16 )); then
 
     go env -w GOROOT="$GOROOT"
     go env -w GOBIN="$GOROOT/bin"
-
 fi
 go version
 

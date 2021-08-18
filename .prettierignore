@@ -12,3 +12,4 @@
 .pnp.cjs
 *.html
 *.css
+yarn.lock

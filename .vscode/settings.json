@@ -29,7 +29,9 @@
     "typescript.enablePromptUseWorkspaceTsdk": true,
 
     "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+
     "stylelint.stylelintPath": ".yarn/sdks/stylelint/lib/index.js",
+    "stylelint.enable": false,
 
     "eslint.nodePath": ".yarn/sdks",
     "eslint.format.enable": true,
@@ -37,10 +39,7 @@
     "eslint.lintTask.enable": true,
     "eslint.run": "onSave",
 
-    "sortJSON.excludedFiles": [
-        "package.json",
-        "settings.json"
-    ],
+    "sortJSON.excludedFiles": ["package.json", "settings.json"],
 
     "prettier.enable": true,
 
