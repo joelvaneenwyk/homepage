@@ -5701,7 +5701,6 @@ fsevents@~2.3.2:
     prettier-eslint: ^13.0.0
     prettier-plugin-sh: ^0.7.1
     prettier-plugin-toml: ^0.3.1
-    run-script-os: ^1.1.6
     segmentit: ^2.0.3
     stylelint: ^13.13.1
     stylelint-config-prettier: ^8.0.2
@@ -8939,16 +8938,6 @@ fsevents@~2.3.2:
   dependencies:
     queue-microtask: ^1.2.2
   checksum: cb4f97ad25a75ebc11a8ef4e33bb962f8af8516bb2001082ceabd8902e15b98f4b84b4f8a9b222e5d57fc3bd1379c483886ed4619367a7680dad65316993021d
-  languageName: node
-  linkType: hard
-
-"run-script-os@npm:^1.1.6":
-  version: 1.1.6
-  resolution: "run-script-os@npm:1.1.6"
-  bin:
-    run-os: index.js
-    run-script-os: index.js
-  checksum: 395c9576c1645867897901bb7f16406a7da06de8962b23e9879c91790248f6b3fb0b2a9dff6821cd77f3a9fb284e956118e39a57aa40280f71b12119555dad84
   languageName: node
   linkType: hard
 

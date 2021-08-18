@@ -6,71 +6,113 @@
 
 set -e
 
-echo "Initiated setup process for homepage."
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && cd ../../ && pwd)"
+ENV_SETUP="$ROOT_DIR/src/utilities/env.sh"
 
-if [ ! -x "$(command -v sudo)" ]; then
-    echo "Installing missing 'sudo' command"
+function _add_profile_hook() {
+    _env="$(printf "\n. \"%s\"\n" "$ENV_SETUP")"
+    if grep -q "env.sh" "$HOME/.profile"; then
+        echo "Profile already updated."
+    else
+        printf "%s" "$_env" >> "$HOME/.profile"
+        echo "Added homepage environment script to profile."
 
-    mkdir -p "/var/lib/apt/lists/partial"
+        echo "------------------------------"
+        ls -la "$ROOT_DIR"
 
-    apt-get update
-    apt-get install -y sudo
-else
-    sudo apt-get update
-fi
+        echo "------------------------------"
+        ls -la "$ROOT_DIR/.yarn"
 
-sudo apt-get install -y wget build-essential gcc g++ make git curl
-
-if [ -x "$(command -v go)" ]; then
-    version=$(go version | { read -r _ _ v _; echo "${v#go}"; })
-    major=$(echo "$version" | cut -d. -f1)
-    minor=$(echo "$version" | cut -d. -f2)
-    revision=$(echo "$version" | cut -d. -f3)
-    echo "Go v$major.$minor.$revision"
-fi
-
-if [ ! -x "$(command -v go)" ] || (( minor < 16 )); then
-    # Install Golang
-    if [ ! -f "/tmp/go1.16.7.linux-amd64.tar.gz" ]; then
-        wget https://dl.google.com/go/go1.16.7.linux-amd64.tar.gz --directory-prefix=/tmp/
+        echo "------------------------------"
     fi
 
-    sudo rm -rf "/tmp/go"
-    sudo tar -xvf "/tmp/go1.16.7.linux-amd64.tar.gz" --directory "/tmp/"
-    sudo rm -rf "/usr/local/go"
-    sudo mv "/tmp/go" "/usr/local"
-    echo "Updated 'go' install: '/usr/local/go'"
+    # shellcheck source=env.sh
+    . "$ENV_SETUP"
+}
 
-    export GOROOT="/usr/local/go"
-    export GOBIN="$GOROOT/bin"
-    export PATH="$GOBIN:$PATH"
+function _sudo() {
+    if [ "$(whoami)" == "root" ]; then
+        "$@"
+    else
+        if [ ! -x "$(command -v sudo)" ]; then
+            echo "Installing missing 'sudo' command"
+            mkdir -p "/var/lib/apt/lists/partial"
+            apt-get update
+            apt-get install -y sudo
+        fi
 
-    GOPATH="$(go env GOPATH)"
-    export GOPATH
+        sudo PATH="$PATH" GOROOT="${GOROOT:-}" GOBIN="${GOBIN:-}" GOPATH="${GOPATH:-}" -E "$@"
+    fi
+}
 
-    go env -w GOROOT="$GOROOT"
-    go env -w GOBIN="$GOROOT/bin"
+function _apt_get() {
+    _sudo apt-get "$@"
+}
+
+_tmp="$HOME/.tmp"
+mkdir -p "$_tmp"
+
+echo "Initiated homepage setup: '$ROOT_DIR'"
+_add_profile_hook
+_apt_get update
+_apt_get install -y wget build-essential gcc g++ make git curl
+
+if [ -x "$(command -v go)" ]; then
+    _go_version=$(go version | { read -r _ _ v _; echo "${v#go}"; })
+    go_minor=$(echo "$_go_version" | cut -d. -f2)
+fi
+
+if [ ! -x "$(command -v go)" ] || (( go_minor < 16 )); then
+    _go_version="1.17"
+    _go_archive="go$_go_version.linux-amd64.tar.gz"
+
+    # Install Golang
+    if [ ! -f "$_tmp/$_go_archive" ]; then
+        wget "https://dl.google.com/go/$_go_archive" --directory-prefix="$_tmp/"
+    fi
+
+    rm -rf "$_tmp/go"
+    if tar -xvf "$_tmp/$_go_archive" --directory "$_tmp/" >/dev/null 2>&1; then
+        _sudo rm -rf "/usr/local/go"
+        _sudo mv "$_tmp/go" "/usr/local"
+        echo "Updated 'go' install: '/usr/local/go'"
+
+        # shellcheck source=env.sh
+        . "$ENV_SETUP"
+    else
+        echo "Failed to extarct 'go' archive."
+    fi
 fi
 go version
 
 # Install NodeJS
 if [ ! -x "$(command -v node)" ] || [ ! -x "$(command -v npm)" ]; then
-    curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+    curl -fsSL https://deb.nodesource.com/setup_current.x | _sudo bash -
+    _apt_get install -y nodejs
 fi
 
 # Install Yarn
 if [ ! -x "$(command -v yarn)" ]; then
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-    echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt-get update && sudo apt-get -y install yarn
+    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | _sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+    echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | _sudo tee /etc/apt/sources.list.d/yarn.list
+    _apt_get update && _apt_get -y install yarn
 fi
 
 # Install Hugo
 if [ ! -x "$(command -v hugo)" ]; then
-    rm -rf "/tmp/hugo"
-    git -c advice.detachedHead=false clone -b "v0.87.0" "https://github.com/gohugoio/hugo.git" "/tmp/hugo"
-    cd "/tmp/hugo" || true
-    sudo PATH="$PATH" GOROOT="$GOROOT" GOBIN="$GOBIN" GOPATH="$GOPATH" "$GOBIN/go" install --tags extended
+    rm -rf "$_tmp/hugo"
+    git -c advice.detachedHead=false clone -b "v0.87.0" "https://github.com/gohugoio/hugo.git" "$_tmp/hugo"
+
+    _pwd=$(pwd)
+    cd "$_tmp/hugo"
+
+    if _sudo "$GOBIN/go" install --tags extended; then
+        echo "Installed 'hugo' static site generator."
+    else
+        echo "Failed to install 'hugo' static site generator."
+    fi
+
+    # Restore current directory
+    cd "$_pwd"
 fi
 hugo version

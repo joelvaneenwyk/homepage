@@ -76,7 +76,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier-eslint", "npm:13.0.0"],
             ["prettier-plugin-sh", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.7.1"],
             ["prettier-plugin-toml", "npm:0.3.1"],
-            ["run-script-os", "npm:1.1.6"],
             ["segmentit", "npm:2.0.3"],
             ["stylelint", "npm:13.13.1"],
             ["stylelint-config-prettier", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:8.0.2"],
@@ -7637,7 +7636,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier-eslint", "npm:13.0.0"],
             ["prettier-plugin-sh", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.7.1"],
             ["prettier-plugin-toml", "npm:0.3.1"],
-            ["run-script-os", "npm:1.1.6"],
             ["segmentit", "npm:2.0.3"],
             ["stylelint", "npm:13.13.1"],
             ["stylelint-config-prettier", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:8.0.2"],
@@ -11352,15 +11350,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["run-parallel", "npm:1.2.0"],
             ["queue-microtask", "npm:1.2.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["run-script-os", [
-        ["npm:1.1.6", {
-          "packageLocation": "./.yarn/cache/run-script-os-npm-1.1.6-52dfa875b6-395c9576c1.zip/node_modules/run-script-os/",
-          "packageDependencies": [
-            ["run-script-os", "npm:1.1.6"]
           ],
           "linkType": "HARD",
         }]
