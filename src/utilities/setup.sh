@@ -42,7 +42,9 @@ function _is_heroku_instance() {
     fi
 
     if [ ! -d "/var/lib/apt/lists/partial" ]; then
-        return 0
+        if ! mkdir -p "/var/lib/apt/lists/partial"; then
+            return 0
+        fi
     fi
 
     return 1
@@ -71,7 +73,9 @@ mkdir -p "$_tmp"
 echo "Initiated homepage setup: '$ROOT_DIR'"
 _add_profile_hook
 
-if ! _is_heroku_instance; then
+if _is_heroku_instance; then
+    echo "Skipping package download as we are running in Heroku instance."
+else
     _apt_get update
     _apt_get install -y wget build-essential gcc g++ make git curl
 fi
@@ -87,7 +91,7 @@ if [ ! -x "$(command -v go)" ] || (( go_minor < 16 )); then
 
     # Install Golang
     if [ ! -f "$_tmp/$_go_archive" ]; then
-        wget "https://dl.google.com/go/$_go_archive" --directory-prefix="$_tmp/"
+        wget --quiet "https://dl.google.com/go/$_go_archive" --directory-prefix="$_tmp/"
     fi
 
     rm -rf "$_tmp/go"
