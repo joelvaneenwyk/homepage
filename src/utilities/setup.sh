@@ -97,7 +97,7 @@ if [ ! -x "$(command -v go)" ] || (( go_minor < 16 )); then
         fi
 
         if [ ! -d "/usr/local/go" ]; then
-            _sudo cp "$_tmp/go" "/usr/local"
+            _sudo cp -r "$_tmp/go" "/usr/local"
             echo "Updated 'go' install: '/usr/local/go'"
         fi
 
