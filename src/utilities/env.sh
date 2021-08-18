@@ -1,7 +1,10 @@
 #!/usr/bin/env sh
 
+export LOCAL="$HOME/local"
+mkdir -p "$LOCAL" || true
+
 if [ -z "${GOROOT:-}" ]; then
-    export GOROOT="/usr/local/go"
+    export GOROOT="$LOCAL/go"
     export GOBIN="$GOROOT/bin"
     export PATH="$GOBIN:$PATH"
 fi

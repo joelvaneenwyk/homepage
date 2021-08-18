@@ -93,12 +93,12 @@ if [ ! -x "$(command -v go)" ] || (( go_minor < 16 )); then
     rm -rf "$_tmp/go"
     if tar -xvf "$_tmp/$_go_archive" --directory "$_tmp/" >/dev/null 2>&1; then
         if ! _is_heroku_instance; then
-            _sudo rm -rf "/usr/local/go"
+            _sudo rm -rf "$GOROOT"
         fi
 
-        if [ ! -d "/usr/local/go" ]; then
-            _sudo cp -r "$_tmp/go" "/usr/local"
-            echo "Updated 'go' install: '/usr/local/go'"
+        if [ ! -d "$GOROOT" ]; then
+            _sudo cp -r "$_tmp/go" "$LOCAL"
+            echo "Updated 'go' install: '$GOROOT'"
         fi
 
         # shellcheck source=env.sh
