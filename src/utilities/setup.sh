@@ -7,14 +7,20 @@
 set -e
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && cd ../../ && pwd)"
-ENV_SETUP="$ROOT_DIR/src/utilities/env.sh"
+ENV_SCRIPT="env.sh"
+ENV_SCRIPT_PATH="$ROOT_DIR/src/utilities/$ENV_SCRIPT"
 
 function _add_profile_hook() {
-    _env="$(printf "\n. \"%s\"\n" "$ENV_SETUP")"
-    if grep -q "env.sh" "$HOME/.profile"; then
+    _env="$(printf "\n. \"%s\"\n" "$ENV_SCRIPT_PATH")"
+    _profile="$HOME/.profile"
+
+    mkdir -p "$(dirname "$_profile")"
+    touch "$_profile"
+
+    if grep -q "$ENV_SCRIPT" "$_profile"; then
         echo "Profile already updated."
     else
-        printf "%s" "$_env" >> "$HOME/.profile"
+        printf "%s" "$_env" >> "$_profile"
         echo "Added homepage environment script to profile."
 
         echo "------------------------------"
@@ -27,16 +33,26 @@ function _add_profile_hook() {
     fi
 
     # shellcheck source=env.sh
-    . "$ENV_SETUP"
+    . "$ENV_SCRIPT_PATH"
+}
+
+function _is_heroku_instance() {
+    if [ "$(whoami)" == "app" ]; then
+        return 0
+    fi
+
+    if [ ! -d "/var/lib/apt/lists/partial" ]; then
+        return 0
+    fi
+
+    return 1
 }
 
 function _sudo() {
-    if [ "$(whoami)" == "root" ]; then
+    if [ "$(whoami)" == "root" ] || _is_heroku_instance; then
         "$@"
     else
         if [ ! -x "$(command -v sudo)" ]; then
-            echo "Installing missing 'sudo' command"
-            mkdir -p "/var/lib/apt/lists/partial"
             apt-get update
             apt-get install -y sudo
         fi
@@ -54,8 +70,11 @@ mkdir -p "$_tmp"
 
 echo "Initiated homepage setup: '$ROOT_DIR'"
 _add_profile_hook
-_apt_get update
-_apt_get install -y wget build-essential gcc g++ make git curl
+
+if ! _is_heroku_instance; then
+    _apt_get update
+    _apt_get install -y wget build-essential gcc g++ make git curl
+fi
 
 if [ -x "$(command -v go)" ]; then
     _go_version=$(go version | { read -r _ _ v _; echo "${v#go}"; })
@@ -78,7 +97,7 @@ if [ ! -x "$(command -v go)" ] || (( go_minor < 16 )); then
         echo "Updated 'go' install: '/usr/local/go'"
 
         # shellcheck source=env.sh
-        . "$ENV_SETUP"
+        . "$ENV_SCRIPT_PATH"
     else
         echo "Failed to extarct 'go' archive."
     fi
@@ -95,7 +114,8 @@ fi
 if [ ! -x "$(command -v yarn)" ]; then
     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | _sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
     echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | _sudo tee /etc/apt/sources.list.d/yarn.list
-    _apt_get update && _apt_get -y install yarn
+    _apt_get update
+    _apt_get -y install yarn
 fi
 
 # Install Hugo
