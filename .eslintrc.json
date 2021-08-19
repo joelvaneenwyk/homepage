@@ -18,7 +18,6 @@
     "plugins": ["@typescript-eslint"],
     "ignorePatterns": ["themes/base/assets/lib/**", "src/server/cheeses/output/**", "dist/**", "**/*.min.js", "**/newrelic.js"],
     "rules": {
-        // enable additional rules
         "indent": ["error", 4],
         "max-len": ["error", { "code": 130 }],
         "linebreak-style": "off",
@@ -27,10 +26,7 @@
         "arrow-body-style": ["error", "as-needed"],
         "prefer-arrow-callback": "off",
         "sort-imports": "off",
-
-        // override default options for rules from base configurations
         "no-cond-assign": ["error", "always"],
-
         "import/first": "off",
         "comma-dangle": [
             "error",
@@ -42,8 +38,6 @@
                 "functions": "never"
             }
         ],
-
-        // disable rules from base configurations
         "no-console": "off"
     }
 }

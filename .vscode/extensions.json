@@ -6,6 +6,7 @@
         "stylelint.vscode-stylelint",
         "tombonnike.vscode-status-bar-format-toggle",
         "ritwickdey.liveserver",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "budparr.language-hugo-vscode"
     ]
 }

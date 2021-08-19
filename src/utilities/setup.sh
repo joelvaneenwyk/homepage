@@ -108,7 +108,7 @@ if [ ! -x "$(command -v go)" ] || (( go_minor < 16 )); then
         # shellcheck source=env.sh
         . "$ENV_SCRIPT_PATH"
     else
-        echo "Failed to extarct 'go' archive."
+        echo "Failed to extract 'go' archive."
     fi
 fi
 go version

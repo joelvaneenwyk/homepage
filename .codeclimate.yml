@@ -16,17 +16,19 @@ engines:
     enabled: true
   radon:
     enabled: true
+
 ratings:
   paths:
   - "**.css"
   - "**.inc"
   - "**.js"
-  - "**.jsx"
+  - "**.ts"
   - "**.module"
   - "**.php"
   - "**.py"
   - "**.rb"
+
 exclude_paths:
-  - "source/cheeses/output/"
+  - "src/server/deprecated/cheeses/output/"
   - "typings/"
   - "**.pdf"

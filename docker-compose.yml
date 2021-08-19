@@ -2,6 +2,7 @@ version: '3.8'
 
 volumes:
   heroku_yarn_cache:
+  heroku_yarn_unplugged:
   heroku_dist:
   heroku_git:
 
@@ -20,8 +21,9 @@ services:
     container_name: homepage_heroku
     volumes:
       - .:/app/
-      - heroku_git:/app/.git/
+      - ./dist/tmp/git/:/app/.git/
       - heroku_yarn_cache:/app/.yarn/cache/
+      - heroku_yarn_unplugged:/app/.yarn/unplugged/
       - heroku_dist:/app/dist/
 
     # docker run -i

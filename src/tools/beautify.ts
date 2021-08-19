@@ -22,6 +22,11 @@ function getFiles(directory: fs.PathLike) {
     return files;
 }
 
+function getRelativePath(inputPath: string) {
+    const absolutePath = path.resolve("./");
+    return inputPath.replace(absolutePath, "").replace(/\\/g, "/");
+}
+
 const files = getFiles("./dist/");
 files.filter((filename) => filename.includes(".html")).forEach((filename) => {
     const data = fs.readFileSync(filename, "utf8");
@@ -35,6 +40,6 @@ files.filter((filename) => filename.includes(".html")).forEach((filename) => {
 
     if (data !== pretty) {
         fs.writeFileSync(filename, pretty);
-        console.log(`Updated file: '${filename}'`);
+        console.log(`Beautified: '${getRelativePath(filename)}'`);
     }
 });
