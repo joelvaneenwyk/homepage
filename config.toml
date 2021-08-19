@@ -4,7 +4,6 @@ title = "Joel Van Eenwyk"
 theme = "base"
 publishDir = "dist/www"
 enableEmoji = true
-googleAnalytics = "UA-63489189-1"
 defaultContentLanguage = "en"
 enableRobotsTXT = true
 enableGitInfo = true
@@ -37,9 +36,6 @@ posts = ":filename"
 
 # Privacy config (https://gohugo.io/about/hugo-and-gdpr/)
 [privacy]
-
-# privacy of the Google Analytics (replaced by params.analytics.google)
-[privacy.googleAnalytics]
 
 # ...
 [privacy.twitter]
@@ -85,10 +81,8 @@ languageName = "English"
 hasCJKLanguage = false
 # default amount of posts in each pages
 paginate = 12
-# [UA-XXXXXXXX-X] google analytics code
-googleAnalytics = ""
 # copyright description used only for seo schema
-copyright = "This work is licensed under a MIT License."
+copyright = "This work is licensed under an MIT License."
 
 # Menu config
 [languages.en.menu]
@@ -173,7 +167,7 @@ title = "Joel Van Eenwyk"
 # whether to omit favicon resource links
 noFavicon = false
 # modern SVG favicon to use in place of older style .png and .ico files
-svgFavicon = ""
+svgFavicon = "/favicon.svg"
 # Android browser theme color
 themeColor = "#ffffff"
 # Safari mask icon color
@@ -254,14 +248,13 @@ defaultTheme = "auto"
 # public git repo url only then enableGitInfo is true
 gitRepo = "https://github.com/joelvaneenwyk/homepage"
 # which hash function used for SRI, when empty, no SRI is used ("sha256", "sha384", "sha512", "md5")
-fingerprint = ""
+fingerprint = "sha512"
 # date format
 dateFormat = "2006-01-02"
 # website images for Open Graph and Twitter Cards
 images = ["/logo.png"]
 
 # Header config
-# 页面头部导航栏配置
 [params.header]
 # desktop header mode ("fixed", "normal", "auto")
 desktopMode = "fixed"
@@ -273,7 +266,6 @@ mobileMode = "auto"
 # URL of the LOGO
 logo = "/images/jve_stamp_bright_red.png"
 # title name
-# 标题名称
 name = "  Joel Van Eenwyk"
 # you can add extra information before the name (HTML format is supported), such as icons
 pre = "" # "<i class='fas fa-laptop-code'></i>"
@@ -283,7 +275,6 @@ post = ""
 typeit = false
 
 # Footer config
-# 页面底部信息配置
 [params.footer]
 enable = true
 # Custom content (HTML format is supported)
@@ -296,8 +287,6 @@ copyright = true
 author = true
 # site creation time
 since = 2021
-# ICP info only in China (HTML format is supported)
-icp = ""
 # license info (HTML format is supported)
 license = '<a rel="license external nofollow noopener noreffer" href="https://opensource.org/licenses/MIT/" target="_blank">MIT License</a>'
 
@@ -321,28 +310,18 @@ rss = 10
 
 # Page config
 [params.page]
-# whether to hide a page from home page
 hiddenFromHomePage = false
-# whether to hide a page from search results
 hiddenFromSearch = false
-# whether to enable twemoji
 twemoji = false
-# whether to enable lightgallery
 lightgallery = false
-# whether to enable the ruby extended syntax
 ruby = true
-# whether to enable the fraction extended syntax
 fraction = true
-# whether to enable the fontawesome extended syntax
 fontawesome = true
-# whether to show link to Raw Markdown content of the content
 linkToMarkdown = true
-# whether to show the full text content in RSS
 rssFullText = false
 
 # Table of the contents config
 [params.page.toc]
-# whether to enable the table of the contents
 enable = true
 # whether to keep the static table of the contents in front of the post
 keepStatic = false
@@ -354,7 +333,7 @@ auto = true
 # whether to show the copy button of the code block
 copy = true
 # the maximum number of lines of displayed code by default
-maxShownLines = 10
+maxShownLines = 20
 
 # KaTeX mathematical formulas config (KaTeX https://katex.org/)
 [params.page.math]
@@ -391,32 +370,7 @@ fullscreen = true
 [params.page.share]
 enable = true
 Twitter = true
-Facebook = true
-Linkedin = false
-Whatsapp = false
-Pinterest = false
-Tumblr = false
-HackerNews = true
-Reddit = false
-VK = false
-Buffer = false
-Xing = false
-Line = true
-Instapaper = false
-Pocket = false
-Digg = false
-Stumbleupon = false
-Flipboard = false
-Weibo = true
-Renren = false
-Myspace = false
-Blogger = false
-Baidu = false
-Odnoklassniki = false
-Evernote = false
-Skype = false
-Trello = false
-Mix = false
+Reddit = true
 
 # Comment config
 [params.page.comment]
@@ -424,9 +378,9 @@ enable = true
 
 # Disqus comment config (https://disqus.com/)
 [params.page.comment.disqus]
-enable = false
+enable = true
 # Disqus shortname to use Disqus in posts
-shortname = ""
+shortname = "joelvaneenwyk"
 
 # Gitalk comment config (https://github.com/gitalk/gitalk)
 [params.page.comment.gitalk]
@@ -435,66 +389,6 @@ owner = ""
 repo = ""
 clientId = ""
 clientSecret = ""
-
-# Valine comment config (https://github.com/xCss/Valine)
-[params.page.comment.valine]
-enable = true
-appId = "QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI"
-appKey = "WBmoGyJtbqUswvfLh6L8iEBr"
-placeholder = ""
-avatar = "mp"
-meta = ""
-pageSize = 10
-lang = ""
-visitor = true
-recordIP = true
-highlight = true
-enableQQ = false
-serverURLs = "https://leancloud.hugoloveit.com"
-# emoji data file name, default is "google.yml"
-# ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
-# located in "themes/LoveIt/assets/data/emoji/" directory
-# you can store your own data files in the same path under your project:
-# "assets/data/emoji/"
-# emoji 数据文件名称, 默认是 "google.yml"
-# ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
-# 位于 "themes/LoveIt/assets/data/emoji/" 目录
-# 可以在你的项目下相同路径存放你自己的数据文件:
-# "assets/data/emoji/"
-emoji = ""
-
-# Facebook comment config (https://developers.facebook.com/docs/plugins/comments)
-[params.page.comment.facebook]
-enable = false
-width = "100%"
-numPosts = 10
-appId = ""
-languageCode = ""
-
-# Telegram comments config (https://comments.app/)
-[params.page.comment.telegram]
-enable = false
-siteID = ""
-limit = 5
-height = ""
-color = ""
-colorful = true
-dislikes = false
-outlined = false
-
-# Commento comment config (https://commento.io/)
-[params.page.comment.commento]
-enable = false
-
-# Utterances comment config (https://utteranc.es/)
-[params.page.comment.utterances]
-enable = false
-# owner/repo
-repo = ""
-issueTerm = "pathname"
-label = ""
-lightTheme = "github-light"
-darkTheme = "github-dark"
 
 # Third-party library config
 [params.page.library]
@@ -547,19 +441,14 @@ thumbnailUrl = ""
 
 # Analytics config
 [params.analytics]
-enable = false
+enable = true
 
 # Google Analytics
 [params.analytics.google]
+enable = true
 id = "UA-63489189-1"
 # whether to anonymize IP
 anonymizeIP = true
-
-# Fathom Analytics
-[params.analytics.fathom]
-id = ""
-# server url for your tracker if you're self hosting
-server = ""
 
 # Cookie consent config
 [params.cookieconsent]
