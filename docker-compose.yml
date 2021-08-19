@@ -20,7 +20,7 @@ services:
     container_name: homepage_heroku
     volumes:
       - .:/app/
-      - ./.git/:/app/.git/:ro
+      - heroku_git:/app/.git/
       - heroku_yarn_cache:/app/.yarn/cache/
       - heroku_dist:/app/dist/
 
