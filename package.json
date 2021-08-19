@@ -44,7 +44,6 @@
         "build:server": "ts-node ./src/tools/bundle-server.ts",
         "build:pretty": "yarn prettier --write dist/ .vscode/ *.json .*.json themes/base/.babelrc config.toml src/heroku/*.sh && ts-node ./src/tools/beautify.ts",
         "heroku-prebuild": "bash ./src/heroku/prebuild.sh",
-        "heroku-postbuild": "bash ./src/heroku/postbuild.sh",
         "heroku-cleanup": "bash ./src/heroku/cleanup.sh",
         "prepublishOnly": "pinst --disable",
         "postpublish": "pinst --enable"
