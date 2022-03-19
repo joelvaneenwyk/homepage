@@ -18,7 +18,7 @@
         "homepage"
     ],
     "private": true,
-    "packageManager": "yarn@3.0.1",
+    "packageManager": "yarn@3.2.0",
     "engines": {
         "node": "^14.13.0",
         "npm": "^7.19.0"

@@ -167,6 +167,7 @@
         "postpublish",
         "prebuild",
         "preinstall",
+        "procfile",
         "readonly",
         "relaxerror",
         "repos",

@@ -5,7 +5,6 @@ These are the pages and source for [joelvaneenwyk.github.io](https://joelvaneenw
 [![Build Status](https://travis-ci.org/joelvaneenwyk/homepage.svg?branch=main)](https://travis-ci.org/joelvaneenwyk/homepage)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/joelvaneenwyk/homepage?branch=main&svg=true)](https://ci.appveyor.com/project/joelvaneenwyk/homepage)
 [![Code Climate](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/gpa.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage) [![Test Coverage](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/coverage.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage/coverage)
-[![Dependency Status](https://david-dm.org/joelvaneenwyk/homepage.svg)](https://david-dm.org/joelvaneenwyk/homepage)
 
 This is the source code for the homepage of Joel Van Eenwyk (<https://www.joelvaneenwyk.com>). Going open source was not my original plan for this, but there are a lot of benefits to doing this. Perhaps my favorite reason being continuous integration (CI) support for free if hosted on a public repository.
 
