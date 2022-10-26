@@ -3017,7 +3017,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cross-spawn", "npm:7.0.3"],\
             ["diff", "npm:4.0.2"],\
             ["globby", "npm:11.0.4"],\
-            ["got", "npm:11.8.2"],\
+            ["got", "npm:11.8.5"],\
             ["json-file-plus", "npm:3.3.1"],\
             ["lodash", "npm:4.17.21"],\
             ["micromatch", "npm:4.0.4"],\
@@ -3056,7 +3056,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cross-spawn", "npm:7.0.3"],\
             ["diff", "npm:4.0.2"],\
             ["globby", "npm:11.0.4"],\
-            ["got", "npm:11.8.2"],\
+            ["got", "npm:11.8.5"],\
             ["json-file-plus", "npm:3.3.1"],\
             ["lodash", "npm:4.17.21"],\
             ["micromatch", "npm:4.0.4"],\
@@ -5701,7 +5701,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["core-js", [\
         ["npm:3.16.2", {\
-          "packageLocation": "./.yarn/unplugged/core-js-npm-3.16.2-c7ce9e8d48/node_modules/core-js/",\
+          "packageLocation": "./.yarn/cache/core-js-npm-3.16.2-c7ce9e8d48-f48b988ab6.zip/node_modules/core-js/",\
           "packageDependencies": [\
             ["core-js", "npm:3.16.2"]\
           ],\
@@ -6408,7 +6408,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["esbuild", [\
         ["npm:0.12.20", {\
-          "packageLocation": "./.yarn/unplugged/esbuild-npm-0.12.20-4f4062e84d/node_modules/esbuild/",\
+          "packageLocation": "./.yarn/cache/esbuild-npm-0.12.20-4f4062e84d-52a67e06a6.zip/node_modules/esbuild/",\
           "packageDependencies": [\
             ["esbuild", "npm:0.12.20"]\
           ],\
@@ -7414,10 +7414,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["got", [\
-        ["npm:11.8.2", {\
-          "packageLocation": "./.yarn/cache/got-npm-11.8.2-c1eb105458-41ad7bf74f.zip/node_modules/got/",\
+        ["npm:11.8.5", {\
+          "packageLocation": "./.yarn/cache/got-npm-11.8.5-787b5e3116-2de8a1bbda.zip/node_modules/got/",\
           "packageDependencies": [\
-            ["got", "npm:11.8.2"],\
+            ["got", "npm:11.8.5"],\
             ["@sindresorhus/is", "npm:4.0.1"],\
             ["@szmarczak/http-timer", "npm:4.0.6"],\
             ["@types/cacheable-request", "npm:6.0.2"],\
