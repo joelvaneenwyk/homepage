@@ -4907,7 +4907,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["readable-stream", "npm:2.3.7"],\
             ["resolve", "patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=07638b"],\
             ["shasum-object", "npm:1.0.0"],\
-            ["shell-quote", "npm:1.7.2"],\
+            ["shell-quote", "npm:1.7.4"],\
             ["stream-browserify", "npm:3.0.0"],\
             ["stream-http", "npm:3.2.0"],\
             ["string_decoder", "npm:1.3.0"],\
@@ -5701,7 +5701,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["core-js", [\
         ["npm:3.16.2", {\
-          "packageLocation": "./.yarn/unplugged/core-js-npm-3.16.2-c7ce9e8d48/node_modules/core-js/",\
+          "packageLocation": "./.yarn/cache/core-js-npm-3.16.2-c7ce9e8d48-f48b988ab6.zip/node_modules/core-js/",\
           "packageDependencies": [\
             ["core-js", "npm:3.16.2"]\
           ],\
@@ -6408,7 +6408,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["esbuild", [\
         ["npm:0.12.20", {\
-          "packageLocation": "./.yarn/unplugged/esbuild-npm-0.12.20-4f4062e84d/node_modules/esbuild/",\
+          "packageLocation": "./.yarn/cache/esbuild-npm-0.12.20-4f4062e84d-52a67e06a6.zip/node_modules/esbuild/",\
           "packageDependencies": [\
             ["esbuild", "npm:0.12.20"]\
           ],\
@@ -11572,10 +11572,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["shell-quote", [\
-        ["npm:1.7.2", {\
-          "packageLocation": "./.yarn/cache/shell-quote-npm-1.7.2-8e2768dbb0-efad426fb2.zip/node_modules/shell-quote/",\
+        ["npm:1.7.4", {\
+          "packageLocation": "./.yarn/cache/shell-quote-npm-1.7.4-b337567168-2874ea9c1a.zip/node_modules/shell-quote/",\
           "packageDependencies": [\
-            ["shell-quote", "npm:1.7.2"]\
+            ["shell-quote", "npm:1.7.4"]\
           ],\
           "linkType": "HARD"\
         }]\
