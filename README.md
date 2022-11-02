@@ -45,3 +45,16 @@ Based on the previous version of this site, there were a lot of learnings. The p
 5. Install Yarn
 6. Run `yarn install`
 7. Run `yarn start` or just `hugo server`
+
+### Windows Setup
+
+1. Install [Scoop](https://scoop.sh/). Open a PowerShell terminal (version 5.1 or later) and run:
+
+    ```pwsh
+    # Optional: Needed to run a remote script the first time
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+    irm get.scoop.sh | iex
+    ```
+
+2. [Install Hugo](https://gohugo.io/getting-started/installing/): `scoop install hugo-extended`
+3. Start Hugo server: `hugo server`
