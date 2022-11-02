@@ -1,0 +1,3 @@
+* text=auto
+*.sh=lf
+pre-commit=lf
