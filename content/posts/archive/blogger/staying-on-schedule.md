@@ -10,8 +10,8 @@ Got to try out Buddha today! My conclusion: very cool! It uses a really interest
 
 Don't know how this happened, but I managed to miss the Quake 4 source code release, which was on my birthday!! Downloaded it today and might check it out tomorrow. There isn't much point, though, as there isn't too much different between the Doom 3 and Quake 4 engines. Nonetheless, I make it a habit to keep up to date on engines and see how certain problems are overcome. I've learned a lot from using and exploring various open source and commercial engines. Anyways, go grab it at:
 
-ftp://ftp.idsoftware.com/idstuff/quake4/linux/
+<ftp://ftp.idsoftware.com/idstuff/quake4/linux/>
 
-Also, happened upon a really interesting application today called [Context Free](http://www.ozonehouse.com/ContextFree/). The software allows you to specify non-deterministic rules that generate images. As the website says, it's "an environment for editing and rendering CFDG design grammars." Anyways, give it a try...I thought it was pretty fun. :)
+Also, happened upon a really interesting application today called [Context Free](http://www.ozonehouse.com/ContextFree/). The software allows you to specify non-deterministic rules that generate images. As the website says, it's "an environment for editing and rendering Context Free Design Grammars." Anyways, give it a try...I thought it was pretty fun. :)
 
 Alright, that's it for today. Good night one and all!

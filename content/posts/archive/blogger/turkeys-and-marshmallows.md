@@ -12,7 +12,7 @@ Also setup cross-compiling so that I can compile my projects to Linux from Windo
 
 I'm glad one of my classes has forced me to use Haskell. Ever since I was introduced to functional languages many years back, I've really enjoyed using them and have found them excellent for some of the work I do. Lisp (and its derivatives like Scheme), however, are not suited to some tasks. By their very definition, a functional language allows you to do induction proofs on your functions, but when you have super-late binding like Lisp, it's still very easy to run into cases you hadn't anticipated. With haskell, you have such strong type inference and safety, that you are forced to think through your functions and data types, which can be great. Haskell has made me actually get excited about F#...the only .NET I might actually start using. I've used C# a bit, but there's nothing revolutionary enough to make me want to use it.
 
-Lets see...oh yeah, it was my birthday Wednesday, so now I'm the big 21...feel so old. O\_o Been eating lots of good food to celebrate, and got a cool gamedev tshirt. Life is good. :)
+Lets see...oh yeah, it was my birthday Wednesday, so now I'm the big 21...feel so old. O_o Been eating lots of good food to celebrate, and got a cool game development t-shirt. Life is good. :)
 
 Released a little rendering engine demo last week to test it out. It's a bit slow right now as it's not using any of the recent features on video cards. Once I get it faster, I'll post it here so that my faithful readers can have something to look at. :p
 

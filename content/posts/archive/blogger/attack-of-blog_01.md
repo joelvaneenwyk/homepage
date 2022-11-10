@@ -4,7 +4,7 @@ date: 2005-09-01T20:06:00.001-07:00
 draft: false
 ---
 
-Recently, there's been a massive trend towards blogging, and being a computer scientist I feel the inexplicable need to jump on the bandwaggon. So this is the beginning.
+Recently, there's been a massive trend towards blogging, and being a computer scientist I feel the inexplicable need to jump on the bandwagon. So this is the beginning.
 
 I suppose a good start would be to give an overview of the type of things I'll be talking about. As I'm an avid programmer and software engineer, a frequent topic will be my adventures and discoveries in my most recent projects. Right now I have two big projects: an Artificial Intelligence application (code-named "Agents") and a game engine for a Privateer remake. Both are big projects, and since I'm the only coder for both, there are lots of design and management decisions, which I'll talk about.
 

@@ -25,7 +25,7 @@ Always been a fan of finding the "right" tool but with time I've discovered that
 
 ## Dashboards
 
-* [Bonjourr · Minimalist & Lightweight Startpage - Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/bonjourr-%C2%B7-minimalist-l/dehmmlejmefjphdeoagelkpaoolicmid)
+* [Minimalist & Lightweight Start Page](https://microsoftedge.microsoft.com/addons/detail/bonjourr-%C2%B7-minimalist-l/dehmmlejmefjphdeoagelkpaoolicmid)
 
 ## Engineering
 

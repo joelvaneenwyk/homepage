@@ -2,6 +2,8 @@
 title: 'Mushrooms?'
 date: 2005-10-24T20:34:00.000-07:00
 draft: false
+
+<-- cspell:ignore Anark,Gameface -->
 ---
 
 Managed to get LUA and TCL implemented nicely into the engine now. The next step is to add all the necessary functions for communicating with the engine. This will be a LOT easier now that I'm using [LuaBind](http://luabind.sourceforge.net/). I've now set a few new deadlines for myself since I have a more organized schedule put together. Should be by the middle of next month I'm going to start sending it out to people for testing. It's going to be very primitive when I do start the testing, but better to start early than wait too long and be stuck with a bad design...it's one thing for me to like and quite another for users to like it. Since I already had gotten a long way in the first design, I have a lot of code to reference, which is making things go a lot faster.

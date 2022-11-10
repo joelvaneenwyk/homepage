@@ -1,0 +1,43 @@
+{
+    "version": "0.2",
+
+    "ignorePaths": [
+        "**/package-lock.json",
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.git/objects/**",
+        "themes/**",
+        ".vscode/",
+        ".vscode-insiders/",
+        "dist/",
+        "resources/",
+        "backup/",
+        ".yarn/",
+        "*.docx",
+        "*.psd",
+        "*.ai",
+        "*.svg",
+        "*.xml",
+        "*.min.js"
+    ],
+
+    // Enable your dictionary by adding it to the list of `dictionaries`
+    "dictionaries": ["mycelio"],
+
+    // Tell CSpell about your dictionary
+    "dictionaryDefinitions": [
+        {
+            // The name of the dictionary is used to look it up.
+            "name": "mycelio",
+            // Path to the custom word file. Relative to this `cspell.json` file.
+            "path": "./mycelio-dict.txt",
+            // Some editor extensions will use `addWords` for adding words to your
+            // personal dictionary.
+            "addWords": true
+        }
+    ],
+
+    "words": [],
+    "ignoreWords": [],
+    "import": []
+}

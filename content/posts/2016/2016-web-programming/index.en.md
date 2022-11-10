@@ -111,7 +111,7 @@ There are innumerable other technologies I looked at while implementing my websi
 
 For live editing you have StackEdit and Prose.io and numerous others which all seem pretty great, but honestly if you're using GitHub then you can use your favorite desktop app like Sublime in my case.
 
-[Cloudpipes](https://www.quickbase.com/cloudpipes-announcement) is another that caught my eye, but spending money to visually program automated interactions with the world seems a bit strange to me.
+[CloudPipes](https://www.quickbase.com/cloudpipes-announcement) is another that caught my eye, but spending money to visually program automated interactions with the world seems a bit strange to me.
 
 ## Resources
 

@@ -2,6 +2,8 @@
 title: 'Music and Houdini'
 date: 2005-09-12T21:04:00.000-07:00
 draft: false
+
+<-- cspell:ignore Evergrey -->
 ---
 
 Mondays...always a bit slower than the rest of the week. Got some good programming done on the engine. Then switched over to my website a bit. Got some Flash working and the design is a lot more the way I want it. Will hopefully have something to show soon.

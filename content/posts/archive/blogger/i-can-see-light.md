@@ -2,6 +2,8 @@
 title: 'I can see the light!'
 date: 2005-09-28T20:50:00.000-07:00
 draft: false
+
+<!-- cspell:ignore Aruna's
 ---
 
 These last few days have been crazy! Tests with LOTS of memorizing...very time consuming. But they are now over!! And hence my focus is back to the fun stuff.

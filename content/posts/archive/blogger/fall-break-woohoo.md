@@ -1,5 +1,5 @@
 ---
-title: 'Fall break!!!  Woohoo!'
+title: 'Fall break!!!'
 date: 2005-10-13T21:05:00.000-07:00
 draft: false
 ---

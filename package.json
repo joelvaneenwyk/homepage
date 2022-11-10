@@ -33,6 +33,7 @@
         "test": "yarn build server && node --require=./.pnp.cjs ./dist/server/server.js --test",
         "dev": "yarn sdks vscode",
         "github": "act",
+        "upgrade": "npx -y npm-check-updates@latest -u && yarn install && npx -y yarn-audit-fix@latest && yarn run build:pretty",
         "reinstall": "yarn cache clean --all && yarn install",
         "lint": "eslint src/server/*.ts",
         "build": "echo Building typescript server and website... && concurrently -m 1 --prefix-colors yellow,cyan,green,blue \"yarn:build:*\"",

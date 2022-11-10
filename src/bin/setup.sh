@@ -32,7 +32,7 @@ function _add_profile_hook() {
         echo "------------------------------"
     fi
 
-    # shellcheck source=env.sh
+    # shellcheck source=./src/bin/env.sh
     . "$ENV_SCRIPT_PATH"
 }
 
@@ -124,8 +124,8 @@ fi
 
 # Install Yarn
 if [ ! -x "$(command -v yarn)" ]; then
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | _sudo tee /usr/share/keyrings/yarnkey.gpg > /dev/null
-    echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | _sudo tee /etc/apt/sources.list.d/yarn.list
+    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | _sudo tee /usr/share/keyrings/yarn_key.gpg > /dev/null
+    echo "deb [signed-by=/usr/share/keyrings/yarn_key.gpg] https://dl.yarnpkg.com/debian stable main" | _sudo tee /etc/apt/sources.list.d/yarn.list
     _apt_get update
     _apt_get -y install yarn
 fi
