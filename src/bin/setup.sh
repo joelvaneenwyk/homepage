@@ -8,7 +8,7 @@ set -e
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && cd ../../ && pwd)"
 ENV_SCRIPT="env.sh"
-ENV_SCRIPT_PATH="$ROOT_DIR/src/utilities/$ENV_SCRIPT"
+ENV_SCRIPT_PATH="$ROOT_DIR/src/bin/$ENV_SCRIPT"
 
 function _add_profile_hook() {
     _env="$(printf "\n. \"%s\"\n" "$ENV_SCRIPT_PATH")"
