@@ -80,6 +80,10 @@
     },
 
     "search.exclude": {
+        "yarn.lock": true,
+        "**/*.svg": true,
+        "themes/base/assets/**/*.js": true,
+        "themes/base/assets/**/*.css": true,
         "**/.yarn": true,
         "**/backup/**": true,
         "**/dist/**": true,

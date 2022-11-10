@@ -50,7 +50,7 @@ Based on the previous version of this site, there were a lot of learnings. The p
 
 1. Install [Scoop](https://scoop.sh/). Open a PowerShell terminal (version 5.1 or later) and run:
 
-    ```pwsh
+    ```powershell
     # Optional: Needed to run a remote script the first time
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     irm get.scoop.sh | iex
