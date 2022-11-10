@@ -10,7 +10,7 @@ if [ -z "${GOROOT:-}" ]; then
 fi
 
 if [ -z "${GOPATH:-}" ]; then
-    if [  -x "$(command -v go)" ]; then
+    if [ -x "$(command -v go)" ]; then
         GOPATH="$(go env GOPATH)"
         export GOPATH
 

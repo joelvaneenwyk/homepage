@@ -8,7 +8,7 @@ set -e
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && cd ../../ && pwd)"
 ENV_SCRIPT="env.sh"
-ENV_SCRIPT_PATH="$ROOT_DIR/src/bin/$ENV_SCRIPT"
+ENV_SCRIPT_PATH="$ROOT_DIR/src/utilities/$ENV_SCRIPT"
 
 function _add_profile_hook() {
     _env="$(printf "\n. \"%s\"\n" "$ENV_SCRIPT_PATH")"
@@ -81,11 +81,14 @@ else
 fi
 
 if [ -x "$(command -v go)" ]; then
-    _go_version=$(go version | { read -r _ _ v _; echo "${v#go}"; })
+    _go_version=$(go version | {
+        read -r _ _ v _
+        echo "${v#go}"
+    })
     go_minor=$(echo "$_go_version" | cut -d. -f2)
 fi
 
-if [ ! -x "$(command -v go)" ] || (( go_minor < 16 )); then
+if [ ! -x "$(command -v go)" ] || ((go_minor < 16)); then
     _go_version="1.17"
     _go_archive="go$_go_version.linux-amd64.tar.gz"
 
@@ -95,7 +98,7 @@ if [ ! -x "$(command -v go)" ] || (( go_minor < 16 )); then
     fi
 
     rm -rf "$_tmp/go"
-    if tar -xvf "$_tmp/$_go_archive" --directory "$_tmp/" >/dev/null 2>&1; then
+    if tar -xvf "$_tmp/$_go_archive" --directory "$_tmp/" > /dev/null 2>&1; then
         if ! _is_heroku_instance; then
             _sudo rm -rf "$GOROOT"
         fi
@@ -121,7 +124,7 @@ fi
 
 # Install Yarn
 if [ ! -x "$(command -v yarn)" ]; then
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | _sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | _sudo tee /usr/share/keyrings/yarnkey.gpg > /dev/null
     echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | _sudo tee /etc/apt/sources.list.d/yarn.list
     _apt_get update
     _apt_get -y install yarn

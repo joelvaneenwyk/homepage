@@ -4,7 +4,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && cd ../../ && pwd
 
 # Always setup the environment so that we can find 'golang' and 'hugo'
 # shellcheck disable=SC1091
-. "$ROOT_DIR/src/utilities/env.sh"
+. "$ROOT_DIR/src/bin/env.sh"
 
 if [ ! -d "$ROOT_DIR/.git" ]; then
     git clone --no-checkout "https://github.com/joelvaneenwyk/homepage.git" "$ROOT_DIR/dist/git"

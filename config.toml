@@ -7,7 +7,6 @@ enableEmoji = true
 defaultContentLanguage = "en"
 enableRobotsTXT = true
 enableGitInfo = true
-
 # Enable KaTeX (https://katex.org/) globally
 math = true
 

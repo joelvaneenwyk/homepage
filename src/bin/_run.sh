@@ -7,7 +7,7 @@ rm -rf "$ROOT_DIR/resources" > /dev/null 2>&1 || true
 rm -rf "$ROOT_DIR/.yarn/cache" > /dev/null 2>&1 || true
 
 # shellcheck disable=SC1091
-. "$ROOT_DIR/src/utilities/setup.sh"
+. "$ROOT_DIR/src/bin/setup.sh"
 
 yarn install --cwd "$ROOT_DIR"
 yarn run --cwd "$ROOT_DIR" heroku-prebuild
