@@ -18,7 +18,7 @@
         "homepage"
     ],
     "private": true,
-    "packageManager": "yarn@3.2.3",
+    "packageManager": "yarn@3.2.4",
     "engines": {
         "node": "^14.13.0",
         "npm": "^7.19.0"
@@ -61,6 +61,36 @@
         "url": "https://github.com/joelvaneenwyk/workspace/issues",
         "email": "joel.vaneenwyk@gmail.com"
     },
+    "prettier": {
+        "semi": true,
+        "plugins": [
+            "prettier-plugin-toml",
+            "prettier-plugin-sh",
+            "prettier-eslint"
+        ],
+        "overrides": [
+            {
+                "files": [
+                    "**/*.json"
+                ],
+                "options": {
+                    "tabWidth": 4,
+                    "printWidth": 130,
+                    "proseWrap": "preserve"
+                }
+            },
+            {
+                "files": [
+                    "content/**/*.md"
+                ],
+                "options": {
+                    "tabWidth": 2,
+                    "printWidth": 130,
+                    "proseWrap": "preserve"
+                }
+            }
+        ]
+    },
     "eslintConfig": {
         "env": {
             "browser": true,
@@ -69,7 +99,9 @@
             "jquery": true,
             "node": true
         },
-        "extends": ["airbnb-base"],
+        "extends": [
+            "airbnb-base"
+        ],
         "globals": {
             "Atomics": "readonly",
             "SharedArrayBuffer": "readonly"
@@ -78,18 +110,46 @@
         "parserOptions": {
             "ecmaVersion": 2018
         },
-        "plugins": ["@typescript-eslint"],
-        "ignorePatterns": ["themes/base/assets/lib/**", "src/server/cheeses/output/**", "dist/**", "**/*.min.js", "**/newrelic.js"],
+        "plugins": [
+            "@typescript-eslint"
+        ],
+        "ignorePatterns": [
+            "themes/base/assets/lib/**",
+            "src/server/cheeses/output/**",
+            "dist/**",
+            "**/*.min.js",
+            "**/newrelic.js"
+        ],
         "rules": {
-            "indent": ["error", 4],
-            "max-len": ["error", { "code": 130 }],
+            "indent": [
+                "error",
+                4
+            ],
+            "max-len": [
+                "error",
+                {
+                    "code": 130
+                }
+            ],
             "linebreak-style": "off",
-            "quotes": ["error", "double"],
-            "semi": ["error", "always"],
-            "arrow-body-style": ["error", "as-needed"],
+            "quotes": [
+                "error",
+                "double"
+            ],
+            "semi": [
+                "error",
+                "always"
+            ],
+            "arrow-body-style": [
+                "error",
+                "as-needed"
+            ],
             "prefer-arrow-callback": "off",
             "sort-imports": "off",
-            "no-cond-assign": ["error", "always"],
+            "no-cond-assign": [
+                "error",
+                "always"
+            ],
             "import/first": "off",
             "comma-dangle": [
                 "error",
