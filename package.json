@@ -36,7 +36,7 @@
         "reinstall": "yarn cache clean --all && yarn install",
         "lint": "eslint src/server/*.ts",
         "build": "echo Building typescript server and website... && concurrently -m 1 --prefix-colors yellow,cyan,green,blue \"yarn:build:*\"",
-        "build:theme": "echo Building theme... && yarn run build:theme:babel && yarn run build:theme:segmentit",
+        "build:theme": "yarn run build:theme:babel && yarn run build:theme:segmentit",
         "build:theme:babel": "cd themes/base && babel src/js --out-file assets/js/theme.min.js --source-maps",
         "build:theme:segmentit": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
         "build:hugo": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",

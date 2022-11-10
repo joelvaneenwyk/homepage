@@ -27,9 +27,5 @@ services:
       - mnt_yarn_cache:/app/.yarn/cache/
       - mnt_yarn_unplugged:/app/.yarn/unplugged/
       - mnt_dist:/app/dist/
-
-    # docker run -i
     stdin_open: true
-
-    # docker run -t
     tty: true

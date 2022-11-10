@@ -7,10 +7,10 @@
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
     "editor.detectIndentation": false,
-
+    "python.dataScience.alwaysScrollOnNewCell": false,
+    "editor.mouseWheelScrollSensitivity": 1,
     "htmlhint.enable": false,
     "css.validate": false,
-
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
@@ -20,31 +20,23 @@
         "editor.formatOnSave": true
     },
     "json.format.enable": true,
-
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features",
         "editor.formatOnSave": true
     },
     "typescript.tsdk": ".yarn/sdks/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true,
-
     "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-
     "stylelint.stylelintPath": ".yarn/sdks/stylelint/lib/index.js",
     "stylelint.enable": false,
-
     "eslint.nodePath": ".yarn/sdks",
     "eslint.format.enable": true,
     "eslint.alwaysShowStatus": true,
     "eslint.lintTask.enable": true,
     "eslint.run": "onSave",
-
     "sortJSON.excludedFiles": ["package.json", "settings.json"],
-
     "prettier.enable": true,
-
     "perl.enable": false,
-
     "liveServer.settings.port": 13555,
     "liveServer.settings.root": "/dist/www",
     "liveServer.settings.ignoreFiles": [
@@ -57,13 +49,13 @@
         "**/*.sass",
         "**/*.ts"
     ],
-
     "files.associations": {
+        "Procfile": "yaml",
+        "LICENSE": "text",
         "tsconfig.json": "jsonc",
         ".eslintrc.json": "jsonc",
         "*.json.git": "jsonc"
     },
-
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -91,7 +83,6 @@
         "**/*.min.js": true,
         "**/*.min.js.map": true
     },
-
     "cSpell.ignorePaths": [
         "**/package-lock.json",
         "**/node_modules/**",

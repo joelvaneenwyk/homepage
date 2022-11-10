@@ -6,8 +6,8 @@ engines:
     enabled: true
     config:
       languages:
-      - javascript
-      - python
+        - javascript
+        - python
   scss-lint:
     enabled: true
   eslint:
@@ -19,14 +19,14 @@ engines:
 
 ratings:
   paths:
-  - "**.css"
-  - "**.inc"
-  - "**.js"
-  - "**.ts"
-  - "**.module"
-  - "**.php"
-  - "**.py"
-  - "**.rb"
+    - "**.css"
+    - "**.inc"
+    - "**.js"
+    - "**.ts"
+    - "**.module"
+    - "**.php"
+    - "**.py"
+    - "**.rb"
 
 exclude_paths:
   - "src/server/deprecated/cheeses/output/"

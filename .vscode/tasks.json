@@ -5,50 +5,14 @@
     "command": "grunt",
     "tasks": [
         {
-            "label": "default",
-            "args": [],
+            "label": "build",
+            "command": "node",
+            "args": ["build"],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "isBackground": false,
-            "problemMatcher": ["$lessCompile", "$tsc", "$jshint"]
-        },
-        {
-            "label": "watch",
-            "args": [],
-            "isBackground": true,
-            "problemMatcher": ["$lessCompile", "$tsc", "$jshint"]
-        },
-        {
-            "type": "docker-build",
-            "label": "docker-build",
-            "platform": "node",
-            "dockerBuild": {
-                "dockerfile": "${workspaceFolder}/Dockerfile",
-                "context": "${workspaceFolder}",
-                "pull": true
-            }
-        },
-        {
-            "type": "docker-run",
-            "label": "docker-run: release",
-            "dependsOn": ["docker-build"],
-            "platform": "node"
-        },
-        {
-            "type": "docker-run",
-            "label": "docker-run: debug",
-            "dependsOn": ["docker-build"],
-            "dockerRun": {
-                "env": {
-                    "DEBUG": "*",
-                    "NODE_ENV": "development"
-                }
-            },
-            "node": {
-                "enableDebugging": true
-            }
+            "isBackground": false
         }
     ]
 }
