@@ -2,7 +2,6 @@
 # Joel Van Eenwyk homepage configuration
 #
 # cspell:ignore changeFreq, pasdmwalpk, noFollow, noOpener, fontAwesome, mhchem, SVZQ, noReffer
-
 baseURL = "https://www.joelvaneenwyk.com/"
 languageCode = "en-us"
 title = "Joel Van Eenwyk"
