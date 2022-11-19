@@ -12,7 +12,7 @@ toc:
 math:
   enable: true
 
-<-- cspell:ignore Hemi -->
+# cspell:ignore Hemi
 ---
 
 Long have I wanted to create a cross-platform raytracing system that works on Xbox One, PS4, PC and whatever modern platform is in style at the moment. You have some common options including CUDA, OpenCL, and others. Essentially it seems what I want is a cross-platform <https://developer.nvidia.com/optix> written in something like OpenCL or something. There are some path-tracers commercialized for this (e.g. <https://home.otoy.com/render/brigade/>).

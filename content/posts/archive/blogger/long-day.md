@@ -3,7 +3,7 @@ title: 'Long day...'
 date: 2005-09-08T20:18:00.000-07:00
 draft: false
 
-<!-- cspell:ignore Gilles,Vollant's >
+# cspell:ignore Gilles,Vollant's
 ---
 
 Today I sat down, looked at the zip problem again, and had it done in around 30 minutes. Hate when that sort of thing happens. At any rate, it is now implemented into my render engine. All shaders, models, and textures are all loaded from a zip file now (with password protection). I added another level of abstraction for the file management, so that all procedures could read from zips or off the hard drive directly. Makes life a whole lot easier. What ended up helping me the most was an article from GameDev:

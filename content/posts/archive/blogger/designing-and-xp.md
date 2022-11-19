@@ -3,7 +3,7 @@ title: 'Designing and XP'
 date: 2005-10-03T20:22:00.000-07:00
 draft: false
 
-<!-- cspell:ignore VFXY >
+# cspell:ignore VFXY
 ---
 
 Classes started out today really slow...seemed as though it would never end. But once they were done, and I returned home, I began work on the my philosophy paper. The goal is to write a paper regarding Calgary University's class "Computer Viruses and Malware". It essentially teaches people how to write viruses in order to teach them how to write more secure software. This is pretty old news (2003), but it is still quite an interesting topic. If anyone has any thoughts on the topic, please let me know...I'd be interested to hear what you think.
