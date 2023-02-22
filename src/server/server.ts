@@ -1,3 +1,7 @@
+/**
+ * Simple static file server that should primarily be used for local testing.
+ */
+
 import { join, resolve } from "path";
 import { createServer } from "http";
 import fs from "fs";
