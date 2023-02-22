@@ -40,19 +40,27 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v3
         with:
-          go-version: '^1.16.7'
+          go-version: '~1.18'
       - run: go version
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.85.0'
+          hugo-version: '0.110.0'
           extended: true
+
+      - name: Hugo Build
+        run: |
+          hugo
 
       - name: Install Packages
         run: |
           yarn install
 
-      - name: Hugo Build
+      - name: Build
         run: |
-          hugo
+          yarn build
+
+      - name: Test
+        run: |
+          yarn test
