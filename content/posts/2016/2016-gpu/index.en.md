@@ -1,7 +1,7 @@
 ---
 title: "GPU"
-date: 2016-01-27T15:58:26+08:00
-lastmod: 2016-01-27T15:58:26+08:00
+date: 2016-01-27
+lastmod: 2016-01-27
 description: "Explorations into open source build systems for Windows using DosBox."
 tags: ["News", "Programming", "JavaScript"]
 categories: ["News"]
