@@ -62,7 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-gyp", "npm:9.3.0"],\
             ["node-static", "npm:0.7.11"],\
             ["pinst", "npm:3.0.0"],\
-            ["postcss", "npm:8.4.18"],\
+            ["postcss", "npm:8.4.32"],\
             ["postcss-html", "npm:1.5.0"],\
             ["postcss-markdown", "npm:1.2.0"],\
             ["postcss-syntax", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.36.2"],\
@@ -8195,7 +8195,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-gyp", "npm:9.3.0"],\
             ["node-static", "npm:0.7.11"],\
             ["pinst", "npm:3.0.0"],\
-            ["postcss", "npm:8.4.18"],\
+            ["postcss", "npm:8.4.32"],\
             ["postcss-html", "npm:1.5.0"],\
             ["postcss-markdown", "npm:1.2.0"],\
             ["postcss-syntax", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.36.2"],\
@@ -9842,6 +9842,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nanoid", "npm:3.3.4"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:3.3.7", {\
+          "packageLocation": "./.yarn/cache/nanoid-npm-3.3.7-98824ba130-d36c427e53.zip/node_modules/nanoid/",\
+          "packageDependencies": [\
+            ["nanoid", "npm:3.3.7"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["natural-compare", [\
@@ -10561,6 +10568,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["source-map-js", "npm:1.0.2"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:8.4.32", {\
+          "packageLocation": "./.yarn/cache/postcss-npm-8.4.32-2004ba88b8-220d9d0bf5.zip/node_modules/postcss/",\
+          "packageDependencies": [\
+            ["postcss", "npm:8.4.32"],\
+            ["nanoid", "npm:3.3.7"],\
+            ["picocolors", "npm:1.0.0"],\
+            ["source-map-js", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["postcss-html", [\
@@ -10659,7 +10676,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/postcss-less", null],\
             ["@types/postcss-markdown", null],\
             ["@types/postcss-scss", null],\
-            ["postcss", "npm:8.4.18"],\
+            ["postcss", "npm:8.4.32"],\
             ["postcss-html", "npm:1.5.0"],\
             ["postcss-jsx", null],\
             ["postcss-less", null],\
