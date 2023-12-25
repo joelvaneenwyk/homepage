@@ -58,7 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["htmlhint", "npm:1.1.4"],\
             ["husky", "npm:8.0.2"],\
             ["js-beautify", "npm:1.14.7"],\
-            ["minimist", "npm:1.2.7"],\
+            ["minimist", "npm:1.2.8"],\
             ["node-gyp", "npm:10.0.1"],\
             ["node-static", "npm:0.7.11"],\
             ["pinst", "npm:3.0.0"],\
@@ -8375,7 +8375,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["htmlhint", "npm:1.1.4"],\
             ["husky", "npm:8.0.2"],\
             ["js-beautify", "npm:1.14.7"],\
-            ["minimist", "npm:1.2.7"],\
+            ["minimist", "npm:1.2.8"],\
             ["node-gyp", "npm:10.0.1"],\
             ["node-static", "npm:0.7.11"],\
             ["pinst", "npm:3.0.0"],\
@@ -9848,6 +9848,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/minimist-npm-1.2.7-51d33b1371-7346574a10.zip/node_modules/minimist/",\
           "packageDependencies": [\
             ["minimist", "npm:1.2.7"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.8", {\
+          "packageLocation": "./.yarn/cache/minimist-npm-1.2.8-d7af7b1dce-75a6d645fb.zip/node_modules/minimist/",\
+          "packageDependencies": [\
+            ["minimist", "npm:1.2.8"]\
           ],\
           "linkType": "HARD"\
         }]\
