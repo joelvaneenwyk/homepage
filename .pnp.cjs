@@ -69,7 +69,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["prettier-eslint", "npm:15.0.1"],\
             ["prettier-plugin-sh", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.12.8"],\
-            ["prettier-plugin-toml", "npm:0.3.1"],\
+            ["prettier-plugin-toml", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.4.0"],\
             ["segmentit", "npm:2.0.3"],\
             ["stylelint", "npm:14.14.1"],\
             ["stylelint-config-prettier", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:9.0.4"],\
@@ -2478,7 +2478,37 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@chevrotain/cst-dts-gen", [\
+        ["npm:10.5.0", {\
+          "packageLocation": "./.yarn/cache/@chevrotain-cst-dts-gen-npm-10.5.0-96bdf6daf3-3ff851d5cb.zip/node_modules/@chevrotain/cst-dts-gen/",\
+          "packageDependencies": [\
+            ["@chevrotain/cst-dts-gen", "npm:10.5.0"],\
+            ["@chevrotain/gast", "npm:10.5.0"],\
+            ["@chevrotain/types", "npm:10.5.0"],\
+            ["lodash", "npm:4.17.21"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@chevrotain/gast", [\
+        ["npm:10.5.0", {\
+          "packageLocation": "./.yarn/cache/@chevrotain-gast-npm-10.5.0-c98fd4883a-35183e7067.zip/node_modules/@chevrotain/gast/",\
+          "packageDependencies": [\
+            ["@chevrotain/gast", "npm:10.5.0"],\
+            ["@chevrotain/types", "npm:10.5.0"],\
+            ["lodash", "npm:4.17.21"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@chevrotain/types", [\
+        ["npm:10.5.0", {\
+          "packageLocation": "./.yarn/cache/@chevrotain-types-npm-10.5.0-29d3508ef3-72f7b48de1.zip/node_modules/@chevrotain/types/",\
+          "packageDependencies": [\
+            ["@chevrotain/types", "npm:10.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:9.1.0", {\
           "packageLocation": "./.yarn/cache/@chevrotain-types-npm-9.1.0-80ac254cc2-5f26ff26aa.zip/node_modules/@chevrotain/types/",\
           "packageDependencies": [\
@@ -2488,6 +2518,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@chevrotain/utils", [\
+        ["npm:10.5.0", {\
+          "packageLocation": "./.yarn/cache/@chevrotain-utils-npm-10.5.0-1c062e1720-f3ae9e0fea.zip/node_modules/@chevrotain/utils/",\
+          "packageDependencies": [\
+            ["@chevrotain/utils", "npm:10.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:9.1.0", {\
           "packageLocation": "./.yarn/cache/@chevrotain-utils-npm-9.1.0-5e5d6d7acc-ca78c97c7c.zip/node_modules/@chevrotain/utils/",\
           "packageDependencies": [\
@@ -2839,15 +2876,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chevrotain", "npm:4.1.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.4.0", {\
+          "packageLocation": "./.yarn/cache/@toml-tools-lexer-npm-0.4.0-44f00160c8-96d0103d76.zip/node_modules/@toml-tools/lexer/",\
+          "packageDependencies": [\
+            ["@toml-tools/lexer", "npm:0.4.0"],\
+            ["chevrotain", "npm:10.5.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@toml-tools/parser", [\
-        ["npm:0.3.1", {\
-          "packageLocation": "./.yarn/cache/@toml-tools-parser-npm-0.3.1-92339187a3-c94918cf9f.zip/node_modules/@toml-tools/parser/",\
+        ["npm:0.4.0", {\
+          "packageLocation": "./.yarn/cache/@toml-tools-parser-npm-0.4.0-44c530f379-5c66df4c73.zip/node_modules/@toml-tools/parser/",\
           "packageDependencies": [\
-            ["@toml-tools/parser", "npm:0.3.1"],\
-            ["@toml-tools/lexer", "npm:0.3.1"],\
-            ["chevrotain", "npm:4.1.1"]\
+            ["@toml-tools/parser", "npm:0.4.0"],\
+            ["@toml-tools/lexer", "npm:0.4.0"],\
+            ["chevrotain", "npm:10.5.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5786,6 +5831,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["chevrotain", [\
+        ["npm:10.5.0", {\
+          "packageLocation": "./.yarn/cache/chevrotain-npm-10.5.0-1ff4e87f41-b641f149f6.zip/node_modules/chevrotain/",\
+          "packageDependencies": [\
+            ["chevrotain", "npm:10.5.0"],\
+            ["@chevrotain/cst-dts-gen", "npm:10.5.0"],\
+            ["@chevrotain/gast", "npm:10.5.0"],\
+            ["@chevrotain/types", "npm:10.5.0"],\
+            ["@chevrotain/utils", "npm:10.5.0"],\
+            ["lodash", "npm:4.17.21"],\
+            ["regexp-to-ast", "npm:0.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:4.1.1", {\
           "packageLocation": "./.yarn/cache/chevrotain-npm-4.1.1-efb4d0cd87-209229115f.zip/node_modules/chevrotain/",\
           "packageDependencies": [\
@@ -8373,7 +8431,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["prettier-eslint", "npm:15.0.1"],\
             ["prettier-plugin-sh", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.12.8"],\
-            ["prettier-plugin-toml", "npm:0.3.1"],\
+            ["prettier-plugin-toml", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.4.0"],\
             ["segmentit", "npm:2.0.3"],\
             ["stylelint", "npm:14.14.1"],\
             ["stylelint-config-prettier", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:9.0.4"],\
@@ -10893,13 +10951,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["prettier", [\
-        ["npm:1.19.1", {\
-          "packageLocation": "./.yarn/cache/prettier-npm-1.19.1-e56d246fd2-bc78219e0f.zip/node_modules/prettier/",\
-          "packageDependencies": [\
-            ["prettier", "npm:1.19.1"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:2.7.1", {\
           "packageLocation": "./.yarn/cache/prettier-npm-2.7.1-d1f40f5e1a-55a4409182.zip/node_modules/prettier/",\
           "packageDependencies": [\
@@ -10957,12 +11008,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["prettier-plugin-toml", [\
-        ["npm:0.3.1", {\
-          "packageLocation": "./.yarn/cache/prettier-plugin-toml-npm-0.3.1-a4a923f5b6-9c34cc4a35.zip/node_modules/prettier-plugin-toml/",\
+        ["npm:0.4.0", {\
+          "packageLocation": "./.yarn/cache/prettier-plugin-toml-npm-0.4.0-ef8d165e31-4e6ff72005.zip/node_modules/prettier-plugin-toml/",\
           "packageDependencies": [\
-            ["prettier-plugin-toml", "npm:0.3.1"],\
-            ["@toml-tools/parser", "npm:0.3.1"],\
-            ["prettier", "npm:1.19.1"]\
+            ["prettier-plugin-toml", "npm:0.4.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.4.0", {\
+          "packageLocation": "./.yarn/__virtual__/prettier-plugin-toml-virtual-9d06711cc3/0/cache/prettier-plugin-toml-npm-0.4.0-ef8d165e31-4e6ff72005.zip/node_modules/prettier-plugin-toml/",\
+          "packageDependencies": [\
+            ["prettier-plugin-toml", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.4.0"],\
+            ["@toml-tools/lexer", "npm:0.4.0"],\
+            ["@toml-tools/parser", "npm:0.4.0"],\
+            ["@types/prettier", null],\
+            ["prettier", "npm:2.7.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/prettier",\
+            "prettier"\
           ],\
           "linkType": "HARD"\
         }]\
