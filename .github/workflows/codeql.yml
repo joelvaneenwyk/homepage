@@ -13,9 +13,9 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main, develop ]
   schedule:
     - cron: '44 6 * * 2'
 
@@ -46,6 +46,24 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        # Fetch Hugo themes (true OR recursive)
+        submodules: recursive
+        # Fetch all history for .GitInfo and .Lastmod
+        fetch-depth: 0
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+
+    - name: Install Yarn
+      run: npm install -g yarn
+
+    # We do not require Go installed but installing anyways so that we have the
+    # option to either install our own version of Hugo or run plugins.
+    - name: Setup Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: 'stable'
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -59,21 +77,20 @@ jobs:
         # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
         # queries: security-extended,security-and-quality
 
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.119.0'
+        extended: true
 
-    # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
-    # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+    - name: Install Packages
+      run: |
+        yarn install
+        yarn build
 
-    # ℹ️ Command-line programs to run using the OS shell.
-    # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
-
-    #   If the Autobuild fails above, remove it and uncomment the following three lines.
-    #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
-
-    # - run: |
-    #     echo "Run, Build Application using script"
-    #     ./location_of_script_within_repo/buildscript.sh
+    - name: Hugo Build
+      run: |
+        hugo
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
