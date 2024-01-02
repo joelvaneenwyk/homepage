@@ -1,29 +1,29 @@
 {
-    "name": "@joelvaneenwyk/server",
-    "version": "1.0.0",
-    "description": "",
-    "keywords": [
-        "typescript",
-        "homepage",
-        "server",
-        "static"
-    ],
-    "license": "ISC",
-    "author": "Joel Van Eenwyk",
-    "type": "commonjs",
-    "main": "server.ts",
-    "scripts": {
-        "start": "ts-node ./server.ts"
-    },
-    "dependencies": {
-        "@types/js-beautify": "^1.14.3",
-        "@types/node": "^20.10.6",
-        "@types/node-static": "^0.7.11",
-        "esbuild": "^0.19.11",
-        "esbuild-plugin-tsc": "^0.4.0",
-        "js-beautify": "^1.14.11",
-        "node-static": "^0.7.11",
-        "ts-node": "^10.9.2",
-        "typescript": "^5.3.3"
-    }
+  "name": "@joelvaneenwyk/server",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "typescript",
+    "homepage",
+    "server",
+    "static"
+  ],
+  "license": "ISC",
+  "author": "Joel Van Eenwyk",
+  "type": "commonjs",
+  "main": "server.ts",
+  "scripts": {
+    "start": "ts-node ./server.ts"
+  },
+  "dependencies": {
+    "@types/js-beautify": "^1.14.3",
+    "@types/node": "^20.10.6",
+    "@types/node-static": "^0.7.11",
+    "esbuild": "^0.19.11",
+    "esbuild-plugin-tsc": "^0.4.0",
+    "js-beautify": "^1.14.11",
+    "node-static": "^0.7.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
 }

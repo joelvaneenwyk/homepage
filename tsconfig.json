@@ -1,31 +1,31 @@
 {
-    "compilerOptions": {
-        "target": "ES2020",
-        "module": "CommonJS",
-        "sourceMap": true,
-        "outDir": "./dist/dev",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": false,
-        "forceConsistentCasingInFileNames": true
-    },
-    "extends": [],
-    "include": [
-        "./**/*.js",
-        "./**/.*.js",
-        "./**/*.cjs",
-        "./**/.*.cjs",
-        "./**/*.mjs",
-        "./**/.*.mjs",
-        "./**/*.jsx",
-        "./**/.*.jsx",
-        "./**/*.ts",
-        "./**/.*.ts",
-        "./**/*.cts",
-        "./**/.*.cts",
-        "./**/*.mts",
-        "./**/.*.mts",
-        "./**/*.tsx",
-        "./**/.*.tsx"
-    ]
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "sourceMap": true,
+    "outDir": "./dist/dev",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": false,
+    "forceConsistentCasingInFileNames": true
+  },
+  "extends": [],
+  "include": [
+    "./**/*.js",
+    "./**/.*.js",
+    "./**/*.cjs",
+    "./**/.*.cjs",
+    "./**/*.mjs",
+    "./**/.*.mjs",
+    "./**/*.jsx",
+    "./**/.*.jsx",
+    "./**/*.ts",
+    "./**/.*.ts",
+    "./**/*.cts",
+    "./**/.*.cts",
+    "./**/*.mts",
+    "./**/.*.mts",
+    "./**/*.tsx",
+    "./**/.*.tsx"
+  ]
 }
