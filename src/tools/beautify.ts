@@ -1,7 +1,15 @@
 /**
  * Use 'js-beautify' to pretty up the HTML files.
  */
+/**
+ * Reads in the server TypeScript and converts it into a JavaScript file and a
+ * bundled JavaScript with all dependencies baked in using esbuild.
+ */
 
+import { build, BuildOptions } from "esbuild";
+import { mkdir } from "fs/promises";
+import { resolve, join } from "path";
+import esbuildPluginTsc from "esbuild-plugin-tsc";
 import { html } from "js-beautify";
 import fs from "fs";
 import path from "path";
@@ -27,19 +35,27 @@ function getRelativePath(inputPath: string) {
     return inputPath.replace(absolutePath, "").replace(/\\/g, "/");
 }
 
-const files = getFiles("./dist/");
-files.filter((filename) => filename.includes(".html")).forEach((filename) => {
-    const data = fs.readFileSync(filename, "utf8");
-    const pretty = html(
-        data,
-        {
-            indent_size: 2,
-            preserve_newlines: false
-        }
-    );
+function main() {
+    const root = resolve(join(__dirname, "../../"));
+    const distRoot = join(root, "dist");
+    const files = getFiles(distRoot);
+    files.filter((filename) => filename.includes(".html")).forEach((filename) => {
+        const data = fs.readFileSync(filename, "utf8");
+        const pretty = html(
+            data,
+            {
+                indent_size: 2,
+                preserve_newlines: false
+            }
+        );
 
-    if (data !== pretty) {
-        fs.writeFileSync(filename, pretty);
-        console.log(`Beautified: '${getRelativePath(filename)}'`);
-    }
-});
+        if (data !== pretty) {
+            fs.writeFileSync(filename, pretty);
+            console.log(`Beautified: '${getRelativePath(filename)}'`);
+        }
+    });
+
+    console.log(`Beautified output files: ${distRoot}`)
+}
+
+main();

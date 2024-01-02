@@ -4,8 +4,7 @@
  */
 
 import { build, BuildOptions } from "esbuild";
-import ts, { CompilerOptions } from "typescript";
-import { readFile, writeFile, mkdir } from "fs/promises";
+import { mkdir } from "fs/promises";
 import { resolve, join } from "path";
 import esbuildPluginTsc from "esbuild-plugin-tsc";
 
@@ -28,6 +27,8 @@ async function main() {
     };
 
     await build(options);
+
+    console.log(`Server built: ${options.outfile}`)
 }
 
 main();

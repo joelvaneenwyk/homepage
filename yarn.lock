@@ -1900,7 +1900,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:8.56.0":
+"@eslint/js@npm:8.56.0, @eslint/js@npm:^8.56.0":
   version: 8.56.0
   resolution: "@eslint/js@npm:8.56.0"
   checksum: 60b3a1cf240e2479cec9742424224465dc50e46d781da1b7f5ef240501b2d1202c225bd456207faac4b34a64f4765833345bc4ddffd00395e1db40fa8c426f5a
@@ -1972,6 +1972,99 @@ __metadata:
   checksum: b329e89cd5f20b9278ae1233df74016ebf7b385e0d14b9f4c1ad18d096c4c19d1e687aa113a9c976b16ec07f021ae53dea811fb8c1248a50ac34fbe009fdf6be
   languageName: node
   linkType: hard
+
+"@joelvaneenwyk/homepage@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@joelvaneenwyk/homepage@workspace:."
+  dependencies:
+    "@babel/cli": "npm:^7.23.4"
+    "@babel/core": "npm:^7.23.7"
+    "@babel/preset-env": "npm:^7.23.7"
+    "@eslint/js": "npm:^8.56.0"
+    "@toml-tools/lexer": "npm:^1.0.0"
+    "@types/eslint__js": "npm:^8"
+    "@types/js-beautify": "npm:^1.14.3"
+    "@types/node": "npm:^20.10.6"
+    "@types/node-static": "npm:^0.7.11"
+    "@typescript-eslint/eslint-plugin": "npm:^6.17.0"
+    "@typescript-eslint/parser": "npm:^6.17.0"
+    "@yarnpkg/cli": "npm:^4.0.2"
+    "@yarnpkg/core": "npm:^4.0.2"
+    "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
+    "@yarnpkg/plugin-git": "npm:^3.0.0"
+    "@yarnpkg/plugin-workspace-tools": "npm:^4.0.1"
+    "@yarnpkg/pnpify": "npm:^4.0.1"
+    "@yarnpkg/sdks": "npm:^3.1.0"
+    babel-preset-minify: "npm:^0.5.2"
+    babelify: "npm:^10.0.0"
+    browserify: "npm:^17.0.0"
+    concurrently: "npm:^8.2.2"
+    core-js: "npm:^3.35.0"
+    esbuild: "npm:^0.19.11"
+    eslint: "npm:^8.56.0"
+    eslint-config-airbnb-base: "npm:^15.0.0"
+    eslint-config-prettier: "npm:^9.1.0"
+    eslint-import-resolver-node: "npm:^0.3.9"
+    eslint-plugin-import: "npm:^2.29.1"
+    htmlhint: "npm:^1.1.4"
+    husky: "npm:^8.0.3"
+    js-beautify: "npm:^1.14.11"
+    minimist: "npm:^1.2.8"
+    node-gyp: "npm:^10.0.1"
+    node-static: "npm:^0.7.11"
+    pinst: "npm:^3.0.0"
+    postcss: "npm:^8.4.32"
+    postcss-html: "npm:^1.5.0"
+    postcss-markdown: "npm:^1.2.0"
+    postcss-syntax: "npm:^0.36.2"
+    prettier: "npm:^3.1.1"
+    prettier-eslint: "npm:^16.2.0"
+    prettier-plugin-sh: "npm:^0.13.1"
+    prettier-plugin-toml: "npm:^2.0.1"
+    segmentit: "npm:^2.0.3"
+    stylelint: "npm:*"
+    stylelint-config-recommended: "npm:*"
+    ts-node: "npm:^10.9.2"
+    tslib: "npm:^2.6.2"
+    typescript: "npm:^5.3.3"
+    typescript-bundle: "npm:^1.0.18"
+    yarn-audit-fix: "npm:^10.0.7"
+  languageName: unknown
+  linkType: soft
+
+"@joelvaneenwyk/server@workspace:src/server":
+  version: 0.0.0-use.local
+  resolution: "@joelvaneenwyk/server@workspace:src/server"
+  dependencies:
+    "@types/js-beautify": "npm:^1.14.3"
+    "@types/node": "npm:^20.10.6"
+    "@types/node-static": "npm:^0.7.11"
+    esbuild: "npm:^0.19.11"
+    esbuild-plugin-tsc: "npm:^0.4.0"
+    js-beautify: "npm:^1.14.11"
+    node-static: "npm:^0.7.11"
+    ts-node: "npm:^10.9.2"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@joelvaneenwyk/tools@workspace:src/tools":
+  version: 0.0.0-use.local
+  resolution: "@joelvaneenwyk/tools@workspace:src/tools"
+  dependencies:
+    "@types/js-beautify": "npm:^1.14.3"
+    "@types/node": "npm:^20.10.6"
+    esbuild: "npm:^0.19.11"
+    esbuild-plugin-tsc: "npm:^0.4.0"
+    js-beautify: "npm:^1.14.11"
+    prettier: "npm:^3.1.1"
+    prettier-eslint: "npm:^16.2.0"
+    prettier-plugin-sh: "npm:^0.13.1"
+    prettier-plugin-toml: "npm:^2.0.1"
+    ts-node: "npm:^10.9.2"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
 
 "@jridgewell/gen-mapping@npm:^0.3.0":
   version: 0.3.3
@@ -2242,6 +2335,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/eslint@npm:*":
+  version: 8.56.0
+  resolution: "@types/eslint@npm:8.56.0"
+  dependencies:
+    "@types/estree": "npm:*"
+    "@types/json-schema": "npm:*"
+  checksum: afba97b10d02cb7c7e7658de38f626c65b81be0fe45bc479e058ab14bc089911193811dce681edd656fc6b59c91fd8d0c976972476fc98b5e782b2c3b08aaa6c
+  languageName: node
+  linkType: hard
+
+"@types/eslint__js@npm:^8":
+  version: 8.42.3
+  resolution: "@types/eslint__js@npm:8.42.3"
+  dependencies:
+    "@types/eslint": "npm:*"
+  checksum: ccc5180b92155929a089ffb03ed62625216dcd5e46dd3197c6f82370ce8b52c7cb9df66c06b0a3017995409e023bc9eafe5a3f009e391960eacefaa1b62d9a56
+  languageName: node
+  linkType: hard
+
+"@types/estree@npm:*":
+  version: 1.0.5
+  resolution: "@types/estree@npm:1.0.5"
+  checksum: b3b0e334288ddb407c7b3357ca67dbee75ee22db242ca7c56fe27db4e1a31989cb8af48a84dd401deb787fe10cc6b2ab1ee82dc4783be87ededbe3d53c79c70d
+  languageName: node
+  linkType: hard
+
 "@types/fs-extra@npm:^11.0.1":
   version: 11.0.4
   resolution: "@types/fs-extra@npm:11.0.4"
@@ -2266,7 +2385,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/json-schema@npm:^7.0.12":
+"@types/json-schema@npm:*, @types/json-schema@npm:^7.0.12":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
   checksum: a996a745e6c5d60292f36731dd41341339d4eeed8180bb09226e5c8d23759067692b1d88e5d91d72ee83dfc00d3aca8e7bd43ea120516c17922cbcb7c3e252db
@@ -6836,63 +6955,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"homepage@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "homepage@workspace:."
-  dependencies:
-    "@babel/cli": "npm:^7.23.4"
-    "@babel/core": "npm:^7.23.7"
-    "@babel/preset-env": "npm:^7.23.7"
-    "@toml-tools/lexer": "npm:^1.0.0"
-    "@types/js-beautify": "npm:^1.14.3"
-    "@types/node": "npm:^20.10.6"
-    "@types/node-static": "npm:^0.7.11"
-    "@typescript-eslint/eslint-plugin": "npm:^6.17.0"
-    "@typescript-eslint/parser": "npm:^6.17.0"
-    "@yarnpkg/cli": "npm:^4.0.2"
-    "@yarnpkg/core": "npm:^4.0.2"
-    "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
-    "@yarnpkg/plugin-git": "npm:^3.0.0"
-    "@yarnpkg/plugin-workspace-tools": "npm:^4.0.1"
-    "@yarnpkg/pnpify": "npm:^4.0.1"
-    "@yarnpkg/sdks": "npm:^3.1.0"
-    babel-preset-minify: "npm:^0.5.2"
-    babelify: "npm:^10.0.0"
-    browserify: "npm:^17.0.0"
-    concurrently: "npm:^8.2.2"
-    core-js: "npm:^3.35.0"
-    esbuild: "npm:^0.19.11"
-    eslint: "npm:^8.56.0"
-    eslint-config-airbnb-base: "npm:^15.0.0"
-    eslint-config-prettier: "npm:^9.1.0"
-    eslint-import-resolver-node: "npm:^0.3.9"
-    eslint-plugin-import: "npm:^2.29.1"
-    htmlhint: "npm:^1.1.4"
-    husky: "npm:^8.0.3"
-    js-beautify: "npm:^1.14.11"
-    minimist: "npm:^1.2.8"
-    node-gyp: "npm:^10.0.1"
-    node-static: "npm:^0.7.11"
-    pinst: "npm:^3.0.0"
-    postcss: "npm:^8.4.32"
-    postcss-html: "npm:^1.5.0"
-    postcss-markdown: "npm:^1.2.0"
-    postcss-syntax: "npm:^0.36.2"
-    prettier: "npm:^3.1.1"
-    prettier-eslint: "npm:^16.2.0"
-    prettier-plugin-sh: "npm:^0.13.1"
-    prettier-plugin-toml: "npm:^2.0.1"
-    segmentit: "npm:^2.0.3"
-    stylelint: "npm:*"
-    stylelint-config-recommended: "npm:*"
-    ts-node: "npm:^10.9.2"
-    tslib: "npm:^2.6.2"
-    typescript: "npm:^5.3.3"
-    typescript-bundle: "npm:^1.0.18"
-    yarn-audit-fix: "npm:^10.0.7"
-  languageName: unknown
-  linkType: soft
-
 "html-tags@npm:^3.3.1":
   version: 3.3.1
   resolution: "html-tags@npm:3.3.1"
@@ -7612,36 +7674,6 @@ __metadata:
   checksum: f01d8f972d894cd7638bc338e9ef5ddb86f7b208ce177a36d718eac96ec86638a6efa17d0221b10073e64b45edc2ce15340db9380b1f5d5c5d000cbc517dc111
   languageName: node
   linkType: hard
-
-"joelvaneenwyk-homepage-server@workspace:src/server":
-  version: 0.0.0-use.local
-  resolution: "joelvaneenwyk-homepage-server@workspace:src/server"
-  dependencies:
-    "@types/js-beautify": "npm:^1.14.3"
-    "@types/node": "npm:^20.10.6"
-    "@types/node-static": "npm:^0.7.11"
-    esbuild: "npm:^0.19.11"
-    esbuild-plugin-tsc: "npm:^0.4.0"
-    js-beautify: "npm:^1.14.11"
-    node-static: "npm:^0.7.11"
-    ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.3.3"
-  languageName: unknown
-  linkType: soft
-
-"joelvaneenwyk-homepage-tools@workspace:src/tools":
-  version: 0.0.0-use.local
-  resolution: "joelvaneenwyk-homepage-tools@workspace:src/tools"
-  dependencies:
-    "@types/js-beautify": "npm:^1.14.3"
-    "@types/node": "npm:^20.10.6"
-    esbuild: "npm:^0.19.11"
-    esbuild-plugin-tsc: "npm:^0.4.0"
-    js-beautify: "npm:^1.14.11"
-    ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.3.3"
-  languageName: unknown
-  linkType: soft
 
 "js-beautify@npm:^1.14.11":
   version: 1.14.11

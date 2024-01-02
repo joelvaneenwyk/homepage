@@ -1,5 +1,5 @@
 {
-    "name": "homepage",
+    "name": "@joelvaneenwyk/homepage",
     "version": "2.0.1",
     "description": "Homepage for Joel Van Eenwyk",
     "homepage": "https://www.joelvaneenwyk.com",
@@ -42,7 +42,6 @@
         "build:theme:babel": "cd themes/base && babel src/js --out-file assets/js/theme.min.js --source-maps",
         "build:theme:segmentit": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
         "build:hugo": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
-        "build:server": "ts-node ./src/tools/bundle-server.ts",
         "build:pretty": "yarn prettier --write dist/ .vscode/ *.json themes/base/.babelrc config.toml src/bin/*.sh",
         "build:js-beautify": "ts-node ./src/tools/beautify.ts",
         "heroku-prebuild": "bash ./src/bin/prebuild.sh",
@@ -65,7 +64,6 @@
     "prettier": {
         "semi": true,
         "plugins": [
-            "prettier-plugin-toml",
             "prettier-plugin-sh",
             "prettier-eslint"
         ],
@@ -92,79 +90,6 @@
             }
         ]
     },
-    "eslintConfig": {
-        "env": {
-            "browser": true,
-            "commonjs": true,
-            "es6": true,
-            "jquery": true,
-            "node": true
-        },
-        "extends": [
-            "airbnb-base"
-        ],
-        "globals": {
-            "Atomics": "readonly",
-            "SharedArrayBuffer": "readonly"
-        },
-        "parser": "@typescript-eslint/parser",
-        "parserOptions": {
-            "ecmaVersion": 2018
-        },
-        "plugins": [
-            "@typescript-eslint"
-        ],
-        "ignorePatterns": [
-            "themes/base/assets/lib/**",
-            "src/server/cheeses/output/**",
-            "dist/**",
-            "**/*.min.js",
-            "**/newrelic.js"
-        ],
-        "rules": {
-            "indent": [
-                "error",
-                4
-            ],
-            "max-len": [
-                "error",
-                {
-                    "code": 130
-                }
-            ],
-            "linebreak-style": "off",
-            "quotes": [
-                "error",
-                "double"
-            ],
-            "semi": [
-                "error",
-                "always"
-            ],
-            "arrow-body-style": [
-                "error",
-                "as-needed"
-            ],
-            "prefer-arrow-callback": "off",
-            "sort-imports": "off",
-            "no-cond-assign": [
-                "error",
-                "always"
-            ],
-            "import/first": "off",
-            "comma-dangle": [
-                "error",
-                {
-                    "arrays": "never",
-                    "objects": "never",
-                    "imports": "never",
-                    "exports": "never",
-                    "functions": "never"
-                }
-            ],
-            "no-console": "off"
-        }
-    },
     "babel": {
         "presets": [
             [
@@ -180,6 +105,7 @@
         "@babel/cli": "^7.23.4",
         "@babel/core": "^7.23.7",
         "@babel/preset-env": "^7.23.7",
+        "@eslint/js": "^8.56.0",
         "@toml-tools/lexer": "^1.0.0",
         "@types/js-beautify": "^1.14.3",
         "@types/node": "^20.10.6",
@@ -227,5 +153,8 @@
         "typescript": "^5.3.3",
         "typescript-bundle": "^1.0.18",
         "yarn-audit-fix": "^10.0.7"
+    },
+    "devDependencies": {
+        "@types/eslint__js": "^8"
     }
 }
