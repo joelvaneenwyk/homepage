@@ -18,11 +18,12 @@ const config = {
         plugin_toml,
         plugin_organize_import,
         plugin_package_json,
-        plugin_xml,
+        plugin_xml
     ],
     semi: true,
     tabWidth: 4,
     printWidth: 130,
+    trailingComma: "none",
     proseWrap: "preserve",
     overrides: [
         // Allow proper formatting of JSONC files:
@@ -31,39 +32,38 @@ const config = {
             files: ["**/*.jsonc", "**/.vscode/*.json", "**/tsconfig.json", "**/tsconfig.*.json"],
             options: {
                 parser: "json5",
-                quoteProps: "preserve",
-            },
+                quoteProps: "preserve"
+            }
         },
         {
             files: ["**/*.sh", "**/*.bash", "**/*.zsh", "**/pre-commit"],
             options: {
-                parser: "sh",
-            },
+                parser: "sh"
+            }
         },
         {
             files: ["**/*.toml"],
             options: {
-                parser: "toml",
-            },
+                parser: "toml"
+            }
         },
         {
             files: ["Procfile", "**/*.yml", "**/*.yaml"],
             options: {
-                parser: "yaml",
-            },
+                parser: "yaml"
+            }
         },
         {
-            files: ["content/**/*.md"],
+            files: ["*.md"],
             options: {
-                tabWidth: 2,
-            },
+                tabWidth: 2
+            }
         },
 
         // Allow proper formatting of XML files:
         // https://github.com/prettier/plugin-xml#configuration
         {
             files: ["**/*.xml"],
-            excludeFiles: ["**/*.docx", "**/*.bat"],
             parser: "xml",
             options: {
                 // The default is "strict". However, whitespace cannot be reformatted unless this is set to
@@ -72,10 +72,10 @@ const config = {
 
                 // Prettier's default value is 80, but this causes XML files in particular to become
                 // difficult to work with.
-                printWidth: 1_000_000,
-            },
-        },
-    ],
+                printWidth: 1_000_000
+            }
+        }
+    ]
 };
 
 export default config;
