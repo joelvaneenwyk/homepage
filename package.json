@@ -15,7 +15,9 @@
         "url": "https://github.com/joelvaneenwyk/homepage.git"
     },
     "workspaces": [
-        "homepage"
+        "homepage",
+        "src/server",
+        "src/tools"
     ],
     "private": true,
     "packageManager": "yarn@4.0.2",
