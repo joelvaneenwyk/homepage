@@ -35,7 +35,7 @@
     "build": "concurrently -m 1 \"yarn:build:*\"",
     "build:end": "echo Building steps completed...",
     "build:hugo": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
-    "build:pretty": "yarn prettier --config ./prettier.config.mjs --write dist/ \"**/*\"",
+    "build:pretty": "yarn prettier --config ./prettier.config.mjs --write \"**/*\"",
     "build:server": "yarn workspace @joelvaneenwyk/tools build",
     "build:start": "echo Building typescript server and website...",
     "build:theme": "yarn run build:theme:babel && yarn run build:theme:segmentit",

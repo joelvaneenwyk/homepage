@@ -6,15 +6,24 @@ root = true
 # Unix-style newlines with a newline ending every file
 [*]
 insert_final_newline = true
-
-[*.{bat,ps1}]
 indent_style = space
 indent_size = 4
 
-# 4 space indentation
-[*.py]
+[*.{bat}]
+end_of_line = crlf
 indent_style = space
 indent_size = 4
+
+[Makefile]
+indent_style = tab
+
+[*.md]
+indent_style = space
+indent_size = 2
+
+[*.{js,ts,mjs,cjs,yml,toml,json,css,scss}]
+indent_style = space
+indent_size = 2
 
 [*.sh]
 # like -i=4
@@ -29,17 +38,3 @@ space_redirects    = true  # like -sr
 keep_padding       = true  # like -kp
 function_next_line = true  # like -fn
 
-[Makefile]
-indent_style = tab
-
-[*.md]
-indent_style = space
-indent_size = 2
-
-[*.{js,ts,mjs,cjs,yml,toml}]
-indent_style = space
-indent_size = 2
-
-[{package.json}]
-indent_style = space
-indent_size = 4
