@@ -29,7 +29,6 @@ space_redirects    = true  # like -sr
 keep_padding       = true  # like -kp
 function_next_line = true  # like -fn
 
-# Tab indentation (no size specified)
 [Makefile]
 indent_style = tab
 
@@ -37,16 +36,10 @@ indent_style = tab
 indent_style = space
 indent_size = 2
 
-[*.{toml,yml}]
+[*.{js,ts,mjs,cjs,yml,toml}]
 indent_style = space
 indent_size = 2
 
-# Indentation override for all JS under lib directory
-[*.{js,ts}]
-indent_style = space
-indent_size = 2
-
-# Matches the exact files either `package.json` or `.travis.yml`
 [{package.json}]
 indent_style = space
 indent_size = 4
