@@ -7,8 +7,7 @@
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": false,
-        "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "NodeNext"
+        "forceConsistentCasingInFileNames": true
     },
     "files": ["src/server/server.ts"]
 }

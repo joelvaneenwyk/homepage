@@ -3,58 +3,31 @@
  * bundled JavaScript with all dependencies baked in using esbuild.
  */
 
-import { pnpPlugin } from "@yarnpkg/esbuild-plugin-pnp";
 import { build, BuildOptions } from "esbuild";
 import ts, { CompilerOptions } from "typescript";
-import fs from "fs";
+import { readFile, writeFile, mkdir } from "fs/promises";
+import { resolve, join } from "path";
+import esbuildPluginTsc from "esbuild-plugin-tsc";
 
-let transpileCompilerOptions: CompilerOptions = {
-    module: ts.ModuleKind.CommonJS
-};
+async function main() {
+    const root = resolve(join(__dirname, "../../"));
+    const serverRoot = resolve(join(root, "src", "server"));
+    const distRoot = resolve(join(root, "dist"));
+    const distOutput = resolve(join(distRoot, "dev"));
 
-const configFileName = ts.findConfigFile(
-    "./",
-    ts.sys.fileExists,
-    "tsconfig.json"
-);
-if (configFileName !== undefined) {
-    const configFile = ts.readConfigFile(configFileName, ts.sys.readFile);
-    const parsedConfigFile = ts.parseJsonConfigFileContent(
-        configFile.config,
-        ts.sys,
-        "./"
-    );
-    transpileCompilerOptions = parsedConfigFile.options;
+    await mkdir(distOutput, { recursive: true });
+    const options: BuildOptions = {
+        bundle: true,
+        platform: "node",
+        tsconfig: join(serverRoot, "tsconfig.json"),
+        entryPoints: [join(serverRoot, "server.ts")],
+        outfile: join(distRoot, "server", "server.js"),
+        plugins: [
+            esbuildPluginTsc()
+        ]
+    };
+
+    await build(options);
 }
 
-fs.mkdirSync("./dist/dev", { recursive: true });
-const outputServerJavaScriptPath = "./dist/dev/server.js";
-const result = ts.transpileModule(
-    fs.readFileSync("./src/server/server.ts", "utf8"),
-    {
-        compilerOptions: transpileCompilerOptions,
-        fileName: "./src/server/server.ts"
-    }
-);
-fs.writeFileSync(outputServerJavaScriptPath, result.outputText);
-console.log(`Transpiled JavaScript: '${outputServerJavaScriptPath}'`);
-
-if (result.sourceMapText !== undefined) {
-    fs.writeFileSync("./dist/dev/server.js.map", result.sourceMapText);
-    console.log("Generated map: './dist/dev/server.js.map'");
-}
-
-const options: BuildOptions = {
-    bundle: true,
-    sourcemap: "both",
-    format: "cjs",
-    target: "node14",
-    entryPoints: [outputServerJavaScriptPath],
-    outfile: "./dist/server/server.js",
-    plugins: [
-        pnpPlugin()
-    ]
-};
-console.log(`Generated server bundle: '${options.outfile}'`);
-
-build(options);
+main();
