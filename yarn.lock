@@ -2452,6 +2452,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yarnpkg/fslib@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "@yarnpkg/fslib@npm:3.0.1"
+  dependencies:
+    tslib: ^2.4.0
+  checksum: cb5874f4c1deae85d9c098f92cd55f3a7cf8bf0561b8b8914f827745fce8a51cb9e2faff5c1d99b1689000b936e4169bae88e036177ca320304de55a5c4299b8
+  languageName: node
+  linkType: hard
+
 "@yarnpkg/fslib@npm:^3.0.0-rc.28":
   version: 3.0.0-rc.28
   resolution: "@yarnpkg/fslib@npm:3.0.0-rc.28"
@@ -2620,20 +2629,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/plugin-git@npm:^3.0.0-rc.28":
-  version: 3.0.0-rc.28
-  resolution: "@yarnpkg/plugin-git@npm:3.0.0-rc.28"
+"@yarnpkg/plugin-git@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@yarnpkg/plugin-git@npm:3.0.0"
   dependencies:
     "@types/semver": ^7.1.0
-    "@yarnpkg/fslib": ^3.0.0-rc.28
-    clipanion: ^3.2.0-rc.10
+    "@yarnpkg/fslib": ^3.0.0
+    clipanion: ^4.0.0-rc.2
     git-url-parse: ^13.1.0
     lodash: ^4.17.15
     semver: ^7.1.2
     tslib: ^2.4.0
   peerDependencies:
-    "@yarnpkg/core": ^4.0.0-rc.28
-  checksum: 528340c729d99de30ddc58d1bf7298b9a09211ef7fd512000d8921ed8e44d34aaa6643086787958b2bfde272d18109c253bdfa1ee025e3581a437acf74dfe865
+    "@yarnpkg/core": ^4.0.0
+  checksum: d75ed9d339905e81d5ffb8d0cac5aa2cf2e106d322c4dc64acac0e53a00e6c7cd5fd931d7373b1d944d11fd4f4685188e5f445fce34394a627be77eade39b769
   languageName: node
   linkType: hard
 
@@ -4259,6 +4268,17 @@ __metadata:
   peerDependencies:
     typanion: "*"
   checksum: 354fee2b12dd356a76949a0ea651e32ea26a12026dd6f27d045c7e00c07a2f2a129dddc84eadc855c960b7d842378064d84fe21641c1d8a943b6364343162b4e
+  languageName: node
+  linkType: hard
+
+"clipanion@npm:^4.0.0-rc.2":
+  version: 4.0.0-rc.2
+  resolution: "clipanion@npm:4.0.0-rc.2"
+  dependencies:
+    typanion: ^3.8.0
+  peerDependencies:
+    typanion: "*"
+  checksum: 533a2a0fd2d18b0599afc8bb01452f87bdc3a6b5481c8c02d35821a01fba0a407a2057eb52168cb57c867a025adebe976d19327ce361390886d9850075805bb4
   languageName: node
   linkType: hard
 
@@ -6431,7 +6451,7 @@ fsevents@~2.3.2:
     "@yarnpkg/cli": ^3.2.4
     "@yarnpkg/core": ^4.0.0-rc.28
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
-    "@yarnpkg/plugin-git": ^3.0.0-rc.28
+    "@yarnpkg/plugin-git": ^3.0.0
     "@yarnpkg/plugin-workspace-tools": ^3.1.4
     "@yarnpkg/pnpify": ^3.1.6
     "@yarnpkg/sdks": ^3.0.0-rc.28

@@ -188,7 +188,7 @@
         "@yarnpkg/cli": "^3.2.4",
         "@yarnpkg/core": "^4.0.0-rc.28",
         "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
-        "@yarnpkg/plugin-git": "^3.0.0-rc.28",
+        "@yarnpkg/plugin-git": "^3.0.0",
         "@yarnpkg/plugin-workspace-tools": "^3.1.4",
         "babel-preset-minify": "^0.5.2",
         "babelify": "^10.0.0",
