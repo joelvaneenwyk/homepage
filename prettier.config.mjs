@@ -16,6 +16,7 @@ const config = {
   printWidth: 130,
   trailingComma: 'none',
   proseWrap: 'preserve',
+  quoteProps: 'preserve',
   overrides: [
     // Allow proper formatting of JSONC files:
     // https://github.com/prettier/prettier/issues/5708
@@ -24,7 +25,7 @@ const config = {
       options: {
         parser: 'json5',
         singleQuote: false,
-        quoteProps: 'consistent'
+        quoteProps: 'preserve'
       }
     },
     {
