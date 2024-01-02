@@ -11,13 +11,6 @@ insert_final_newline = true
 indent_style = space
 indent_size = 4
 
-# Matches multiple files with brace expansion notation
-# Set default charset
-[*.{js,py}]
-charset = utf-8
-indent_style = space
-indent_size = 4
-
 # 4 space indentation
 [*.py]
 indent_style = space
@@ -36,24 +29,17 @@ space_redirects    = true  # like -sr
 keep_padding       = true  # like -kp
 function_next_line = true  # like -fn
 
-# Tab indentation (no size specified)
 [Makefile]
 indent_style = tab
 
 [*.md]
 indent_style = space
-indent_size = 4
+indent_size = 2
 
-[*.toml]
+[*.{js,ts,mjs,cjs,yml,toml}]
 indent_style = space
 indent_size = 2
 
-# Indentation override for all JS under lib directory
-[*.js]
-indent_style = space
-indent_size = 4
-
-# Matches the exact files either `package.json` or `.travis.yml`
-[{package.json,.travis.yml}]
+[{package.json}]
 indent_style = space
 indent_size = 4

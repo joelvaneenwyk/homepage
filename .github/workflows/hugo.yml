@@ -32,8 +32,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install Yarn
-        run: npm install -g yarn
+      - run: corepack enable
 
       # We do not require Go installed but installing anyways so that we have the
       # option to either install our own version of Hugo or run plugins.

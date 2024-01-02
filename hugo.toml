@@ -66,7 +66,6 @@ home = ["HTML", "RSS", "JSON"]
 page = ["HTML", "MarkDown"]
 section = ["HTML", "RSS"]
 taxonomy = ["HTML", "RSS"]
-taxonomyTerm = ["HTML"]
 
 [taxonomies]
 series = "series"
@@ -152,17 +151,7 @@ weight = 6
 # site description
 description = "About Joel Van Eenwyk"
 # site keywords
-keywords = [
-  "programmer",
-  "jvaneenwyk",
-  "van eenwyk",
-  "joel van eenwyk",
-  "bingo",
-  "vfx journal",
-  "vfx",
-  "houdini",
-  "haskell"
-]
+keywords = ["programmer", "jvaneenwyk", "van eenwyk", "joel van eenwyk", "bingo", "vfx journal", "vfx", "houdini", "haskell"]
 
 # App icon config
 [languages.en.params.app]
@@ -244,7 +233,7 @@ RSS = true
 [params]
 author = "Joel Van Eenwyk"
 description = "A simple monospaced resume theme for Hugo."
-favicon = "images/favicon.ico" # path to a .ico to use as favicon
+favicon = "images/favicon.ico"                             # path to a .ico to use as favicon
 # LoveIt theme version
 version = "0.2.X"
 # site default theme ("light", "dark", "auto")
