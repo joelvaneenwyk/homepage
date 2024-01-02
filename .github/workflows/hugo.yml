@@ -2,18 +2,16 @@ name: hugo
 
 on:
   push:
-    branches: [main, develop]
+    branches: [ main ]
   pull_request:
-    branches: [main, develop]
+    branches: [ main ]
 
 jobs:
   build:
     strategy:
       matrix:
         node:
-          - 16
-          - 18
-          - 20
+          - 14
         platform:
           - ubuntu-20.04
           - macos-11
@@ -34,8 +32,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install Yarn
-        run: npm install -g yarn
+      - run: corepack enable
 
       # We do not require Go installed but installing anyways so that we have the
       # option to either install our own version of Hugo or run plugins.

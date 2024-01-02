@@ -17,6 +17,7 @@ codeql
 Commento
 cond
 cookieconsent
+corepack
 cssjs
 CUDA
 cygwin
