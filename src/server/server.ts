@@ -3,7 +3,7 @@ import { createServer } from 'http';
 import { join, resolve } from 'path';
 import process from 'process';
 
-const root = resolve(join(__dirname, '../../'));
+const root = resolve('../../');
 const cwd = process.cwd();
 
 // Use a default port of 5000 unless it's specified in server config

@@ -32,7 +32,7 @@ function getRelativePath(inputPath: string): string {
 }
 
 function main(): void {
-  const root = resolve(join(__dirname, '../../'));
+  const root = resolve('../../');
   const distRoot = join(root, 'dist');
   const files = getFiles(distRoot);
   files

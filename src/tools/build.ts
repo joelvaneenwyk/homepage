@@ -9,7 +9,7 @@ import { mkdir } from 'fs/promises';
 import { join, resolve } from 'path';
 
 async function main(): Promise<void> {
-  const root = resolve(join(__dirname, '../../'));
+  const root = resolve('../../');
   const serverRoot = resolve(join(root, 'src', 'server'));
   const distRoot = resolve(join(root, 'dist'));
   const distOutput = resolve(join(distRoot, 'dev'));
