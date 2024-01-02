@@ -37,13 +37,13 @@
         "upgrade": "npx -y npm-check-updates@latest -u && yarn install && npx -y yarn-audit-fix@latest && yarn run build:pretty",
         "reinstall": "yarn cache clean --all && yarn install",
         "lint": "eslint src/**/*.ts",
-        "build": "echo Building typescript server and website... && concurrently -m 1 --prefix-colors yellow,cyan,green,blue \"yarn:build:*\"",
+        "build": "echo Building typescript server and website... && concurrently -m 1 \"yarn:build:*\"",
         "build:theme": "yarn run build:theme:babel && yarn run build:theme:segmentit",
         "build:theme:babel": "cd themes/base && babel src/js --out-file assets/js/theme.min.js --source-maps",
         "build:theme:segmentit": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
         "build:hugo": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
-        "build:pretty": "yarn prettier --write dist/ .vscode/ *.json themes/base/.babelrc config.toml src/bin/*.sh",
-        "build:js-beautify": "ts-node ./src/tools/beautify.ts",
+        "build:pretty": "yarn prettier --config ./prettier.config.mjs --write dist/ .vscode/ *.json themes/base/.babelrc hugo.toml src/bin/*.sh",
+        "build:server": "yarn workspace @joelvaneenwyk/tools build",
         "heroku-prebuild": "bash ./src/bin/prebuild.sh",
         "heroku-postbuild": "bash ./src/bin/postbuild.sh",
         "heroku-cleanup": "bash ./src/bin/cleanup.sh",
@@ -60,35 +60,6 @@
     "bugs": {
         "url": "https://github.com/joelvaneenwyk/workspace/issues",
         "email": "joel.vaneenwyk@gmail.com"
-    },
-    "prettier": {
-        "semi": true,
-        "plugins": [
-            "prettier-plugin-sh",
-            "prettier-eslint"
-        ],
-        "overrides": [
-            {
-                "files": [
-                    "**/*.json"
-                ],
-                "options": {
-                    "tabWidth": 4,
-                    "printWidth": 130,
-                    "proseWrap": "preserve"
-                }
-            },
-            {
-                "files": [
-                    "content/**/*.md"
-                ],
-                "options": {
-                    "tabWidth": 2,
-                    "printWidth": 130,
-                    "proseWrap": "preserve"
-                }
-            }
-        ]
     },
     "babel": {
         "presets": [
