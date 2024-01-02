@@ -8,7 +8,6 @@
         "email": "joel.vaneenwyk@gmail.com"
     },
     "main": "dist/server/server.js",
-    "type": "commonjs",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -29,15 +28,15 @@
         ".yarn/cache"
     ],
     "scripts": {
-        "start": "node ./dist/server/server.js",
-        "start-dev": "tsc && node ./dist/dev/server.js",
+        "start": "ts-node ./src/server/server.ts",
+        "start-dev": "tsc && ts-node ./src/server/server.ts",
         "watch": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic server",
         "test": "yarn build server && node --require=./.pnp.cjs ./dist/server/server.js --test",
         "dev": "yarn sdks vscode",
         "github": "act",
         "upgrade": "npx -y npm-check-updates@latest -u && yarn install && npx -y yarn-audit-fix@latest && yarn run build:pretty",
         "reinstall": "yarn cache clean --all && yarn install",
-        "lint": "eslint src/server/*.ts",
+        "lint": "eslint src/**/*.ts",
         "build": "echo Building typescript server and website... && concurrently -m 1 --prefix-colors yellow,cyan,green,blue \"yarn:build:*\"",
         "build:theme": "yarn run build:theme:babel && yarn run build:theme:segmentit",
         "build:theme:babel": "cd themes/base && babel src/js --out-file assets/js/theme.min.js --source-maps",
@@ -192,6 +191,8 @@
         "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
         "@yarnpkg/plugin-git": "^3.0.0",
         "@yarnpkg/plugin-workspace-tools": "^4.0.1",
+        "@yarnpkg/pnpify": "^4.0.1",
+        "@yarnpkg/sdks": "^3.1.0",
         "babel-preset-minify": "^0.5.2",
         "babelify": "^10.0.0",
         "browserify": "^17.0.0",
@@ -219,17 +220,12 @@
         "prettier-plugin-sh": "^0.13.1",
         "prettier-plugin-toml": "^2.0.1",
         "segmentit": "^2.0.3",
-        "stylelint": "^16.1.0",
-        "stylelint-config-prettier": "^9.0.5",
-        "stylelint-config-standard": "^36.0.0",
+        "stylelint": "*",
+        "stylelint-config-recommended": "*",
         "ts-node": "^10.9.2",
         "tslib": "^2.6.2",
         "typescript": "^5.3.3",
         "typescript-bundle": "^1.0.18",
         "yarn-audit-fix": "^10.0.7"
-    },
-    "devDependencies": {
-        "@yarnpkg/pnpify": "^4.0.1",
-        "@yarnpkg/sdks": "^3.1.0"
     }
 }
