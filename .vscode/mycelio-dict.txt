@@ -2,15 +2,18 @@ actions
 addHeaders
 algoliasearch
 analyser
+Autobuild
 autosearch
 autotrack
 Bilibili
 bootlint
 bungie
+bytestokey
 caffe
 chillingo
 cmaps
 Codase
+codeql
 Commento
 cond
 cookieconsent
@@ -30,8 +33,8 @@ echarts
 eclint
 eenwyk
 emcc
-Emscripten
 emscripten
+Emscripten
 errno
 esbuild
 espnu
@@ -40,6 +43,7 @@ fa-searchengin
 fontfaceobserver
 framebuffer
 framestore
+fsevents
 ftime
 fullscreen
 fxGuide
@@ -91,6 +95,7 @@ modernizr
 multilanguage
 mycelio
 nodeunit
+npmcli
 octokit
 odforce
 Olly
@@ -111,6 +116,7 @@ PTVS        # Python Tools for Visual Studio
 pycaffe
 pylint
 pythonPath
+querystring
 raytracing
 readonly
 rects
