@@ -47,6 +47,13 @@ const config = {
       }
     },
     {
+      files: ['*.js', '*.ts'],
+      options: {
+        parser: 'typescript',
+        quoteProps: 'consistent'
+      }
+    },
+    {
       files: ['*.md'],
       parser: 'markdown'
     },
