@@ -1,15 +1,21 @@
-.yarn/
 dist/dev/
 dist/server/
+
 asserts/
 content/
 themes/
 static/
 server/data/
 server/static/
-server/views
+server/views/
 
+.yarn/
 .pnp.cjs
+.pnp.loader.mjs
+yarn.lock
+
 *.html
 *.css
-yarn.lock
+*.docx
+*.pdf
+*.bat

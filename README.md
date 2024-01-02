@@ -12,11 +12,11 @@ The staging branch is also deployed automatically to Heroku at [jvaneenwyk.Herok
 
 ## Structure
 
-* 📃 `app.json` - Defines the application for deploying to Heroku, more details at [app.json Schema | Heroku Dev Center](https://devcenter.heroku.com/articles/app-json-schema).
-* 📃 `heroku.yml` - Configuration file for [Heroku](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml) that replaces the [Procfile](https://devcenter.heroku.com/articles/procfile#procfile-and-heroku-yml).
-* 📁 `content` - Markdown files and the text content of the site.
-* 📁 `static` - Assets not intended to change e.g., stylesheets, images,
-etc.
+- 📃 `app.json` - Defines the application for deploying to Heroku, more details at [app.json Schema | Heroku Dev Center](https://devcenter.heroku.com/articles/app-json-schema).
+- 📃 `heroku.yml` - Configuration file for [Heroku](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml) that replaces the [Procfile](https://devcenter.heroku.com/articles/procfile#procfile-and-heroku-yml).
+- 📁 `content` - Markdown files and the text content of the site.
+- 📁 `static` - Assets not intended to change e.g., stylesheets, images,
+  etc.
 
 ## Principles and Guidelines
 
@@ -32,7 +32,7 @@ Based on the previous version of this site, there were a lot of learnings. The p
 ## Build and Run
 
 1. [Install Hugo](https://gohugo.io/getting-started/installing/)
-    * Recommend using [Scoop](https://scoop.sh/) on Windows
+   - Recommend using [Scoop](https://scoop.sh/) on Windows
 2. Install Heroku CLI
 3. From the root, run `heroku git:remote -a jvaneenwyk` so that the app name is assigned
 4. Install NodeJS
@@ -44,15 +44,15 @@ Based on the previous version of this site, there were a lot of learnings. The p
 
 1. Install [Scoop](https://scoop.sh/). Open a PowerShell terminal (version 5.1 or later) and run:
 
-    ```powershell
-    # Optional: Needed to run a remote script the first time
-    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    irm get.scoop.sh | iex
-    ```
+   ```powershell
+   # Optional: Needed to run a remote script the first time
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+   irm get.scoop.sh | iex
+   ```
 
 2. [Install Hugo](https://gohugo.io/getting-started/installing/): `scoop install hugo-extended`
 3. Start Hugo server: `hugo server`
 
 ## Resources
 
-* 🔒 [jvaneenwyk | Heroku](https://dashboard.heroku.com/apps/jvaneenwyk)
+- 🔒 [jvaneenwyk | Heroku](https://dashboard.heroku.com/apps/jvaneenwyk)

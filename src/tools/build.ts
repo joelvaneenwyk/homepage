@@ -4,11 +4,11 @@
  */
 
 import { build, BuildOptions } from "esbuild";
-import { mkdir } from "fs/promises";
-import { resolve, join } from "path";
 import esbuildPluginTsc from "esbuild-plugin-tsc";
+import { mkdir } from "fs/promises";
+import { join, resolve } from "path";
 
-async function main() {
+async function main(): Promise<void> {
     const root = resolve(join(__dirname, "../../"));
     const serverRoot = resolve(join(root, "src", "server"));
     const distRoot = resolve(join(root, "dist"));
@@ -21,14 +21,12 @@ async function main() {
         tsconfig: join(serverRoot, "tsconfig.json"),
         entryPoints: [join(serverRoot, "server.ts")],
         outfile: join(distRoot, "server", "server.js"),
-        plugins: [
-            esbuildPluginTsc()
-        ]
+        plugins: [esbuildPluginTsc()]
     };
 
     await build(options);
 
-    console.log(`Server built: ${options.outfile}`)
+    console.log(`Server built: ${options.outfile}`);
 }
 
 main();

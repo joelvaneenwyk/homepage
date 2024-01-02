@@ -20,6 +20,7 @@ yarn-error.log
 
 /node_modules/
 /bower_components/
+joelvaneenwyk-*.tgz
 
 #
 # Hugo

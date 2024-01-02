@@ -1,6 +1,6 @@
-import { join, resolve } from "path";
-import { createServer } from "http";
 import fs from "fs";
+import { createServer } from "http";
+import { join, resolve } from "path";
 import process from "process";
 
 const root = resolve(join(__dirname, "../../"));
@@ -29,7 +29,7 @@ console.log(`Listening: http://localhost:${port}`);
 // are setup issues with Yarn or PNP
 import { Server } from "node-static";
 
-const fileServer = new (Server)(`${root}/dist/www`);
+const fileServer = new Server(`${root}/dist/www`);
 
 if (process.argv[2] === "--test") {
     console.log("Simple import test, skipping server.");

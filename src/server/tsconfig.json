@@ -2,9 +2,7 @@
     "compilerOptions": {
         /* Visit https://aka.ms/tsconfig to read more about this file */
         "target": "ESNext",
-        "lib": [
-            "ESNext"
-        ],
+        "lib": ["ESNext"],
         "module": "NodeNext",
         "rootDir": "./",
         "moduleResolution": "NodeNext",
@@ -13,7 +11,5 @@
         "strict": true,
         "skipLibCheck": true
     },
-    "files": [
-        "server.ts"
-    ]
+    "files": ["server.ts"]
 }

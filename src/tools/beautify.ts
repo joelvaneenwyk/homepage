@@ -6,15 +6,11 @@
  * bundled JavaScript with all dependencies baked in using esbuild.
  */
 
-import { build, BuildOptions } from "esbuild";
-import { mkdir } from "fs/promises";
-import { resolve, join } from "path";
-import esbuildPluginTsc from "esbuild-plugin-tsc";
-import { html } from "js-beautify";
 import fs from "fs";
-import path from "path";
+import { html } from "js-beautify";
+import path, { join, resolve } from "path";
 
-function getFiles(directory: fs.PathLike) {
+function getFiles(directory: fs.PathLike): string[] {
     const files: string[] = [];
 
     fs.readdirSync(directory).forEach((filename) => {
@@ -30,32 +26,31 @@ function getFiles(directory: fs.PathLike) {
     return files;
 }
 
-function getRelativePath(inputPath: string) {
+function getRelativePath(inputPath: string): string {
     const absolutePath = path.resolve("./");
     return inputPath.replace(absolutePath, "").replace(/\\/g, "/");
 }
 
-function main() {
+function main(): void {
     const root = resolve(join(__dirname, "../../"));
     const distRoot = join(root, "dist");
     const files = getFiles(distRoot);
-    files.filter((filename) => filename.includes(".html")).forEach((filename) => {
-        const data = fs.readFileSync(filename, "utf8");
-        const pretty = html(
-            data,
-            {
+    files
+        .filter((filename) => filename.includes(".html"))
+        .forEach((filename) => {
+            const data = fs.readFileSync(filename, "utf8");
+            const pretty = html(data, {
                 indent_size: 2,
                 preserve_newlines: false
+            });
+
+            if (data !== pretty) {
+                fs.writeFileSync(filename, pretty);
+                console.log(`Beautified: '${getRelativePath(filename)}'`);
             }
-        );
+        });
 
-        if (data !== pretty) {
-            fs.writeFileSync(filename, pretty);
-            console.log(`Beautified: '${getRelativePath(filename)}'`);
-        }
-    });
-
-    console.log(`Beautified output files: ${distRoot}`)
+    console.log(`Beautified output files: ${distRoot}`);
 }
 
 main();
