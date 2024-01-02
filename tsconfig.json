@@ -9,5 +9,23 @@
         "skipLibCheck": false,
         "forceConsistentCasingInFileNames": true
     },
-    "files": ["src/server/server.ts"]
+    "extends": [],
+    "include": [
+        "./**/*.js",
+        "./**/.*.js",
+        "./**/*.cjs",
+        "./**/.*.cjs",
+        "./**/*.mjs",
+        "./**/.*.mjs",
+        "./**/*.jsx",
+        "./**/.*.jsx",
+        "./**/*.ts",
+        "./**/.*.ts",
+        "./**/*.cts",
+        "./**/.*.cts",
+        "./**/*.mts",
+        "./**/.*.mts",
+        "./**/*.tsx",
+        "./**/.*.tsx"
+    ]
 }
