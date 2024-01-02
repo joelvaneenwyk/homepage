@@ -44,7 +44,7 @@ indent_style = tab
 indent_style = space
 indent_size = 4
 
-[*.toml]
+[*.{toml,yml}]
 indent_style = space
 indent_size = 2
 
