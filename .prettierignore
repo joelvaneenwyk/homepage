@@ -9,6 +9,10 @@ server/data/
 server/static/
 server/views/
 
+.idea/
+node_modules/
+resources/
+
 .yarn/
 .pnp.cjs
 .pnp.loader.mjs
@@ -19,3 +23,6 @@ yarn.lock
 *.docx
 *.pdf
 *.bat
+*.txt
+
+LICENSE
