@@ -2,12 +2,19 @@
     "name": "@joelvaneenwyk/tools",
     "version": "1.0.0",
     "description": "",
-    "main": "bundle-server.ts",
+    "main": "build.ts",
     "scripts": {
-        "build": "ts-node bundle-server.ts"
+        "build": "yarn build:compile && yarn build:beautify",
+        "build:compile": "ts-node ./build.ts",
+        "build:beautify": "ts-node ./beautify.ts"
+    },
+    "exports": {
+        ".": "./build.ts",
+        "./beautify": "./beautify.ts",
+        "./build": "./build.ts"
     },
     "keywords": [],
-    "author": "",
+    "author": "Joel Van Eenwyk",
     "license": "ISC",
     "dependencies": {
         "@types/js-beautify": "^1.14.3",
