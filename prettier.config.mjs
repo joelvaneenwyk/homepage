@@ -1,67 +1,80 @@
 // prettier.config.js, .prettierrc.js, prettier.config.mjs, or .prettierrc.mjs
 
-import * as plugin_sh from "prettier-plugin-sh";
-import * as plugin_toml from "prettier-plugin-toml";
-import * as plugin_eslint from "prettier-eslint";
+// .vscode/ *.json themes/base/.babelrc hugo.toml src/bin/*.sh
+
+import plugin_xml from "@prettier/plugin-xml";
+import plugin_organize_import from "prettier-plugin-organize-imports";
+import plugin_package_json from "prettier-plugin-packagejson";
+import plugin_sh from "prettier-plugin-sh";
+import plugin_toml from "prettier-plugin-toml";
 
 /** @type {import("prettier").Config} */
 const config = {
+    plugins: [
+        //"prettier-plugin-organize-imports", // Prettier does not format imports by default.
+        //"prettier-plugin-packagejson", // Prettier does not format "package.json" by default.
+        //"@prettier/plugin-xml", // Prettier does not format XML files by default.
+        plugin_sh,
+        plugin_toml,
+        plugin_organize_import,
+        plugin_package_json,
+        plugin_xml,
+    ],
     semi: true,
+    tabWidth: 4,
+    printWidth: 130,
+    proseWrap: "preserve",
     overrides: [
+        // Allow proper formatting of JSONC files:
+        // https://github.com/prettier/prettier/issues/5708
         {
-            files: [
-                "**/*.js",
-                "**/*.ts",
-            ],
+            files: ["**/*.jsonc", "**/.vscode/*.json", "**/tsconfig.json", "**/tsconfig.*.json"],
             options: {
-                plugins: [plugin_eslint],
-                tabWidth: 4,
-                printWidth: 130,
-                proseWrap: "preserve"
-            }
+                parser: "json5",
+                quoteProps: "preserve",
+            },
         },
         {
-            files: [
-                "**/*.sh"
-            ],
+            files: ["**/*.sh", "**/*.bash", "**/*.zsh", "**/pre-commit"],
             options: {
-                plugins: [plugin_sh],
-                tabWidth: 4,
-                printWidth: 130,
-                proseWrap: "preserve"
-            }
+                parser: "sh",
+            },
         },
         {
-            files: [
-                "**/*.toml"
-            ],
+            files: ["**/*.toml"],
             options: {
-                plugins: [plugin_toml],
-                tabWidth: 4,
-                printWidth: 130,
-                proseWrap: "preserve"
-            }
+                parser: "toml",
+            },
         },
         {
-            files: [
-                "**/*.json"
-            ],
+            files: ["Procfile", "**/*.yml", "**/*.yaml"],
             options: {
-                tabWidth: 4,
-                printWidth: 130,
-                proseWrap: "preserve"
-            }
+                parser: "yaml",
+            },
         },
         {
-            files: [
-                "content/**/*.md"
-            ],
+            files: ["content/**/*.md"],
             options: {
                 tabWidth: 2,
-                printWidth: 130,
-                proseWrap: "preserve"
-            }
-        }
+            },
+        },
+
+        // Allow proper formatting of XML files:
+        // https://github.com/prettier/plugin-xml#configuration
+        {
+            files: ["**/*.xml"],
+            excludeFiles: ["**/*.docx", "**/*.bat"],
+            parser: "xml",
+            options: {
+                // The default is "strict". However, whitespace cannot be reformatted unless this is set to
+                // "ignore".
+                xmlWhitespaceSensitivity: "ignore",
+
+                // Prettier's default value is 80, but this causes XML files in particular to become
+                // difficult to work with.
+                printWidth: 1_000_000,
+            },
+        },
     ],
 };
 

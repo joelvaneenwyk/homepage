@@ -1,55 +1,8 @@
 {
     "name": "@joelvaneenwyk/homepage",
     "version": "2.0.1",
-    "description": "Homepage for Joel Van Eenwyk",
-    "homepage": "https://www.joelvaneenwyk.com",
-    "author": {
-        "name": "Joel Van Eenwyk",
-        "email": "joel.vaneenwyk@gmail.com"
-    },
-    "main": "dist/server/server.js",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/joelvaneenwyk/homepage.git"
-    },
-    "workspaces": [
-        "homepage",
-        "src/server",
-        "src/tools"
-    ],
     "private": true,
-    "packageManager": "yarn@4.0.2",
-    "engines": {
-        "node": "^14.13.0",
-        "npm": "^7.19.0"
-    },
-    "cacheDirectories": [
-        ".yarn/cache"
-    ],
-    "scripts": {
-        "start": "ts-node ./src/server/server.ts",
-        "start-dev": "tsc && ts-node ./src/server/server.ts",
-        "watch": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic server",
-        "test": "yarn build server && node --require=./.pnp.cjs ./dist/server/server.js --test",
-        "dev": "yarn sdks vscode",
-        "github": "act",
-        "upgrade": "npx -y npm-check-updates@latest -u && yarn install && npx -y yarn-audit-fix@latest && yarn run build:pretty",
-        "reinstall": "yarn cache clean --all && yarn install",
-        "lint": "eslint src/**/*.ts",
-        "build": "echo Building typescript server and website... && concurrently -m 1 \"yarn:build:*\"",
-        "build:theme": "yarn run build:theme:babel && yarn run build:theme:segmentit",
-        "build:theme:babel": "cd themes/base && babel src/js --out-file assets/js/theme.min.js --source-maps",
-        "build:theme:segmentit": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
-        "build:hugo": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
-        "build:pretty": "yarn prettier --config ./prettier.config.mjs --write dist/ .vscode/ *.json themes/base/.babelrc hugo.toml src/bin/*.sh",
-        "build:server": "yarn workspace @joelvaneenwyk/tools build",
-        "heroku-prebuild": "bash ./src/bin/prebuild.sh",
-        "heroku-postbuild": "bash ./src/bin/postbuild.sh",
-        "heroku-cleanup": "bash ./src/bin/cleanup.sh",
-        "prepublishOnly": "pinst --disable",
-        "postpublish": "pinst --enable"
-    },
+    "description": "Homepage for Joel Van Eenwyk",
     "keywords": [
         "homepage",
         "nodejs",
@@ -57,9 +10,51 @@
         "portfolio",
         "résumé"
     ],
+    "homepage": "https://www.joelvaneenwyk.com",
     "bugs": {
         "url": "https://github.com/joelvaneenwyk/workspace/issues",
         "email": "joel.vaneenwyk@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/joelvaneenwyk/homepage.git"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Joel Van Eenwyk",
+        "email": "joel.vaneenwyk@gmail.com"
+    },
+    "type": "module",
+    "main": "dist/server/server.js",
+    "workspaces": [
+        "homepage",
+        "src/server",
+        "src/tools"
+    ],
+    "scripts": {
+        "build": "concurrently -m 1 \"yarn:build:*\"",
+        "build:end": "echo Building steps completed...",
+        "build:hugo": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
+        "build:pretty": "yarn prettier --ignore-unknown --config ./prettier.config.mjs --write dist/ \"**/*\"",
+        "build:server": "yarn workspace @joelvaneenwyk/tools build",
+        "build:start": "echo Building typescript server and website...",
+        "build:theme": "yarn run build:theme:babel && yarn run build:theme:segmentit",
+        "build:theme:babel": "cd themes/base && babel src/js --out-file assets/js/theme.min.js --source-maps",
+        "build:theme:segmentit": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
+        "dev": "yarn sdks vscode",
+        "github": "act",
+        "heroku-cleanup": "bash ./src/bin/cleanup.sh",
+        "heroku-postbuild": "bash ./src/bin/postbuild.sh",
+        "heroku-prebuild": "bash ./src/bin/prebuild.sh",
+        "lint": "eslint src/**/*.ts",
+        "prepublishOnly": "pinst --disable",
+        "postpublish": "pinst --enable",
+        "reinstall": "yarn cache clean --all && yarn install",
+        "start": "ts-node ./src/server/server.ts",
+        "start-dev": "tsc && ts-node ./src/server/server.ts",
+        "test": "yarn build server && node --require=./.pnp.cjs ./dist/server/server.js --test",
+        "upgrade": "npx -y npm-check-updates@latest -u && yarn install && npx -y yarn-audit-fix@latest && yarn run build:pretty",
+        "watch": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic server"
     },
     "babel": {
         "presets": [
@@ -77,6 +72,7 @@
         "@babel/core": "^7.23.7",
         "@babel/preset-env": "^7.23.7",
         "@eslint/js": "^8.56.0",
+        "@prettier/plugin-xml": "^3.2.2",
         "@toml-tools/lexer": "^1.0.0",
         "@types/js-beautify": "^1.14.3",
         "@types/node": "^20.10.6",
@@ -114,6 +110,8 @@
         "postcss-syntax": "^0.36.2",
         "prettier": "^3.1.1",
         "prettier-eslint": "^16.2.0",
+        "prettier-plugin-organize-imports": "^3.2.4",
+        "prettier-plugin-packagejson": "^2.4.8",
         "prettier-plugin-sh": "^0.13.1",
         "prettier-plugin-toml": "^2.0.1",
         "segmentit": "^2.0.3",
@@ -127,5 +125,13 @@
     },
     "devDependencies": {
         "@types/eslint__js": "^8"
-    }
+    },
+    "packageManager": "yarn@4.0.2",
+    "engines": {
+        "node": "^14.13.0",
+        "npm": "^7.19.0"
+    },
+    "cacheDirectories": [
+        ".yarn/cache"
+    ]
 }
