@@ -66,6 +66,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:d02907c3f4da27abb3bd3583a3f75e71c7a24bfea54fb15dc1a265649e69111e581aa8eb2733a60933e7063f190fd2888ff80cdddfada10b68c0d0922a43f7c2#npm:9.1.0"],\
           ["eslint-import-resolver-node", "npm:0.3.9"],\
           ["eslint-plugin-import", "virtual:d02907c3f4da27abb3bd3583a3f75e71c7a24bfea54fb15dc1a265649e69111e581aa8eb2733a60933e7063f190fd2888ff80cdddfada10b68c0d0922a43f7c2#npm:2.29.1"],\
+          ["globals", "npm:13.24.0"],\
           ["htmlhint", "npm:1.1.4"],\
           ["husky", "npm:8.0.3"],\
           ["js-beautify", "npm:1.14.11"],\
@@ -3230,6 +3231,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:d02907c3f4da27abb3bd3583a3f75e71c7a24bfea54fb15dc1a265649e69111e581aa8eb2733a60933e7063f190fd2888ff80cdddfada10b68c0d0922a43f7c2#npm:9.1.0"],\
           ["eslint-import-resolver-node", "npm:0.3.9"],\
           ["eslint-plugin-import", "virtual:d02907c3f4da27abb3bd3583a3f75e71c7a24bfea54fb15dc1a265649e69111e581aa8eb2733a60933e7063f190fd2888ff80cdddfada10b68c0d0922a43f7c2#npm:2.29.1"],\
+          ["globals", "npm:13.24.0"],\
           ["htmlhint", "npm:1.1.4"],\
           ["husky", "npm:8.0.3"],\
           ["js-beautify", "npm:1.14.11"],\
