@@ -185,7 +185,7 @@
         "@types/node-static": "^0.7.7",
         "@typescript-eslint/eslint-plugin": "^5.42.1",
         "@typescript-eslint/parser": "^6.16.0",
-        "@yarnpkg/cli": "^3.2.4",
+        "@yarnpkg/cli": "^4.1.0",
         "@yarnpkg/core": "^4.0.0-rc.28",
         "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
         "@yarnpkg/plugin-git": "^3.0.0-rc.28",
