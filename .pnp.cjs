@@ -62,7 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-gyp", "npm:10.0.1"],\
             ["node-static", "npm:0.7.11"],\
             ["pinst", "npm:3.0.0"],\
-            ["postcss", "npm:8.4.32"],\
+            ["postcss", "npm:8.4.35"],\
             ["postcss-html", "npm:1.5.0"],\
             ["postcss-markdown", "npm:1.2.0"],\
             ["postcss-syntax", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.36.2"],\
@@ -8505,7 +8505,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-gyp", "npm:10.0.1"],\
             ["node-static", "npm:0.7.11"],\
             ["pinst", "npm:3.0.0"],\
-            ["postcss", "npm:8.4.32"],\
+            ["postcss", "npm:8.4.35"],\
             ["postcss-html", "npm:1.5.0"],\
             ["postcss-markdown", "npm:1.2.0"],\
             ["postcss-syntax", "virtual:708cd03a8b3728ac543dd12bdd077711665d078709a67ea1adf1337b26e2816a846f5f8eb0c4d7cf5b58202699a9346a54ebff6c204bcf5045683c9da423bf7c#npm:0.36.2"],\
@@ -8840,10 +8840,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["ip", [\
-        ["npm:1.1.5", {\
-          "packageLocation": "./.yarn/cache/ip-npm-1.1.5-af36318aa6-30133981f0.zip/node_modules/ip/",\
+        ["npm:1.1.9", {\
+          "packageLocation": "./.yarn/cache/ip-npm-1.1.9-e72dd3cc0a-b6d91fd45a.zip/node_modules/ip/",\
           "packageDependencies": [\
-            ["ip", "npm:1.1.5"]\
+            ["ip", "npm:1.1.9"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -10930,10 +10930,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:8.4.32", {\
-          "packageLocation": "./.yarn/cache/postcss-npm-8.4.32-2004ba88b8-220d9d0bf5.zip/node_modules/postcss/",\
+        ["npm:8.4.35", {\
+          "packageLocation": "./.yarn/cache/postcss-npm-8.4.35-6bc1848fff-cf3c3124d3.zip/node_modules/postcss/",\
           "packageDependencies": [\
-            ["postcss", "npm:8.4.32"],\
+            ["postcss", "npm:8.4.35"],\
             ["nanoid", "npm:3.3.7"],\
             ["picocolors", "npm:1.0.0"],\
             ["source-map-js", "npm:1.0.2"]\
@@ -11037,7 +11037,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/postcss-less", null],\
             ["@types/postcss-markdown", null],\
             ["@types/postcss-scss", null],\
-            ["postcss", "npm:8.4.32"],\
+            ["postcss", "npm:8.4.35"],\
             ["postcss-html", "npm:1.5.0"],\
             ["postcss-jsx", null],\
             ["postcss-less", null],\
@@ -12119,7 +12119,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/socks-npm-2.6.1-09133d0d22-2ca9d616e4.zip/node_modules/socks/",\
           "packageDependencies": [\
             ["socks", "npm:2.6.1"],\
-            ["ip", "npm:1.1.5"],\
+            ["ip", "npm:1.1.9"],\
             ["smart-buffer", "npm:4.2.0"]\
           ],\
           "linkType": "HARD"\
