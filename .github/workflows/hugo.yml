@@ -44,23 +44,22 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: 'stable'
-      - run: go version
 
       - name: Install Packages
         run: |
           yarn install
-
-      - name: Build Source
-        run: |
-          yarn build
 
       - uses: jakejarvis/hugo-build-action@master
         name: Build Hugo Site
         with:
           args: --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
 
+      - name: Build Source
+        run: |
+          yarn build
+
       - uses: actions/upload-artifact@v4
         name: Upload Site Artifact
         with:
           name: website-${{ matrix.platform }}-${{ matrix.node }}
-          path: './public'
+          path: '.dist/www/'

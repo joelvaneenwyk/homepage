@@ -23,18 +23,32 @@ jobs:
           lfs: false
           fetch-depth: 0
 
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+
+      - run: corepack enable
+
       - run: sudo git config --system --add safe.directory /github/workspace
+
+      # We do not require Go installed but installing anyways so that we have the
+      # option to either install our own version of Hugo or run plugins.
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install Packages
+        run: |
+          yarn install
 
       - uses: jakejarvis/hugo-build-action@master
         name: Build Hugo Site
         with:
           args: --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
 
-      - uses: actions/upload-artifact@v4
-        name: Upload Site Artifact
-        with:
-          name: website-azure
-          path: './public'
+      - name: Build Source
+        run: |
+          yarn build
 
       - name: Build And Deploy
         id: builddeploy
