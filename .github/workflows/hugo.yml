@@ -36,10 +36,12 @@ jobs:
 
       - run: corepack enable
 
-      - run: |
+      - name: Install gsudo
+        run: |
           Set-ExecutionPolicy RemoteSigned -scope Process;
           [Net.ServicePointManager]::SecurityProtocol = 'Tls12'
           iwr -useb https://raw.githubusercontent.com/gerardog/gsudo/master/installgsudo.ps1 | iex
+          Write-Output "`nImport-Module 'gsudoModule'" | Add-Content $PROFILE
         if: ${{ startsWith(matrix.platform, 'windows') }}
         shell: pwsh
 

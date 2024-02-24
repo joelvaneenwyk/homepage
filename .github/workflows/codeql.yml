@@ -56,14 +56,6 @@ jobs:
         uses: actions/setup-node@v4
 
       - run: corepack enable
-
-      - run: |
-          Set-ExecutionPolicy RemoteSigned -scope Process;
-          [Net.ServicePointManager]::SecurityProtocol = 'Tls12'
-          iwr -useb https://raw.githubusercontent.com/gerardog/gsudo/master/installgsudo.ps1 | iex
-        if: ${{ startsWith(matrix.platform, 'windows') }}
-        shell: pwsh
-
       - run: sudo git config --system --add safe.directory /github/workspace
 
       - name: Setup Hugo
