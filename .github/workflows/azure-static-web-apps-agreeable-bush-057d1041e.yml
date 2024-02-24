@@ -30,21 +30,18 @@ jobs:
 
       - run: sudo git config --system --add safe.directory /github/workspace
 
-      # We do not require Go installed but installing anyways so that we have the
-      # option to either install our own version of Hugo or run plugins.
-      - name: Setup Go
-        uses: actions/setup-go@v5
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@main
         with:
-          go-version: 'stable'
+          hugo-version: 'latest'
+          extended: true
 
       - name: Install Packages
         run: |
           yarn install
 
-      - uses: jakejarvis/hugo-build-action@master
-        name: Build Hugo Site
-        with:
-          args: --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
+      - name: Build Hugo Site
+        run: hugo --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
 
       - name: Build Source
         run: |

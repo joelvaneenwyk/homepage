@@ -59,6 +59,16 @@ jobs:
 
       - run: sudo git config --system --add safe.directory /github/workspace
 
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@main
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Install Packages
+        run: |
+          yarn install
+
       # We do not require Go installed but installing anyways so that we have the
       # option to either install our own version of Hugo or run plugins.
       - name: Setup Go
@@ -78,22 +88,12 @@ jobs:
           # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
           # queries: security-extended,security-and-quality
 
-      - name: Install Packages
-        run: |
-          yarn install
+      - name: Build Hugo Site
+        run: hugo --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
 
       - name: Build Source
         run: |
           yarn build
-
-      - uses: jakejarvis/hugo-build-action@master
-        name: Build Hugo Site
-        with:
-          args: --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
-
-      - name: Hugo Build
-        run: |
-          hugo
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
