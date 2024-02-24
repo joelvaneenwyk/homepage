@@ -233,6 +233,7 @@ RSS = true
 [params]
 author = "Joel Van Eenwyk"
 description = "A simple monospaced resume theme for Hugo."
+staticDir = 'static'
 favicon = "images/favicon.ico"                             # path to a .ico to use as favicon
 # LoveIt theme version
 version = "0.2.X"

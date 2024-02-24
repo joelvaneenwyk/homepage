@@ -2,16 +2,18 @@ name: hugo
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         node:
-          - 14
+          - 16
+          - 18
         platform:
           - ubuntu-20.04
           - macos-11
@@ -34,24 +36,31 @@ jobs:
 
       - run: corepack enable
 
+      - run: sudo git config --system --add safe.directory /github/workspace
+
       # We do not require Go installed but installing anyways so that we have the
       # option to either install our own version of Hugo or run plugins.
       - name: Setup Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
           go-version: 'stable'
       - run: go version
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.119.0'
-          extended: true
 
       - name: Install Packages
         run: |
           yarn install
 
-      - name: Hugo Build
+      - name: Build Source
         run: |
-          hugo
+          yarn build
+
+      - uses: jakejarvis/hugo-build-action@master
+        name: Build Hugo Site
+        with:
+          args: --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
+
+      - uses: actions/upload-artifact@v4
+        name: Upload Site Artifact
+        with:
+          name: website-${{ matrix.platform }}-${{ matrix.node }}
+          path: './public'

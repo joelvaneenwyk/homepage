@@ -34,10 +34,7 @@
   "eslint.alwaysShowStatus": true,
   "eslint.lintTask.enable": true,
   "eslint.run": "onSave",
-  "sortJSON.excludedFiles": [
-    "package.json",
-    "settings.json"
-  ],
+  "sortJSON.excludedFiles": ["package.json", "settings.json"],
   "prettier.enable": true,
   "perl.enable": false,
   "liveServer.settings.port": 13555,
