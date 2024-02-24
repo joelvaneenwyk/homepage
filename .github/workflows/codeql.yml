@@ -57,7 +57,7 @@ jobs:
 
       - run: corepack enable
 
-      - run: sudo git config --system --add safe.directory /github/workspace
+      - run: git config --system --add safe.directory /github/workspace
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
