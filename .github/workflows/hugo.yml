@@ -2,25 +2,27 @@ name: hugo
 
 on:
   push:
-    branches: [ main ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main, develop]
 
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         node:
-          - 14
+          - 18
+          - 20
         platform:
-          - ubuntu-20.04
-          - macos-11
-          - windows-2019
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
 
     runs-on: ${{ matrix.platform }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # Fetch Hugo themes (true OR recursive)
           submodules: recursive
@@ -28,31 +30,41 @@ jobs:
           fetch-depth: 0
 
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install Yarn
-        run: npm install -g yarn
+      - run: corepack enable
 
-      # We do not require Go installed but installing anyways so that we have the
-      # option to either install our own version of Hugo or run plugins.
-      - name: Setup Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: '^1.16.7'
-      - run: go version
+      - name: Install gsudo
+        run: |
+          (New-Object System.Net.WebClient).DownloadFile('https://get.scoop.sh', 'scoop.ps1')
+          ./scoop.ps1 -RunAsAdmin
+          scoop install gsudo
+        if: ${{ startsWith(matrix.platform, 'windows') }}
+        shell: pwsh
+
+      - run: sudo git config --system --add safe.directory /github/workspace
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.85.0'
+          hugo-version: '0.119.0'
           extended: true
 
       - name: Install Packages
         run: |
           yarn install
 
-      - name: Hugo Build
+      - name: Build Hugo Site
+        run: hugo --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
+
+      - name: Build Source
         run: |
-          hugo
+          yarn build
+
+      - uses: actions/upload-artifact@v4
+        name: Upload Site Artifact
+        with:
+          name: website-${{ matrix.platform }}-${{ matrix.node }}
+          path: '.dist/www/'
