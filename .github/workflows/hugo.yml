@@ -2,25 +2,25 @@ name: hugo
 
 on:
   push:
-    branches: [ main ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main, develop]
 
 jobs:
   build:
     strategy:
       matrix:
         node:
-          - 14
+          - 18
         platform:
-          - ubuntu-20.04
-          - macos-11
-          - windows-2019
+          - ubuntu-22.04
+          - macos-14
+          - windows-2022
 
     runs-on: ${{ matrix.platform }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # Fetch Hugo themes (true OR recursive)
           submodules: recursive
@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
 
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
@@ -38,7 +38,7 @@ jobs:
       # We do not require Go installed but installing anyways so that we have the
       # option to either install our own version of Hugo or run plugins.
       - name: Setup Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
           go-version: '^1.16.7'
       - run: go version
