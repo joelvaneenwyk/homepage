@@ -38,10 +38,9 @@ jobs:
 
       - name: Install gsudo
         run: |
-          Set-ExecutionPolicy RemoteSigned -scope Process;
-          [Net.ServicePointManager]::SecurityProtocol = 'Tls12'
-          iwr -useb https://raw.githubusercontent.com/gerardog/gsudo/master/installgsudo.ps1 | iex
-          Write-Output "`nImport-Module 'gsudoModule'" | Add-Content $PROFILE
+          (New-Object System.Net.WebClient).DownloadFile('https://get.scoop.sh', 'scoop.ps1')
+          ./scoop.ps1 -RunAsAdmin
+          scoop install gsudo
         if: ${{ startsWith(matrix.platform, 'windows') }}
         shell: pwsh
 
