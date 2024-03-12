@@ -1,12 +1,11 @@
 {
-    "recommendations": [
-        "arcanis.vscode-zipfs",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "stylelint.vscode-stylelint",
-        "tombonnike.vscode-status-bar-format-toggle",
-        "ritwickdey.liveserver",
-        "tamasfe.even-better-toml",
-        "budparr.language-hugo-vscode"
-    ]
+  "recommendations": [
+    "arcanis.vscode-zipfs",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "tombonnike.vscode-status-bar-format-toggle",
+    "tamasfe.even-better-toml",
+    "budparr.language-hugo-vscode"
+  ]
 }
