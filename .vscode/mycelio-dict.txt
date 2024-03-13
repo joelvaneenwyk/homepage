@@ -1,11 +1,15 @@
 actions
 addHeaders
+adoc
 algoliasearch
 analyser
+astextplain
 autosearch
 autotrack
+bibtex
 Bilibili
 bootlint
+browserslist
 bungie
 bytestokey
 caffe
@@ -22,6 +26,7 @@ Datamap
 datamaps
 defrag
 defragging
+devcontainer
 disqus
 dosBox
 dosis
@@ -34,6 +39,7 @@ emcc
 emscripten
 Emscripten
 endlocal
+epub
 errno
 errorlevel
 esbuild
@@ -49,6 +55,7 @@ fullscreen
 fxGuide
 Gameface
 geolocate
+gifv
 gitalk
 GLSL
 glyphicon
@@ -59,6 +66,7 @@ goPath
 goRoot
 Gruntfile
 gruntjs
+haml
 havok
 herokuapp
 HLSL
@@ -91,15 +99,18 @@ Linkify
 loveit
 mapbox
 maxage
+mkdn
 MobyGames
 modernizr
 multilanguage
 mycelio
 nodeunit
 npmcli
+npmignore
 octokit
 odforce
 Olly
+onlydata
 outfile
 pageview
 peaceiris
@@ -141,9 +152,12 @@ speedtest
 sslify
 stoponerror
 strikethrough
+styl
 stylelint
 submodules
+svgz
 thirdparty
+tmpl
 Todoist
 topojson
 traceback
@@ -155,4 +169,7 @@ v
 visualC
 voxels
 wasm
+wbmp
+webm
+webp
 yarnpkg
