@@ -1,6 +1,6 @@
 {
   "name": "@joelvaneenwyk/homepage",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": true,
   "description": "Homepage for Joel Van Eenwyk",
   "keywords": [
@@ -10,6 +10,11 @@
     "portfolio",
     "résumé"
   ],
+  "packageManager": "yarn@4.1.1+sha256.f3cc0eda8e5560e529c7147565b30faa43b4e472d90e8634d7134a37c7f59781",
+  "engines": {
+    "node": "^18 || ^20 || ^21",
+    "npm": "^10"
+  },
   "homepage": "https://www.joelvaneenwyk.com",
   "bugs": {
     "url": "https://github.com/joelvaneenwyk/workspace/issues",
@@ -30,6 +35,12 @@
     "homepage",
     "src/server",
     "src/tools"
+  ],
+  "devDependencies": {
+    "@types/eslint__js": "^8"
+  },
+  "cacheDirectories": [
+    ".yarn/cache"
   ],
   "scripts": {
     "build": "concurrently -m 1 \"yarn:build:*\"",
@@ -125,16 +136,5 @@
     "typescript": "^5.3.3",
     "typescript-bundle": "^1.0.18",
     "yarn-audit-fix": "^10.0.7"
-  },
-  "devDependencies": {
-    "@types/eslint__js": "^8"
-  },
-  "packageManager": "yarn@4.1.1+sha256.f3cc0eda8e5560e529c7147565b30faa43b4e472d90e8634d7134a37c7f59781",
-  "engines": {
-    "node": "^18 || ^20 || ^21",
-    "npm": "^10"
-  },
-  "cacheDirectories": [
-    ".yarn/cache"
-  ]
+  }
 }
