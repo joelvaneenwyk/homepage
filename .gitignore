@@ -2,6 +2,8 @@
 # Ignore list for website
 #
 
+.yarn/
+
 .tmp
 .env
 .env.*
@@ -18,8 +20,8 @@ yarn-error.log
 # Node / npm
 #
 
-/node_modules/
-/bower_components/
+node_modules/
+bower_components/
 joelvaneenwyk-*.tgz
 
 #
@@ -43,7 +45,6 @@ joelvaneenwyk-*.tgz
 public/
 /exampleSite/resources/
 
-node_modules/
 build/
 
 ## OS Files
