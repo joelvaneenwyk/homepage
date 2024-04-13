@@ -45,8 +45,6 @@ jobs:
         if: ${{ startsWith(matrix.platform, 'windows') }}
         shell: pwsh
 
-      - run: sudo git config --system --add safe.directory /github/workspace
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
