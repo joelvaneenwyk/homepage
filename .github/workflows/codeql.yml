@@ -59,7 +59,7 @@ jobs:
       - run: sudo git config --system --add safe.directory /github/workspace
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3.0.0
         with:
           hugo-version: '0.119.0'
           extended: true
