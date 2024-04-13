@@ -50,6 +50,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
+          hugo-version: 'latest'
           extended: true
 
       - name: Install Packages

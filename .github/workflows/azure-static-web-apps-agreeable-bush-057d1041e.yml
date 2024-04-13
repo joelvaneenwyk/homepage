@@ -26,8 +26,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: true
-          lfs: false
+          # Fetch Hugo themes (true OR recursive)
+          submodules: recursive
+          # Fetch all history for .GitInfo and .Lastmod
           fetch-depth: 0
 
       - name: Use Node.js
@@ -39,6 +40,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
+          hugo-version: 'latest'
           extended: true
 
       - name: Install Packages
