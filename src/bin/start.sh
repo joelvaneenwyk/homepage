@@ -7,4 +7,5 @@ if [ ! -f "$ROOT_DIR/dist/server/server.js" ]; then
     . "$ROOT_DIR/src/bin/setup.sh"
 fi
 
-yarn run --cwd "$ROOT_DIR" start
+cd "$ROOT_DIR" || true
+yarn run start
