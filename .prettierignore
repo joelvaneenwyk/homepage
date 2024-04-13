@@ -28,3 +28,4 @@ yarn.lock
 LICENSE
 .editorconfig
 .env.template
+.prototools
