@@ -128,6 +128,9 @@
     "typescript-bundle": "^1.0.18",
     "yarn-audit-fix": "^10.0.7"
   },
+  "peerDependencies": {
+    "eslint": "^8"
+  },
   "packageManager": "yarn@4.1.1",
   "engines": {
     "node": "^18 || ^20 || ^21",

@@ -2126,6 +2126,8 @@ __metadata:
     typescript: "npm:^5.4.5"
     typescript-bundle: "npm:^1.0.18"
     yarn-audit-fix: "npm:^10.0.7"
+  peerDependencies:
+    eslint: ^8
   languageName: unknown
   linkType: soft
 
