@@ -160,7 +160,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./dist/www
 
   # Deployment job
   deploy_pages:
@@ -189,4 +189,4 @@ jobs:
           action: 'close'
           app_location: './' # App source code path
           api_location: '' # Api source code path - optional
-          output_location: 'dist/www/' # Built app content directory - optional
+          output_location: './dist/www/' # Built app content directory - optional
