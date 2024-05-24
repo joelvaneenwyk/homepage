@@ -1,85 +1,206 @@
-name: Azure Static Web Apps CI/CD
+name: Deploy Static Web App
 
 on:
   push:
     branches: [main, develop]
   pull_request:
-    types: [opened, synchronize, reopened, closed]
     branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  checks: write
+  deployments: write
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
 
 jobs:
-  build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
-    runs-on: ubuntu-latest
-    name: Build and Deploy Job
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22]
+        platform:
+          - ubuntu-latest
+          # - macos-latest
+          # - windows-latest
+
+    runs-on: ${{ matrix.platform }}
 
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: false
           # Fetch Hugo themes (true OR recursive)
           submodules: recursive
           # Fetch all history for .GitInfo and .Lastmod
           fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: ${{ matrix.node }}
+      - run: sudo npm install -g corepack
 
-      - name: Install Yarn
-        run: npm install -g yarn
-
-      # We do not require Go installed but installing anyways so that we have the
-      # option to either install our own version of Hugo or run plugins.
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '^1.16.7'
-      - run: go version
+      - name: Install Packages
+        run: |
+          yarn install
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.85.0'
+          hugo-version: latest
+          extended: true
+
+      - name: Build Hugo Site
+        run: hugo --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
+
+      - name: Build Source
+        run: |
+          yarn build
+
+      - uses: actions/upload-artifact@v4
+        name: Upload Site Artifact
+        with:
+          name: website-${{ matrix.platform }}-${{ matrix.node }}
+          path: './dist/www/'
+
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    needs: build
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Fetch Hugo themes (true OR recursive)
+          submodules: recursive
+          # Fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+      - run: sudo npm install -g corepack
+
+      - run: corepack enable
+      - run: sudo git config --system --add safe.directory /github/workspace
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
           extended: true
 
       - name: Install Packages
         run: |
           yarn install
 
-      - name: Hugo Build
+      - name: Build Hugo Site
+        run: hugo --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
+
+      - name: Build Source
         run: |
-          hugo
+          yarn build
 
-      - name: Build And Deploy
-        id: build-deploy
-        uses: Azure/static-web-apps-deploy@v1
+      # - name: Deploy Static Web App
+      #   id: builddeploy
+      #   uses: joelvaneenwyk/static-web-apps-deploy@develop
+      #   with:
+      #     # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+      #     azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_BUSH_057D1041E }}
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+      #     action: 'upload'
+      #     app_location: './'
+      #     api_location: ''
+      #     output_location: './dist/www/'
+
+  # Build job
+  build_pages:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.124.1
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_BUSH_057D1041E }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
-          action: "upload"
+          submodules: recursive
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Build with Hugo
+        env:
+          # For maximum backward compatibility with Hugo modules
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist/www
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deployment
+          path: ./dist/www
 
-          #-----------------------
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          #-----------------------
-          # App source code path
-          app_location: "./"
-          # Api source code path - optional
-          api_location: ""
-          # Built app content directory - optional
-          output_location: "dist/www/"
+  # Deployment job
+  deploy_pages:
+    # Add a dependency to the build job
+    needs: build_pages
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
+    needs: build
     name: Close Pull Request Job
     steps:
       - name: Close Pull Request
-        id: close-pull-request
-        uses: Azure/static-web-apps-deploy@v1
+        id: closepullrequest
+        uses: joelvaneenwyk/static-web-apps-deploy@develop
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_BUSH_057D1041E }}
-          action: "close"
-          app_location: "/"
-          output_location: "dist/www/"
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: 'close'
+          app_location: './' # App source code path
+          api_location: '' # Api source code path - optional
+          output_location: './dist/www/' # Built app content directory - optional

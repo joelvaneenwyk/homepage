@@ -19,16 +19,16 @@ engines:
 
 ratings:
   paths:
-    - "**.css"
-    - "**.inc"
-    - "**.js"
-    - "**.ts"
-    - "**.module"
-    - "**.php"
-    - "**.py"
-    - "**.rb"
+    - '**.css'
+    - '**.inc'
+    - '**.js'
+    - '**.ts'
+    - '**.module'
+    - '**.php'
+    - '**.py'
+    - '**.rb'
 
 exclude_paths:
-  - "src/server/deprecated/cheeses/output/"
-  - "typings/"
-  - "**.pdf"
+  - 'src/server/deprecated/cheeses/output/'
+  - 'typings/'
+  - '**.pdf'

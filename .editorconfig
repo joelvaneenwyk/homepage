@@ -6,22 +6,24 @@ root = true
 # Unix-style newlines with a newline ending every file
 [*]
 insert_final_newline = true
-
-[*.{bat,ps1}]
 indent_style = space
 indent_size = 4
 
-# Matches multiple files with brace expansion notation
-# Set default charset
-[*.{js,py}]
-charset = utf-8
+[*.{bat}]
+end_of_line = crlf
 indent_style = space
 indent_size = 4
 
-# 4 space indentation
-[*.py]
+[Makefile]
+indent_style = tab
+
+[*.md]
 indent_style = space
-indent_size = 4
+indent_size = 2
+
+[*.{js,ts,mjs,cjs,yml,toml,json,css,scss}]
+indent_style = space
+indent_size = 2
 
 [*.sh]
 # like -i=4
@@ -36,24 +38,3 @@ space_redirects    = true  # like -sr
 keep_padding       = true  # like -kp
 function_next_line = true  # like -fn
 
-# Tab indentation (no size specified)
-[Makefile]
-indent_style = tab
-
-[*.md]
-indent_style = space
-indent_size = 4
-
-[*.toml]
-indent_style = space
-indent_size = 2
-
-# Indentation override for all JS under lib directory
-[*.js]
-indent_style = space
-indent_size = 4
-
-# Matches the exact files either `package.json` or `.travis.yml`
-[{package.json,.travis.yml}]
-indent_style = space
-indent_size = 4

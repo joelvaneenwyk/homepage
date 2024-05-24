@@ -25,14 +25,11 @@ function _add_profile_hook() {
 
         echo "------------------------------"
         ls -la "$ROOT_DIR"
-
-        echo "------------------------------"
-        ls -la "$ROOT_DIR/.yarn"
-
         echo "------------------------------"
     fi
 
     # shellcheck source=./src/bin/env.sh
+    # shellcheck disable=SC1091
     . "$ENV_SCRIPT_PATH"
 }
 
@@ -109,6 +106,7 @@ if [ ! -x "$(command -v go)" ] || ((go_minor < 16)); then
         fi
 
         # shellcheck source=env.sh
+        # shellcheck disable=SC1091
         . "$ENV_SCRIPT_PATH"
     else
         echo "Failed to extract 'go' archive."

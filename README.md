@@ -2,27 +2,21 @@
 
 These are the pages and source for [joelvaneenwyk.github.io](https://joelvaneenwyk.github.io/).
 
-[![Build Status](https://travis-ci.org/joelvaneenwyk/homepage.svg?branch=main)](https://travis-ci.org/joelvaneenwyk/homepage)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/joelvaneenwyk/homepage?branch=main&svg=true)](https://ci.appveyor.com/project/joelvaneenwyk/homepage)
-[![Code Climate](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/gpa.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage) [![Test Coverage](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/coverage.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage/coverage)
+[![Code Climate](https://codeclimate.com/github/joelvaneenwyk/homepage/badges/gpa.svg)](https://codeclimate.com/github/joelvaneenwyk/homepage)
 
 This is the source code for the homepage of Joel Van Eenwyk (<https://www.joelvaneenwyk.com>). Going open source was not my original plan for this, but there are a lot of benefits to doing this. Perhaps my favorite reason being continuous integration (CI) support for free if hosted on a public repository.
 
-The staging branch is also deployed automatically to Heroku here: <http://jvaneenwyk.herokuapp.com/>
+The staging branch is also deployed automatically to Heroku at [jvaneenwyk.HerokuApp.com](http://jvaneenwyk.herokuapp.com/).
 
-![Joel Van Eenwyk](source/joelvaneenwyk/www/images/stamp.png)
-
-## Links
-
-* 🔒 [jvaneenwyk | Heroku](https://dashboard.heroku.com/apps/jvaneenwyk)
+![Joel Van Eenwyk](static/images/jve_stamp.png)
 
 ## Structure
 
-* 📃 `app.json` - Defines the application for deploying to Heroku, more details at [app.json Schema | Heroku Dev Center](https://devcenter.heroku.com/articles/app-json-schema).
-* 📃 `heroku.yml` - Configuration file for [Heroku](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml) that replaces the [Procfile](https://devcenter.heroku.com/articles/procfile#procfile-and-heroku-yml).
-* 📁 `content` - Markdown files and the text content of the site.
-* 📁 `static` - Assets not intended to change e.g., stylesheets, images,
-etc.
+- 📃 `app.json` - Defines the application for deploying to Heroku, more details at [app.json Schema | Heroku Dev Center](https://devcenter.heroku.com/articles/app-json-schema).
+- 📃 `heroku.yml` - Configuration file for [Heroku](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml) that replaces the [Procfile](https://devcenter.heroku.com/articles/procfile#procfile-and-heroku-yml).
+- 📁 `content` - Markdown files and the text content of the site.
+- 📁 `static` - Assets not intended to change e.g., stylesheets, images,
+  etc.
 
 ## Principles and Guidelines
 
@@ -38,7 +32,7 @@ Based on the previous version of this site, there were a lot of learnings. The p
 ## Build and Run
 
 1. [Install Hugo](https://gohugo.io/getting-started/installing/)
-    * Recommend using [Scoop](https://scoop.sh/) on Windows
+   - Recommend using [Scoop](https://scoop.sh/) on Windows
 2. Install Heroku CLI
 3. From the root, run `heroku git:remote -a jvaneenwyk` so that the app name is assigned
 4. Install NodeJS
@@ -50,11 +44,15 @@ Based on the previous version of this site, there were a lot of learnings. The p
 
 1. Install [Scoop](https://scoop.sh/). Open a PowerShell terminal (version 5.1 or later) and run:
 
-    ```powershell
-    # Optional: Needed to run a remote script the first time
-    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    irm get.scoop.sh | iex
-    ```
+   ```powershell
+   # Optional: Needed to run a remote script the first time
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+   irm get.scoop.sh | iex
+   ```
 
 2. [Install Hugo](https://gohugo.io/getting-started/installing/): `scoop install hugo-extended`
 3. Start Hugo server: `hugo server`
+
+## Resources
+
+- 🔒 [jvaneenwyk | Heroku](https://dashboard.heroku.com/apps/jvaneenwyk)

@@ -9,9 +9,10 @@ rm -rf "$ROOT_DIR/.yarn/cache" > /dev/null 2>&1 || true
 # shellcheck disable=SC1091
 . "$ROOT_DIR/src/bin/setup.sh"
 
-yarn install --cwd "$ROOT_DIR"
-yarn run --cwd "$ROOT_DIR" heroku-prebuild
-yarn run --cwd "$ROOT_DIR" build
-yarn run --cwd "$ROOT_DIR" heroku-postbuild
-yarn run --cwd "$ROOT_DIR" heroku-cleanup
-yarn run --cwd "$ROOT_DIR" start
+cd "$ROOT_DIR" || true
+yarn install
+yarn run heroku-prebuild
+yarn run build
+yarn run heroku-postbuild
+yarn run heroku-cleanup
+yarn run start

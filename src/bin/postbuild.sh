@@ -14,4 +14,5 @@ if [ ! -d "$ROOT_DIR/.git" ]; then
     mv "$ROOT_DIR/dist/git/.git" "$ROOT_DIR/"
 fi
 
-yarn run --cwd "$ROOT_DIR" build
+cd "$ROOT_DIR" || true
+yarn run build

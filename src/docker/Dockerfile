@@ -5,7 +5,12 @@ ENV PORT 3000
 
 WORKDIR /usr/src/app
 
-COPY . .
+COPY ./.config/ ./.config/
+COPY ./src/ ./src/
+COPY ./static/ ./static/
+COPY ./themes/ ./themes/
+COPY ./content/ ./content/
+COPY ./package.json ./package.json
 
 RUN ./src/bin/setup.sh
 RUN yarn install
