@@ -114,17 +114,17 @@ jobs:
         run: |
           yarn build
 
-      - name: Build And Deploy
-        id: builddeploy
-        uses: joelvaneenwyk/static-web-apps-deploy@develop
-        with:
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_BUSH_057D1041E }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
-          action: 'upload'
-          app_location: './'
-          api_location: ''
-          output_location: './dist/www/'
+      # - name: Deploy Static Web App
+      #   id: builddeploy
+      #   uses: joelvaneenwyk/static-web-apps-deploy@develop
+      #   with:
+      #     # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+      #     azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_BUSH_057D1041E }}
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+      #     action: 'upload'
+      #     app_location: './'
+      #     api_location: ''
+      #     output_location: './dist/www/'
 
   # Build job
   build_pages:
