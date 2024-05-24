@@ -161,6 +161,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist/www
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deployment
+          path: ./dist/www
 
   # Deployment job
   deploy_pages:
