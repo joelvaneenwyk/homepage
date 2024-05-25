@@ -100,7 +100,7 @@
     "eslint-config-prettier": "*",
     "eslint-import-resolver-node": "*",
     "eslint-plugin-import": "*",
-    "globals": "^15.0.0",
+    "globals": "^15.3.0",
     "htmlhint": "^1.1.4",
     "husky": "^9.0.11",
     "js-beautify": "^1.15.1",
