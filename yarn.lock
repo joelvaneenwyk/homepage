@@ -2142,7 +2142,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^7.7.0"
     "@typescript-eslint/parser": "npm:^7.12.0"
     "@yarnpkg/cli": "npm:^4.2.2"
-    "@yarnpkg/core": "npm:^4.0.3"
+    "@yarnpkg/core": "npm:^4.0.5"
     "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
     "@yarnpkg/plugin-git": "npm:^3.0.0"
     "@yarnpkg/plugin-workspace-tools": "npm:^4.1.0"
