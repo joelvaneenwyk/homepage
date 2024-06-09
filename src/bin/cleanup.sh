@@ -2,7 +2,12 @@
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && cd ../../ && pwd)"
 
-rm -rf "$ROOT_DIR/.git" > /dev/null 2>&1 || true
+if [ -n "${HEROKU_APP_NAME:-}" ]; then
+    echo "Skipped '.git' folder removal since we are running from Heroku ('HEROKU_APP_NAME' is non-empty)."
+else
+    rm -rf "$ROOT_DIR/.git" > /dev/null 2>&1 || true
+fi
+
 rm -rf "$ROOT_DIR/.yarn/cache" > /dev/null 2>&1 || true
 
 if [ ! -f "$ROOT_DIR/dist/www/index.html" ]; then
