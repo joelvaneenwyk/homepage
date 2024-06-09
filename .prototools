@@ -1,9 +1,6 @@
-hugo = "0.124.1"
-node = "21.7.3"
-npm = "10.5.2"
+hugo = "0.127.0"
 shellcheck = "0.10.0"
 shfmt = "3.8.0"
-yarn = "4.1.1"
 
 [plugins]
 hugo = "source:https://raw.githubusercontent.com/z0rrn/proto-plugins/main/hugo/plugin-extended.toml"
