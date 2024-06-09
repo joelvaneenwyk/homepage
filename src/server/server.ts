@@ -18,9 +18,11 @@ fs.readdirSync(cwd).forEach((file: any) => {
 });
 
 console.log('\n===\nls .yarn\n===\n');
-fs.readdirSync(join(root, '.yarn')).forEach((file: any) => {
-  console.log(file);
-});
+if (fs.existsSync(join(root, '.yarn'))) {
+  fs.readdirSync(join(root, '.yarn')).forEach((file: any) => {
+    console.log(file);
+  });
+}
 
 console.log('\n===\nStarting Server\n===\n');
 console.log(`Listening: http://localhost:${port}`);
