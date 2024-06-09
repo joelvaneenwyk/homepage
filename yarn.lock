@@ -2247,7 +2247,7 @@ __metadata:
     "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
     "@yarnpkg/plugin-git": "npm:^3.0.0"
     "@yarnpkg/plugin-workspace-tools": "npm:^4.1.0"
-    "@yarnpkg/pnpify": "npm:^4.0.1"
+    "@yarnpkg/pnpify": "npm:^4.1.0"
     "@yarnpkg/sdks": "npm:^3.1.0"
     babel-preset-minify: "npm:^0.5.2"
     babelify: "npm:^10.0.0"
@@ -3173,7 +3173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/nm@npm:^4.0.1, @yarnpkg/nm@npm:^4.0.2":
+"@yarnpkg/nm@npm:^4.0.2":
   version: 4.0.2
   resolution: "@yarnpkg/nm@npm:4.0.2"
   dependencies:
@@ -3610,18 +3610,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/pnpify@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@yarnpkg/pnpify@npm:4.0.1"
+"@yarnpkg/pnpify@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@yarnpkg/pnpify@npm:4.1.0"
   dependencies:
-    "@yarnpkg/core": "npm:^4.0.2"
-    "@yarnpkg/fslib": "npm:^3.0.1"
-    "@yarnpkg/nm": "npm:^4.0.1"
+    "@yarnpkg/core": "npm:^4.0.5"
+    "@yarnpkg/fslib": "npm:^3.1.0"
+    "@yarnpkg/nm": "npm:^4.0.2"
     clipanion: "npm:^4.0.0-rc.2"
     tslib: "npm:^2.4.0"
   bin:
     pnpify: ./lib/cli.js
-  checksum: 10c0/54d1f3b42ba82911195dedd73128ae854016d498eb1e2f3dcd9b48617dadac80f9938d41275ad95ca6e775a956c472de87be81c1af50a2a3efa989fa42fbc1bc
+  checksum: 10c0/d38970bc9b8c0b343a3d83ae575855c94b54df8d92d192d628a577cf68d71396c5db831ea2c48a36721f532fd127bd211a979e8cb47d1bb48739b3abefef825e
   languageName: node
   linkType: hard
 
