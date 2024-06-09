@@ -4,7 +4,7 @@
 # docker run --rm -it -v %cd%:/usr/src/project heroku/heroku:20 bash -c "bash --init-file <(echo 'cd /usr/src/project')"
 #
 
-set -e
+set -eax
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && cd ../../ && pwd)"
 ENV_SCRIPT="env.sh"
@@ -107,7 +107,9 @@ if [ ! -x "$(command -v go)" ] || ((go_minor < 16)); then
 
         # shellcheck source=env.sh
         # shellcheck disable=SC1091
-        . "$ENV_SCRIPT_PATH"
+        if [ -f "$ENV_SCRIPT_PATH" ]; then
+            . "$ENV_SCRIPT_PATH"
+        fi
     else
         echo "Failed to extract 'go' archive."
     fi
