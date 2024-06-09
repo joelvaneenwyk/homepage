@@ -11,10 +11,11 @@ fi
 
 if [ -z "${GOPATH:-}" ]; then
     if [ -x "$(command -v go)" ]; then
-        GOPATH="$(go env GOPATH)"
-        export GOPATH
+        if GOPATH="$(go env GOPATH)"; then
+            export GOPATH
 
-        go env -w GOROOT="$GOROOT"
-        go env -w GOBIN="$GOROOT/bin"
+            go env -w GOROOT="$GOROOT"
+            go env -w GOBIN="$GOROOT/bin"
+        fi
     fi
 fi
