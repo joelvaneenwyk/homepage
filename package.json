@@ -94,7 +94,7 @@
     "browserify": "^17.0.0",
     "concurrently": "^8.2.2",
     "core-js": "^3.37.1",
-    "esbuild": "^0.21.4",
+    "esbuild": "^0.21.5",
     "eslint": "^9.4.0",
     "eslint-config-airbnb-base": "*",
     "eslint-config-prettier": "*",
