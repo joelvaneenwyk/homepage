@@ -80,7 +80,7 @@
     "@types/js-beautify": "^1.14.3",
     "@types/node": "^20.14.2",
     "@types/node-static": "^0.7.11",
-    "@typescript-eslint/eslint-plugin": "^7.12.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
     "@typescript-eslint/parser": "^7.13.0",
     "@yarnpkg/cli": "^4.2.2",
     "@yarnpkg/core": "^4.0.5",
