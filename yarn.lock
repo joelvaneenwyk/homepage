@@ -2174,7 +2174,7 @@ __metadata:
     prettier-eslint: "npm:^16.2.0"
     prettier-plugin-organize-imports: "npm:^3.2.4"
     prettier-plugin-packagejson: "npm:^2.4.8"
-    prettier-plugin-sh: "npm:^0.13.1"
+    prettier-plugin-sh: "npm:^0.14.0"
     prettier-plugin-toml: "npm:^2.0.1"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.3.3"
@@ -8808,18 +8808,6 @@ __metadata:
     prettier:
       optional: true
   checksum: 10c0/d9c1e064d45f3eb9f85f70b4450496eaae5ac4e23a4931d2881503478d364a30a4abf436dd016ee89434f197156dbcfa5d417fc66126c4142906654c8f0968c8
-  languageName: node
-  linkType: hard
-
-"prettier-plugin-sh@npm:^0.13.1":
-  version: 0.13.1
-  resolution: "prettier-plugin-sh@npm:0.13.1"
-  dependencies:
-    mvdan-sh: "npm:^0.10.1"
-    sh-syntax: "npm:^0.4.1"
-  peerDependencies:
-    prettier: ^3.0.0
-  checksum: 10c0/8aff04d85885252d1430529b3dd129fc4ce2e9d0e42302030114d05e0bc0986619ac79cbf4c509b4b02296e156ca7622df546453ca7dd16e23f45e451fe9231b
   languageName: node
   linkType: hard
 
