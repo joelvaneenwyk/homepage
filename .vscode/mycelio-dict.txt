@@ -12,6 +12,7 @@ bytestokey
 caffe
 chillingo
 cmaps
+cmds
 Codase
 codeql
 Commento

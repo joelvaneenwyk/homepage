@@ -9,7 +9,11 @@ insert_final_newline = true
 indent_style = space
 indent_size = 4
 
-[*.{bat}]
+[*.{yaml,yml}]
+indent_style = space
+indent_size = 2
+
+[*.{bat,cmd}]
 end_of_line = crlf
 indent_style = space
 indent_size = 4
@@ -25,7 +29,7 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
-[*.sh]
+[*.{sh,bash,zsh}]
 # like -i=4
 indent_style = space
 indent_size = 4
