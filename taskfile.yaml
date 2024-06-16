@@ -10,9 +10,16 @@ tasks:
     cmds:
       - task: build
 
-  setup:
+  install-hugo:
     cmds:
       - cmd: scoop install "hugo-extended"
+        platforms: [windows]
+      - cmd: go install -tags extended github.com/gohugoio/hugo@latest
+        platforms: [darwin, linux]
+
+  setup:
+    deps: [install-hugo]
+    cmds:
       - cmd: yarn config set --home enableTelemetry false
       - cmd: yarn install
       - cmd: yarn build
