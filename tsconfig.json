@@ -9,23 +9,5 @@
     "skipLibCheck": false,
     "forceConsistentCasingInFileNames": true
   },
-  "extends": [],
-  "include": [
-    "./**/*.js",
-    "./**/.*.js",
-    "./**/*.cjs",
-    "./**/.*.cjs",
-    "./**/*.mjs",
-    "./**/.*.mjs",
-    "./**/*.jsx",
-    "./**/.*.jsx",
-    "./**/*.ts",
-    "./**/.*.ts",
-    "./**/*.cts",
-    "./**/.*.cts",
-    "./**/*.mts",
-    "./**/.*.mts",
-    "./**/*.tsx",
-    "./**/.*.tsx"
-  ]
+  "include": ["src/**/*.js", "src/**/*.ts"]
 }

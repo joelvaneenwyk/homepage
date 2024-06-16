@@ -12,6 +12,7 @@ bytestokey
 caffe
 chillingo
 cmaps
+cmds
 Codase
 codeql
 Commento
@@ -149,6 +150,7 @@ Todoist
 topojson
 traceback
 transpiled
+tseslint
 twemoji
 typeit
 unflip

@@ -13,7 +13,7 @@
       "cwd": "${workspaceRoot}"
     },
     {
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "name": "Grunt",
       "skipFiles": ["<node_internals>/**"],
@@ -21,13 +21,6 @@
       "args": ["run", "debug"],
       "runtimeArgs": ["--preserve-symlinks", "--preserve-symlinks-main"],
       "cwd": "${workspaceFolder}"
-    },
-    {
-      "name": "Docker Node.js Launch",
-      "type": "docker",
-      "request": "launch",
-      "preLaunchTask": "docker-run: debug",
-      "platform": "node"
     }
   ]
 }

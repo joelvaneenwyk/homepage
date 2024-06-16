@@ -2,6 +2,8 @@
 # Joel Van Eenwyk homepage configuration
 #
 # cspell:ignore changeFreq, pasdmwalpk, noFollow, noOpener, fontAwesome, mhchem, SVZQ, noReffer
+#
+
 baseURL = "https://www.joelvaneenwyk.com/"
 languageCode = "en-us"
 title = "Joel Van Eenwyk"
@@ -11,10 +13,10 @@ enableEmoji = true
 defaultContentLanguage = "en"
 enableRobotsTXT = true
 enableGitInfo = true
+
 # Enable KaTeX (https://katex.org/) globally
 math = true
 
-# Author config
 [author]
 name = "Joel Van Eenwyk"
 email = "joel.vaneenwyk@gmail.com"

@@ -1,0 +1,29 @@
+version: '0.2'
+ignorePaths:
+  - '**/package-lock.json'
+  - '**/node_modules/**'
+  - '**/vscode-extension/**'
+  - '**/.git/objects/**'
+  - themes/**
+  - '.vscode/'
+  - '.vscode-insiders/'
+  - dist/
+  - resources/
+  - backup/
+  - '.yarn/'
+  - '*.docx'
+  - '*.psd'
+  - '*.ai'
+  - '*.svg'
+  - '*.xml'
+  - '*.min.js'
+dictionaries:
+  - mycelio
+  - custom-dictionary
+dictionaryDefinitions:
+  - name: mycelio
+    path: './.vscode/mycelio-dict.txt'
+    addWords: true
+words: []
+ignoreWords: []
+import: []

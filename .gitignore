@@ -17,6 +17,8 @@
 #
 
 yarn-error.log
+.pnp.cjs
+.pnp.loader.mjs
 
 #
 # Node / npm

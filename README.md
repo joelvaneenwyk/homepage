@@ -12,8 +12,6 @@ The staging branch is also deployed automatically to Heroku at [jvaneenwyk.Herok
 
 ## Structure
 
-- 📃 `app.json` - Defines the application for deploying to Heroku, more details at [app.json Schema | Heroku Dev Center](https://devcenter.heroku.com/articles/app-json-schema).
-- 📃 `heroku.yml` - Configuration file for [Heroku](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml) that replaces the [Procfile](https://devcenter.heroku.com/articles/procfile#procfile-and-heroku-yml).
 - 📁 `content` - Markdown files and the text content of the site.
 - 📁 `static` - Assets not intended to change e.g., stylesheets, images,
   etc.
