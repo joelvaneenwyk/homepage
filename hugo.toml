@@ -204,7 +204,7 @@ enable = true
 # Gravatar Email for preferred avatar in home page
 gravatarEmail = ""
 # URL of avatar shown in home page
-avatarURL = "/images/avatar.jpg"
+avatarURL = "images/avatar.jpg"
 # title shown in home page (HTML format is supported)
 title = ""
 # subtitle shown in home page
@@ -260,7 +260,7 @@ mobileMode = "auto"
 # Header title config
 [params.header.title]
 # URL of the LOGO
-logo = "/images/jve_stamp_bright_red.png"
+logo = "images/jve_stamp_bright_red.png"
 # title name
 name = "  Joel Van Eenwyk"
 # you can add extra information before the name (HTML format is supported), such as icons
@@ -407,7 +407,7 @@ images = []
 # Publisher info
 [params.page.seo.publisher]
 name = "Joel Van Eenwyk"
-logoUrl = "/images/avatar.png"
+logoUrl = "images/avatar.png"
 
 # TypeIt config
 [params.typeit]
