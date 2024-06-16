@@ -1,0 +1,38 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  HUGO_WINDOWS: '{{.USERPROFILE}}/scoop/shims/hugo.exe'
+
+tasks:
+  default:
+    cmds:
+      - task: build
+
+  install-hugo:
+    cmds:
+      - cmd: scoop install "hugo-extended"
+        platforms: [windows]
+      - cmd: go install -tags extended github.com/gohugoio/hugo@latest
+        platforms: [darwin, linux]
+
+  setup:
+    deps: [install-hugo]
+    cmds:
+      - cmd: yarn config set --home enableTelemetry false
+      - cmd: yarn install
+      - cmd: yarn build
+
+  build:
+    deps: [setup]
+    cmds:
+      - yarn install
+      - yarn build
+
+  hugo:
+    deps: [setup]
+    vars:
+      HUGO: '{{if eq .OS "windows"}}hugo{{else}}hugo{{end}}'
+    cmds:
+      - cmd: '{{.HUGO}} --forceSyncStatic --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --gc --enableGitInfo'
