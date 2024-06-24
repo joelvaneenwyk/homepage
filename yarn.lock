@@ -2011,7 +2011,7 @@ __metadata:
     esbuild: "npm:^0.21.5"
     esbuild-plugin-tsc: "npm:^0.4.0"
     js-beautify: "npm:^1.14.11"
-    prettier: "npm:^3.1.1"
+    prettier: "npm:^3.3.2"
     prettier-eslint: "npm:^16.2.0"
     prettier-plugin-organize-imports: "npm:^3.2.4"
     prettier-plugin-packagejson: "npm:^2.4.8"
@@ -8811,7 +8811,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.0.1, prettier@npm:^3.1.1":
+"prettier@npm:^3.0.1":
   version: 3.3.1
   resolution: "prettier@npm:3.3.1"
   bin:

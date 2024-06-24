@@ -22,7 +22,7 @@
     "esbuild": "^0.21.5",
     "esbuild-plugin-tsc": "^0.4.0",
     "js-beautify": "^1.14.11",
-    "prettier": "^3.1.1",
+    "prettier": "^3.3.2",
     "prettier-eslint": "^16.2.0",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-packagejson": "^2.4.8",
