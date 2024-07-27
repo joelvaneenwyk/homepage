@@ -3,8 +3,8 @@
 version: '3'
 
 vars:
-  HUGO_WINDOWS: '{{.USERPROFILE}}/scoop/shims/hugo.exe'
-  PROTO_WINDOWS: '{{.USERPROFILE}}/.proto/bin/proto.exe'
+  HUGO_WINDOWS: 'scoop/shims/hugo.exe'
+  PROTO_WINDOWS: '.proto/bin/proto.exe'
 
 tasks:
   default:
@@ -21,10 +21,9 @@ tasks:
   setup:
     deps: [install-hugo]
     cmds:
-      - cmd: 'cmd.exe /d /c call "{{fromSlash .PROTO_WINDOWS}}" uninstall --yes yarn'
+      - cmd: 'cmd.exe /d /c call "{{joinPath .HOME .PROTO_WINDOWS}}" uninstall --yes yarn'
+        platforms: [windows]
       - cmd: yarn config set --home enableTelemetry false
-      - cmd: yarn install
-      - cmd: yarn build
 
   build:
     deps: [setup]
@@ -35,6 +34,6 @@ tasks:
   hugo:
     deps: [setup]
     vars:
-      HUGO: '{{if eq .OS "windows"}}hugo{{else}}hugo{{end}}'
+      HUGO: '{{if eq OS "windows"}}hugo{{else}}hugo{{end}}'
     cmds:
       - cmd: '{{.HUGO}} --forceSyncStatic --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --gc --enableGitInfo'
