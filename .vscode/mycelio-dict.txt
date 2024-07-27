@@ -7,6 +7,7 @@ autosearch
 autotrack
 Bilibili
 bootlint
+Browserify
 bungie
 bytestokey
 caffe
@@ -34,6 +35,7 @@ dsmax
 echarts
 eclint
 eenwyk
+ehthumbs
 emcc
 emscripten
 Emscripten
@@ -55,6 +57,7 @@ gitalk
 GLSL
 glyphicon
 goBin
+gohugoio
 Goldmark
 goPath
 goRoot
