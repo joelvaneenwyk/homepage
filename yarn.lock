@@ -2397,7 +2397,7 @@ __metadata:
     js-beautify: "npm:^1.14.11"
     prettier: "npm:^3.3.2"
     prettier-eslint: "npm:^16.2.0"
-    prettier-plugin-organize-imports: "npm:^3.2.4"
+    prettier-plugin-organize-imports: "npm:^4.0.0"
     prettier-plugin-packagejson: "npm:^2.4.8"
     prettier-plugin-sh: "npm:^0.14.0"
     prettier-plugin-toml: "npm:^2.0.1"
@@ -9342,23 +9342,6 @@ __metadata:
   dependencies:
     fast-diff: "npm:^1.1.2"
   checksum: 10c0/81e0027d731b7b3697ccd2129470ed9913ecb111e4ec175a12f0fcfab0096516373bf0af2fef132af50cafb0a905b74ff57996d615f59512bb9ac7378fcc64ab
-  languageName: node
-  linkType: hard
-
-"prettier-plugin-organize-imports@npm:^3.2.4":
-  version: 3.2.4
-  resolution: "prettier-plugin-organize-imports@npm:3.2.4"
-  peerDependencies:
-    "@volar/vue-language-plugin-pug": ^1.0.4
-    "@volar/vue-typescript": ^1.0.4
-    prettier: ">=2.0"
-    typescript: ">=2.9"
-  peerDependenciesMeta:
-    "@volar/vue-language-plugin-pug":
-      optional: true
-    "@volar/vue-typescript":
-      optional: true
-  checksum: 10c0/c20afa9b379106839a273d53c83fef70920e8ae86939d4890a06c63da19440de411568793e716bafcdd96e5ba8e34233f2944ea53ecd6ac18ba1ec0fa05bb58b
   languageName: node
   linkType: hard
 
