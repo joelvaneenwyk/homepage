@@ -34,13 +34,10 @@ console.log(`Listening: http://localhost:${port}`);
 if (process.argv[2] === '--test') {
   console.log('Simple import test, skipping server.');
 } else {
-  var serve = serveStatic(
-    `${root}/dist/www`,
-    { index: ['index.html', 'index.htm'] }
-  );
+  const serve = serveStatic(`${root}/dist/www`, { index: ['index.html', 'index.htm'] });
 
   // Create server
-  var server = createServer(function onRequest(req, res) {
+  const server = createServer(function onRequest(req, res) {
     serve(req, res, finalHandler(req, res));
   });
 
