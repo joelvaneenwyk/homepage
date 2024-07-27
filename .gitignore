@@ -4,8 +4,6 @@
 
 /homepage/
 
-.yarn/
-
 .tmp
 .env
 .env.*
@@ -16,6 +14,7 @@
 # Yarn
 #
 
+.yarn/
 yarn-error.log
 .pnp.cjs
 .pnp.loader.mjs

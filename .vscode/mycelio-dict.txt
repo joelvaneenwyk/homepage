@@ -148,6 +148,7 @@ stoponerror
 strikethrough
 stylelint
 submodules
+Taskfile
 thirdparty
 Todoist
 topojson
