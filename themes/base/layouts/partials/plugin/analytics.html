@@ -5,10 +5,18 @@
     {{- with $analytics.google.id -}}
         <script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
-            gtag('config', '{{ . }}'{{ if $analytics.google.anonymizeIP }}, { 'anonymize_ip': true }{{ end }});
+            gtag('config', '{{ . }}', {{ if $analytics.google.anonymizeIP }}, { 'anonymize_ip': true }{{ end }});
         </script>
         {{- printf "https://www.googletagmanager.com/gtag/js?id=%v" . | dict "Async" true "Source" | partial "plugin/script.html" -}}
     {{- end -}}
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "nbj0m184rw");
+    </script>
 
     {{- /* Fathom Analytics */ -}}
     {{- with $analytics.fathom.id -}}
