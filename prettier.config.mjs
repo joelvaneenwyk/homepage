@@ -14,6 +14,7 @@ const config = {
   singleQuote: true,
   semi: true,
   printWidth: 130,
+  tabWidth: 2,
   trailingComma: 'none',
   proseWrap: 'preserve',
   quoteProps: 'preserve',
@@ -47,7 +48,7 @@ const config = {
       }
     },
     {
-      files: ['*.js', '*.ts'],
+      files: ['*.js', '*.ts', '.mjs', '.cjs'],
       options: {
         parser: 'typescript',
         quoteProps: 'consistent'
