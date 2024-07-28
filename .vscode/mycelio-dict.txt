@@ -1,4 +1,5 @@
 actions
+actrc
 addHeaders
 algoliasearch
 analyser
@@ -41,11 +42,13 @@ ehthumbs
 emcc
 emscripten
 Emscripten
+envman
 errno
 esbuild
 espnu
 esversion
 fa-searchengin
+finalhandler
 fontfaceobserver
 framebuffer
 framestore
@@ -76,6 +79,7 @@ htmlproofer
 hugo
 Intelli
 irrlicht
+jefuller
 joelvaneenwyk
 jsbeautifier
 jsDelivr
@@ -120,6 +124,7 @@ postpublish
 prebuild
 preinstall
 procfile
+prototools
 PTVS        # Python Tools for Visual Studio
 pycaffe
 pylint
