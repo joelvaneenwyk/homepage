@@ -44,7 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Fetch Hugo themes (true OR recursive)
+          # Fetch Hugo themes
           submodules: recursive
           # Fetch all history for .GitInfo and .Lastmod
           fetch-depth: 0
@@ -53,7 +53,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: sudo npm install -g corepack
+
+      # Environment setup script designed primarily for running GitHub actions locally
+      # with 'act' since environments are sometimes missing 'npm' or 'node' whereas
+      # you can assume they exist when running from GitHub actions.
+      - run: ${{ github.workspace }}/.github/scripts/act-setup.sh
 
       - name: Install Packages
         run: |
@@ -76,13 +80,13 @@ jobs:
         name: Upload Site Artifact
         with:
           name: website-${{ matrix.platform }}-${{ matrix.node }}
-          path: './dist/www/'
+          path: ./dist/www/
 
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     needs: build
     runs-on: ubuntu-latest
-    name: "Deploy // Azure"
+    name: 'Deploy // Azure'
     steps:
       - uses: actions/checkout@v4
         with:
