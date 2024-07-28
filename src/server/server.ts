@@ -17,13 +17,13 @@ console.log(`Server root: ${root}`);
 console.log(`Current directory: ${cwd}`);
 
 console.log('\n===\nls .\n===\n');
-fs.readdirSync(cwd).forEach((file: any) => {
+fs.readdirSync(cwd).forEach((file: string) => {
   console.log(file);
 });
 
 console.log('\n===\nls .yarn\n===\n');
 if (fs.existsSync(join(root, '.yarn'))) {
-  fs.readdirSync(join(root, '.yarn')).forEach((file: any) => {
+  fs.readdirSync(join(root, '.yarn')).forEach((file: string) => {
     console.log(file);
   });
 }
