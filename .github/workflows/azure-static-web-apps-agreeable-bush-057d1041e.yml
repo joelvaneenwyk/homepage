@@ -39,6 +39,7 @@ jobs:
           # - windows-latest
 
     runs-on: ${{ matrix.platform }}
+    name: Build
 
     steps:
       - uses: actions/checkout@v4
@@ -81,7 +82,7 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     needs: build
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+    name: "Deploy // Azure"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -114,19 +115,17 @@ jobs:
         run: |
           yarn build
 
-      # - name: Deploy Static Web App
-      #   id: builddeploy
-      #   uses: joelvaneenwyk/static-web-apps-deploy@develop
-      #   with:
-      #     # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-      #     azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_BUSH_057D1041E }}
-      #     repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
-      #     action: 'upload'
-      #     app_location: './'
-      #     api_location: ''
-      #     output_location: './dist/www/'
+      - name: Deploy Static Web App
+        id: builddeploy
+        uses: joelvaneenwyk/static-web-apps-deploy@develop
+        with:
+          azure_static_web_apps_api_token: '${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_BUSH_057D1041E }}'
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          action: 'upload'
+          app_location: './'
+          api_location: ''
+          output_location: 'dist/www'
 
-  # Build job
   build_pages:
     name: Build Pages
     needs: build
@@ -190,6 +189,7 @@ jobs:
 
   deploy_pages:
     needs: build_pages
+    name: Deploy Pages
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
