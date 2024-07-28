@@ -8,10 +8,12 @@ autotrack
 Bilibili
 bootlint
 Browserify
+builddeploy
 bungie
 bytestokey
 caffe
 chillingo
+closepullrequest
 cmaps
 cmds
 Codase
