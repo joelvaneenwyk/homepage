@@ -26,7 +26,7 @@ export default tseslint.config(
         ...globals.browser
       }
     },
-    ignores: ['dist/**'],
+    ignores: ['dist/**', 'node_modules/**', '.yarn/**'],
     rules: {
       'arrow-body-style': ['error', 'as-needed'],
       'prefer-arrow-callback': 'off',

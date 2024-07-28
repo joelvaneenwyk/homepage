@@ -31,6 +31,10 @@
     "src/server",
     "src/tools"
   ],
+  "packageManager": "yarn@4.3.1+sha512.af78262d7d125afbfeed740602ace8c5e4405cd7f4735c08feb327286b2fdb2390fbca01589bfd1f50b1240548b74806767f5a063c94b67e431aabd0d86f7774",
+  "engines": {
+    "node": "^18 || ^20 || ^21 || ^22"
+  },
   "scripts": {
     "build": "concurrently -m 1 \"yarn:build:*\"",
     "build:end": "echo Building steps completed...",
@@ -45,7 +49,7 @@
     "generate": "yarn run hugo && yarn run build",
     "github": "act",
     "hugo": "hugo --cleanDestinationDir --enableGitInfo --forceSyncStatic",
-    "lint": "eslint **/*.ts",
+    "lint": "eslint --debug --no-warn-ignored --config \"./eslint.config.mjs\" *.mjs src/**/*.*",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "refresh": "shx rm yarn.lock && yarn install",
@@ -94,7 +98,7 @@
     "core-js": "^3.37.1",
     "esbuild": "^0.23.0",
     "esbuild-plugin-tsc": "^0.4.0",
-    "eslint": "^9.8.0",
+    "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-node": "*",
     "eslint-plugin-import": "*",
@@ -128,10 +132,5 @@
     "typescript-bundle": "^1.0.18",
     "typescript-eslint": "^7.17.0",
     "yarn-audit-fix": "^10.0.7"
-  },
-  "packageManager": "yarn@4.3.1+sha512.af78262d7d125afbfeed740602ace8c5e4405cd7f4735c08feb327286b2fdb2390fbca01589bfd1f50b1240548b74806767f5a063c94b67e431aabd0d86f7774",
-  "engines": {
-    "node": "^18 || ^20 || ^21 || ^22",
-    "npm": "^10"
   }
 }
