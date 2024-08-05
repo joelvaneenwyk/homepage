@@ -81,7 +81,7 @@
     "@types/eslint__js": "^8.42.3",
     "@types/finalhandler": "^1",
     "@types/js-beautify": "^1.14.3",
-    "@types/node": "^20.14.12",
+    "@types/node": "^22.1.0",
     "@types/node-static": "^0.7.11",
     "@types/serve-static": "^1",
     "@yarnpkg/cli": "^4.3.1",
