@@ -2037,7 +2037,7 @@ __metadata:
     "@types/eslint__js": "npm:^8.42.3"
     "@types/finalhandler": "npm:^1"
     "@types/js-beautify": "npm:^1.14.3"
-    "@types/node": "npm:^20.14.12"
+    "@types/node": "npm:^22.5.0"
     "@types/node-static": "npm:^0.7.11"
     "@types/serve-static": "npm:^1"
     "@yarnpkg/cli": "npm:^4.3.1"
@@ -2096,7 +2096,7 @@ __metadata:
   resolution: "@joelvaneenwyk/server@workspace:src/server"
   dependencies:
     "@types/js-beautify": "npm:^1.14.3"
-    "@types/node": "npm:^20.10.6"
+    "@types/node": "npm:^22.5.0"
     "@types/node-static": "npm:^0.7.11"
     esbuild: "npm:^0.21.5"
     esbuild-plugin-tsc: "npm:^0.4.0"
@@ -2112,7 +2112,7 @@ __metadata:
   resolution: "@joelvaneenwyk/tools@workspace:src/tools"
   dependencies:
     "@types/js-beautify": "npm:^1.14.3"
-    "@types/node": "npm:^20.10.6"
+    "@types/node": "npm:^22.5.0"
     esbuild: "npm:^0.21.5"
     esbuild-plugin-tsc: "npm:^0.4.0"
     js-beautify: "npm:^1.14.11"
@@ -2502,7 +2502,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.10.6, @types/node@npm:^20.14.12":
+"@types/node@npm:*":
   version: 20.14.12
   resolution: "@types/node@npm:20.14.12"
   dependencies:
@@ -2517,6 +2517,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/eaacbbcb376748bddaf6cd04569ebf3f0069a1b6f821db4f85ef9f60c2c63608ddcaf3e67a3c44e1cd8111a26e9da7c83d54ae7c41dd21e7b35cbab9436bfe1e
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^22.5.0":
+  version: 22.5.0
+  resolution: "@types/node@npm:22.5.0"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10c0/45aa75c5e71645fac42dced4eff7f197c3fdfff6e8a9fdacd0eb2e748ff21ee70ffb73982f068a58e8d73b2c088a63613142c125236cdcf3c072ea97eada1559
   languageName: node
   linkType: hard
 
@@ -10627,6 +10636,13 @@ __metadata:
   version: 5.26.5
   resolution: "undici-types@npm:5.26.5"
   checksum: 10c0/bb673d7876c2d411b6eb6c560e0c571eef4a01c1c19925175d16e3a30c4c428181fb8d7ae802a261f283e4166a0ac435e2f505743aa9e45d893f9a3df017b501
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.19.2":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: 10c0/078afa5990fba110f6824823ace86073b4638f1d5112ee26e790155f481f2a868cc3e0615505b6f4282bdf74a3d8caad715fd809e870c2bb0704e3ea6082f344
   languageName: node
   linkType: hard
 
