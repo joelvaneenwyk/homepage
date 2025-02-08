@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
+# https://taskfile.dev
 # cspell:ignore taskfile,vcpkg,msbuild,makefiles,deinit
 
 version: '3'
@@ -6,6 +7,10 @@ version: '3'
 vars:
   HUGO_WINDOWS: 'scoop/shims/hugo.exe'
   PROTO_WINDOWS: '.proto/bin/proto.exe'
+  HOME: '{{if eq OS "windows"}}{{ env "USERPROFILE" }}{{else}}{{ env "HOME" }}{{end}}'
+
+env:
+  HOME: '{{.HOME | default "./.build/home"}}'
 
 tasks:
   default:
@@ -14,9 +19,9 @@ tasks:
 
   act:
     vars:
-        DOCKER_IMAGE_URL: ghcr.io/jefuller/artifact-server:latest
-        DOCKER_CONTAINER_NAME: artifact-server
-        AUTH_KEY: homepage-artifact-key
+      DOCKER_IMAGE_URL: ghcr.io/jefuller/artifact-server:latest
+      DOCKER_CONTAINER_NAME: artifact-server
+      AUTH_KEY: homepage-artifact-key
     cmds:
       # https://github.com/nektos/act/issues/329#issuecomment-1905955589
       - cmd: | # shell
@@ -53,7 +58,8 @@ tasks:
   setup:
     deps: [install-hugo]
     cmds:
-      - cmd: 'cmd.exe /d /c call "{{joinPath .HOME .PROTO_WINDOWS}}" uninstall --yes yarn'
+      - cmd: |
+          cmd.exe /d /c call "{{joinPath .HOME .PROTO_WINDOWS}}" uninstall --yes yarn
         platforms: [windows]
       - cmd: yarn config set --home enableTelemetry false
 
@@ -68,4 +74,5 @@ tasks:
     vars:
       HUGO: '{{if eq OS "windows"}}hugo{{else}}hugo{{end}}'
     cmds:
-      - cmd: '{{.HUGO}} --forceSyncStatic --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --gc --enableGitInfo'
+      - cmd: |
+          {{.HUGO}} --forceSyncStatic --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --gc --enableGitInfo
