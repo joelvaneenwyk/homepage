@@ -1,13 +1,25 @@
 import finalHandler from 'finalhandler';
 import fs from 'fs';
 import { createServer } from 'http';
-import { join, resolve } from 'path';
+import { join, dirname } from 'path';
 import process from 'process';
+
 // We import this later so that we can get details above first in case there
 // are setup issues with Yarn or PNP
 import serveStatic from 'serve-static';
 
-const root = resolve('../../');
+function findProjectRoot(startPath: string): string {
+    let currentPath = startPath;
+    while (currentPath !== dirname(currentPath)) {
+        if (fs.existsSync(join(currentPath, 'hugo.toml'))) {
+            return currentPath;
+        }
+        currentPath = dirname(currentPath);
+    }
+    throw new Error('Could not find hugo.toml in any parent directory');
+}
+
+const root = findProjectRoot(__dirname);
 const cwd = process.cwd();
 
 // Use a default port unless it's specified in server config
