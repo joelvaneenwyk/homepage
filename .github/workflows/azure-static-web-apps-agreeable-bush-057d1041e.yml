@@ -47,6 +47,11 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      # Has to be run before actions/setup-node.
+      # See: https://github.com/actions/setup-node/issues/480
+      - name: Enable corepack for yarn
+        run: corepack enable
+        
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
@@ -91,12 +96,13 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      # Has to be run before actions/setup-node.
+      # See: https://github.com/actions/setup-node/issues/480
+      - name: Enable corepack for yarn
+        run: corepack enable
+        
       - name: Use Node.js
         uses: actions/setup-node@v4
-      - run: sudo npm install -g corepack
-
-      - run: corepack enable
-      - run: sudo git config --system --add safe.directory /github/workspace
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -140,13 +146,14 @@ jobs:
           # Fetch all history for .GitInfo and .Lastmod
           fetch-depth: 0
 
+      # Has to be run before actions/setup-node.
+      # See: https://github.com/actions/setup-node/issues/480
+      - name: Enable corepack for yarn
+        run: corepack enable
+        
       - name: Use Node.js
         uses: actions/setup-node@v4
-      - run: sudo npm install -g corepack
-
-      - run: corepack enable
-      - run: sudo git config --system --add safe.directory /github/workspace
-
+        
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
