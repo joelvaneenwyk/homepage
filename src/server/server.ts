@@ -1,7 +1,7 @@
 import finalHandler from 'finalhandler';
 import fs from 'fs';
 import { createServer } from 'http';
-import { join, dirname } from 'path';
+import { dirname, join } from 'path';
 import process from 'process';
 
 // We import this later so that we can get details above first in case there
@@ -9,14 +9,14 @@ import process from 'process';
 import serveStatic from 'serve-static';
 
 function findProjectRoot(startPath: string): string {
-    let currentPath = startPath;
-    while (currentPath !== dirname(currentPath)) {
-        if (fs.existsSync(join(currentPath, 'hugo.toml'))) {
-            return currentPath;
-        }
-        currentPath = dirname(currentPath);
+  let currentPath = startPath;
+  while (currentPath !== dirname(currentPath)) {
+    if (fs.existsSync(join(currentPath, 'hugo.toml'))) {
+      return currentPath;
     }
-    throw new Error('Could not find hugo.toml in any parent directory');
+    currentPath = dirname(currentPath);
+  }
+  throw new Error('Could not find hugo.toml in any parent directory');
 }
 
 const root = findProjectRoot(__dirname);
