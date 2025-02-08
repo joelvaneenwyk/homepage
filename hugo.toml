@@ -236,7 +236,7 @@ RSS = true
 author = { name = "Joel Van Eenwyk" }
 description = "A simple monospaced resume theme for Hugo."
 staticDir = 'static'
-favicon = "images/favicon.ico"                             # path to a .ico to use as favicon
+favicon = "/images/favicon.ico"                             # path to a .ico to use as favicon
 # LoveIt theme version
 version = "0.2.X"
 # site default theme ("light", "dark", "auto")
@@ -260,7 +260,7 @@ mobileMode = "auto"
 # Header title config
 [params.header.title]
 # URL of the LOGO
-logo = "images/jve_stamp_bright_red.png"
+logo = "/images/jve_stamp_bright_red.png"
 # title name
 name = "  Joel Van Eenwyk"
 # you can add extra information before the name (HTML format is supported), such as icons
@@ -468,7 +468,7 @@ data = "jsdelivr.yml"
 # Compatibility config
 [params.compatibility]
 # whether to use Polyfill.io to be compatible with older browsers
-polyfill = true
+polyfill = false
 # whether to use object-fit-images to be compatible with older browsers
 objectFit = false
 

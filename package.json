@@ -40,7 +40,7 @@
     "build:start": "echo \"Building typescript server and website...\"",
     "build:theme": "yarn run build:theme:babel && yarn run build:theme:segmentit",
     "build:theme:babel": "cd themes/base && babel src/js --out-file assets/js/theme.min.js --source-maps",
-    "build:theme:segmentit": "cd themes/base && browserify src/lib/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
+    "build:theme:segmentit": "cd themes/base && browserify src/lib/lunr/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env --presets minify",
     "dev": "yarn sdks vscode",
     "generate": "yarn run hugo && yarn run build",
     "github": "act",

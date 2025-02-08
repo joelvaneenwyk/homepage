@@ -4,7 +4,7 @@ github:
   Prefix: https://github.com/
   Title: GitHub
   Icon:
-    Class: fab fa-github-alt fa-fw
+    Class: fab fa-github fa-fw
 
 # 002: LinkedIn
 linkedin:
@@ -49,7 +49,7 @@ telegram:
 # 007: Medium
 medium:
   Weight: 7
-  Prefix: https://medium.com/
+  Prefix: https://medium.com/@
   Title: Medium
   Icon:
     Class: fab fa-medium fa-fw
@@ -156,7 +156,7 @@ stackoverflow:
   Prefix: https://stackoverflow.com/users/
   Title: Stack Overflow
   Icon:
-    Class: fab fa-codepen fa-fw
+    Class: fab fa-stack-overflow fa-fw
 
 # 021: 微博
 weibo:
@@ -441,7 +441,6 @@ researchgate:
 # 056: Mastodon
 mastodon:
   Weight: 56
-  Prefix: https://mastodon.social/
   Title: Mastodon
   Icon:
     Class: fab fa-mastodon fa-fw
@@ -452,7 +451,7 @@ thingiverse:
   Prefix: https://www.thingiverse.com/
   Title: Thingiverse
   Icon:
-    Src: svg/icons/thingiverse.svg
+    Simpleicons: thingiverse
 
 # 058: Dev.To
 devto:
@@ -491,27 +490,136 @@ bilibili:
   Prefix: https://space.bilibili.com/
   Title: bilibili
   Icon:
-    Src: svg/icons/bilibili.svg
+    Simpleicons: bilibili
 
-# 063: Email
-email:
+# 063: Discord User Profile
+discord:
   Weight: 63
+  Prefix: https://discordapp.com/users/
+  Title: Discord
+  Icon:
+    Class: fab fa-discord fa-fw
+
+# 064: Discord Server Invite Link
+discordInvite:
+  Weight: 64
+  Prefix: https://discord.gg/
+  Title: Discord
+  Icon:
+    Class: fab fa-discord fa-fw
+
+# 065: Lichess user profile
+lichess:
+  Weight: 65
+  Prefix: https://lichess.org/@/
+  Title: Lichess
+  Icon:
+    Simpleicons: lichess
+
+# 066: ORCID
+orcid:
+  Weight: 66
+  Prefix: https://orcid.org/
+  Title: ORCID
+  Icon:
+    Class: fab fa-orcid fa-fw
+
+# 067: Pleroma
+pleroma:
+  Weight: 67
+  Title: Pleroma
+  Icon:
+    Simpleicons: pleroma
+
+# 068: Kaggle
+kaggle:
+  Weight: 68
+  Prefix: https://kaggle.com/
+  Title: Kaggle
+  Icon:
+    Class: fab fa-kaggle fa-fw
+
+# 069: MediaWiki
+mediawiki:
+  Weight: 69
+  Title: MediaWiki
+  Icon:
+    Class: fab fa-wikipedia-w fa-fw
+
+# 070: Plume
+plume:
+  Weight: 70
+  Title: Plume
+  Icon:
+    Src: svg/icons/plume.svg
+
+# 071: Hack The Box
+hackthebox:
+  Weight: 71
+  Title: Hack The Box
+  Prefix: https://app.hackthebox.com/profile/
+  Icon:
+    Simpleicons: hackthebox
+
+# 072: Root-Me
+rootme:
+  Weight: 72
+  Title: Root-Me
+  Prefix: https://www.root-me.org/
+  Icon:
+    Src: svg/icons/rootme.svg
+
+# 073: Malt
+malt:
+  Weight: 73
+  Prefix: https://www.malt.fr/profile/
+  Title: Malt
+  Icon:
+    Src: svg/icons/malt.svg
+
+# 074: TikTok
+tiktok:
+  Weight: 74
+  Url: https://www.tiktok.com/
+  Title: TikTok
+  Icon:
+    Simpleicons: tiktok
+
+# 075: TryHackMe
+tryhackme:
+  Weight: 75
+  Title: TryHackMe
+  Prefix: https://tryhackme.com/p/
+  Icon:
+    Simpleicons: Tryhackme
+
+# 076: Codeberg
+codeberg:
+  Weight: 76
+  Title: Codeberg
+  Prefix: https://codeberg.org/
+  Icon:
+    Simpleicons: codeberg
+
+# Phone
+phone:
+  Weight: 98
+  Template: tel:%v
+  Title: Phone
+  Icon:
+    Class: fas fa-phone fa-fw
+
+# Email
+email:
+  Weight: 99
   Template: mailto:%v
   Title: Email
   Icon:
     Class: far fa-envelope fa-fw
 
-# 064: mobygames
-mobygames:
-  Weight: 64
-  Prefix: https://www.mobygames.com/
-  Title: MobyGames
-  Icon:
-    Src: svg/icons/mobygames.svg
-
-# 065: RSS
+# RSS
 rss:
-  Weight: 65
+  Weight: 100
   Url: /index.xml
   Title: RSS
   Newtab: true

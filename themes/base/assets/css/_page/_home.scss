@@ -1,4 +1,6 @@
 .home {
+  padding-bottom: 5rem;
+
   .home-profile {
     @include transform(translateY( 16vh));
     padding: 0 0 .5rem;
@@ -66,7 +68,7 @@
   }
 }
 
-.home[posts] {
+.home[data-home=posts] {
   .home-profile {
     @include transform(translateY(0));
     padding-top: 2rem;
@@ -100,11 +102,10 @@
         height: 100%;
         left: 0;
         top: 0;
-        @include object-fit(none);
-      }
 
-      img.lazyloaded {
-        @include object-fit(cover);
+        &.lazyloaded {
+          @include object-fit(cover);
+        }
       }
 
       &:hover {

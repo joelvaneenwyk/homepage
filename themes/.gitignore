@@ -1,0 +1,9 @@
+.circleci/
+.github/
+.husky/
+/*/exampleSite/
+/*/images/
+/*/.gitignore
+_gen/
+go.mod
+package-lock.json
