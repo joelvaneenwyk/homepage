@@ -44,9 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Fetch Hugo themes
           submodules: recursive
-          # Fetch all history for .GitInfo and .Lastmod
           fetch-depth: 0
 
       - name: Use Node.js ${{ matrix.node }}
@@ -90,7 +88,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Fetch Hugo themes (true OR recursive)
           submodules: recursive
           # Fetch all history for .GitInfo and .Lastmod
           fetch-depth: 0
