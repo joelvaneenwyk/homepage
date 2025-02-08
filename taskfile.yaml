@@ -6,7 +6,6 @@ version: '3'
 
 vars:
   HUGO_WINDOWS: 'scoop/shims/hugo.exe'
-  PROTO_WINDOWS: '.proto/bin/proto.exe'
   HOME: '{{if eq OS "windows"}}{{ env "USERPROFILE" }}{{else}}{{ env "HOME" }}{{end}}'
 
 env:
@@ -57,10 +56,14 @@ tasks:
 
   setup:
     deps: [install-hugo]
+    vars:
+      PROTO_WINDOWS: '.proto/bin/proto.exe'
     cmds:
       - cmd: |
-          cmd.exe /d /c call "{{joinPath .HOME .PROTO_WINDOWS}}" uninstall --yes yarn
+          cmd.exe /d /c call "{{joinPath .HOME (.PROTO_WINDOWS | default "")}}" uninstall --yes yarn
         platforms: [windows]
+        silent: true
+        ignore_error: true
       - cmd: yarn config set --home enableTelemetry false
 
   build:
