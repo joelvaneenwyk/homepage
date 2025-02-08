@@ -2,7 +2,7 @@
 
 {{- /* LoveIt theme version detection */ -}}
 {{- $VERSION := "0.2.X" -}}
-{{- if eq .Site .Sites.First -}}
+{{- if eq .Site .Sites.Default -}}
     {{- if not .Site.Params.version -}}
         {{- errorf "Configuration Error 配置文件错误\n\nYou haven't configured the LoveIt version param correctly yet. See https://hugoloveit.com/theme-documentation-basics/#basic-configuration\n你还没有正确配置 LoveIt 的版本参数. 参考 https://hugoloveit.com/zh-cn/theme-documentation-basics/#basic-configuration\n" -}}
     {{- else if ne .Site.Params.version $VERSION -}}
@@ -31,7 +31,7 @@
     {{- else if eq .Params.comment false -}}
         {{- .Scratch.Set "comment" dict -}}
     {{- end -}}
-{{- else if eq .Site .Sites.First -}}
+{{- else if eq .Site .Sites.Default -}}
     {{- warnf "\n\nCurrent environment is \"development\". The \"comment system\", \"CDN\" and \"fingerprint\" will be disabled." -}}
 {{- end -}}
 
