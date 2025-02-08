@@ -73,7 +73,7 @@ jobs:
           extended: true
 
       - name: Build Hugo Site
-        run: hugo --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
+        run: hugo --buildDrafts --buildExpired --buildFuture --cleanDestinationDir
 
       - name: Build Source
         run: |
@@ -115,7 +115,7 @@ jobs:
           yarn install
 
       - name: Build Hugo Site
-        run: hugo --buildDrafts --buildExpired --buildFuture --cleanDestinationDir --verbose
+        run: hugo --buildDrafts --buildExpired --buildFuture --cleanDestinationDir
 
       - name: Build Source
         run: |
