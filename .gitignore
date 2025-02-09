@@ -9,6 +9,7 @@
 .env.*
 !.env.template
 .hugo_build.lock
+*.log
 
 #
 # Yarn
