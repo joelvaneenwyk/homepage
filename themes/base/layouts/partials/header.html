@@ -59,8 +59,8 @@
                 </a>
                 {{- if hugo.IsMultilingual -}}
                 <a href="javascript:void(0);" class="menu-item language" title="{{ T "selectLanguage" }}">
-                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select title="Languages" class="language-select" id="language-select-desktop" onchange="location = this.value;">
                         {{- if eq .Kind "404" -}}
                             {{- /* https://github.com/dillonzq/LoveIt/issues/378 */ -}}
                             {{- range .Sites -}}
@@ -150,10 +150,10 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a>
             {{- if hugo.IsMultilingual -}}
-            
+
                 <a href="javascript:void(0);" class="menu-item" title="{{ T "selectLanguage" }}">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;">
+                    <select title="Languages" class="language-select" onchange="location = this.value;">
                         {{- if eq .Kind "404" -}}
                             {{- /* https://github.com/dillonzq/LoveIt/issues/378 */ -}}
                             {{- range .Sites -}}
