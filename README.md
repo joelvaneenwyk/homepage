@@ -8,7 +8,7 @@ This is the source code for the homepage of Joel Van Eenwyk (<https://www.joelva
 
 The staging branch is also deployed automatically to Heroku at [jvaneenwyk.HerokuApp.com](http://jvaneenwyk.herokuapp.com/).
 
-![Joel Van Eenwyk](static/images/jve_stamp.png)
+![Joel Van Eenwyk](./static/images/jve_stamp.png)
 
 ## Structure
 
