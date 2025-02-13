@@ -2,9 +2,7 @@
 title = "About"
 +++
 
-{{< figure class="avatar" src="/images/avatar.jpg" title="Picture of Joel Van Eenwyk" >}}
-
-⚠ 🚧 This is a work in progress.
+{{< photo src="/images/avatar.jpg" linked=false caption="Joel Van Eenwyk" width="300" >}}
 
 You have landed on my page it seems. My interests are all over the place but you will see some commonality in my love for low-level coding, graphics, emulation, and DevOps type work. Finding clean, reproducible, processes that make it easier for groups of people to iterate on code and innovate gets me pretty excited.
 
@@ -22,7 +20,8 @@ Currently working on cross-platform provisioning scripts built with Docker, Ansi
 
 #### Experience
 
-* Oct 2015 - Present: Microsoft, Principal Field Application Engineer
+* Dec 2023 - Dec 2024: Microsoft, Principal Program Manager
+* Oct 2015 - Dec 2023: Microsoft, Principal Field Application Engineer
   * Responsible for scoping out future partnerships and analyzing industry trends to ensure we invest our resources appropriately to avoid reactive development practices.
   * Manage team in Europe, Japan, and North America.
   * Gather feedback from clients worldwide to drive roadmap for Havok products.
