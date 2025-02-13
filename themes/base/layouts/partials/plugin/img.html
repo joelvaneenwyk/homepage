@@ -18,13 +18,14 @@
     {{- $large = .RelPermalink -}}
 {{- end -}}
 
-{{- $alt := .Alt | default $src -}}
-{{- $loading := resources.Get "svg/loading.svg" | minify -}}
+{{- $caption := .Caption -}}
+{{- $alt := .Alt | default $caption | default $src -}}
+{{- $loading := resources.Get "lib/lightgallery/images/loading.gif" -}}
 {{- if .Linked -}}
     <a class="lightgallery" href="{{ $large | relURL | safeURL }}" title="{{ .Title | default $alt }}" data-thumbnail="{{ $small | safeURL }}"{{ with .Caption }} data-sub-html="<h2>{{ . }}</h2>{{ with $.Title }}<p>{{ . }}</p>{{ end }}"{{ end }}{{ with .Rel }} rel="{{ . }}"{{ end }}>
         <img
             class="lazyload{{ with .Class }} {{ . }}{{ end }}"
-            src="{{ $loading.RelPermalink | relURL }}"
+            src="{{ $loading.RelPermalink }}"
             data-src="{{ $src | relURL | safeURL }}"
             data-srcset="{{ $small | relURL | safeURL }}, {{ $src | relURL | safeURL }} 1.5x, {{ $large | relURL | safeURL }} 2x"
             data-sizes="auto"
