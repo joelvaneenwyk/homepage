@@ -2062,7 +2062,7 @@ __metadata:
     "@types/eslint__js": "npm:^8.42.3"
     "@types/finalhandler": "npm:^1"
     "@types/js-beautify": "npm:^1.14.3"
-    "@types/node": "npm:^22.13.1"
+    "@types/node": "npm:^22.13.13"
     "@types/node-static": "npm:^0.7.11"
     "@types/serve-static": "npm:^1"
     "@yarnpkg/cli": "npm:^4.6.0"
@@ -2121,7 +2121,7 @@ __metadata:
   resolution: "@joelvaneenwyk/server@workspace:src/server"
   dependencies:
     "@types/js-beautify": "npm:^1.14.3"
-    "@types/node": "npm:^20.10.6"
+    "@types/node": "npm:^22.13.13"
     "@types/node-static": "npm:^0.7.11"
     esbuild: "npm:^0.21.5"
     esbuild-plugin-tsc: "npm:^0.4.0"
@@ -2137,7 +2137,7 @@ __metadata:
   resolution: "@joelvaneenwyk/tools@workspace:src/tools"
   dependencies:
     "@types/js-beautify": "npm:^1.14.3"
-    "@types/node": "npm:^20.10.6"
+    "@types/node": "npm:^22.13.13"
     esbuild: "npm:^0.21.5"
     esbuild-plugin-tsc: "npm:^0.4.0"
     js-beautify: "npm:^1.14.11"
@@ -2563,7 +2563,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.10.6":
+"@types/node@npm:*":
   version: 20.14.12
   resolution: "@types/node@npm:20.14.12"
   dependencies:
@@ -2581,12 +2581,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.13.1":
-  version: 22.13.1
-  resolution: "@types/node@npm:22.13.1"
+"@types/node@npm:^22.13.13":
+  version: 22.13.13
+  resolution: "@types/node@npm:22.13.13"
   dependencies:
     undici-types: "npm:~6.20.0"
-  checksum: 10c0/d4e56d41d8bd53de93da2651c0a0234e330bd7b1b6d071b1a94bd3b5ee2d9f387519e739c52a15c1faa4fb9d97e825b848421af4b2e50e6518011e7adb4a34b7
+  checksum: 10c0/daf792ba5dcff1316abf4b33680f94b792f8d54d6ae495efc8929531e0ba1284a248d29aab117d2259f9280284d986ad5799b193b0516e2b926d713aab835f7d
   languageName: node
   linkType: hard
 
